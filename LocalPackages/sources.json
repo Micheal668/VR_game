@@ -1,0 +1,42 @@
+[
+  {
+    "name": "com.unity.xr.interaction.toolkit",
+    "version": "3.6.0",
+    "archive": "com.unity.xr.interaction.toolkit-3.6.0.tgz",
+    "source": "https://download.packages.unity.com/com.unity.xr.interaction.toolkit/-/com.unity.xr.interaction.toolkit-3.6.0.tgz",
+    "sha1": "c7557c6c9ee4e7c301729a60e23677b53205ff72",
+    "registryChecksumVerified": true
+  },
+  {
+    "name": "com.unity.xr.management",
+    "version": "4.5.4",
+    "archive": "com.unity.xr.management-4.5.4.tgz",
+    "source": "https://download.packages.unity.com/com.unity.xr.management/-/com.unity.xr.management-4.5.4.tgz",
+    "sha1": "e3a3882b360a930851150ee50076985f763c9b3f",
+    "registryChecksumVerified": true
+  },
+  {
+    "name": "com.unity.xr.openxr",
+    "version": "1.18.0",
+    "archive": "com.unity.xr.openxr-1.18.0.tgz",
+    "source": "https://download.packages.unity.com/com.unity.xr.openxr/-/com.unity.xr.openxr-1.18.0.tgz",
+    "sha1": "b5b77b4027bedfd34cf3503438ef08514754c437",
+    "registryChecksumVerified": true
+  },
+  {
+    "name": "com.unity.xr.legacyinputhelpers",
+    "version": "3.0.1",
+    "archive": "com.unity.xr.legacyinputhelpers-3.0.1.tgz",
+    "source": "https://download.packages.unity.com/com.unity.xr.legacyinputhelpers/-/com.unity.xr.legacyinputhelpers-3.0.1.tgz",
+    "sha1": "3f62d634f63be463f9e1f7b0deea814a27526da4",
+    "registryChecksumVerified": true
+  },
+  {
+    "name": "com.unity.xr.core-utils",
+    "version": "2.6.0",
+    "archive": "com.unity.xr.core-utils-2.6.0.tgz",
+    "source": "https://download.packages.unity.com/com.unity.xr.core-utils/-/com.unity.xr.core-utils-2.6.0.tgz",
+    "sha1": "a8b900321199038fe4200211a52f46d2f4bae786",
+    "registryChecksumVerified": true
+  }
+]

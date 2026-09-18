@@ -1,0 +1,1258 @@
+{
+  "entries": [
+    {
+      "key": "station.title",
+      "zh": "月球科研站\n系统舱",
+      "en": "Lunar Research Station\nSystems Bay",
+      "ru": "Лунная научная станция\nСистемный отсек"
+    },
+    {
+      "key": "repair.title",
+      "zh": "氧气设备维修",
+      "en": "Oxygen System Repair",
+      "ru": "Ремонт кислородной системы"
+    },
+    {
+      "key": "repair.instruction",
+      "zh": "拿起工具\n将工具头保持在维修点",
+      "en": "Pick up the tool.\nKeep its tip at the repair point.",
+      "ru": "Возьмите инструмент.\nДержите наконечник в точке ремонта."
+    },
+    {
+      "key": "repair.ready",
+      "zh": "等待维修",
+      "en": "Awaiting Repair",
+      "ru": "Ожидание ремонта"
+    },
+    {
+      "key": "repair.working",
+      "zh": "维修中 {0}%",
+      "en": "Repairing: {0}%",
+      "ru": "Ремонт: {0}%"
+    },
+    {
+      "key": "repair.paused",
+      "zh": "已暂停 {0}%\n将工具头放回维修点",
+      "en": "Paused: {0}%\nReturn the tool tip to the repair point.",
+      "ru": "Пауза: {0}%\nВерните наконечник в точку ремонта."
+    },
+    {
+      "key": "repair.complete",
+      "zh": "维修完成\n氧气设备恢复正常",
+      "en": "Repair Complete\nOxygen system restored.",
+      "ru": "Ремонт завершён\nКислородная система исправна."
+    },
+    {
+      "key": "repair.target",
+      "zh": "维修点",
+      "en": "Repair Point",
+      "ru": "Точка ремонта"
+    },
+    {
+      "key": "repair.tool",
+      "zh": "维修工具",
+      "en": "Repair Tool",
+      "ru": "Ремонтный инструмент"
+    },
+    {
+      "key": "repair.reset",
+      "zh": "重新练习",
+      "en": "Try Again",
+      "ru": "Повторить"
+    },
+    {
+      "key": "language.title",
+      "zh": "语言",
+      "en": "Language",
+      "ru": "Язык"
+    },
+    {
+      "key": "language.zh",
+      "zh": "中文",
+      "en": "中文",
+      "ru": "中文"
+    },
+    {
+      "key": "language.en",
+      "zh": "English",
+      "en": "English",
+      "ru": "English"
+    },
+    {
+      "key": "language.ru",
+      "zh": "Русский",
+      "en": "Русский",
+      "ru": "Русский"
+    },
+    {
+      "key": "practice.ready",
+      "zh": "拿起工具，然后放手",
+      "en": "Pick up the tool, then release it.",
+      "ru": "Возьмите инструмент, затем отпустите."
+    },
+    {
+      "key": "practice.grabbed",
+      "zh": "已拿起工具\n请放回工作台",
+      "en": "Tool Acquired\nReturn it to the workbench.",
+      "ru": "Инструмент взят\nВерните его на верстак."
+    },
+    {
+      "key": "practice.complete",
+      "zh": "抓取与放手练习完成",
+      "en": "Grab and Release Complete",
+      "ru": "Захват и отпускание:\nупражнение завершено"
+    },
+    {
+      "key": "station.footer",
+      "zh": "维护训练",
+      "en": "Maintenance Training",
+      "ru": "Обучение обслуживанию"
+    },
+    {
+      "key": "repair.progress",
+      "zh": "进度 {0}%",
+      "en": "Progress: {0}%",
+      "ru": "Прогресс: {0}%"
+    },
+    {
+      "key": "mission.briefing.title",
+      "zh": "基地撤离演练",
+      "en": "Station Evacuation Drill",
+      "ru": "Учебная эвакуация"
+    },
+    {
+      "key": "mission.briefing.instructions",
+      "zh": "先维修氧气设备，随后前往上升器入口。\n及时修好可增加 {0} 秒撤离时间。",
+      "en": "Repair the oxygen system, then reach the ascent module entrance.\nA timely repair grants {0} extra seconds to evacuate.",
+      "ru": "Почините кислородную систему и идите к модулю.\nРемонт вовремя добавит {0} с на эвакуацию."
+    },
+    {
+      "key": "mission.repair.title",
+      "zh": "氧气系统故障",
+      "en": "Oxygen System Fault",
+      "ru": "Сбой кислородной системы"
+    },
+    {
+      "key": "mission.repair.instructions",
+      "zh": "拿住维修工具，将工具头保持在维修点。\n及时修好可争取更多撤离时间。",
+      "en": "Hold the tool tip at the repair point.\nRepair in time to gain a longer evacuation window.",
+      "ru": "Держите наконечник инструмента в точке ремонта.\nУспейте починить систему, чтобы получить больше времени."
+    },
+    {
+      "key": "mission.stabilized.title",
+      "zh": "氧气设备已恢复",
+      "en": "Oxygen System Restored",
+      "ru": "Кислородная система исправна"
+    },
+    {
+      "key": "mission.stabilized.instructions",
+      "zh": "氧气恢复正常。\n基地最终警报即将开始，准备撤离。",
+      "en": "Oxygen is restored.\nThe final station alarm is imminent. Prepare to evacuate.",
+      "ru": "Подача кислорода восстановлена.\nСкоро начнётся аварийная тревога. Готовьтесь к эвакуации."
+    },
+    {
+      "key": "mission.evacuation.title",
+      "zh": "最终警报：立即撤离",
+      "en": "Final Alarm: Evacuate Now",
+      "ru": "Аварийная тревога: эвакуация"
+    },
+    {
+      "key": "mission.evacuation.instructions.repaired",
+      "zh": "维修成功，已获得额外撤离时间。\n立即穿过右侧舱门，前往上升器入口。",
+      "en": "Repair succeeded: extra evacuation time granted.\nGo through the right-hand hatch to the ascent module entrance.",
+      "ru": "Ремонт выполнен: время на эвакуацию увеличено.\nЧерез правый люк идите ко входу во взлётный модуль."
+    },
+    {
+      "key": "mission.evacuation.instructions.unrepaired",
+      "zh": "维修未完成，只有基础撤离时间。\n立即穿过右侧舱门，前往上升器入口。",
+      "en": "Repair unfinished: no extra evacuation time.\nGo through the right-hand hatch to the ascent module entrance.",
+      "ru": "Ремонт не завершён: дополнительного времени нет.\nЧерез правый люк идите ко входу во взлётный модуль."
+    },
+    {
+      "key": "mission.completed.title",
+      "zh": "已到达上升器入口",
+      "en": "Ascent Module Entrance Reached",
+      "ru": "Вы у входа во взлётный модуль"
+    },
+    {
+      "key": "mission.completed.instructions",
+      "zh": "本段撤离演练完成。\n你已到达上升器入口，尚未起飞。",
+      "en": "This evacuation stage is complete.\nYou have reached the entrance; launch has not begun.",
+      "ru": "Этот этап учебной эвакуации завершён.\nВы у входа в модуль. Взлёт ещё не начался."
+    },
+    {
+      "key": "mission.failed.title",
+      "zh": "任务失败：撤离超时",
+      "en": "Mission Failed: Evacuation Timed Out",
+      "ru": "Задание провалено: время истекло"
+    },
+    {
+      "key": "mission.failed.instructions",
+      "zh": "你已死亡，撤离时间已耗尽。\n点击结算窗口中的重新开始，返回出生点。",
+      "en": "You died when evacuation time ran out.\nSelect Restart in the result window to return to the start.",
+      "ru": "Вы погибли: время эвакуации истекло.\nНажмите «Начать заново» в окне итогов."
+    },
+    {
+      "key": "mission.summary.pending",
+      "zh": "及时维修奖励：撤离时间 +{0} 秒",
+      "en": "Timely repair: +{0} s to evacuate.",
+      "ru": "Ремонт вовремя: +{0} с на эвакуацию."
+    },
+    {
+      "key": "mission.summary.repaired",
+      "zh": "维修成功：撤离时间 +{0} 秒",
+      "en": "Repair complete: +{0} s to evacuate.",
+      "ru": "Ремонт выполнен: +{0} с на эвакуацию."
+    },
+    {
+      "key": "mission.summary.unrepaired",
+      "zh": "维修未完成：使用基础撤离时间",
+      "en": "Repair unfinished: base evacuation time only.",
+      "ru": "Ремонт не завершён: только базовое время."
+    },
+    {
+      "key": "mission.clock.ready",
+      "zh": "准备就绪",
+      "en": "Ready to Begin",
+      "ru": "Готово к началу"
+    },
+    {
+      "key": "mission.clock.remaining",
+      "zh": "剩余时间 {0}",
+      "en": "Time Remaining {0}",
+      "ru": "Осталось {0}"
+    },
+    {
+      "key": "mission.clock.stabilized",
+      "zh": "警报将在 {0} 后响起",
+      "en": "Alarm in {0}",
+      "ru": "До тревоги {0}"
+    },
+    {
+      "key": "mission.clock.completed",
+      "zh": "抵达时剩余 {0}",
+      "en": "Time Remaining on Arrival {0}",
+      "ru": "Осталось при прибытии {0}"
+    },
+    {
+      "key": "mission.start",
+      "zh": "开始演练",
+      "en": "Begin Drill",
+      "ru": "Начать"
+    },
+    {
+      "key": "mission.retry",
+      "zh": "重新演练",
+      "en": "Restart Drill",
+      "ru": "Повторить"
+    },
+    {
+      "key": "mission.exit",
+      "zh": "上升器入口",
+      "en": "Ascent Module Entrance",
+      "ru": "Вход во взлётный модуль"
+    },
+    {
+      "key": "mission.exit.locked",
+      "zh": "警报后开启",
+      "en": "Opens After the Alarm",
+      "ru": "Откроется после тревоги"
+    },
+    {
+      "key": "mission.exit.open",
+      "zh": "前往上升器入口",
+      "en": "Proceed to the Ascent Module Entrance",
+      "ru": "Идите ко входу во взлётный модуль"
+    },
+    {
+      "key": "mission.exit.failed",
+      "zh": "撤离窗口已关闭",
+      "en": "Evacuation Window Closed",
+      "ru": "Время для эвакуации истекло"
+    },
+    {
+      "key": "failure.title",
+      "zh": "任务失败",
+      "en": "Mission Failed",
+      "ru": "Задание провалено"
+    },
+    {
+      "key": "failure.death",
+      "zh": "你已死亡",
+      "en": "You Died",
+      "ru": "Вы погибли"
+    },
+    {
+      "key": "failure.reason",
+      "zh": "撤离时间耗尽，未能抵达上升器入口。",
+      "en": "Evacuation time ran out.\nYou did not reach the ascent module entrance.",
+      "ru": "Время эвакуации истекло.\nВы не успели дойти до входа во взлётный модуль."
+    },
+    {
+      "key": "failure.summary.repaired",
+      "zh": "氧气维修：已完成",
+      "en": "Oxygen repair: completed",
+      "ru": "Ремонт кислородной системы: завершён"
+    },
+    {
+      "key": "failure.summary.unrepaired",
+      "zh": "氧气维修：未完成",
+      "en": "Oxygen repair: unfinished",
+      "ru": "Ремонт кислородной системы: не завершён"
+    },
+    {
+      "key": "failure.restart.instruction",
+      "zh": "点击重新开始，返回出生点。",
+      "en": "Select Restart to return to the starting point.",
+      "ru": "Нажмите «Начать заново», чтобы вернуться на старт."
+    },
+    {
+      "key": "failure.restart",
+      "zh": "重新开始",
+      "en": "Restart",
+      "ru": "Начать заново"
+    },
+    {
+      "key": "cargo.briefing.instructions",
+      "zh": "先维修；警报后选物资、穿过月面，进舱确认。",
+      "en": "Repair first. After the alarm, choose supplies, cross the surface and confirm boarding.",
+      "ru": "Выполните ремонт. После тревоги выберите припасы, пройдите по Луне и подтвердите посадку."
+    },
+    {
+      "key": "cargo.repair.instructions",
+      "zh": "拿起维修工具，保持工具头接触维修点 2 秒。",
+      "en": "Hold the tool tip at the repair point for 2 seconds.",
+      "ru": "Удерживайте наконечник в точке ремонта 2 секунды."
+    },
+    {
+      "key": "cargo.stabilized.instructions",
+      "zh": "修复成功。准备拿物资，等待撤离警报。",
+      "en": "Repair complete. Prepare to collect supplies when the alarm starts.",
+      "ru": "Ремонт завершён. Приготовьтесь взять припасы после сигнала тревоги."
+    },
+    {
+      "key": "cargo.evacuation.instructions.repaired",
+      "zh": "获得额外 {0} 秒！选最多 3 类物资，沿青色路标进舱确认。",
+      "en": "Extra {0} seconds! Take up to 3 types of supplies. Follow the teal route and confirm boarding.",
+      "ru": "Вы получили ещё {0} с! Возьмите до 3 видов припасов. Следуйте по бирюзовым меткам и подтвердите посадку."
+    },
+    {
+      "key": "cargo.evacuation.instructions.unrepaired",
+      "zh": "立即撤离！选最多 3 类物资，沿青色路标进舱确认。",
+      "en": "Evacuate now! Take up to 3 types. Follow the teal route and confirm boarding.",
+      "ru": "Срочно эвакуируйтесь! Возьмите до 3 видов припасов. Следуйте по бирюзовым меткам и подтвердите посадку."
+    },
+    {
+      "key": "cargo.completed.instructions",
+      "zh": "已登舱，物资清点完成。本阶段到此结束；启动与升空将在下一步接入。",
+      "en": "Boarded and supplies secured. This stage ends here; startup and ascent come next.",
+      "ru": "Посадка завершена, груз закреплён. Этот этап окончен. Запуск и взлёт будут добавлены далее."
+    },
+    {
+      "key": "cargo.failed.instructions",
+      "zh": "撤离超时。只能重新开始本轮任务。",
+      "en": "Evacuation time expired. Restart the attempt.",
+      "ru": "Время эвакуации истекло. Начните попытку заново."
+    },
+    {
+      "key": "cargo.title",
+      "zh": "撤离物资",
+      "en": "EVACUATION SUPPLIES",
+      "ru": "ЭВАКУАЦИОННЫЕ ПРИПАСЫ"
+    },
+    {
+      "key": "cargo.help",
+      "zh": "抓取 → 放进腰前青色物资包 → 松手收纳\n在包外松手就是丢弃；拿取时倒计时继续。",
+      "en": "Grab → move into the teal waist pouch → release to pack.\nRelease outside to drop. The clock keeps running.",
+      "ru": "Возьмите → поместите в бирюзовую сумку → отпустите.\nОтпустите вне сумки, чтобы бросить. Отсчёт продолжается."
+    },
+    {
+      "key": "cargo.capacity",
+      "zh": "携带 {0}/{1} 类 · {2:0.#}/{3:0.#} kg",
+      "en": "Carrying {0}/{1} types · {2:0.#}/{3:0.#} kg",
+      "ru": "Груз: {0}/{1} видов · {2:0.#}/{3:0.#} кг"
+    },
+    {
+      "key": "cargo.row",
+      "zh": "{0} ×{1}",
+      "en": "{0} ×{1}",
+      "ru": "{0} ×{1}"
+    },
+    {
+      "key": "cargo.discard",
+      "zh": "丢弃 1 件",
+      "en": "Drop one",
+      "ru": "Бросить 1"
+    },
+    {
+      "key": "cargo.pack",
+      "zh": "物资包\n放入后松手",
+      "en": "POUCH\nRelease inside",
+      "ru": "СУМКА\nОтпустите внутри"
+    },
+    {
+      "key": "cargo.route",
+      "zh": "上升器 →",
+      "en": "ASCENDER →",
+      "ru": "ВЗЛЁТНЫЙ МОДУЛЬ →"
+    },
+    {
+      "key": "cargo.boarding",
+      "zh": "登舱清点区",
+      "en": "BOARDING CHECK",
+      "ru": "ПОСАДКА И ПРОВЕРКА"
+    },
+    {
+      "key": "cargo.window",
+      "zh": "观察舷窗",
+      "en": "OBSERVATION WINDOW",
+      "ru": "СМОТРОВОЙ ИЛЛЮМИНАТОР"
+    },
+    {
+      "key": "cargo.confirm",
+      "zh": "确认登舱 · 收好物资",
+      "en": "Confirm boarding · secure cargo",
+      "ru": "Подтвердить посадку"
+    },
+    {
+      "key": "cargo.await",
+      "zh": "进入舱内青色区域，再确认登舱。",
+      "en": "Enter the teal cabin zone, then confirm boarding.",
+      "ru": "Войдите в бирюзовую зону кабины и подтвердите посадку."
+    },
+    {
+      "key": "cargo.ready",
+      "zh": "确认将收好随身物资，并结束本次撤离。",
+      "en": "Confirm to secure carried supplies and finish this evacuation.",
+      "ru": "Подтвердите, чтобы закрепить припасы и завершить эвакуацию."
+    },
+    {
+      "key": "cargo.done",
+      "zh": "物资已固定 · 本阶段完成",
+      "en": "SUPPLIES SECURED · STAGE COMPLETE",
+      "ru": "ГРУЗ ЗАКРЕПЛЁН · ЭТАП ЗАВЕРШЁН"
+    },
+    {
+      "key": "cargo.empty",
+      "zh": "可以空手撤离；放弃物资不会阻止登舱。",
+      "en": "You may evacuate empty-handed. Supplies are optional.",
+      "ru": "Можно эвакуироваться без груза. Припасы не обязательны."
+    },
+    {
+      "key": "cargo.kind.Oxygen",
+      "zh": "氧气瓶",
+      "en": "Oxygen tank",
+      "ru": "Кислородный баллон"
+    },
+    {
+      "key": "cargo.kind.RepairKit",
+      "zh": "维修包",
+      "en": "Repair kit",
+      "ru": "Ремкомплект"
+    },
+    {
+      "key": "cargo.kind.Battery",
+      "zh": "应急电池",
+      "en": "Battery pack",
+      "ru": "Запасная батарея"
+    },
+    {
+      "key": "cargo.kind.MedicalKit",
+      "zh": "医疗包",
+      "en": "Medical kit",
+      "ru": "Аптечка"
+    },
+    {
+      "key": "cargo.kind.DataCore",
+      "zh": "数据模块",
+      "en": "Data core",
+      "ru": "Модуль данных"
+    },
+    {
+      "key": "cargo.kind.LunarSample",
+      "zh": "月壤样本箱",
+      "en": "Lunar samples",
+      "ru": "Образцы грунта"
+    },
+    {
+      "key": "cargo.item",
+      "zh": "{0}\n{1:0.#} kg · 最多 {2} 件",
+      "en": "{0}\n{1:0.#} kg · Max {2}",
+      "ru": "{0}\n{1:0.#} кг · Не более {2}"
+    },
+    {
+      "key": "cargo.status.ready",
+      "zh": "警报后可拿取物资。",
+      "en": "Collect supplies after the alarm.",
+      "ru": "Берите припасы после тревоги."
+    },
+    {
+      "key": "cargo.status.ok",
+      "zh": "手持、背包、舱内共用携带额度。",
+      "en": "Held, packed and loaded items share one allowance.",
+      "ru": "Предметы в руках, сумке и кабине имеют общий лимит."
+    },
+    {
+      "key": "cargo.reject.types",
+      "zh": "已满 3 类，请先丢弃某一类。",
+      "en": "3-type limit reached. Drop an entire type first.",
+      "ru": "Лимит: 3 вида. Сначала освободите место для нового вида."
+    },
+    {
+      "key": "cargo.reject.weight",
+      "zh": "超过重量上限，请先减轻负重。",
+      "en": "Weight limit exceeded. Drop some supplies first.",
+      "ru": "Превышен вес. Сначала сбросьте часть груза."
+    },
+    {
+      "key": "cargo.reject.quantity",
+      "zh": "这一类物资已达到数量上限。",
+      "en": "This type has reached its quantity limit.",
+      "ru": "Достигнут лимит количества для этого вида."
+    },
+    {
+      "key": "cargo.reject.phase",
+      "zh": "现在不能取放物资。",
+      "en": "Supplies cannot be moved in this phase.",
+      "ru": "На этом этапе нельзя перемещать припасы."
+    },
+    {
+      "key": "flight.title",
+      "zh": "上升器 · 飞行控制",
+      "en": "ASCENT MODULE · FLIGHT CONTROL",
+      "ru": "ВЗЛЁТНЫЙ МОДУЛЬ · УПРАВЛЕНИЕ"
+    },
+    {
+      "key": "flight.vitals",
+      "zh": "供氧约 {0} 秒  |  生命 {1}%  |  电量 {2}%",
+      "en": "Oxygen ~{0} s  |  Health {1}%  |  Power {2}%",
+      "ru": "Кислород ~{0} с  |  Здоровье {1}%  |  Энергия {2}%"
+    },
+    {
+      "key": "flight.countdown",
+      "zh": "基地爆炸倒计时：{0} 秒",
+      "en": "Base detonation in {0} s",
+      "ru": "До взрыва базы: {0} с"
+    },
+    {
+      "key": "flight.afterblast",
+      "zh": "基地已爆炸 · 损伤处置剩余 {0} 秒",
+      "en": "Base destroyed · Stabilize systems: {0} s",
+      "ru": "База разрушена · Стабилизация: {0} с"
+    },
+    {
+      "key": "flight.condition",
+      "zh": "额外漏气 {0}/秒  |  持续伤害 {1}/秒",
+      "en": "Extra air leak {0}/s  |  Injury {1}/s",
+      "ru": "Утечка {0}/с  |  Урон {1}/с"
+    },
+    {
+      "key": "flight.busy",
+      "zh": "检查中，还需 {0} 秒",
+      "en": "Checking: {0} s remaining",
+      "ru": "Проверка: осталось {0} с"
+    },
+    {
+      "key": "flight.start.power",
+      "zh": "1 · 接通电源",
+      "en": "1 · POWER ON",
+      "ru": "1 · ПИТАНИЕ"
+    },
+    {
+      "key": "flight.start.navigation",
+      "zh": "2 · 导航检查",
+      "en": "2 · NAV CHECK",
+      "ru": "2 · НАВИГАЦИЯ"
+    },
+    {
+      "key": "flight.start.engine",
+      "zh": "3 · 准备发动机",
+      "en": "3 · ARM ENGINE",
+      "ru": "3 · ДВИГАТЕЛЬ"
+    },
+    {
+      "key": "flight.start.ignite",
+      "zh": "4 · 点火升空",
+      "en": "4 · IGNITE",
+      "ru": "4 · ВЗЛЁТ"
+    },
+    {
+      "key": "flight.use.Oxygen",
+      "zh": "补充氧气 ×{0}",
+      "en": "OXYGEN ×{0}",
+      "ru": "КИСЛОРОД ×{0}"
+    },
+    {
+      "key": "flight.use.RepairKit",
+      "zh": "修补漏气 ×{0}",
+      "en": "SEAL LEAK ×{0}",
+      "ru": "РЕМОНТ ×{0}"
+    },
+    {
+      "key": "flight.use.Battery",
+      "zh": "补充电量 ×{0}",
+      "en": "BATTERY ×{0}",
+      "ru": "БАТАРЕЯ ×{0}"
+    },
+    {
+      "key": "flight.use.MedicalKit",
+      "zh": "治疗止血 ×{0}",
+      "en": "FIRST AID ×{0}",
+      "ru": "АПТЕЧКА ×{0}"
+    },
+    {
+      "key": "flight.supplyhint",
+      "zh": "补氧 +90；电量 +45%；医疗 +40% 并止血；维修包止漏。\n只消耗已装船物资；无损伤时不能浪费维修包。",
+      "en": "Oxygen +90; power +45%; aid +40% and stops injury; repair seals leaks.\nOnly loaded cargo can be used. No damage: no repair waste.",
+      "ru": "Кислород +90; энергия +45%; аптечка +40% и остановка урона; ремонт — утечка.\nИспользуются только погруженные запасы."
+    },
+    {
+      "key": "flight.result",
+      "zh": "升空与损伤处置完成\n已用物资 {0} 件 · 保留数据 {1} 件 / 月壤 {2} 件\n下一阶段：轨道会合与手动对接",
+      "en": "Ascent and stabilization complete\nSupplies used: {0} · Data: {1} / Samples: {2}\nNext stage: rendezvous and manual docking",
+      "ru": "Взлёт и стабилизация завершены\nРасход: {0} · Данные: {1} / Образцы: {2}\nДалее: сближение и ручная стыковка"
+    },
+    {
+      "key": "flight.feedback.ready",
+      "zh": "按顺序启动，基地倒计时仍在继续。",
+      "en": "Start in order. The base countdown continues.",
+      "ru": "Запускайте по порядку. Отсчёт базы продолжается."
+    },
+    {
+      "key": "flight.feedback.order",
+      "zh": "请完成前一步，或等待当前检查结束。",
+      "en": "Finish the previous step or wait for the current check.",
+      "ru": "Завершите предыдущий этап или дождитесь проверки."
+    },
+    {
+      "key": "flight.feedback.power",
+      "zh": "电源已接通，开始导航检查。",
+      "en": "Power online. Start navigation check.",
+      "ru": "Питание включено. Проверьте навигацию."
+    },
+    {
+      "key": "flight.feedback.navigation",
+      "zh": "正在检查导航。",
+      "en": "Checking navigation.",
+      "ru": "Проверка навигации."
+    },
+    {
+      "key": "flight.feedback.engine",
+      "zh": "发动机准备中。",
+      "en": "Preparing engine.",
+      "ru": "Подготовка двигателя."
+    },
+    {
+      "key": "flight.feedback.ignition",
+      "zh": "点火倒计时，准备升空。",
+      "en": "Ignition countdown. Prepare for liftoff.",
+      "ru": "Обратный отсчёт до взлёта."
+    },
+    {
+      "key": "flight.feedback.airborne",
+      "zh": "已离开月面。可转头看舷窗，留意供氧与电量。",
+      "en": "Liftoff. Look through the windows; monitor oxygen and power.",
+      "ru": "Взлёт. Смотрите в иллюминаторы, следите за кислородом и энергией."
+    },
+    {
+      "key": "flight.feedback.stepready",
+      "zh": "检查完成，可以进行下一步。",
+      "en": "Check complete. Continue to the next step.",
+      "ru": "Проверка завершена. Следующий этап."
+    },
+    {
+      "key": "flight.feedback.unavailable",
+      "zh": "没有可用物资，或系统暂时不需要。",
+      "en": "No available supply, or this system does not need it.",
+      "ru": "Запас отсутствует или сейчас не требуется."
+    },
+    {
+      "key": "flight.used.Oxygen",
+      "zh": "已补充氧气，消耗 1 瓶。",
+      "en": "Oxygen replenished. One bottle used.",
+      "ru": "Кислород пополнен. Использован один баллон."
+    },
+    {
+      "key": "flight.used.RepairKit",
+      "zh": "漏气已修复，消耗 1 个维修包。",
+      "en": "Leak sealed. One repair kit used.",
+      "ru": "Утечка устранена. Использован ремкомплект."
+    },
+    {
+      "key": "flight.used.Battery",
+      "zh": "已补充电量，消耗 1 块备用电池。",
+      "en": "Power replenished. One battery used.",
+      "ru": "Энергия пополнена. Использована одна батарея."
+    },
+    {
+      "key": "flight.used.MedicalKit",
+      "zh": "已治疗并止血，消耗 1 个医疗包。",
+      "en": "Health restored and injury stopped. One aid kit used.",
+      "ru": "Здоровье восстановлено, урон остановлен. Использована аптечка."
+    },
+    {
+      "key": "flight.damage.None",
+      "zh": "及时起飞，已避开基地爆炸损伤。",
+      "en": "Early departure: no explosion damage.",
+      "ru": "Своевременный взлёт: повреждений нет."
+    },
+    {
+      "key": "flight.damage.Light",
+      "zh": "轻度损伤：少量漏气、电量和生命下降。",
+      "en": "Light damage: minor leak, reduced power and health.",
+      "ru": "Лёгкие повреждения: утечка, потеря энергии и здоровья."
+    },
+    {
+      "key": "flight.damage.Heavy",
+      "zh": "严重损伤！大量漏气并持续受伤，请立即处置。",
+      "en": "Heavy damage! Major leak and ongoing injury. Act now.",
+      "ru": "Тяжёлые повреждения! Утечка и постоянный урон. Действуйте."
+    },
+    {
+      "key": "flight.failure.BaseExplosion",
+      "zh": "未能在基地爆炸前离开月面。",
+      "en": "You did not lift off before the base exploded.",
+      "ru": "Вы не успели взлететь до взрыва базы."
+    },
+    {
+      "key": "flight.failure.OxygenDepleted",
+      "zh": "氧气耗尽。",
+      "en": "Oxygen depleted.",
+      "ru": "Кислород исчерпан."
+    },
+    {
+      "key": "flight.failure.HealthDepleted",
+      "zh": "伤势恶化，生命耗尽。",
+      "en": "Injuries became fatal.",
+      "ru": "Ранения оказались смертельными."
+    },
+    {
+      "key": "flight.failure.PowerDepleted",
+      "zh": "电量耗尽，飞船生命维持系统失效。",
+      "en": "Power depleted. Life support failed.",
+      "ru": "Энергия исчерпана. Система жизнеобеспечения отказала."
+    },
+    {
+      "key": "flight.phase.AwaitingBoarding",
+      "zh": "等待登舱",
+      "en": "Awaiting boarding",
+      "ru": "Ожидание посадки"
+    },
+    {
+      "key": "flight.phase.FadeOut",
+      "zh": "进入操作位",
+      "en": "Taking flight position",
+      "ru": "Переход к пульту"
+    },
+    {
+      "key": "flight.phase.Black",
+      "zh": "进入操作位",
+      "en": "Taking flight position",
+      "ru": "Переход к пульту"
+    },
+    {
+      "key": "flight.phase.FadeIn",
+      "zh": "进入操作位",
+      "en": "Taking flight position",
+      "ru": "Переход к пульту"
+    },
+    {
+      "key": "flight.phase.Startup",
+      "zh": "启动检查 · 按 1 → 2 → 3 → 4 操作",
+      "en": "Startup · Follow 1 → 2 → 3 → 4",
+      "ru": "Запуск · Выполняйте 1 → 2 → 3 → 4"
+    },
+    {
+      "key": "flight.phase.Ignition",
+      "zh": "正在点火",
+      "en": "Ignition",
+      "ru": "Зажигание"
+    },
+    {
+      "key": "flight.phase.Ascent",
+      "zh": "正在上升 · 演示时间已压缩",
+      "en": "Ascending · Compressed demo time",
+      "ru": "Взлёт · Время демонстрации сокращено"
+    },
+    {
+      "key": "flight.phase.Recovery",
+      "zh": "爆炸后检查 · 保持系统运转",
+      "en": "Post-blast check · Keep systems alive",
+      "ru": "Проверка после взрыва · Поддерживайте системы"
+    },
+    {
+      "key": "flight.phase.Completed",
+      "zh": "本阶段完成",
+      "en": "Stage complete",
+      "ru": "Этап завершён"
+    },
+    {
+      "key": "flight.phase.Failed",
+      "zh": "任务失败",
+      "en": "Mission failed",
+      "ru": "Задание провалено"
+    },
+    {
+      "key": "lander.hatch.enter",
+      "zh": "点击舱门\n进入上升器",
+      "en": "CLICK HATCH\nTO BOARD",
+      "ru": "НАЖМИТЕ ЛЮК\nДЛЯ ПОСАДКИ"
+    },
+    {
+      "key": "lander.hatch.approach",
+      "zh": "到梯子下方后操作",
+      "en": "Approach the ladder first",
+      "ru": "Подойдите к лестнице"
+    },
+    {
+      "key": "lander.hatch.ready",
+      "zh": "登舱并固定物资",
+      "en": "Board and secure cargo",
+      "ru": "Войти и закрепить груз"
+    },
+    {
+      "key": "lander.route",
+      "zh": "沿路标绕到梯子前\n抬头点击舱门登舱",
+      "en": "Follow markers to the ladder\nLook up and click the hatch",
+      "ru": "По меткам к лестнице\nПосмотрите вверх и нажмите люк"
+    },
+    {
+      "key": "lander.briefing.instructions",
+      "zh": "先维修；警报后拿物资，沿路标到梯子前，点击舱门登舱。",
+      "en": "Repair first. After the alarm, take supplies, follow the route to the ladder and click the hatch.",
+      "ru": "После ремонта и тревоги возьмите припасы, идите к лестнице и нажмите люк."
+    },
+    {
+      "key": "lander.evacuation.instructions.repaired",
+      "zh": "获得额外 {0} 秒！选最多 3 类物资，到梯子下点击舱门。",
+      "en": "Extra {0} seconds! Take up to 3 supply types. Click the hatch from the ladder.",
+      "ru": "Ещё {0} с! Возьмите до 3 видов припасов. Нажмите люк у лестницы."
+    },
+    {
+      "key": "lander.evacuation.instructions.unrepaired",
+      "zh": "立即撤离！选最多 3 类物资，沿路标到梯子下点击舱门。",
+      "en": "Evacuate! Take up to 3 types. Follow markers to the ladder and click the hatch.",
+      "ru": "Эвакуация! До 3 видов припасов. По меткам к лестнице, затем нажмите люк."
+    },
+    {
+      "key": "lander.completed.instructions",
+      "zh": "正在进入飞行操作位。基地倒计时仍在继续。",
+      "en": "Moving to the flight station. The base countdown continues.",
+      "ru": "Переход к пульту. Отсчёт базы продолжается."
+    },
+    {
+      "key": "lander.repair.instructions",
+      "zh": "拿起维修工具，保持工具头接触维修点 2 秒。",
+      "en": "Hold the tool tip at the repair point for 2 seconds.",
+      "ru": "Удерживайте наконечник в точке ремонта 2 секунды."
+    },
+    {
+      "key": "lander.stabilized.instructions",
+      "zh": "修复成功。准备拿物资，等待撤离警报。",
+      "en": "Repair complete. Prepare to collect supplies when the alarm starts.",
+      "ru": "Ремонт завершён. Приготовьтесь взять припасы после сигнала тревоги."
+    },
+    {
+      "key": "lander.failed.instructions",
+      "zh": "撤离超时。只能重新开始本轮任务。",
+      "en": "Evacuation time expired. Restart the attempt.",
+      "ru": "Время эвакуации истекло. Начните попытку заново."
+    },
+    {
+      "key": "boarding.enter",
+      "zh": "点击登舱\n进入双人上升器",
+      "en": "BOARD\nEnter the two-person cabin",
+      "ru": "ПОСАДКА\nВойти в двухместную кабину"
+    },
+    {
+      "key": "boarding.approach",
+      "zh": "站到梯子前的青色区域，再点击按钮",
+      "en": "Stand in the marked area by the ladder",
+      "ru": "Встаньте в отмеченную зону у лестницы"
+    },
+    {
+      "key": "boarding.ready",
+      "zh": "可以登舱 · 物资会自动固定",
+      "en": "Ready to board · Cargo will be secured",
+      "ru": "Можно войти · Груз будет закреплён"
+    },
+    {
+      "key": "boarding.zone",
+      "zh": "登舱区 · 点击梯旁按钮",
+      "en": "BOARDING ZONE · Use the ladder control",
+      "ru": "ЗОНА ПОСАДКИ · Нажмите кнопку"
+    },
+    {
+      "key": "crew.commander",
+      "zh": "指挥官 · 独立操作位",
+      "en": "COMMANDER · CREW STATION",
+      "ru": "КОМАНДИР · РАБОЧЕЕ МЕСТО"
+    },
+    {
+      "key": "crew.status",
+      "zh": "同乘人员：指挥官\n舱位已固定\n共同前往月球轨道",
+      "en": "CREW: COMMANDER\nStation secured\nDestination: lunar orbit",
+      "ru": "ЭКИПАЖ: КОМАНДИР\nМесто закреплено\nКурс на лунную орбиту"
+    },
+    {
+      "key": "orbit.telemetry",
+      "zh": "高度 {0} km   速度 {1} km/s   倾斜 {2}°",
+      "en": "ALT {0} km   SPEED {1} km/s   PITCH {2}°",
+      "ru": "ВЫСОТА {0} км   СКОРОСТЬ {1} км/с   НАКЛОН {2}°"
+    },
+    {
+      "key": "orbit.guidance.ascent",
+      "zh": "程序飞行 · 约 {0} 秒后进入入轨窗口（演示时间压缩）",
+      "en": "Guided ascent · insertion in ~{0} s (time compressed)",
+      "ru": "Программный полёт · до выхода на орбиту ~{0} с"
+    },
+    {
+      "key": "orbit.guidance.ready",
+      "zh": "已到入轨窗口：点击“入轨修正”，完成最后一次推进。",
+      "en": "Insertion window reached. Execute the circularization burn.",
+      "ru": "Окно выхода на орбиту. Выполните коррекцию."
+    },
+    {
+      "key": "orbit.guidance.burning",
+      "zh": "入轨修正中 · 剩余 {0} 秒",
+      "en": "Circularization burn · {0} s remaining",
+      "ru": "Коррекция орбиты · осталось {0} с"
+    },
+    {
+      "key": "orbit.guidance.stable",
+      "zh": "月球轨道已稳定 · 等待后续会合与对接",
+      "en": "Stable lunar orbit · rendezvous and docking come next",
+      "ru": "Лунная орбита стабильна · далее сближение и стыковка"
+    },
+    {
+      "key": "orbit.circularize",
+      "zh": "执行入轨修正",
+      "en": "EXECUTE ORBIT INSERTION",
+      "ru": "ВЫПОЛНИТЬ КОРРЕКЦИЮ"
+    },
+    {
+      "key": "flight.phase.OrbitalInsertion",
+      "zh": "入轨窗口 · 等待修正",
+      "en": "ORBIT INSERTION · READY",
+      "ru": "ВЫХОД НА ОРБИТУ · ГОТОВНОСТЬ"
+    },
+    {
+      "key": "flight.phase.Circularizing",
+      "zh": "入轨修正推进中",
+      "en": "CIRCULARIZATION BURN",
+      "ru": "ИМПУЛЬС КОРРЕКЦИИ ОРБИТЫ"
+    },
+    {
+      "key": "flight.phase.Orbit",
+      "zh": "已进入稳定月球轨道",
+      "en": "STABLE LUNAR ORBIT",
+      "ru": "СТАБИЛЬНАЯ ЛУННАЯ ОРБИТА"
+    },
+    {
+      "key": "orbit.feedback.burn",
+      "zh": "正在修正轨道速度，保持操作位。",
+      "en": "Adjusting orbital velocity. Remain at your station.",
+      "ru": "Корректируем орбитальную скорость. Оставайтесь на месте."
+    },
+    {
+      "key": "orbit.feedback.stable",
+      "zh": "主发动机已关闭。双人舱进入稳定轨道。",
+      "en": "Main engine off. Two-person cabin in stable orbit.",
+      "ru": "Главный двигатель выключен. Кабина на стабильной орбите."
+    },
+    {
+      "key": "orbit.feedback.ready",
+      "zh": "高度已达到目标，还需完成入轨修正。",
+      "en": "Target altitude reached. Circularization is still required.",
+      "ru": "Целевая высота достигнута. Нужна коррекция орбиты."
+    },
+    {
+      "key": "orbit.baseclear",
+      "zh": "已离开基地危险区 · 继续检查氧气、生命和电量",
+      "en": "Base cleared · keep checking oxygen, health and power",
+      "ru": "База позади · проверяйте кислород, здоровье и заряд"
+    },
+    {
+      "key": "orbit.result",
+      "zh": "入轨完成！已用物资 {0}；保留数据 {1}、月壤 {2}。",
+      "en": "Orbit achieved! Used {0} supplies; saved {1} data and {2} samples.",
+      "ru": "Орбита достигнута! Припасов: {0}; данные: {1}; грунт: {2}."
+    },
+    {
+      "key": "orbitalground.briefing.instructions",
+      "zh": "先维修；警报后拿物资，沿路标到梯子前，点击梯旁按钮登舱。",
+      "en": "Repair first. After the alarm, take supplies, follow the route to the ladder and use the ladder control.",
+      "ru": "После ремонта и тревоги возьмите припасы, идите к лестнице и нажмите кнопку у лестницы."
+    },
+    {
+      "key": "orbitalground.evacuation.instructions.repaired",
+      "zh": "获得额外 {0} 秒！选最多 3 类物资，到梯子下点击梯旁按钮。",
+      "en": "Extra {0} seconds! Take up to 3 supply types. Use the ladder control.",
+      "ru": "Ещё {0} с! Возьмите до 3 видов припасов. Нажмите кнопку у лестницы."
+    },
+    {
+      "key": "orbitalground.evacuation.instructions.unrepaired",
+      "zh": "立即撤离！选最多 3 类物资，沿路标到梯子下点击梯旁按钮。",
+      "en": "Evacuate! Take up to 3 types. Follow markers to the ladder and use the ladder control.",
+      "ru": "Эвакуация! До 3 видов припасов. По меткам к лестнице, затем нажмите кнопку у лестницы."
+    },
+    {
+      "key": "orbitalground.completed.instructions",
+      "zh": "正在进入飞行操作位。基地倒计时仍在继续。",
+      "en": "Moving to the flight station. The base countdown continues.",
+      "ru": "Переход к пульту. Отсчёт базы продолжается."
+    },
+    {
+      "key": "orbitalground.repair.instructions",
+      "zh": "拿起维修工具，保持工具头接触维修点 2 秒。",
+      "en": "Hold the tool tip at the repair point for 2 seconds.",
+      "ru": "Удерживайте наконечник в точке ремонта 2 секунды."
+    },
+    {
+      "key": "orbitalground.stabilized.instructions",
+      "zh": "修复成功。准备拿物资，等待撤离警报。",
+      "en": "Repair complete. Prepare to collect supplies when the alarm starts.",
+      "ru": "Ремонт завершён. Приготовьтесь взять припасы после сигнала тревоги."
+    },
+    {
+      "key": "orbitalground.failed.instructions",
+      "zh": "撤离超时。只能重新开始本轮任务。",
+      "en": "Evacuation time expired. Restart the attempt.",
+      "ru": "Время эвакуации истекло. Начните попытку заново."
+    },
+    {
+      "key": "boarding.route",
+      "zh": "沿路标绕到梯子前\n点击梯旁大按钮登舱",
+      "en": "Follow markers to the ladder\nUse the large boarding control",
+      "ru": "По меткам к лестнице\nНажмите большую кнопку"
+    },
+    {
+      "key": "orbit.guidance.startup",
+      "zh": "完成启动后开始程序飞行；入轨前需手动执行一次修正。",
+      "en": "Guided flight starts after ignition. A final insertion burn needs your command.",
+      "ru": "После запуска — программный полёт. Финальную коррекцию включаете вы."
+    },
+    {
+      "key": "orbit.phase.ascent",
+      "zh": "程序飞行 · 正在爬升",
+      "en": "GUIDED FLIGHT · CLIMBING",
+      "ru": "ПРОГРАММНЫЙ ПОЛЁТ · НАБОР ВЫСОТЫ"
+    },
+    {
+      "key": "dock.ascent.telemetry",
+      "zh": "高度 {0} km  |  速度 {1} km/s  |  倾斜 {2}°\n主燃料 {3}%  |  RCS 燃料 {4}%",
+      "en": "ALT {0} km | SPEED {1} km/s | PITCH {2}°\nMAIN {3}% | RCS {4}%",
+      "ru": "ВЫС {0} км | СКОР {1} км/с | НАКЛОН {2}°\nТОПЛИВО {3}% | РСУ {4}%"
+    },
+    {
+      "key": "dock.telemetry",
+      "zh": "距离 {0} m  |  接近速度 {1} m/s\n横向偏差 {2} m  |  姿态偏差 {3}°\n主燃料 {4}%  |  RCS {5}%  |  供氧 {6} s",
+      "en": "RANGE {0} m | CLOSING {1} m/s\nOFFSET {2} m | ANGLE {3}°\nMAIN {4}% | RCS {5}% | OXYGEN {6} s",
+      "ru": "ДИСТАНЦИЯ {0} м | СБЛИЖЕНИЕ {1} м/с\nСМЕЩЕНИЕ {2} м | УГОЛ {3}°\nТОПЛИВО {4}% | РСУ {5}% | O2 {6} с"
+    },
+    {
+      "key": "dock.alignment",
+      "zh": "位置 X {0} / Y {1} m\n俯仰 {2}° 偏航 {3}° 滚转 {4}°",
+      "en": "POS X {0} / Y {1} m\nPITCH {2}° YAW {3}° ROLL {4}°",
+      "ru": "X {0} / Y {1} м\nТАНГАЖ {2}° РЫСК {3}° КРЕН {4}°"
+    },
+    {
+      "key": "dock.status.manual",
+      "zh": "手动接近：先对齐，再缓慢靠近并制动",
+      "en": "MANUAL: ALIGN, APPROACH, THEN BRAKE",
+      "ru": "РУЧНОЙ РЕЖИМ: ВЫРОВНЯТЬ И ТОРМОЗИТЬ"
+    },
+    {
+      "key": "dock.status.ready",
+      "zh": "已进入辅助范围，松开推进按钮可交给辅助",
+      "en": "ASSIST READY: RELEASE THRUST CONTROLS",
+      "ru": "ПОМОЩЬ ГОТОВА: ОТПУСТИТЕ ТЯГУ"
+    },
+    {
+      "key": "dock.status.assisting",
+      "zh": "辅助正在微调位置与姿态，仍消耗 RCS 燃料",
+      "en": "ASSIST ALIGNING — RCS FUEL IS CONSUMED",
+      "ru": "АВТОКОРРЕКЦИЯ — РАСХОД ТОПЛИВА РСУ"
+    },
+    {
+      "key": "dock.status.capture",
+      "zh": "接口接触，正在锁定……",
+      "en": "CONTACT — DOCKING LATCHES ENGAGING",
+      "ru": "КОНТАКТ — ЗАМЫКАНИЕ ЗАМКОВ"
+    },
+    {
+      "key": "dock.status.complete",
+      "zh": "对接成功：玩家与指挥官已抵达轨道器",
+      "en": "DOCKED — BOTH CREW MEMBERS ARRIVED",
+      "ru": "СТЫКОВКА — ОБА ЧЛЕНА ЭКИПАЖА НА МЕСТЕ"
+    },
+    {
+      "key": "dock.help",
+      "zh": "按住持续推力，松手后仍会漂移；按住制动减速。\n辅助：8 m 内、偏差 ≤0.8 m / 8°、速度 ≤0.35 m/s。",
+      "en": "HOLD TO THRUST; RELEASE TO COAST. HOLD BRAKE TO SLOW.\nASSIST: ≤8 m, OFFSET ≤0.8 m / 8°, SPEED ≤0.35 m/s.",
+      "ru": "УДЕРЖИВАТЬ — ТЯГА; ОТПУСТИТЬ — ПОЛЁТ ПО ИНЕРЦИИ.\nПОМОЩЬ: ≤8 м, СМЕЩЕНИЕ ≤0.8 м / 8°, СКОРОСТЬ ≤0.35 м/с."
+    },
+    {
+      "key": "dock.result",
+      "zh": "两名乘员已安全对接。\n使用物资 {0} 件；带回数据 {1} 份、月壤 {2} 份。",
+      "en": "BOTH CREW MEMBERS DOCKED SAFELY.\nSUPPLIES USED {0} | DATA {1} | LUNAR SAMPLES {2}",
+      "ru": "ОБА ЧЛЕНА ЭКИПАЖА УСПЕШНО ПРИСТЫКОВАЛИСЬ.\nИСПОЛЬЗОВАНО {0} | ДАННЫЕ {1} | ОБРАЗЦЫ {2}"
+    },
+    {
+      "key": "dock.assist.on",
+      "zh": "对接辅助：开启",
+      "en": "DOCK ASSIST: ON",
+      "ru": "ПОМОЩЬ: ВКЛ"
+    },
+    {
+      "key": "dock.assist.off",
+      "zh": "对接辅助：关闭",
+      "en": "DOCK ASSIST: OFF",
+      "ru": "ПОМОЩЬ: ВЫКЛ"
+    },
+    {
+      "key": "dock.feedback.ready",
+      "zh": "轨道器在前方等待，请接管 RCS 对接控制。",
+      "en": "ORBITER AHEAD. TAKE RCS CONTROL.",
+      "ru": "ОРБИТАЛЬНЫЙ МОДУЛЬ ВПЕРЕДИ. УПРАВЛЯЙТЕ РСУ."
+    },
+    {
+      "key": "dock.feedback.complete",
+      "zh": "对接完成。",
+      "en": "DOCKING COMPLETE.",
+      "ru": "СТЫКОВКА ЗАВЕРШЕНА."
+    },
+    {
+      "key": "flight.phase.Rendezvous",
+      "zh": "手动接近轨道器",
+      "en": "ORBITAL RENDEZVOUS",
+      "ru": "СБЛИЖЕНИЕ"
+    },
+    {
+      "key": "flight.phase.Docking",
+      "zh": "对接口正在锁定",
+      "en": "DOCKING CAPTURE",
+      "ru": "ЗАХВАТ СТЫКОВКИ"
+    },
+    {
+      "key": "flight.phase.Docked",
+      "zh": "已成功对接",
+      "en": "DOCKED",
+      "ru": "СТЫКОВКА ЗАВЕРШЕНА"
+    },
+    {
+      "key": "flight.failure.MainFuelDepleted",
+      "zh": "主燃料耗尽，未能完成上升。",
+      "en": "MAIN FUEL DEPLETED DURING ASCENT.",
+      "ru": "ТОПЛИВО ИСЧЕРПАНО ПРИ ВЗЛЁТЕ."
+    },
+    {
+      "key": "flight.failure.RcsDepleted",
+      "zh": "RCS 燃料耗尽，无法继续控制对接。",
+      "en": "RCS DEPLETED — DOCKING CONTROL LOST.",
+      "ru": "ТОПЛИВО РСУ ИСЧЕРПАНО — УПРАВЛЕНИЕ ПОТЕРЯНО."
+    },
+    {
+      "key": "flight.failure.TargetLost",
+      "zh": "偏离过远，已错过本次对接机会。",
+      "en": "TOO FAR OFF COURSE — RENDEZVOUS LOST.",
+      "ru": "СЛИШКОМ БОЛЬШОЕ ОТКЛОНЕНИЕ — СБЛИЖЕНИЕ СОРВАНО."
+    },
+    {
+      "key": "flight.failure.DockingCollision",
+      "zh": "接近速度过高，撞击轨道器并发生爆炸。",
+      "en": "HIGH-SPEED IMPACT — SPACECRAFT DESTROYED.",
+      "ru": "УДАР НА БОЛЬШОЙ СКОРОСТИ — КОРАБЛЬ РАЗРУШЕН."
+    },
+    {
+      "key": "flight.failure.DockingMisaligned",
+      "zh": "接口未对齐，发生碰撞，对接失败。",
+      "en": "PORT MISALIGNED — CONTACT DAMAGED THE DOCK.",
+      "ru": "ПОРТ НЕ ВЫРОВНЕН — СТЫКОВОЧНЫЙ УЗЕЛ ПОВРЕЖДЁН."
+    },
+    {
+      "key": "dock.control.Forward",
+      "zh": "前进 +",
+      "en": "FORWARD +",
+      "ru": "ВПЕРЁД +"
+    },
+    {
+      "key": "dock.control.Backward",
+      "zh": "后退 −",
+      "en": "BACKWARD −",
+      "ru": "НАЗАД −"
+    },
+    {
+      "key": "dock.control.Left",
+      "zh": "向左",
+      "en": "LEFT",
+      "ru": "ВЛЕВО"
+    },
+    {
+      "key": "dock.control.Right",
+      "zh": "向右",
+      "en": "RIGHT",
+      "ru": "ВПРАВО"
+    },
+    {
+      "key": "dock.control.Up",
+      "zh": "上移",
+      "en": "UP",
+      "ru": "ВВЕРХ"
+    },
+    {
+      "key": "dock.control.Down",
+      "zh": "下移",
+      "en": "DOWN",
+      "ru": "ВНИЗ"
+    },
+    {
+      "key": "dock.control.YawLeft",
+      "zh": "偏航左",
+      "en": "YAW LEFT",
+      "ru": "РЫСК ВЛЕВО"
+    },
+    {
+      "key": "dock.control.YawRight",
+      "zh": "偏航右",
+      "en": "YAW RIGHT",
+      "ru": "РЫСК ВПРАВО"
+    },
+    {
+      "key": "dock.control.PitchUp",
+      "zh": "抬头",
+      "en": "PITCH UP",
+      "ru": "НОС ВВЕРХ"
+    },
+    {
+      "key": "dock.control.PitchDown",
+      "zh": "低头",
+      "en": "PITCH DOWN",
+      "ru": "НОС ВНИЗ"
+    },
+    {
+      "key": "dock.control.RollLeft",
+      "zh": "左滚转",
+      "en": "ROLL LEFT",
+      "ru": "КРЕН ВЛЕВО"
+    },
+    {
+      "key": "dock.control.RollRight",
+      "zh": "右滚转",
+      "en": "ROLL RIGHT",
+      "ru": "КРЕН ВПРАВО"
+    },
+    {
+      "key": "dock.control.Brake",
+      "zh": "保持制动",
+      "en": "HOLD BRAKE",
+      "ru": "ТОРМОЗИТЬ"
+    },
+    {
+      "key": "dock.control.MainBoost",
+      "zh": "主推加速（远距离）",
+      "en": "MAIN BOOST (>12 m)",
+      "ru": "МАРШЕВАЯ ТЯГА (>12 м)"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+[
+  {
+    "file": "Crew/Astronaut.glb",
+    "url": "https://assets.science.nasa.gov/content/dam/science/cds/3d/resources/model/astronaut/Astronaut.glb",
+    "bytes": 762988,
+    "sha256": "d18c141410542b935113d1c25a9271d90c40d44015a64295b7b68a30f0ce2820"
+  },
+  {
+    "file": "Orbit/lroc_color_poles_4k.tif",
+    "url": "https://svs.gsfc.nasa.gov/vis/a000000/a004700/a004720/lroc_color_poles_4k.tif",
+    "bytes": 13095388,
+    "sha256": "918649a7f8ed2f1329b2cd95bb0d25483befdcb60ae1a66db681a637cc21344f"
+  }
+]

@@ -1,0 +1,19 @@
+{
+  "source_url": "https://assets.science.nasa.gov/content/dam/science/cds/3d/resources/model/astronaut/Astronaut.glb",
+  "source_credit": "DigitalSpace Corporation; distributed by NASA",
+  "sha256": "d18c141410542b935113d1c25a9271d90c40d44015a64295b7b68a30f0ce2820",
+  "vertices": 19143,
+  "triangles": 6381,
+  "material_groups": 2,
+  "bounds_min": [
+    -34.45459747314453,
+    -37.131397032881544,
+    -13.800595957630485
+  ],
+  "bounds_max": [
+    34.45472717285156,
+    37.131292510625066,
+    13.800303765505863
+  ],
+  "texture_processing": "PNG bytes extracted unchanged; UV V converted to Unity convention"
+}

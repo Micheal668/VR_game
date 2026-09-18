@@ -1,0 +1,19 @@
+{
+  "source_url": "https://assets.science.nasa.gov/content/dam/science/cds/3d/resources/model/apollo-lunar-module/Apollo%20Lunar%20Module.glb",
+  "source_credit": "NASA/Michael D. Carbajal",
+  "sha256": "379101dfcee399267addf771709107c35e826b0b9e5233272f123e4c8a585c4e",
+  "vertices": 64787,
+  "triangles": 97588,
+  "material_groups": 12,
+  "bounds_min": [
+    -3.2145049571990967,
+    0.10263100266456604,
+    -3.2109334468841553
+  ],
+  "bounds_max": [
+    3.2128899097442627,
+    5.115423202514648,
+    3.21567702293396
+  ],
+  "texture_processing": "PNG bytes extracted unchanged; UV V converted to Unity convention"
+}

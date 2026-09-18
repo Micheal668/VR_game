@@ -1,0 +1,12 @@
+{
+  "name": "LunarEscape.Runtime",
+  "rootNamespace": "LunarEscape",
+  "references": [
+    "Unity.XR.Interaction.Toolkit",
+    "Unity.XR.CoreUtils",
+    "Unity.InputSystem",
+    "Unity.TextMeshPro",
+    "Unity.ugui"
+  ],
+  "autoReferenced": true
+}

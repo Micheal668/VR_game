@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b39eed691e234ec3b78844db325e004, type: 3}
+  m_Name: Rendezvous Flight Config
+  m_EditorClassIdentifier: LunarEscape.Runtime::LunarEscape.AscentConfig
+  fadeOutSeconds: 0.35
+  blackSeconds: 0.15
+  fadeInSeconds: 0.45
+  initialOxygenSeconds: 420
+  oxygenCapacitySeconds: 600
+  initialHealth: 100
+  initialPower: 100
+  navigationSeconds: 2
+  engineSeconds: 2
+  ignitionSeconds: 3
+  recoverySeconds: 25
+  ascentVisualSeconds: 30
+  safeDepartureSeconds: 30
+  lightDepartureSeconds: 12
+  orbitalFlight: 1
+  minimumOrbitAscentSeconds: 80
+  orbitalClimbSeconds: 40
+  blastObservationSeconds: 6
+  circularizationSeconds: 6
+  orbitAltitudeKm: 100
