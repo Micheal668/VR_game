@@ -1,0 +1,19 @@
+{
+  "source_url": "User supplied: VR\u9879\u76ee\u7167\u7247/Advanced Crew Escape Suit.glb",
+  "source_credit": "User-supplied model; original creator not specified",
+  "sha256": "6017772d557c30ea86e2e3a7651ad2089499f3d0c577b983467650616bfaebeb",
+  "vertices": 126027,
+  "triangles": 88872,
+  "material_groups": 14,
+  "bounds_min": [
+    -1.5643490552902222,
+    0.001699397422138134,
+    -4.951681989113983
+  ],
+  "bounds_max": [
+    -0.677223265171051,
+    1.9975175766504136,
+    -4.39680887636147
+  ],
+  "texture_processing": "PNG bytes extracted unchanged; UV V converted to Unity convention"
+}

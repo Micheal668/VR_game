@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 3
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 2100000, guid: 92425a6017599463f99681e55b87a8f4, type: 2}
+  m_SkyboxMaterial: {fileID: 2100000, guid: ed2188a44ffb9014a91476323b379157, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -2420,6 +2420,73 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 280}
   m_SizeDelta: {x: 1550, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1001 &54488200
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1445662286}
+    m_Modifications:
+    - target: {fileID: 5660661077453909151, guid: 30e56d685721029479c1329e5584806f, type: 3}
+      propertyPath: m_Name
+      value: Commander - Crew Escape Suit
+      objectReference: {fileID: 0}
+    - target: {fileID: 8423854509732917081, guid: 30e56d685721029479c1329e5584806f, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8423854509732917081, guid: 30e56d685721029479c1329e5584806f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8423854509732917081, guid: 30e56d685721029479c1329e5584806f, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8423854509732917081, guid: 30e56d685721029479c1329e5584806f, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.17364821
+      objectReference: {fileID: 0}
+    - target: {fileID: 8423854509732917081, guid: 30e56d685721029479c1329e5584806f, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8423854509732917081, guid: 30e56d685721029479c1329e5584806f, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.9848078
+      objectReference: {fileID: 0}
+    - target: {fileID: 8423854509732917081, guid: 30e56d685721029479c1329e5584806f, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8423854509732917081, guid: 30e56d685721029479c1329e5584806f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8423854509732917081, guid: 30e56d685721029479c1329e5584806f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8423854509732917081, guid: 30e56d685721029479c1329e5584806f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 30e56d685721029479c1329e5584806f, type: 3}
+--- !u!4 &54488201 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8423854509732917081, guid: 30e56d685721029479c1329e5584806f, type: 3}
+  m_PrefabInstance: {fileID: 54488200}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &54488202 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5660661077453909151, guid: 30e56d685721029479c1329e5584806f, type: 3}
+  m_PrefabInstance: {fileID: 54488200}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &54975248
 GameObject:
   m_ObjectHideFlags: 0
@@ -13398,6 +13465,109 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 334301345}
   m_CullTransparentMesh: 1
+--- !u!1001 &335457823
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1823210156}
+    m_Modifications:
+    - target: {fileID: 1935631880009196390, guid: 30e56d685721029479c1329e5584806f, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 5660661077453909151, guid: 30e56d685721029479c1329e5584806f, type: 3}
+      propertyPath: m_Name
+      value: Player - Crew Escape Suit
+      objectReference: {fileID: 0}
+    - target: {fileID: 8423854509732917081, guid: 30e56d685721029479c1329e5584806f, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8423854509732917081, guid: 30e56d685721029479c1329e5584806f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8423854509732917081, guid: 30e56d685721029479c1329e5584806f, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8423854509732917081, guid: 30e56d685721029479c1329e5584806f, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8423854509732917081, guid: 30e56d685721029479c1329e5584806f, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8423854509732917081, guid: 30e56d685721029479c1329e5584806f, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8423854509732917081, guid: 30e56d685721029479c1329e5584806f, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8423854509732917081, guid: 30e56d685721029479c1329e5584806f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8423854509732917081, guid: 30e56d685721029479c1329e5584806f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8423854509732917081, guid: 30e56d685721029479c1329e5584806f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5660661077453909151, guid: 30e56d685721029479c1329e5584806f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 335457827}
+  m_SourcePrefab: {fileID: 100100000, guid: 30e56d685721029479c1329e5584806f, type: 3}
+--- !u!4 &335457824 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8423854509732917081, guid: 30e56d685721029479c1329e5584806f, type: 3}
+  m_PrefabInstance: {fileID: 335457823}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &335457825 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5660661077453909151, guid: 30e56d685721029479c1329e5584806f, type: 3}
+  m_PrefabInstance: {fileID: 335457823}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &335457826 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3975692452606467222, guid: 30e56d685721029479c1329e5584806f, type: 3}
+  m_PrefabInstance: {fileID: 335457823}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 335457825}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 373f860194d36ff45a1c21e3c8673010, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: LunarEscape.Runtime::LunarEscape.CrewSuitRig
+--- !u!114 &335457827
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 335457825}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad2e681bc0af9c84b9a2103a6946e209, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: LunarEscape.Runtime::LunarEscape.TrackedCrewSuit
+  player: {fileID: 429189232}
+  leftController: {fileID: 1823210158}
+  rightController: {fileID: 1823210157}
+  suit: {fileID: 335457826}
+  gripOffset: {x: 0, y: -0.025, z: -0.035}
+  handRotationOffset: {x: -72, y: 0, z: 0}
 --- !u!1 &336962843
 GameObject:
   m_ObjectHideFlags: 0
@@ -15855,7 +16025,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: LunarEscape.Runtime::LunarEscape.CrewCabinLayout
   playerStation: {fileID: 146864317}
   companionStation: {fileID: 1445662286}
-  companion: {fileID: 2066368606}
+  companion: {fileID: 54488202}
   cabinSize: {x: 4.4, y: 3.15, z: 4.8}
 --- !u!114 &393419766
 MonoBehaviour:
@@ -16785,6 +16955,10 @@ PrefabInstance:
       propertyPath: m_BackGroundColor.r
       value: 0.025
       objectReference: {fileID: 0}
+    - target: {fileID: 1767192439, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 4294967039
+      objectReference: {fileID: 0}
     - target: {fileID: 1717954561962503725, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
       propertyPath: m_Name
       value: XR Origin (XR Rig)
@@ -16845,10 +17019,21 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5895826684305351068, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9173983156334026967, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 1748222016861356527, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 1717954561962503726, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 335457824}
     - targetCorrespondingSourceObject: {fileID: 1767192434, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1179682873}
@@ -40159,6 +40344,7 @@ MonoBehaviour:
     m_IsQuickAction: 0
   bodyTransformer: {fileID: 429189231}
   view: {fileID: 429189230}
+  walkInControllerMode: 1
 --- !u!1 &1199770239
 GameObject:
   m_ObjectHideFlags: 0
@@ -50038,7 +50224,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 2066368607}
+  - {fileID: 54488201}
   m_Father: {fileID: 393419763}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1446768060
@@ -54350,6 +54536,55 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1527344487}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1528702254
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1528702256}
+  - component: {fileID: 1528702255}
+  m_Layer: 0
+  m_Name: Earth Sky
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1528702255
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1528702254}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 643c32690b6b5dc489d5030969f7650f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: LunarEscape.Runtime::LunarEscape.EarthSkyView
+  skyMaterial: {fileID: 2100000, guid: ed2188a44ffb9014a91476323b379157, type: 2}
+  flightScene: {fileID: 1802439267}
+  flightOutsideWorld: {fileID: 1295878333}
+  groundDirection: {x: 0, y: 0.32, z: 1}
+  angularDiameter: 6
+--- !u!4 &1528702256
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1528702254}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1529663285
 GameObject:
   m_ObjectHideFlags: 0
@@ -63052,6 +63287,21 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1822976061}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &1823210156 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1717954561962503726, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
+  m_PrefabInstance: {fileID: 429189228}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1823210157 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1670256625, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
+  m_PrefabInstance: {fileID: 429189228}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1823210158 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 202364688, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
+  m_PrefabInstance: {fileID: 429189228}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1823890156
 GameObject:
   m_ObjectHideFlags: 0
@@ -68930,81 +69180,6 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
---- !u!1001 &2066368605
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 1445662286}
-    m_Modifications:
-    - target: {fileID: 1559524394926781597, guid: fcdf8539afc1b4582b076668c3463229, type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 4300000, guid: 7f4e4c1f03944497c94fde32a686ef30, type: 2}
-    - target: {fileID: 1934760548394461336, guid: fcdf8539afc1b4582b076668c3463229, type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 4300000, guid: a6958499259eb4e5ab08e3e115d492ba, type: 2}
-    - target: {fileID: 4119159063116335721, guid: fcdf8539afc1b4582b076668c3463229, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4119159063116335721, guid: fcdf8539afc1b4582b076668c3463229, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4119159063116335721, guid: fcdf8539afc1b4582b076668c3463229, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4119159063116335721, guid: fcdf8539afc1b4582b076668c3463229, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: -0.00000004371139
-      objectReference: {fileID: 0}
-    - target: {fileID: 4119159063116335721, guid: fcdf8539afc1b4582b076668c3463229, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4119159063116335721, guid: fcdf8539afc1b4582b076668c3463229, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4119159063116335721, guid: fcdf8539afc1b4582b076668c3463229, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4119159063116335721, guid: fcdf8539afc1b4582b076668c3463229, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4119159063116335721, guid: fcdf8539afc1b4582b076668c3463229, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4119159063116335721, guid: fcdf8539afc1b4582b076668c3463229, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5407800279407072634, guid: fcdf8539afc1b4582b076668c3463229, type: 3}
-      propertyPath: m_Name
-      value: Commander - visible companion
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: fcdf8539afc1b4582b076668c3463229, type: 3}
---- !u!1 &2066368606 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5407800279407072634, guid: fcdf8539afc1b4582b076668c3463229, type: 3}
-  m_PrefabInstance: {fileID: 2066368605}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &2066368607 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4119159063116335721, guid: fcdf8539afc1b4582b076668c3463229, type: 3}
-  m_PrefabInstance: {fileID: 2066368605}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2067090882
 GameObject:
   m_ObjectHideFlags: 0
@@ -71979,3 +72154,4 @@ SceneRoots:
   - {fileID: 1802439259}
   - {fileID: 1363801040}
   - {fileID: 393419763}
+  - {fileID: 1528702256}

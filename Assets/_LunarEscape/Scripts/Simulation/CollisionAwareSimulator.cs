@@ -11,6 +11,8 @@ namespace LunarEscape
     {
         [SerializeField] private XRBodyTransformer bodyTransformer;
         [SerializeField] private Transform view;
+        [SerializeField, Tooltip("手柄操控模式下 WASD 仍用于行走，Q/E 保留手柄上下移动。")]
+        private bool walkInControllerMode = true;
         private readonly XROriginMovement movement = new XROriginMovement { forceUnconstrained = false };
         private bool configurationErrorReported;
         // 结算时只停止模拟行走，头手追踪和 UI 输入仍由官方模拟器处理。
@@ -28,7 +30,7 @@ namespace LunarEscape
             // HMD 可与手柄标志组合；只要包含头部，就必须接管它的平移。
             bool movingBody = currentState.manipulatingFPS
                 || (currentState.targetedDeviceInput & TargetedDevices.HMD) != 0;
-            if (!movingBody)
+            if (!movingBody && !walkInControllerMode)
             {
                 // 单独操纵手柄时，保留 Q/E 上下移动工具等官方行为。
                 base.ProcessPoseInput();
@@ -45,7 +47,8 @@ namespace LunarEscape
             // 只在这一调用期间归零速度；旋转、追踪状态和后续手柄操作保持可用。
             try
             {
-                translateXSpeed = translateYSpeed = translateZSpeed = 0f;
+                translateXSpeed = translateZSpeed = 0f;
+                if (movingBody) translateYSpeed = 0f;
                 base.ProcessPoseInput();
             }
             finally

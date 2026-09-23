@@ -49,6 +49,118 @@ namespace LunarEscape.Tests
             docking.Configure(flight,settings);Board();Launch();Orbit();
         }
         private void Drive(DockCommand command,float seconds){docking.SetCommand(command,true);flight.Tick(seconds);docking.SetCommand(command,false);}
+        [UnityTest]public IEnumerator RealWasdBindingsMoveBodyAfterStartAndKeepCollision()
+        {
+            var simulator=Object.FindAnyObjectByType<CollisionAwareSimulator>();
+            session.BeginMission();
+            var keyboard=InputSystem.AddDevice<Keyboard>("WASD verification keyboard");
+            try
+            {
+                yield return null;yield return null;
+                Debug.Log($"WASD_DIAGNOSTIC mode={simulator.currentState.targetedDeviceInput} enabled={simulator.BodyMovementEnabled} x={simulator.translateXInput.inputActionReference?.action?.enabled} z={simulator.translateZInput.inputActionReference?.action?.enabled}");
+                foreach(var mode in new[]{UnityEngine.XR.Interaction.Toolkit.Inputs.Simulation.TargetedDevices.FPS,UnityEngine.XR.Interaction.Toolkit.Inputs.Simulation.TargetedDevices.RightDevice})
+                {
+#pragma warning disable CS0618
+                    simulator.targetedDeviceInput=mode;
+#pragma warning restore CS0618
+                    yield return null;yield return null;
+                    var start=session.Player.Origin.transform.position;
+                    InputState.Change(keyboard,new KeyboardState(Key.D));
+                    for(int frame=0;frame<10;frame++)yield return null;
+                    Assert.That(session.Player.Origin.transform.position.x-start.x,Is.GreaterThan(.3f),mode+"：真实 D 键应移动身体。");
+                    InputState.Change(keyboard,new KeyboardState());yield return null;
+                }
+                InputState.Change(keyboard,new KeyboardState(Key.S));
+                for(int frame=0;frame<90;frame++)yield return null;
+                var stopped=session.Player.Origin.transform.position;
+                for(int frame=0;frame<15;frame++)yield return null;
+                Assert.That(Vector3.Distance(stopped,session.Player.Origin.transform.position),Is.LessThan(.08f),"持续后退必须被舱壁阻挡。");
+                InputState.Change(keyboard,new KeyboardState());yield return null;
+            }
+            finally{if(keyboard.added)InputSystem.RemoveDevice(keyboard);}
+        }
+        [UnityTest]public IEnumerator EarthRemainsVisibleFromSurfaceThroughOrbitAndResetsOnRetry()
+        {
+            var earth=Object.FindAnyObjectByType<EarthSkyView>();
+            Assert.That(earth,Is.Not.Null);yield return null;
+            var ground=earth.Direction;var material=RenderSettings.skybox;
+            Assert.That(material.shader.name,Is.EqualTo("LunarEscape/Earth Sky"));
+            Assert.That(material.GetTexture("_EarthPhoto"),Is.Not.Null);
+            Assert.That(material.GetTexture("_StarPhoto"),Is.Not.Null);
+            yield return CaptureEarth("surface",new Vector3(36,2,-9),Vector3.forward+Vector3.up*.12f);
+            // 头部转动只改变观察方向，不能让地球贴在视野中央。
+            var camera=session.Player.Camera;var rotation=camera.transform.rotation;
+            camera.transform.rotation=Quaternion.Euler(0,90,0);yield return null;
+            Assert.That(Vector3.Angle(ground,earth.Direction),Is.LessThan(.01f));camera.transform.rotation=rotation;
+            Board();Launch();
+            var outside=scene.FlightWorld.GetComponentInChildren<LunarWindowAnimation>().OutsideWorld;
+            foreach(float time in new[]{3f,25,60,85})
+            {
+                flight.Tick(Mathf.Max(0,time-flight.AirborneSeconds));yield return null;yield return null;
+                Assert.That(Vector3.Angle(outside.rotation*ground,earth.Direction),Is.LessThan(.01f));
+                Assert.That(RenderSettings.skybox,Is.SameAs(material));
+                Assert.That(Vector3.Angle((Vector3)material.GetVector("_SkyForward"),outside.forward),Is.LessThan(.01f));
+            }
+            Orbit();yield return null;yield return null;
+            yield return CaptureEarth("orbit",camera.transform.position,Vector3.forward);
+            yield return CaptureEarth("detail",camera.transform.position,earth.Direction,true);
+            Drive(DockCommand.YawRight,1);yield return null;yield return null;
+            Assert.That(Vector3.Angle(outside.rotation*ground,earth.Direction),Is.LessThan(.01f));
+            session.RetryMission();yield return null;yield return null;
+            Assert.That(Vector3.Angle(ground,earth.Direction),Is.LessThan(.01f));
+            Assert.That(Object.FindObjectsByType<EarthSkyView>(FindObjectsSortMode.None).Length,Is.EqualTo(1));
+        }
+        [UnityTest]public IEnumerator CrewSuitReplacesNpcAndPlayerWithoutChangingTrackingOrInteraction()
+        {
+            var avatar=session.Player.GetComponentInChildren<TrackedCrewSuit>(true);
+            Assert.That(avatar,Is.Not.Null);var rig=avatar.Suit;
+            var crew=scene.FlightWorld.GetComponent<CrewCabinLayout>();
+            Assert.That(crew.Companion.GetComponent<CrewSuitRig>(),Is.Not.Null);
+            Assert.That(rig.Body.sharedMesh.vertexCount,Is.GreaterThan(1000));
+            Assert.That(rig.GetComponentsInChildren<Collider>().Length,Is.Zero,"外观模型不能新增阻碍行走/抓取的碰撞体。");
+            Assert.That(session.Player.Camera.cullingMask&(1<<rig.Helmet.gameObject.layer),Is.Zero,"第一人称不能看到自己的头盔内壁。");
+            foreach(var t in session.Player.GetComponentsInChildren<Transform>(true).Where(t=>t.name=="Left Controller Visual"||t.name=="Right Controller Visual"))
+                Assert.That(t.gameObject.activeSelf,Is.False,"旧手柄外观应该被替换，而不是叠加显示。");
+            var left=avatar.LeftController;var right=avatar.RightController;
+            Assert.That(left.name,Is.EqualTo("Left Controller"));Assert.That(right.name,Is.EqualTo("Right Controller"));
+            var originalCameraPosition=session.Player.Camera.transform.position;
+            yield return null;yield return null;
+            Assert.That(Vector3.Distance(rig.Bones[5].position,left.TransformPoint(new Vector3(0,-.025f,-.035f))),Is.LessThan(.005f));
+            Assert.That(Vector3.Distance(rig.Bones[8].position,right.TransformPoint(new Vector3(0,-.025f,-.035f))),Is.LessThan(.005f));
+            Assert.That(Vector3.Distance(originalCameraPosition,session.Player.Camera.transform.position),Is.LessThan(.02f));
+            Board();yield return null;yield return null;
+            var eye=session.Player.Camera.transform.position;
+            yield return CaptureEarth("crew-npc",eye,crew.Companion.transform.position+Vector3.up*1.25f-eye);
+            yield return CaptureEarth("crew-first-person",eye,Vector3.down*.9f+Vector3.forward*.4f);
+            var external=rig.transform.position+Vector3.forward*2.1f+Vector3.up*1.2f;
+            yield return CaptureEarth("crew-player",external,rig.transform.position+Vector3.up*.95f-external,false,true);
+            Launch();Orbit();yield return null;yield return null;
+            Assert.That(rig.gameObject.activeInHierarchy,Is.True);Assert.That(crew.Companion.activeInHierarchy,Is.True);
+            Assert.That(Vector3.Distance(rig.Bones[8].position,right.TransformPoint(new Vector3(0,-.025f,-.035f))),Is.LessThan(.005f));
+            session.RetryMission();yield return null;yield return null;
+            Assert.That(session.Player.GetComponentsInChildren<TrackedCrewSuit>(true).Length,Is.EqualTo(1));
+            Assert.That(Object.FindAnyObjectByType<CollisionAwareSimulator>().BodyMovementEnabled,Is.True);
+        }
+        private static IEnumerator CaptureEarth(string name,Vector3 eye,Vector3 direction,bool skyOnly=false,bool showPlayerHead=false)
+        {
+            var obj=new GameObject("Earth verification camera");var camera=obj.AddComponent<Camera>();camera.CopyFrom(Camera.main);camera.enabled=false;
+            camera.fieldOfView=skyOnly?14:70;camera.transform.SetPositionAndRotation(eye,Quaternion.LookRotation(direction));
+            if(skyOnly)camera.cullingMask=0;
+            if(showPlayerHead)camera.cullingMask|=1<<LayerMask.NameToLayer("Player Head");
+            var rt=new RenderTexture(1600,1100,24);var pixels=new Texture2D(1600,1100,TextureFormat.RGB24,false);var previous=RenderTexture.active;
+            try
+            {
+                // 正常渲染数帧，等待 GPU Resident Drawer 注册新相机和舱体网格，再读回完整画面。
+                rt.Create();camera.targetTexture=rt;camera.enabled=true;
+                for(int frame=0;frame<8;frame++)yield return null;
+                RenderPipeline.SubmitRenderRequest(camera,new RenderPipeline.StandardRequest{destination=rt});
+                RenderTexture.active=rt;pixels.ReadPixels(new Rect(0,0,1600,1100),0,0);pixels.Apply();
+                var folder=Path.GetFullPath(Path.Combine(Application.dataPath,"../Docs/Previews"));Directory.CreateDirectory(folder);
+                File.WriteAllBytes(Path.Combine(folder,"earth-"+name+".png"),pixels.EncodeToPNG());
+                if(skyOnly)Assert.That(pixels.GetPixels32().Count(p=>p.b>100&&p.r>80),Is.GreaterThan(1000),"地球天空应实际渲染蓝白色云层。");
+            }
+            finally{RenderTexture.active=previous;camera.targetTexture=null;rt.Release();Object.Destroy(pixels);Object.Destroy(rt);Object.Destroy(obj);}
+        }
         [UnityTest]public IEnumerator ContinuousMoonCoversLocalBoundaryAndIsPresentDuringEveryAscentStage()
         {
             var terrain=session.GetComponent<LunarTerrainLayout>();var global=terrain.GroundVisual.GetComponentsInChildren<MeshFilter>().Single(m=>m.name=="Continuous Global Surface");
