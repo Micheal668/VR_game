@@ -6,7 +6,8 @@
     "Unity.XR.CoreUtils",
     "Unity.TextMeshPro",
     "Unity.ugui",
-    "Unity.InputSystem"
+    "Unity.InputSystem",
+    "Unity.XR.OpenXR"
   ],
   "optionalUnityReferences": [
     "TestAssemblies"

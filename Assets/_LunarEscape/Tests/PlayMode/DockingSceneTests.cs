@@ -51,7 +51,9 @@ namespace LunarEscape.Tests
         private void Drive(DockCommand command,float seconds){docking.SetCommand(command,true);flight.Tick(seconds);docking.SetCommand(command,false);}
         [UnityTest]public IEnumerator RealWasdBindingsMoveBodyAfterStartAndKeepCollision()
         {
-            var simulator=Object.FindAnyObjectByType<CollisionAwareSimulator>();
+            // 主场景默认使用真机；键盘回归测试显式进入模拟器模式。
+            var simulator=Object.FindAnyObjectByType<CollisionAwareSimulator>(FindObjectsInactive.Include);
+            simulator.gameObject.SetActive(true);
             session.BeginMission();
             var keyboard=InputSystem.AddDevice<Keyboard>("WASD verification keyboard");
             try
@@ -124,9 +126,15 @@ namespace LunarEscape.Tests
             var left=avatar.LeftController;var right=avatar.RightController;
             Assert.That(left.name,Is.EqualTo("Left Controller"));Assert.That(right.name,Is.EqualTo("Right Controller"));
             var originalCameraPosition=session.Player.Camera.transform.position;
+            var leftWristLength=rig.Bones[5].localPosition.magnitude;
+            var rightWristLength=rig.Bones[8].localPosition.magnitude;
+            var originalLeftPosition=left.position;var originalRightPosition=right.position;
             yield return null;yield return null;
-            Assert.That(Vector3.Distance(rig.Bones[5].position,left.TransformPoint(new Vector3(0,-.025f,-.035f))),Is.LessThan(.005f));
-            Assert.That(Vector3.Distance(rig.Bones[8].position,right.TransformPoint(new Vector3(0,-.025f,-.035f))),Is.LessThan(.005f));
+            // 无有效手柄追踪时保持侧边站姿，不能强行拉手腕到残留坐标。
+            Assert.That(rig.Bones[5].localPosition.magnitude,Is.EqualTo(leftWristLength).Within(.0001f));
+            Assert.That(rig.Bones[8].localPosition.magnitude,Is.EqualTo(rightWristLength).Within(.0001f));
+            Assert.That(Vector3.Distance(left.position,originalLeftPosition),Is.LessThan(.02f));
+            Assert.That(Vector3.Distance(right.position,originalRightPosition),Is.LessThan(.02f));
             Assert.That(Vector3.Distance(originalCameraPosition,session.Player.Camera.transform.position),Is.LessThan(.02f));
             Board();yield return null;yield return null;
             var eye=session.Player.Camera.transform.position;
@@ -136,10 +144,10 @@ namespace LunarEscape.Tests
             yield return CaptureEarth("crew-player",external,rig.transform.position+Vector3.up*.95f-external,false,true);
             Launch();Orbit();yield return null;yield return null;
             Assert.That(rig.gameObject.activeInHierarchy,Is.True);Assert.That(crew.Companion.activeInHierarchy,Is.True);
-            Assert.That(Vector3.Distance(rig.Bones[8].position,right.TransformPoint(new Vector3(0,-.025f,-.035f))),Is.LessThan(.005f));
+            Assert.That(rig.Bones[8].localPosition.magnitude,Is.EqualTo(rightWristLength).Within(.0001f));
             session.RetryMission();yield return null;yield return null;
             Assert.That(session.Player.GetComponentsInChildren<TrackedCrewSuit>(true).Length,Is.EqualTo(1));
-            Assert.That(Object.FindAnyObjectByType<CollisionAwareSimulator>().BodyMovementEnabled,Is.True);
+            Assert.That(Object.FindAnyObjectByType<CollisionAwareSimulator>(FindObjectsInactive.Include).BodyMovementEnabled,Is.True);
         }
         private static IEnumerator CaptureEarth(string name,Vector3 eye,Vector3 direction,bool skyOnly=false,bool showPlayerHead=false)
         {
