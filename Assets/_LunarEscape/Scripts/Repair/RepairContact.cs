@@ -25,11 +25,14 @@ namespace LunarEscape
                 task.Tick(HasValidContact(), Time.deltaTime);
         }
 
-        public bool HasValidContact()
+        public bool HasValidContact() => FindContactTool() != null;
+
+        // 返回正在有效接触维修点的工具；反馈组件据此找到持握它的那只手。
+        public RepairTool FindContactTool()
         {
             // 场景引用尚未连接时保持等待，避免空引用或意外推进进度。
             if (repairPoint == null || tools == null || string.IsNullOrEmpty(requiredToolType))
-                return false;
+                return null;
 
             float radiusSquared = contactRadius * contactRadius;
             foreach (var tool in tools)
@@ -39,9 +42,9 @@ namespace LunarEscape
 
                 // 比较距离平方可省去开平方运算；范围单位仍是 Unity 米。
                 if ((tool.Tip.position - repairPoint.position).sqrMagnitude <= radiusSquared)
-                    return true;
+                    return tool;
             }
-            return false;
+            return null;
         }
 
         public void Configure(Transform point, RepairTool[] candidates, string requiredType, float radius)

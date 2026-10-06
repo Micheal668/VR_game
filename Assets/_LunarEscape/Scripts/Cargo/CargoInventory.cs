@@ -23,6 +23,7 @@ namespace LunarEscape
         public CargoConfig Config => config;
         public IReadOnlyList<CargoItem> Items => readOnlyItems ??= Array.AsReadOnly(items);
         public CargoRejection LastRejection { get; private set; }
+        public CargoPackZone PackZone => packZone;
         public int TotalCount => CountState(null);
         public int HeldCount => CountState(CargoState.Held);
         public int PackedCount => CountState(CargoState.Packed);

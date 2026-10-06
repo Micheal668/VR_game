@@ -36,6 +36,7 @@ namespace LunarEscape
             && RelativeSpeed<=config.AssistSpeed && AngularVelocity.magnitude<2 && RcsFuel>0;
         public bool CanBoost=>Active && Distance>12 && flight.MainFuel>0;
         public int ActiveCommandCount=>commands.Count;
+        public bool IsCommandActive(DockCommand command)=>commands.Contains(command);
         public event Action Changed;
 
         public void Configure(AscentMission task,DockingConfig settings)
