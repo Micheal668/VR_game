@@ -1,0 +1,26 @@
+{
+  "id": "medical_box",
+  "fbx": "Assets/_LunarEscape/Art/StationProps/medical_box/medical_box.fbx",
+  "source_id": "medical_box",
+  "source_url": "https://polyhaven.com/a/medical_box",
+  "author": "Ulan Cabanilla",
+  "license": "CC0-1.0",
+  "bounds_m": [
+    0.5254814624786377,
+    0.0975121483206749,
+    0.35016927123069763
+  ],
+  "triangles": 3718,
+  "materials": [
+    {
+      "name": "medical_box",
+      "base_color": "Assets/_LunarEscape/Art/StationProps/medical_box/textures/medical_box_diff_2k.jpg",
+      "normal": "Assets/_LunarEscape/Art/StationProps/medical_box/textures/medical_box_nor_gl_2k.png",
+      "metallic_smoothness": "Assets/_LunarEscape/Art/StationProps/medical_box/textures/medical_box_metallic_smoothness_2k.png",
+      "occlusion": "Assets/_LunarEscape/Art/StationProps/medical_box/textures/medical_box_ao_2k.png",
+      "alpha_clip": false
+    }
+  ],
+  "notes": "Closed original metal first-aid case; original flat case proportions preserved.",
+  "sha256": "df6337694365faa4593d1a2dbc25f120a246c67844c24767370135e6ee0c1bba"
+}

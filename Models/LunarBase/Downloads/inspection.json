@@ -1,0 +1,708 @@
+{
+  "circuit_board": [
+    {
+      "name": "circuit_board",
+      "type": "MESH",
+      "hide_render": false,
+      "location": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "rotation": [
+        0.0,
+        -0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "bounds_min": [
+        -0.2066141664981842,
+        -0.198769211769104,
+        -0.006041519343852997
+      ],
+      "bounds_max": [
+        0.1968916952610016,
+        0.19861522316932678,
+        0.07225437462329865
+      ],
+      "polygons": 7790,
+      "materials": [
+        "circuit_board",
+        "circuit_board_alpha"
+      ],
+      "parent": null
+    }
+  ],
+  "combination_wrench": [
+    {
+      "name": "combination_wrench",
+      "type": "MESH",
+      "hide_render": false,
+      "location": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "bounds_min": [
+        -0.028492672368884087,
+        -0.16143281757831573,
+        -0.0059431977570056915
+      ],
+      "bounds_max": [
+        0.028088420629501343,
+        0.17555131018161774,
+        0.015569813549518585
+      ],
+      "polygons": 1111,
+      "materials": [
+        "combination_wrench"
+      ],
+      "parent": null
+    }
+  ],
+  "medical_box": [
+    {
+      "name": "medical_box",
+      "type": "MESH",
+      "hide_render": false,
+      "location": [
+        -7.450580596923828e-09,
+        7.450580596923828e-09,
+        0.0
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "bounds_min": [
+        -0.25836989283561707,
+        -0.17187944054603577,
+        0.0
+      ],
+      "bounds_max": [
+        0.25836989283561707,
+        0.1722518801689148,
+        0.07818616926670074
+      ],
+      "polygons": 698,
+      "materials": [
+        "medical_box"
+      ],
+      "parent": null
+    },
+    {
+      "name": "medical_box_handle",
+      "type": "MESH",
+      "hide_render": false,
+      "location": [
+        -2.4835269396561444e-09,
+        -0.1691111922264099,
+        0.04422575235366821
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "bounds_min": [
+        -0.08127199113368988,
+        -0.17134734988212585,
+        0.004550918936729431
+      ],
+      "bounds_max": [
+        0.08127199113368988,
+        -0.16688886284828186,
+        0.046030811965465546
+      ],
+      "polygons": 108,
+      "materials": [
+        "medical_box"
+      ],
+      "parent": null
+    },
+    {
+      "name": "medical_box_latch",
+      "type": "MESH",
+      "hide_render": false,
+      "location": [
+        -7.450580596923828e-09,
+        -0.16993090510368347,
+        0.05740829184651375
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "bounds_min": [
+        -0.17246168851852417,
+        -0.17386838793754578,
+        0.015989862382411957
+      ],
+      "bounds_max": [
+        0.17246168851852417,
+        -0.16659976541996002,
+        0.06078790873289108
+      ],
+      "polygons": 474,
+      "materials": [
+        "medical_box"
+      ],
+      "parent": null
+    },
+    {
+      "name": "medical_box_latch_rings",
+      "type": "MESH",
+      "hide_render": false,
+      "location": [
+        -1.4901161193847656e-08,
+        -0.17115692794322968,
+        0.03510414808988571
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "bounds_min": [
+        -0.17612715065479279,
+        -0.17490336298942566,
+        0.03411286324262619
+      ],
+      "bounds_max": [
+        0.17612715065479279,
+        -0.17020763456821442,
+        0.06725470721721649
+      ],
+      "polygons": 216,
+      "materials": [
+        "medical_box"
+      ],
+      "parent": null
+    },
+    {
+      "name": "medical_box_lid",
+      "type": "MESH",
+      "hide_render": false,
+      "location": [
+        0.0,
+        0.16924864053726196,
+        0.06554923951625824
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "bounds_min": [
+        -0.26274073123931885,
+        -0.17791739106178284,
+        0.06422578543424606
+      ],
+      "bounds_max": [
+        0.26274073123931885,
+        0.16916999220848083,
+        0.0975121483206749
+      ],
+      "polygons": 506,
+      "materials": [
+        "medical_box"
+      ],
+      "parent": null
+    }
+  ],
+  "metal_toolbox": [
+    {
+      "name": "metal_toolbox",
+      "type": "MESH",
+      "hide_render": false,
+      "location": [
+        -0.0001489296555519104,
+        2.3283064365386963e-10,
+        0.0006703957915306091
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "bounds_min": [
+        -0.20000004768371582,
+        -0.11380399018526077,
+        0.0
+      ],
+      "bounds_max": [
+        0.2000000774860382,
+        0.10565546154975891,
+        0.12210717797279358
+      ],
+      "polygons": 2306,
+      "materials": [
+        "metal_toolbox"
+      ],
+      "parent": null
+    },
+    {
+      "name": "metal_toolbox_handle",
+      "type": "MESH",
+      "hide_render": false,
+      "location": [
+        -9.801238775253296e-06,
+        7.788167567923665e-05,
+        0.2052585780620575
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "bounds_min": [
+        -0.08827662467956543,
+        0.10847768187522888,
+        0.20615868270397186
+      ],
+      "bounds_max": [
+        0.08825701475143433,
+        0.1611781120300293,
+        0.2651500403881073
+      ],
+      "polygons": 1844,
+      "materials": [
+        "metal_toolbox"
+      ],
+      "parent": "metal_toolbox_lid"
+    },
+    {
+      "name": "metal_toolbox_handle_latch_l",
+      "type": "MESH",
+      "hide_render": false,
+      "location": [
+        -0.11793386936187744,
+        -0.10683942586183548,
+        0.12766970694065094
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "bounds_min": [
+        -0.12891589105129242,
+        -0.043247438967227936,
+        0.276152104139328
+      ],
+      "bounds_max": [
+        -0.10521287471055984,
+        0.0005022019031457603,
+        0.3097524344921112
+      ],
+      "polygons": 110,
+      "materials": [
+        "metal_toolbox"
+      ],
+      "parent": "metal_toolbox_lid"
+    },
+    {
+      "name": "metal_toolbox_handle_latch_r",
+      "type": "MESH",
+      "hide_render": false,
+      "location": [
+        0.11793385446071625,
+        -0.10718004405498505,
+        0.12766970694065094
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "bounds_min": [
+        0.10715174674987793,
+        -0.04348035156726837,
+        0.27599790692329407
+      ],
+      "bounds_max": [
+        0.13104639947414398,
+        0.0005401808302849531,
+        0.30977749824523926
+      ],
+      "polygons": 110,
+      "materials": [
+        "metal_toolbox"
+      ],
+      "parent": "metal_toolbox_lid"
+    },
+    {
+      "name": "metal_toolbox_lid",
+      "type": "MESH",
+      "hide_render": false,
+      "location": [
+        -9.275972843170166e-06,
+        0.10313405096530914,
+        0.1195942610502243
+      ],
+      "rotation": [
+        -0.9861259460449219,
+        -0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "bounds_min": [
+        -0.20000982284545898,
+        -0.017173422500491142,
+        0.11603393405675888
+      ],
+      "bounds_max": [
+        0.19999083876609802,
+        0.17852476239204407,
+        0.34710586071014404
+      ],
+      "polygons": 3570,
+      "materials": [
+        "metal_toolbox"
+      ],
+      "parent": null
+    },
+    {
+      "name": "metal_toolbox_tray",
+      "type": "MESH",
+      "hide_render": false,
+      "location": [
+        1.3148084843095376e-09,
+        -3.4102840551497593e-09,
+        0.15213841199874878
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "bounds_min": [
+        -0.19316866993904114,
+        -0.09332501888275146,
+        0.10112844407558441
+      ],
+      "bounds_max": [
+        0.19316866993904114,
+        0.09332501888275146,
+        0.18802140653133392
+      ],
+      "polygons": 86,
+      "materials": [
+        "metal_toolbox"
+      ],
+      "parent": null
+    }
+  ],
+  "portable_welding_cart": [
+    {
+      "name": "portable_welding_cart",
+      "type": "MESH",
+      "hide_render": false,
+      "location": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "bounds_min": [
+        -0.4191440939903259,
+        -0.45789894461631775,
+        0.0
+      ],
+      "bounds_max": [
+        0.4191440939903259,
+        0.19700497388839722,
+        1.5631701946258545
+      ],
+      "polygons": 15431,
+      "materials": [
+        "portable_welding_cart",
+        "portable_welding_cart_glass"
+      ],
+      "parent": null
+    }
+  ],
+  "power_box_01": [
+    {
+      "name": "power_box_01_box",
+      "type": "MESH",
+      "hide_render": false,
+      "location": [
+        0.0,
+        -0.04748108983039856,
+        0.0
+      ],
+      "rotation": [
+        0.0,
+        -0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "bounds_min": [
+        -0.17049908638000488,
+        -0.04702533781528473,
+        -0.251571387052536
+      ],
+      "bounds_max": [
+        0.1750074177980423,
+        0.04748108983039856,
+        0.251571387052536
+      ],
+      "polygons": 10669,
+      "materials": [
+        "power_box_01"
+      ],
+      "parent": "rig_power_box_01"
+    },
+    {
+      "name": "power_box_01_door",
+      "type": "MESH",
+      "hide_render": false,
+      "location": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "rotation": [
+        0.0,
+        -0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "bounds_min": [
+        -0.20248465240001678,
+        -0.37097594141960144,
+        -0.24546153843402863
+      ],
+      "bounds_max": [
+        -0.16023683547973633,
+        -0.04006752371788025,
+        0.24160124361515045
+      ],
+      "polygons": 720,
+      "materials": [
+        "power_box_01"
+      ],
+      "parent": "rig_power_box_01"
+    },
+    {
+      "name": "rig_power_box_01",
+      "type": "ARMATURE",
+      "hide_render": false,
+      "location": [
+        0.0,
+        0.04748108983039856,
+        0.0
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "bounds_min": [
+        -0.3326907753944397,
+        -0.4264959990978241,
+        -0.4110740125179291
+      ],
+      "bounds_max": [
+        0.3326907753944397,
+        0.04748113453388214,
+        0.4110740125179291
+      ],
+      "polygons": 0,
+      "materials": [],
+      "parent": null
+    },
+    {
+      "name": "wdg_arrow_double",
+      "type": "MESH",
+      "hide_render": false,
+      "location": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "bounds_min": [
+        -0.00583543349057436,
+        0.0007251529023051262,
+        -7.840419424809397e-10
+      ],
+      "bounds_max": [
+        0.005835430696606636,
+        0.03211706876754761,
+        7.840419424809397e-10
+      ],
+      "polygons": 0,
+      "materials": [],
+      "parent": null
+    },
+    {
+      "name": "wdg_arrow_double_bended",
+      "type": "MESH",
+      "hide_render": false,
+      "location": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "bounds_min": [
+        -0.00571473129093647,
+        0.009163440205156803,
+        -0.017545459792017937
+      ],
+      "bounds_max": [
+        0.005714729893952608,
+        0.019830046221613884,
+        0.017545465379953384
+      ],
+      "polygons": 0,
+      "materials": [],
+      "parent": null
+    },
+    {
+      "name": "wdg_root_square",
+      "type": "MESH",
+      "hide_render": false,
+      "location": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "bounds_min": [
+        -0.3326907753944397,
+        -3.485317279228184e-08,
+        -0.4110740125179291
+      ],
+      "bounds_max": [
+        0.3326907753944397,
+        2.0549464352370705e-08,
+        0.4110740125179291
+      ],
+      "polygons": 0,
+      "materials": [],
+      "parent": null
+    }
+  ]
+}

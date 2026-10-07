@@ -1,0 +1,47 @@
+00:00.468  blend            | Read blend: "C:\Coding\Projects\VR_game\Models\LunarBase\Downloads\combination_wrench\combination_wrench_2k.blend"
+C:\Coding\Projects\VR_game\Tools\prepare_station_props.py:54: DeprecationWarning: 'Material.use_nodes' is expected to be removed in Blender 6.0
+  mat=bpy.data.materials.new(name);mat.use_nodes=True
+C:\Coding\Projects\VR_game\Tools\prepare_station_props.py:168: DeprecationWarning: 'World.use_nodes' is expected to be removed in Blender 6.0
+  scene.world=bpy.data.worlds.new('studio');scene.world.use_nodes=True
+00:02.640  render           | Saved: 'C:\Coding\Projects\VR_game\Models\LunarBase\Downloads\Previews\combination_wrench.png'
+警告: 没有可供合并的网格数据 (请检查要合并的物体是否都是网格，比如有一个物体是曲线。此功能仅能合并网格物体)
+
+FBX export starting... 'C:\\Coding\\Projects\\VR_game\\Assets\\_LunarEscape\\Art\\StationProps\\combination_wrench\\combination_wrench.fbx'
+export finished in 0.0095 sec.
+PREPARED combination_wrench bounds Unity [0.06716173142194748, 0.025535935536026955, 0.4000000059604645] triangles 1986
+00:02.640  blend            | Read blend: "C:\Coding\Projects\VR_game\Models\LunarBase\Downloads\metal_toolbox\metal_toolbox_2k.blend"
+00:05.625  render           | Saved: 'C:\Coding\Projects\VR_game\Models\LunarBase\Downloads\Previews\metal_toolbox.png'
+
+FBX export starting... 'C:\\Coding\\Projects\\VR_game\\Assets\\_LunarEscape\\Art\\StationProps\\metal_toolbox\\metal_toolbox.fbx'
+export finished in 0.0432 sec.
+PREPARED metal_toolbox bounds Unity [0.4000099003314972, 0.22465138137340546, 0.2208164930343628] triangles 14228
+00:05.625  blend            | Read blend: "C:\Coding\Projects\VR_game\Models\LunarBase\Downloads\medical_box\medical_box_2k.blend"
+00:08.203  render           | Saved: 'C:\Coding\Projects\VR_game\Models\LunarBase\Downloads\Previews\medical_box.png'
+
+FBX export starting... 'C:\\Coding\\Projects\\VR_game\\Assets\\_LunarEscape\\Art\\StationProps\\medical_box\\medical_box.fbx'
+export finished in 0.0100 sec.
+PREPARED medical_box bounds Unity [0.5254814624786377, 0.0975121483206749, 0.35016927123069763] triangles 3718
+00:08.203  blend            | Read blend: "C:\Coding\Projects\VR_game\Models\LunarBase\Downloads\circuit_board\circuit_board_2k.blend"
+00:11.531  render           | Saved: 'C:\Coding\Projects\VR_game\Models\LunarBase\Downloads\Previews\circuit_board.png'
+警告: 没有可供合并的网格数据 (请检查要合并的物体是否都是网格，比如有一个物体是曲线。此功能仅能合并网格物体)
+
+FBX export starting... 'C:\\Coding\\Projects\\VR_game\\Assets\\_LunarEscape\\Art\\StationProps\\circuit_board\\circuit_board.fbx'
+export finished in 0.0292 sec.
+PREPARED circuit_board bounds Unity [0.4035058617591858, 0.07829589396715164, 0.3973844349384308] triangles 14430
+00:11.531  blend            | Read blend: "C:\Coding\Projects\VR_game\Models\LunarBase\Downloads\power_box_01\power_box_01_2k.blend"
+00:11.547  blend.doversion  | WARNING Region type 9 missing in space type "Userpref" (id: 19) - removing region
+00:14.078  render           | Saved: 'C:\Coding\Projects\VR_game\Models\LunarBase\Downloads\Previews\power_box_01.png'
+
+FBX export starting... 'C:\\Coding\\Projects\\VR_game\\Assets\\_LunarEscape\\Art\\StationProps\\power_box_01\\power_box_01.fbx'
+export finished in 0.0628 sec.
+PREPARED power_box_01 bounds Unity [0.3774920701980591, 0.503142774105072, 0.41845703125] triangles 21272
+00:14.078  blend            | Read blend: "C:\Coding\Projects\VR_game\Models\LunarBase\Downloads\portable_welding_cart\portable_welding_cart_2k.blend"
+00:16.656  render           | Saved: 'C:\Coding\Projects\VR_game\Models\LunarBase\Downloads\Previews\oxygen_cylinder.png'
+
+FBX export starting... 'C:\\Coding\\Projects\\VR_game\\Assets\\_LunarEscape\\Art\\StationProps\\oxygen_cylinder\\oxygen_cylinder.fbx'
+export finished in 0.0158 sec.
+PREPARED oxygen_cylinder bounds Unity [0.2749846577644348, 0.5600000023841858, 0.21756063401699066] triangles 7149
+STATION_PROPS_COMPLETE C:\Coding\Projects\VR_game\Assets\_LunarEscape\Art\StationProps\material-manifest.json
+Blender 5.2.2 LTS (hash d13f752e3b9c built 2026-09-15 01:37:04)
+
+Blender quit

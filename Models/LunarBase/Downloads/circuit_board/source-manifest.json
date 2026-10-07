@@ -1,0 +1,64 @@
+{
+  "id": "circuit_board",
+  "name": "Circuit Board",
+  "source_page": "https://polyhaven.com/a/circuit_board",
+  "info_api": "https://api.polyhaven.com/info/circuit_board",
+  "files_api": "https://api.polyhaven.com/files/circuit_board",
+  "author": [
+    "Benny Weimer"
+  ],
+  "license": "CC0-1.0",
+  "license_page": "https://polyhaven.com/license",
+  "license_text": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "source_dimensions_mm": [
+    403.5058617591858,
+    397.3844349384308,
+    78.29589396715164
+  ],
+  "source_triangles": 14430,
+  "downloaded_at_utc": "2026-10-07T02:19:44Z",
+  "files": [
+    {
+      "path": "Models/LunarBase/Downloads/circuit_board/circuit_board_2k.fbx",
+      "url": "https://dl.polyhaven.org/file/ph-assets/Models/fbx/2k/circuit_board/circuit_board_2k.fbx",
+      "bytes": 410220,
+      "md5": "86fcb57c92f8193bf59e088754175558",
+      "sha256": "4ab171845da7bc5a28109d0fe61b0b74211db3b22342cb68edd02a603a1fd732"
+    },
+    {
+      "path": "Models/LunarBase/Downloads/circuit_board/circuit_board_2k.blend",
+      "url": "https://dl.polyhaven.org/file/ph-assets/Models/blend/2k/circuit_board/circuit_board_2k.blend",
+      "bytes": 430035,
+      "md5": "ca44d18e282b3023fb35e4122f49f1c0",
+      "sha256": "31e07834d133f89bc1dad39f62c64366524ef5bc04750733fc398a8497424c7c"
+    },
+    {
+      "path": "Models/LunarBase/Downloads/circuit_board/textures/circuit_board_diff_2k.jpg",
+      "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/2k/circuit_board/circuit_board_diff_2k.jpg",
+      "bytes": 2991379,
+      "md5": "97e4f09007c31b61e8aa695289d409d6",
+      "sha256": "7f31614278919fbb42e192d151ebe900119ff6b441439258193bd03323085f43"
+    },
+    {
+      "path": "Models/LunarBase/Downloads/circuit_board/textures/circuit_board_nor_gl_2k.png",
+      "url": "https://dl.polyhaven.org/file/ph-assets/Models/png/2k/circuit_board/circuit_board_nor_gl_2k.png",
+      "bytes": 14660385,
+      "md5": "100a9c347fb75342efd6eefa0db90b95",
+      "sha256": "f52c1b2437bcae1fb0d01a4c3a2c0fa1cc63b1ae164d84c055ca61b6a894b822"
+    },
+    {
+      "path": "Models/LunarBase/Downloads/circuit_board/textures/circuit_board_arm_2k.png",
+      "url": "https://dl.polyhaven.org/file/ph-assets/Models/png/2k/circuit_board/circuit_board_arm_2k.png",
+      "bytes": 9485265,
+      "md5": "cccb0bb8b5ecea975f39cb543126a22e",
+      "sha256": "4280582eb4a47da27f3ccf8e5a5e54742ee883fd4defe8036abb86349b5532e2"
+    },
+    {
+      "path": "Models/LunarBase/Downloads/circuit_board/textures/circuit_board_alpha_2k.png",
+      "url": "https://dl.polyhaven.org/file/ph-assets/Models/png/2k/circuit_board/circuit_board_alpha_2k.png",
+      "bytes": 358705,
+      "md5": "57cea9e4b0fa672fda2207e06f3241dd",
+      "sha256": "4cfb4f8ae50a0032fc2e6126c89d42ab20324d931bce3c2884583ef3ecbd923d"
+    }
+  ]
+}

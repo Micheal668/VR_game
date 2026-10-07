@@ -1,0 +1,384 @@
+{
+  "texture_notes": "Base color is sRGB. Normal, metallic_smoothness and AO are linear. Metallic R; smoothness A. Normal is OpenGL tangent space. All pivots are mesh-bounds centers.",
+  "assets": [
+    {
+      "id": "combination_wrench",
+      "fbx": "Assets/_LunarEscape/Art/StationProps/combination_wrench/combination_wrench.fbx",
+      "source_id": "combination_wrench",
+      "source_url": "https://polyhaven.com/a/combination_wrench",
+      "author": "BKS",
+      "license": "CC0-1.0",
+      "bounds_m": [
+        0.06716173142194748,
+        0.025535935536026955,
+        0.4000000059604645
+      ],
+      "triangles": 1986,
+      "materials": [
+        {
+          "name": "combination_wrench",
+          "base_color": "Assets/_LunarEscape/Art/StationProps/combination_wrench/textures/combination_wrench_diff_2k.jpg",
+          "normal": "Assets/_LunarEscape/Art/StationProps/combination_wrench/textures/combination_wrench_nor_gl_2k.png",
+          "metallic_smoothness": "Assets/_LunarEscape/Art/StationProps/combination_wrench/textures/combination_wrench_metallic_smoothness_2k.png",
+          "occlusion": "Assets/_LunarEscape/Art/StationProps/combination_wrench/textures/combination_wrench_ao_2k.png",
+          "alpha_clip": false
+        }
+      ],
+      "notes": "Original wrench uniformly scaled to 0.40 m length; body centered.",
+      "sha256": "fffdbf373d05f94b5e1f0085dd68d7b7e5a842f7eaf9f8e8271b5acb8e1d7d63"
+    },
+    {
+      "id": "metal_toolbox",
+      "fbx": "Assets/_LunarEscape/Art/StationProps/metal_toolbox/metal_toolbox.fbx",
+      "source_id": "metal_toolbox",
+      "source_url": "https://polyhaven.com/a/metal_toolbox",
+      "author": "Mateusz Sadek",
+      "license": "CC0-1.0",
+      "bounds_m": [
+        0.4000099003314972,
+        0.22465138137340546,
+        0.2208164930343628
+      ],
+      "triangles": 14228,
+      "materials": [
+        {
+          "name": "metal_toolbox",
+          "base_color": "Assets/_LunarEscape/Art/StationProps/metal_toolbox/textures/metal_toolbox_diff_2k.jpg",
+          "normal": "Assets/_LunarEscape/Art/StationProps/metal_toolbox/textures/metal_toolbox_nor_gl_2k.png",
+          "metallic_smoothness": "Assets/_LunarEscape/Art/StationProps/metal_toolbox/textures/metal_toolbox_metallic_smoothness_2k.png",
+          "occlusion": "Assets/_LunarEscape/Art/StationProps/metal_toolbox/textures/metal_toolbox_ao_2k.png",
+          "alpha_clip": false
+        }
+      ],
+      "notes": "Source lid closed; meshes combined, original UV/PBR preserved.",
+      "sha256": "8afa38934f27ffd97e4657def3e716290acaa0ab820ddcf834fe9d6b678cef83"
+    },
+    {
+      "id": "medical_box",
+      "fbx": "Assets/_LunarEscape/Art/StationProps/medical_box/medical_box.fbx",
+      "source_id": "medical_box",
+      "source_url": "https://polyhaven.com/a/medical_box",
+      "author": "Ulan Cabanilla",
+      "license": "CC0-1.0",
+      "bounds_m": [
+        0.5254814624786377,
+        0.0975121483206749,
+        0.35016927123069763
+      ],
+      "triangles": 3718,
+      "materials": [
+        {
+          "name": "medical_box",
+          "base_color": "Assets/_LunarEscape/Art/StationProps/medical_box/textures/medical_box_diff_2k.jpg",
+          "normal": "Assets/_LunarEscape/Art/StationProps/medical_box/textures/medical_box_nor_gl_2k.png",
+          "metallic_smoothness": "Assets/_LunarEscape/Art/StationProps/medical_box/textures/medical_box_metallic_smoothness_2k.png",
+          "occlusion": "Assets/_LunarEscape/Art/StationProps/medical_box/textures/medical_box_ao_2k.png",
+          "alpha_clip": false
+        }
+      ],
+      "notes": "Closed original metal first-aid case; original flat case proportions preserved.",
+      "sha256": "df6337694365faa4593d1a2dbc25f120a246c67844c24767370135e6ee0c1bba"
+    },
+    {
+      "id": "circuit_board",
+      "fbx": "Assets/_LunarEscape/Art/StationProps/circuit_board/circuit_board.fbx",
+      "source_id": "circuit_board",
+      "source_url": "https://polyhaven.com/a/circuit_board",
+      "author": "Benny Weimer",
+      "license": "CC0-1.0",
+      "bounds_m": [
+        0.4035058617591858,
+        0.07829589396715164,
+        0.3973844349384308
+      ],
+      "triangles": 14430,
+      "materials": [
+        {
+          "name": "circuit_board",
+          "base_color": "Assets/_LunarEscape/Art/StationProps/circuit_board/textures/circuit_board_diff_2k.jpg",
+          "normal": "Assets/_LunarEscape/Art/StationProps/circuit_board/textures/circuit_board_nor_gl_2k.png",
+          "metallic_smoothness": "Assets/_LunarEscape/Art/StationProps/circuit_board/textures/circuit_board_metallic_smoothness_2k.png",
+          "occlusion": "Assets/_LunarEscape/Art/StationProps/circuit_board/textures/circuit_board_ao_2k.png",
+          "alpha_clip": false
+        },
+        {
+          "name": "circuit_board_alpha",
+          "base_color": "Assets/_LunarEscape/Art/StationProps/circuit_board/textures/circuit_board_diff_alpha_2k.png",
+          "normal": "Assets/_LunarEscape/Art/StationProps/circuit_board/textures/circuit_board_nor_gl_2k.png",
+          "metallic_smoothness": "Assets/_LunarEscape/Art/StationProps/circuit_board/textures/circuit_board_metallic_smoothness_2k.png",
+          "occlusion": "Assets/_LunarEscape/Art/StationProps/circuit_board/textures/circuit_board_ao_2k.png",
+          "alpha_clip": true,
+          "alpha_cutoff": 0.5
+        }
+      ],
+      "notes": "Original electronics board; second material uses source alpha mask packed into base-color alpha.",
+      "sha256": "3f054d229b0d533338c9273d53305648c846082c2fdc9bfc6a1b53d47d309ebd"
+    },
+    {
+      "id": "power_box_01",
+      "fbx": "Assets/_LunarEscape/Art/StationProps/power_box_01/power_box_01.fbx",
+      "source_id": "power_box_01",
+      "source_url": "https://polyhaven.com/a/power_box_01",
+      "author": "Rico Cilliers, Yann Kervran",
+      "license": "CC0-1.0",
+      "bounds_m": [
+        0.3774920701980591,
+        0.503142774105072,
+        0.41845703125
+      ],
+      "triangles": 21272,
+      "materials": [
+        {
+          "name": "power_box_01",
+          "base_color": "Assets/_LunarEscape/Art/StationProps/power_box_01/textures/power_box_01_diff_2k.jpg",
+          "normal": "Assets/_LunarEscape/Art/StationProps/power_box_01/textures/power_box_01_nor_gl_2k.png",
+          "metallic_smoothness": "Assets/_LunarEscape/Art/StationProps/power_box_01/textures/power_box_01_metallic_smoothness_2k.png",
+          "occlusion": "Assets/_LunarEscape/Art/StationProps/power_box_01/textures/power_box_01_ao_2k.png",
+          "alpha_clip": false
+        }
+      ],
+      "notes": "Displayed source pose baked; open door and breakers preserved. Suitable for wall-mounted equipment, not a handheld battery.",
+      "sha256": "3701f4bfe8b2069b3b8da50d08da97eb1b4151812708c70323af89f47a8cd05f"
+    },
+    {
+      "id": "oxygen_cylinder",
+      "fbx": "Assets/_LunarEscape/Art/StationProps/oxygen_cylinder/oxygen_cylinder.fbx",
+      "source_id": "portable_welding_cart",
+      "source_url": "https://polyhaven.com/a/portable_welding_cart",
+      "author": "Georgii Gorbunov",
+      "license": "CC0-1.0",
+      "bounds_m": [
+        0.2749846577644348,
+        0.5600000023841858,
+        0.21756063401699066
+      ],
+      "triangles": 7149,
+      "materials": [
+        {
+          "name": "oxygen_cylinder",
+          "base_color": "Assets/_LunarEscape/Art/StationProps/oxygen_cylinder/textures/oxygen_cylinder_diff_2k.jpg",
+          "normal": "Assets/_LunarEscape/Art/StationProps/oxygen_cylinder/textures/oxygen_cylinder_nor_gl_2k.png",
+          "metallic_smoothness": "Assets/_LunarEscape/Art/StationProps/oxygen_cylinder/textures/oxygen_cylinder_metallic_smoothness_2k.png",
+          "occlusion": "Assets/_LunarEscape/Art/StationProps/oxygen_cylinder/textures/oxygen_cylinder_ao_2k.png",
+          "alpha_clip": false
+        }
+      ],
+      "notes": "Green oxygen vessel/regulator extracted from source welding cart; straight barrel shortened to make a 0.56 m portable game prop; transparent gauge covers removed, gauge faces preserved.",
+      "sha256": "115f9b77ba1f8f1dc0785da6ff0ce4913ad0469802f5aeb270752f9a21644b3d"
+    },
+    {
+      "id": "apollo_10021_79",
+      "fbx": "Assets/_LunarEscape/Art/StationProps/apollo_10021_79/apollo_10021_79.fbx",
+      "source_id": "apollo_10021_79",
+      "source_url": "https://ares.jsc.nasa.gov/astromaterials3d/explorer/?sample=10021-79",
+      "author": "NASA / Astromaterials 3D / Lunar Sample Laboratory Facility",
+      "license": "Public domain (NASA Astromaterials 3D FAQ)",
+      "bounds_m": [
+        0.25999999046325684,
+        0.14224307239055634,
+        0.23694412410259247
+      ],
+      "source_bounds_m": [
+        0.03326699882745743,
+        0.018200000748038292,
+        0.030316999182105064
+      ],
+      "source_triangles": 98184,
+      "triangles": 16000,
+      "source_texture_dimensions": [
+        3250,
+        3250
+      ],
+      "materials": [
+        {
+          "name": "apollo_10021_79",
+          "base_color": "Assets/_LunarEscape/Art/StationProps/apollo_10021_79/textures/apollo_10021_79_diff_2k.png",
+          "normal": "",
+          "metallic_smoothness": "",
+          "occlusion": "",
+          "alpha_clip": false,
+          "metallic": 0,
+          "smoothness": 0.12
+        }
+      ],
+      "notes": "Actual Apollo 11 lunar sample 10021,79 photogrammetric model. Decimated for VR and source color texture resized to 2K; original color/UV retained. Uniformly enlarged to 0.26 m for gameplay readability; this in-game copy is not the real sample size. No synthetic normal or PBR data presented as measured NASA data.",
+      "sha256": "3d66c20a58b069ce34a4789149eadb727b99d705b62ce8dd18eb69d68a0b2949"
+    },
+    {
+      "id": "industrial_battery",
+      "model_origin": "original_project_model",
+      "fbx": "Assets/_LunarEscape/Art/StationProps/industrial_battery/industrial_battery.fbx",
+      "editable_blend": "Models/LunarBase/IndustrialBattery.blend",
+      "source_id": "original_industrial_battery",
+      "source_url": "https://www.victronenergy.com/media/pg/Lithium_Battery_Smart_-_Circuit_Board_Replacement_Instructions/en/replacing-the-circuit-board.html",
+      "reference_urls": [
+        "https://www.victronenergy.com/media/pg/Lithium_Battery_Smart_-_Circuit_Board_Replacement_Instructions/en/replacing-the-circuit-board.html"
+      ],
+      "author": "Lunar Escape project - original procedural Blender asset",
+      "license": "Original project asset; no downloaded third-party model or image content",
+      "bounds_m": [
+        0.3410000205039978,
+        0.28700000047683716,
+        0.22220000624656677
+      ],
+      "triangles": 11450,
+      "materials": [
+        {
+          "name": "industrial_battery_polymer",
+          "base_color": "Assets/_LunarEscape/Art/StationProps/industrial_battery/textures/industrial_battery_polymer_base_1k.png",
+          "normal": "Assets/_LunarEscape/Art/StationProps/industrial_battery/textures/industrial_battery_polymer_normal_1k.png",
+          "metallic_smoothness": "Assets/_LunarEscape/Art/StationProps/industrial_battery/textures/industrial_battery_polymer_metallic_smoothness_1k.png",
+          "occlusion": "",
+          "color": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "metallic": 0.015,
+          "roughness": 0.72,
+          "smoothness": 1,
+          "alpha_clip": false
+        },
+        {
+          "name": "industrial_battery_anodized_aluminum",
+          "base_color": "",
+          "normal": "",
+          "metallic_smoothness": "",
+          "occlusion": "",
+          "color": [
+            0.36,
+            0.405,
+            0.435,
+            1
+          ],
+          "metallic": 0.88,
+          "roughness": 0.32,
+          "smoothness": 0.6799999999999999,
+          "alpha_clip": false
+        },
+        {
+          "name": "industrial_battery_stainless_fasteners",
+          "base_color": "",
+          "normal": "",
+          "metallic_smoothness": "",
+          "occlusion": "",
+          "color": [
+            0.49,
+            0.52,
+            0.54,
+            1
+          ],
+          "metallic": 0.95,
+          "roughness": 0.25,
+          "smoothness": 0.75,
+          "alpha_clip": false
+        },
+        {
+          "name": "industrial_battery_rubber_seals",
+          "base_color": "",
+          "normal": "",
+          "metallic_smoothness": "",
+          "occlusion": "",
+          "color": [
+            0.008,
+            0.009,
+            0.01,
+            1
+          ],
+          "metallic": 0,
+          "roughness": 0.85,
+          "smoothness": 0.15000000000000002,
+          "alpha_clip": false
+        },
+        {
+          "name": "industrial_battery_printed_plate",
+          "base_color": "",
+          "normal": "",
+          "metallic_smoothness": "",
+          "occlusion": "",
+          "color": [
+            0.67,
+            0.69,
+            0.64,
+            1
+          ],
+          "metallic": 0.08,
+          "roughness": 0.53,
+          "smoothness": 0.47,
+          "alpha_clip": false
+        },
+        {
+          "name": "industrial_battery_plate_ink",
+          "base_color": "",
+          "normal": "",
+          "metallic_smoothness": "",
+          "occlusion": "",
+          "color": [
+            0.015,
+            0.018,
+            0.019,
+            1
+          ],
+          "metallic": 0.02,
+          "roughness": 0.65,
+          "smoothness": 0.35,
+          "alpha_clip": false
+        },
+        {
+          "name": "industrial_battery_safety_amber",
+          "base_color": "",
+          "normal": "",
+          "metallic_smoothness": "",
+          "occlusion": "",
+          "color": [
+            0.68,
+            0.34,
+            0.035,
+            1
+          ],
+          "metallic": 0.08,
+          "roughness": 0.43,
+          "smoothness": 0.5700000000000001,
+          "alpha_clip": false
+        },
+        {
+          "name": "industrial_battery_positive_terminal",
+          "base_color": "",
+          "normal": "",
+          "metallic_smoothness": "",
+          "occlusion": "",
+          "color": [
+            0.35,
+            0.02,
+            0.012,
+            1
+          ],
+          "metallic": 0.025,
+          "roughness": 0.48,
+          "smoothness": 0.52,
+          "alpha_clip": false
+        },
+        {
+          "name": "industrial_battery_status_green",
+          "base_color": "",
+          "normal": "",
+          "metallic_smoothness": "",
+          "occlusion": "",
+          "color": [
+            0.025,
+            0.48,
+            0.2,
+            1
+          ],
+          "metallic": 0.1,
+          "roughness": 0.27,
+          "smoothness": 0.73,
+          "alpha_clip": false
+        }
+      ],
+      "notes": "Newly modeled game prop, not a downloaded battery. Manufacturer service manual was consulted for separate protected terminals, fasteners and sealed case construction only. All geometry, polymer textures, rating plate, project labels and colors were created for this project. Rating text is fictional game-prop labeling; no manufacturer branding or reference images are included. Source blend retains separate editable components. Single FBX mesh with named material slots; centered bounds pivot.",
+      "sha256": "d1f21870bb144c8acb727cc5de05792afa5f7641c320df7b78bbcf0ac35b6922"
+    }
+  ]
+}

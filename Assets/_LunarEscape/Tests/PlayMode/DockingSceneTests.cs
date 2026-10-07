@@ -49,6 +49,43 @@ namespace LunarEscape.Tests
             docking.Configure(flight,settings);Board();Launch();Orbit();
         }
         private void Drive(DockCommand command,float seconds){docking.SetCommand(command,true);flight.Tick(seconds);docking.SetCommand(command,false);}
+        [UnityTest]public IEnumerator BlenderApolloExteriorKeepsBoardingCollisionAndFlightFlow()
+        {
+            var layout=session.GetComponent<LunarViewLayout>();
+            var visual=layout.Lander.Find("Apollo Exterior - Blender");
+            Assert.That(visual,Is.Not.Null,"主场景必须使用已制作的 Blender 外观。");
+            var parts=visual.GetComponentsInChildren<MeshRenderer>();
+            Assert.That(parts.Length,Is.EqualTo(9));
+            Assert.That(layout.Lander.GetComponentsInChildren<MeshFilter>().Any(f=>f.name.StartsWith("Apollo Material Group ")),Is.False);
+            var bounds=parts[0].bounds;foreach(var part in parts)bounds.Encapsulate(part.bounds);
+            Assert.That(bounds.size.y,Is.EqualTo(7).Within(.02f));
+            Assert.That(bounds.min.y,Is.EqualTo(layout.Lander.position.y).Within(.02f));
+            Assert.That(visual.GetComponentsInChildren<Collider>().Length,Is.Zero,"详细外观网格不能参与动态碰撞。");
+            var materials=parts.SelectMany(r=>r.sharedMaterials).Distinct().ToArray();
+            Assert.That(materials.All(m=>m!=null && m.shader.name=="Universal Render Pipeline/Lit"),Is.True);
+            var structure=materials.Single(m=>m.name=="OriginalStructure");
+            foreach(string property in new[]{"_BaseMap","_BumpMap","_MetallicGlossMap"})Assert.That(structure.GetTexture(property),Is.Not.Null);
+            var anchors=visual.GetComponentsInChildren<Transform>();
+            var door=anchors.Single(t=>t.name=="Anchor_Hatch");
+            var ladder=anchors.Single(t=>t.name=="Anchor_LadderFoot");
+            Assert.That(Vector3.Distance(layout.Door.position,door.position),Is.LessThan(.01f));
+            Assert.That(layout.Door.Find("Hatch Control").position.y-door.position.y,Is.GreaterThan(.7f),"舱门提示应抬高到扶手上方。");
+            Assert.That(ladder.position.z,Is.LessThan(layout.Lander.position.z-4),"舷梯必须朝向登舱区。");
+            Assert.That(Physics.Raycast(new Vector3(48,4,-8),Vector3.forward,out var hit,12),Is.True);
+            Assert.That(hit.collider.transform.IsChildOf(layout.Lander),Is.True,"舱体必须继续阻挡身体穿行。");
+            yield return CaptureEarth("apollo-front",new Vector3(48,3.6f,-13),new Vector3(48,3,1.7f)-new Vector3(48,3.6f,-13));
+            yield return CaptureEarth("apollo-quarter",new Vector3(58,5.2f,-10),new Vector3(48,3,1.7f)-new Vector3(58,5.2f,-10));
+            yield return CaptureEarth("apollo-boarding",new Vector3(48,1.65f,-6),door.position-new Vector3(48,1.65f,-6));
+            session.BeginMission();session.Advance(session.Mission.Config.RepairWindowSeconds);
+            Assert.That(hatch.CanBoard,Is.False,"外观替换不能绕过登舱区域限制。");
+            session.RetryMission();Board(60,CargoKind.Oxygen);yield return null;yield return null;
+            Assert.That(visual.gameObject.activeInHierarchy,Is.False);
+            Assert.That(scene.FlightWorld.activeInHierarchy,Is.True);
+            Launch();Orbit();yield return null;
+            session.RetryMission();yield return null;yield return null;
+            Assert.That(visual.gameObject.activeInHierarchy,Is.True);
+            Assert.That(layout.Lander.GetComponentsInChildren<Transform>().Count(t=>t.name=="Apollo Exterior - Blender"),Is.EqualTo(1));
+        }
         [UnityTest]public IEnumerator RealWasdBindingsMoveBodyAfterStartAndKeepCollision()
         {
             // 主场景默认使用真机；键盘回归测试显式进入模拟器模式。
@@ -175,7 +212,9 @@ namespace LunarEscape.Tests
             Assert.That(global.sharedMesh.bounds.size.y,Is.GreaterThan(3400000));
             var vertices=global.sharedMesh.vertices;
             for(int i=0;i<=800;i++){var p=vertices[i];Assert.That(p.y,Is.EqualTo(LunarTerrainProfile.Height(p.x,p.z)).Within(.001f));}
-            var surfaces=terrain.FlightVisual.GetComponentsInChildren<Renderer>(true);Assert.That(surfaces.Length,Is.EqualTo(3));Assert.That(surfaces.Select(r=>r.sharedMaterial).Distinct().Count(),Is.EqualTo(1));
+            var surfaceNames=new[]{"Walkable crater terrain","Distant crater ridges","Continuous Global Surface"};
+            var surfaces=terrain.FlightVisual.GetComponentsInChildren<Renderer>(true).Where(r=>surfaceNames.Contains(r.name)).ToArray();
+            Assert.That(surfaces.Select(r=>r.name),Is.EquivalentTo(surfaceNames));Assert.That(surfaces.Select(r=>r.sharedMaterial).Distinct().Count(),Is.EqualTo(1));
             Capture("terrain",new Vector3(12,2,-9),new Vector3(30,0,18));Board();Launch();
             foreach(float time in new[]{0f,3,6,12,25,50,52,54,60,70,85,98})
             {
@@ -212,7 +251,8 @@ namespace LunarEscape.Tests
             angle=moon.SurfaceAngle;moon.SurfaceDegreesPerSecond=0;moon.AdvanceSurface(10);Assert.That(moon.SurfaceAngle,Is.EqualTo(angle));
             yield return null;
             var properties=new MaterialPropertyBlock();
-            var surface=session.GetComponent<LunarTerrainLayout>().FlightVisual.GetComponentsInChildren<Renderer>().Last();surface.GetPropertyBlock(properties);
+            var surface=session.GetComponent<LunarTerrainLayout>().FlightVisual.GetComponentsInChildren<Renderer>()
+                .Single(r=>r.name=="Continuous Global Surface");surface.GetPropertyBlock(properties);
             Assert.That(properties.GetFloat("_SurfaceAngle"),Is.EqualTo(moon.SurfaceAngle).Within(.001f));
             Capture("orbit-motion-a",session.Player.Camera.transform.position,session.Player.Camera.transform.position+Vector3.left*20+Vector3.down*6);
             moon.SurfaceDegreesPerSecond=.12f;moon.AdvanceSurface(20);moon.SurfaceDegreesPerSecond=0;yield return null;
@@ -336,7 +376,8 @@ namespace LunarEscape.Tests
         {
             var obj=new GameObject("Docking verification camera");var camera=obj.AddComponent<Camera>();camera.CopyFrom(Camera.main);camera.enabled=false;camera.fieldOfView=70;camera.transform.SetPositionAndRotation(eye,Quaternion.LookRotation(target-eye));
             var rt=new RenderTexture(1600,1100,24);var pixels=new Texture2D(1600,1100,TextureFormat.RGB24,false);var previous=RenderTexture.active;
-            try{rt.Create();camera.targetTexture=rt;RenderPipeline.SubmitRenderRequest(camera,new RenderPipeline.StandardRequest{destination=rt});RenderTexture.active=rt;pixels.ReadPixels(new Rect(0,0,1600,1100),0,0);pixels.Apply();File.WriteAllBytes(Path.GetFullPath(Path.Combine(Application.dataPath,"../../.development/docking-"+name+".png")),pixels.EncodeToPNG());}
+            var folder=Path.GetFullPath(Path.Combine(Application.dataPath,"../Logs/Previews"));Directory.CreateDirectory(folder);
+            try{rt.Create();camera.targetTexture=rt;RenderPipeline.SubmitRenderRequest(camera,new RenderPipeline.StandardRequest{destination=rt});RenderTexture.active=rt;pixels.ReadPixels(new Rect(0,0,1600,1100),0,0);pixels.Apply();File.WriteAllBytes(Path.Combine(folder,"docking-"+name+".png"),pixels.EncodeToPNG());}
             finally{RenderTexture.active=previous;camera.targetTexture=null;rt.Release();Object.Destroy(pixels);Object.Destroy(rt);Object.Destroy(obj);}
         }
     }

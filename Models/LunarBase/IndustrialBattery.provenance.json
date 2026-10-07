@@ -1,0 +1,176 @@
+{
+  "id": "industrial_battery",
+  "model_origin": "original_project_model",
+  "fbx": "Assets/_LunarEscape/Art/StationProps/industrial_battery/industrial_battery.fbx",
+  "editable_blend": "Models/LunarBase/IndustrialBattery.blend",
+  "source_id": "original_industrial_battery",
+  "source_url": "https://www.victronenergy.com/media/pg/Lithium_Battery_Smart_-_Circuit_Board_Replacement_Instructions/en/replacing-the-circuit-board.html",
+  "reference_urls": [
+    "https://www.victronenergy.com/media/pg/Lithium_Battery_Smart_-_Circuit_Board_Replacement_Instructions/en/replacing-the-circuit-board.html"
+  ],
+  "author": "Lunar Escape project - original procedural Blender asset",
+  "license": "Original project asset; no downloaded third-party model or image content",
+  "bounds_m": [
+    0.3410000205039978,
+    0.28700000047683716,
+    0.22220000624656677
+  ],
+  "triangles": 11450,
+  "materials": [
+    {
+      "name": "industrial_battery_polymer",
+      "base_color": "Assets/_LunarEscape/Art/StationProps/industrial_battery/textures/industrial_battery_polymer_base_1k.png",
+      "normal": "Assets/_LunarEscape/Art/StationProps/industrial_battery/textures/industrial_battery_polymer_normal_1k.png",
+      "metallic_smoothness": "Assets/_LunarEscape/Art/StationProps/industrial_battery/textures/industrial_battery_polymer_metallic_smoothness_1k.png",
+      "occlusion": "",
+      "color": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "metallic": 0.015,
+      "roughness": 0.72,
+      "smoothness": 1,
+      "alpha_clip": false
+    },
+    {
+      "name": "industrial_battery_anodized_aluminum",
+      "base_color": "",
+      "normal": "",
+      "metallic_smoothness": "",
+      "occlusion": "",
+      "color": [
+        0.36,
+        0.405,
+        0.435,
+        1
+      ],
+      "metallic": 0.88,
+      "roughness": 0.32,
+      "smoothness": 0.6799999999999999,
+      "alpha_clip": false
+    },
+    {
+      "name": "industrial_battery_stainless_fasteners",
+      "base_color": "",
+      "normal": "",
+      "metallic_smoothness": "",
+      "occlusion": "",
+      "color": [
+        0.49,
+        0.52,
+        0.54,
+        1
+      ],
+      "metallic": 0.95,
+      "roughness": 0.25,
+      "smoothness": 0.75,
+      "alpha_clip": false
+    },
+    {
+      "name": "industrial_battery_rubber_seals",
+      "base_color": "",
+      "normal": "",
+      "metallic_smoothness": "",
+      "occlusion": "",
+      "color": [
+        0.008,
+        0.009,
+        0.01,
+        1
+      ],
+      "metallic": 0,
+      "roughness": 0.85,
+      "smoothness": 0.15000000000000002,
+      "alpha_clip": false
+    },
+    {
+      "name": "industrial_battery_printed_plate",
+      "base_color": "",
+      "normal": "",
+      "metallic_smoothness": "",
+      "occlusion": "",
+      "color": [
+        0.67,
+        0.69,
+        0.64,
+        1
+      ],
+      "metallic": 0.08,
+      "roughness": 0.53,
+      "smoothness": 0.47,
+      "alpha_clip": false
+    },
+    {
+      "name": "industrial_battery_plate_ink",
+      "base_color": "",
+      "normal": "",
+      "metallic_smoothness": "",
+      "occlusion": "",
+      "color": [
+        0.015,
+        0.018,
+        0.019,
+        1
+      ],
+      "metallic": 0.02,
+      "roughness": 0.65,
+      "smoothness": 0.35,
+      "alpha_clip": false
+    },
+    {
+      "name": "industrial_battery_safety_amber",
+      "base_color": "",
+      "normal": "",
+      "metallic_smoothness": "",
+      "occlusion": "",
+      "color": [
+        0.68,
+        0.34,
+        0.035,
+        1
+      ],
+      "metallic": 0.08,
+      "roughness": 0.43,
+      "smoothness": 0.5700000000000001,
+      "alpha_clip": false
+    },
+    {
+      "name": "industrial_battery_positive_terminal",
+      "base_color": "",
+      "normal": "",
+      "metallic_smoothness": "",
+      "occlusion": "",
+      "color": [
+        0.35,
+        0.02,
+        0.012,
+        1
+      ],
+      "metallic": 0.025,
+      "roughness": 0.48,
+      "smoothness": 0.52,
+      "alpha_clip": false
+    },
+    {
+      "name": "industrial_battery_status_green",
+      "base_color": "",
+      "normal": "",
+      "metallic_smoothness": "",
+      "occlusion": "",
+      "color": [
+        0.025,
+        0.48,
+        0.2,
+        1
+      ],
+      "metallic": 0.1,
+      "roughness": 0.27,
+      "smoothness": 0.73,
+      "alpha_clip": false
+    }
+  ],
+  "notes": "Newly modeled game prop, not a downloaded battery. Manufacturer service manual was consulted for separate protected terminals, fasteners and sealed case construction only. All geometry, polymer textures, rating plate, project labels and colors were created for this project. Rating text is fictional game-prop labeling; no manufacturer branding or reference images are included. Source blend retains separate editable components. Single FBX mesh with named material slots; centered bounds pivot.",
+  "sha256": "d1f21870bb144c8acb727cc5de05792afa5f7641c320df7b78bbcf0ac35b6922"
+}

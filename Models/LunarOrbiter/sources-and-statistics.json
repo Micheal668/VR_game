@@ -1,0 +1,283 @@
+{
+  "name": "Lunar Orbiter - original game spacecraft",
+  "source": "Models/LunarOrbiter/LunarOrbiter_Realistic.blend",
+  "units": "metres",
+  "coordinateConvention": "Unity XYZ design coordinates mapped to Blender (X,-Z,Y). Use all four axis anchors; do not scale by bounds.",
+  "materials": [
+    {
+      "name": "Orb_Silver",
+      "color": [
+        0.48,
+        0.53,
+        0.57,
+        1
+      ],
+      "metallic": 0.88,
+      "roughness": 0.29,
+      "normalScale": 0.12,
+      "baseColorTexture": "Textures/BrushedAlloy_BaseColor.png",
+      "normalTexture": "Textures/BrushedAlloy_Normal.png"
+    },
+    {
+      "name": "Orb_White",
+      "color": [
+        0.74,
+        0.76,
+        0.77,
+        1
+      ],
+      "metallic": 0.18,
+      "roughness": 0.66,
+      "normalScale": 0.15
+    },
+    {
+      "name": "Orb_GoldMLI",
+      "color": [
+        0.54,
+        0.285,
+        0.052,
+        1
+      ],
+      "metallic": 0.83,
+      "roughness": 0.47,
+      "normalScale": 0.26,
+      "baseColorTexture": "Textures/GoldMLI_BaseColor.png",
+      "normalTexture": "Textures/GoldMLI_Normal.png"
+    },
+    {
+      "name": "Orb_Graphite",
+      "color": [
+        0.026,
+        0.037,
+        0.046,
+        1
+      ],
+      "metallic": 0.42,
+      "roughness": 0.57,
+      "normalScale": 0.15
+    },
+    {
+      "name": "Orb_Solar",
+      "color": [
+        0.018,
+        0.045,
+        0.095,
+        1
+      ],
+      "metallic": 0.66,
+      "roughness": 0.32,
+      "normalScale": 0.08,
+      "baseColorTexture": "Textures/SolarLaminate_BaseColor.png",
+      "normalTexture": "Textures/SolarLaminate_Normal.png"
+    },
+    {
+      "name": "Orb_Amber",
+      "color": [
+        0.9,
+        0.37,
+        0.055,
+        1
+      ],
+      "metallic": 0.28,
+      "roughness": 0.51,
+      "normalScale": 0.15
+    },
+    {
+      "name": "Orb_Glass",
+      "color": [
+        0.018,
+        0.07,
+        0.095,
+        1
+      ],
+      "metallic": 0.57,
+      "roughness": 0.17,
+      "normalScale": 0.15
+    },
+    {
+      "name": "Orb_Beacon",
+      "color": [
+        0.26,
+        0.64,
+        0.47,
+        1
+      ],
+      "metallic": 0.04,
+      "roughness": 0.35,
+      "normalScale": 0.15,
+      "emission": [
+        0.45,
+        1.1,
+        0.72
+      ]
+    }
+  ],
+  "anchorsUnity": {
+    "Origin": [
+      0,
+      0,
+      0
+    ],
+    "AxisX": [
+      1,
+      0,
+      0
+    ],
+    "AxisY": [
+      0,
+      1,
+      0
+    ],
+    "AxisZ": [
+      0,
+      0,
+      1
+    ],
+    "DockingCenter": [
+      0,
+      0,
+      0
+    ],
+    "DockingPort": [
+      0,
+      0,
+      0
+    ],
+    "PortNormal": [
+      0,
+      0,
+      -1
+    ],
+    "CaptureIndicator": [
+      0,
+      0.9,
+      -0.1
+    ],
+    "EngineExit": [
+      0,
+      0,
+      9.04
+    ],
+    "WingTipLeft": [
+      -8.1,
+      0,
+      5.32
+    ],
+    "WingTipRight": [
+      8.1,
+      0,
+      5.32
+    ]
+  },
+  "models": [
+    {
+      "id": "lod0",
+      "fbx": "OrbiterLOD0.fbx",
+      "meshCount": 8,
+      "triangleCount": 63160,
+      "boundsUnity": {
+        "minimum": [
+          -8.104000091552734,
+          -1.9959999322891235,
+          -0.12000000476837158
+        ],
+        "maximum": [
+          8.104000091552734,
+          1.9959999322891235,
+          9.062517166137695
+        ]
+      }
+    },
+    {
+      "id": "lod1",
+      "fbx": "OrbiterLOD1.fbx",
+      "meshCount": 8,
+      "triangleCount": 22303,
+      "boundsUnity": {
+        "minimum": [
+          -8.102720260620117,
+          -1.9959999322891235,
+          -0.11834674328565598
+        ],
+        "maximum": [
+          8.102720260620117,
+          1.9959999322891235,
+          9.062518119812012
+        ]
+      }
+    },
+    {
+      "id": "lod2",
+      "fbx": "OrbiterLOD2.fbx",
+      "meshCount": 6,
+      "triangleCount": 7172,
+      "boundsUnity": {
+        "minimum": [
+          -8.102720260620117,
+          -1.9959684610366821,
+          -0.09335803985595703
+        ],
+        "maximum": [
+          8.102720260620117,
+          1.995997667312622,
+          9.062522888183594
+        ]
+      }
+    },
+    {
+      "id": "capture",
+      "fbx": "CaptureIndicator.fbx",
+      "meshCount": 1,
+      "triangleCount": 108,
+      "boundsUnity": {
+        "minimum": [
+          -0.2175000011920929,
+          0.8709999918937683,
+          -0.1145000010728836
+        ],
+        "maximum": [
+          0.2175000011920929,
+          0.9289999604225159,
+          -0.08949999511241913
+        ]
+      }
+    }
+  ],
+  "materialCount": 8,
+  "textureCount": 6,
+  "designNote": "Original two-solar-wing game design. Apollo CSM and docking hardware are engineering references, not a claim of historical reconstruction.",
+  "references": [
+    {
+      "title": "Apollo experience report: The docking system, NASA TN D-6854",
+      "url": "https://ntrs.nasa.gov/citations/19720018207",
+      "use": "Engineering reference for recessed crew-transfer tunnel, probe/drogue capture geometry and ring latches; no mesh or texture downloaded."
+    },
+    {
+      "title": "NASA Apollo spacecraft diagrams",
+      "url": "https://www.nasa.gov/history/SP-4225/diagrams/apollo/apollo-diagram.htm",
+      "use": "Reference for command/service module proportions, RCS quads and engine placement; no downloadable art included."
+    },
+    {
+      "title": "Apollo 9 command/service module photograph, NASA/JSC",
+      "url": "https://science.nasa.gov/resource/apollo-9-mission-image-command-module/",
+      "use": "Reference for silver CSM surface, white radiators and service module details; no photograph used as texture."
+    }
+  ],
+  "downloadedAssets": [],
+  "authoredAssets": "All geometry and six compact material textures are generated by this project script.",
+  "boundsUnity": {
+    "minimum": [
+      -8.104000091552734,
+      -1.9959999322891235,
+      -0.12000000476837158
+    ],
+    "maximum": [
+      8.104000091552734,
+      1.9959999322891235,
+      9.062517166137695
+    ]
+  },
+  "textureResolution": 1024,
+  "textureFileBytes": 5922941,
+  "editableLOD0Objects": 485
+}

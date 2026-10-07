@@ -1,0 +1,26 @@
+{
+  "id": "combination_wrench",
+  "fbx": "Assets/_LunarEscape/Art/StationProps/combination_wrench/combination_wrench.fbx",
+  "source_id": "combination_wrench",
+  "source_url": "https://polyhaven.com/a/combination_wrench",
+  "author": "BKS",
+  "license": "CC0-1.0",
+  "bounds_m": [
+    0.06716173142194748,
+    0.025535935536026955,
+    0.4000000059604645
+  ],
+  "triangles": 1986,
+  "materials": [
+    {
+      "name": "combination_wrench",
+      "base_color": "Assets/_LunarEscape/Art/StationProps/combination_wrench/textures/combination_wrench_diff_2k.jpg",
+      "normal": "Assets/_LunarEscape/Art/StationProps/combination_wrench/textures/combination_wrench_nor_gl_2k.png",
+      "metallic_smoothness": "Assets/_LunarEscape/Art/StationProps/combination_wrench/textures/combination_wrench_metallic_smoothness_2k.png",
+      "occlusion": "Assets/_LunarEscape/Art/StationProps/combination_wrench/textures/combination_wrench_ao_2k.png",
+      "alpha_clip": false
+    }
+  ],
+  "notes": "Original wrench uniformly scaled to 0.40 m length; body centered.",
+  "sha256": "fffdbf373d05f94b5e1f0085dd68d7b7e5a842f7eaf9f8e8271b5acb8e1d7d63"
+}

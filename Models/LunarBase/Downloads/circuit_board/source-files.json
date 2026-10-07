@@ -1,0 +1,827 @@
+{
+  "blend": {
+    "1k": {
+      "blend": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/blend/1k/circuit_board/circuit_board_1k.blend",
+        "md5": "192af6b2216e45dab871c7c670efb365",
+        "size": 430035,
+        "include": {
+          "textures/circuit_board_alpha_1k.png": {
+            "url": "https://dl.polyhaven.org/file/ph-assets/Models/png/1k/circuit_board/circuit_board_alpha_1k.png",
+            "md5": "80a499466a85e27c2684c1cbde888335",
+            "size": 181637
+          },
+          "textures/circuit_board_diff_1k.jpg": {
+            "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/circuit_board/circuit_board_diff_1k.jpg",
+            "md5": "0fe13f1bc5ff853f4b7dd98a23db02d4",
+            "size": 855935
+          },
+          "textures/circuit_board_metal_1k.exr": {
+            "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/1k/circuit_board/circuit_board_metal_1k.exr",
+            "md5": "b27b9ae9b14f6a1679b6cf9817eeb119",
+            "size": 579555
+          },
+          "textures/circuit_board_nor_gl_1k.exr": {
+            "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/1k/circuit_board/circuit_board_nor_gl_1k.exr",
+            "md5": "28b532f1a62b6d1682792dfe2232db16",
+            "size": 1894329
+          },
+          "textures/circuit_board_rough_1k.exr": {
+            "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/1k/circuit_board/circuit_board_rough_1k.exr",
+            "md5": "166e9e446cc6a14bd9c0df6fb5c7f40b",
+            "size": 572071
+          }
+        }
+      }
+    },
+    "2k": {
+      "blend": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/blend/2k/circuit_board/circuit_board_2k.blend",
+        "md5": "ca44d18e282b3023fb35e4122f49f1c0",
+        "size": 430035,
+        "include": {
+          "textures/circuit_board_alpha_2k.png": {
+            "url": "https://dl.polyhaven.org/file/ph-assets/Models/png/2k/circuit_board/circuit_board_alpha_2k.png",
+            "md5": "57cea9e4b0fa672fda2207e06f3241dd",
+            "size": 358705
+          },
+          "textures/circuit_board_diff_2k.jpg": {
+            "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/2k/circuit_board/circuit_board_diff_2k.jpg",
+            "md5": "97e4f09007c31b61e8aa695289d409d6",
+            "size": 2991379
+          },
+          "textures/circuit_board_metal_2k.exr": {
+            "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/2k/circuit_board/circuit_board_metal_2k.exr",
+            "md5": "b16ce597b7afbfaa949950d00eac027c",
+            "size": 1545836
+          },
+          "textures/circuit_board_nor_gl_2k.exr": {
+            "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/2k/circuit_board/circuit_board_nor_gl_2k.exr",
+            "md5": "859b0b963502f8b29100f517603d7c54",
+            "size": 7016830
+          },
+          "textures/circuit_board_rough_2k.exr": {
+            "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/2k/circuit_board/circuit_board_rough_2k.exr",
+            "md5": "c995400092bc69ca70082496e758bfff",
+            "size": 1732364
+          }
+        }
+      }
+    },
+    "4k": {
+      "blend": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/blend/4k/circuit_board/circuit_board_4k.blend",
+        "md5": "d8030e1e520f016f5d16152c34931d7f",
+        "size": 430035,
+        "include": {
+          "textures/circuit_board_alpha_4k.png": {
+            "url": "https://dl.polyhaven.org/file/ph-assets/Models/png/4k/circuit_board/circuit_board_alpha_4k.png",
+            "md5": "2da9eccb7025a8e112baedba9f928912",
+            "size": 630893
+          },
+          "textures/circuit_board_diff_4k.jpg": {
+            "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/4k/circuit_board/circuit_board_diff_4k.jpg",
+            "md5": "31ec5e4a9853a22e74b8af27bece847e",
+            "size": 10177060
+          },
+          "textures/circuit_board_metal_4k.exr": {
+            "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/4k/circuit_board/circuit_board_metal_4k.exr",
+            "md5": "48740d0b11ed57fe6a9a096126b5d3e5",
+            "size": 3937796
+          },
+          "textures/circuit_board_nor_gl_4k.exr": {
+            "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/4k/circuit_board/circuit_board_nor_gl_4k.exr",
+            "md5": "4062cf2c8ced40443fe41e0233a8e557",
+            "size": 25567172
+          },
+          "textures/circuit_board_rough_4k.exr": {
+            "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/4k/circuit_board/circuit_board_rough_4k.exr",
+            "md5": "81fc1c4f9c4441219f5b3ee33ac9c603",
+            "size": 5183886
+          }
+        }
+      }
+    }
+  },
+  "Alpha": {
+    "1k": {
+      "exr": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/1k/circuit_board/circuit_board_alpha_1k.exr",
+        "md5": "480134ec36e8adf2e6d9c8fa194af784",
+        "size": 205059
+      },
+      "jpg": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/circuit_board/circuit_board_alpha_1k.jpg",
+        "md5": "aa0921174458b7baead036c85146ec8b",
+        "size": 157698
+      },
+      "png": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/png/1k/circuit_board/circuit_board_alpha_1k.png",
+        "md5": "80a499466a85e27c2684c1cbde888335",
+        "size": 181637
+      }
+    },
+    "2k": {
+      "exr": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/2k/circuit_board/circuit_board_alpha_2k.exr",
+        "md5": "9dced29b79e311778bda297692907283",
+        "size": 538973
+      },
+      "jpg": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/2k/circuit_board/circuit_board_alpha_2k.jpg",
+        "md5": "0f7f525375f4a12982dc1bcc5e2e433d",
+        "size": 437157
+      },
+      "png": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/png/2k/circuit_board/circuit_board_alpha_2k.png",
+        "md5": "57cea9e4b0fa672fda2207e06f3241dd",
+        "size": 358705
+      }
+    },
+    "4k": {
+      "exr": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/4k/circuit_board/circuit_board_alpha_4k.exr",
+        "md5": "9b2c8ab8341b0f748fc0cf060f849e00",
+        "size": 1317270
+      },
+      "jpg": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/4k/circuit_board/circuit_board_alpha_4k.jpg",
+        "md5": "73b02d511f58de062892d841a47d9b7c",
+        "size": 1178400
+      },
+      "png": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/png/4k/circuit_board/circuit_board_alpha_4k.png",
+        "md5": "2da9eccb7025a8e112baedba9f928912",
+        "size": 630893
+      }
+    }
+  },
+  "AO": {
+    "1k": {
+      "exr": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/1k/circuit_board/circuit_board_ao_1k.exr",
+        "md5": "44e7e69aac55f17c613fd2d72e51fc60",
+        "size": 856527
+      },
+      "jpg": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/circuit_board/circuit_board_ao_1k.jpg",
+        "md5": "30a7e358b4d2030ad41125b74497085f",
+        "size": 653897
+      },
+      "png": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/png/1k/circuit_board/circuit_board_ao_1k.png",
+        "md5": "3de2eaa8beaaf3560cf7e1a18f9934dc",
+        "size": 1429259
+      }
+    },
+    "2k": {
+      "exr": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/2k/circuit_board/circuit_board_ao_2k.exr",
+        "md5": "4f25ffa2bbe3ebf8810033f23acc8dc4",
+        "size": 2902471
+      },
+      "jpg": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/2k/circuit_board/circuit_board_ao_2k.jpg",
+        "md5": "355febcd45a0c89819f669946f4691bc",
+        "size": 2209941
+      },
+      "png": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/png/2k/circuit_board/circuit_board_ao_2k.png",
+        "md5": "6382f2facd8e4d0b59f92c0f1d9a6ed9",
+        "size": 4355307
+      }
+    },
+    "4k": {
+      "exr": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/4k/circuit_board/circuit_board_ao_4k.exr",
+        "md5": "af2b741b0b11a47871444ab69f819af2",
+        "size": 9721564
+      },
+      "jpg": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/4k/circuit_board/circuit_board_ao_4k.jpg",
+        "md5": "f4dcbad72db8fab64b6c71b6bafcd9b1",
+        "size": 7610037
+      },
+      "png": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/png/4k/circuit_board/circuit_board_ao_4k.png",
+        "md5": "29d0ad30f70e9ef54b91e6aac36b3161",
+        "size": 9258156
+      }
+    }
+  },
+  "arm": {
+    "1k": {
+      "exr": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/1k/circuit_board/circuit_board_arm_1k.exr",
+        "md5": "bc4e66f04fe5800bf4f4efe177968226",
+        "size": 2045157
+      },
+      "jpg": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/circuit_board/circuit_board_arm_1k.jpg",
+        "md5": "62c30cacf27cffa18e54dd85d4d8ccfc",
+        "size": 903261
+      },
+      "png": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/png/1k/circuit_board/circuit_board_arm_1k.png",
+        "md5": "5f1931dbd6969528a2362ae2ebc99d59",
+        "size": 3273513
+      }
+    },
+    "2k": {
+      "exr": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/2k/circuit_board/circuit_board_arm_2k.exr",
+        "md5": "0e06774b8c181bb9dca9a973cf679f26",
+        "size": 6714611
+      },
+      "jpg": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/2k/circuit_board/circuit_board_arm_2k.jpg",
+        "md5": "7159b3615b79f4f87942c62b63fbc180",
+        "size": 2986066
+      },
+      "png": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/png/2k/circuit_board/circuit_board_arm_2k.png",
+        "md5": "cccb0bb8b5ecea975f39cb543126a22e",
+        "size": 9485265
+      }
+    },
+    "4k": {
+      "exr": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/4k/circuit_board/circuit_board_arm_4k.exr",
+        "md5": "6358d90a7dca145f7be54d13e025d513",
+        "size": 21889780
+      },
+      "jpg": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/4k/circuit_board/circuit_board_arm_4k.jpg",
+        "md5": "0a864e4d76cfc8cc7aafc9925e1970a6",
+        "size": 9822908
+      },
+      "png": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/png/4k/circuit_board/circuit_board_arm_4k.png",
+        "md5": "a09be6106d411970a292ade7542a83b6",
+        "size": 18406151
+      }
+    }
+  },
+  "Diffuse": {
+    "1k": {
+      "exr": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/1k/circuit_board/circuit_board_diff_1k.exr",
+        "md5": "cdb3403a59fcd6cf514a81397a08b32f",
+        "size": 1600509
+      },
+      "jpg": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/circuit_board/circuit_board_diff_1k.jpg",
+        "md5": "0fe13f1bc5ff853f4b7dd98a23db02d4",
+        "size": 855935
+      },
+      "png": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/png/1k/circuit_board/circuit_board_diff_1k.png",
+        "md5": "ce64cfa78046006e30e5564cdd4a3130",
+        "size": 5487458
+      }
+    },
+    "2k": {
+      "exr": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/2k/circuit_board/circuit_board_diff_2k.exr",
+        "md5": "8cfe6a78c84a0bef5edcf0425835c02b",
+        "size": 5461965
+      },
+      "jpg": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/2k/circuit_board/circuit_board_diff_2k.jpg",
+        "md5": "97e4f09007c31b61e8aa695289d409d6",
+        "size": 2991379
+      },
+      "png": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/png/2k/circuit_board/circuit_board_diff_2k.png",
+        "md5": "9eacce86d96e25b67b7b1aca9206b963",
+        "size": 18179151
+      }
+    },
+    "4k": {
+      "exr": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/4k/circuit_board/circuit_board_diff_4k.exr",
+        "md5": "44e66a12f7e59bb7aa58c8b09f97100e",
+        "size": 18605420
+      },
+      "jpg": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/4k/circuit_board/circuit_board_diff_4k.jpg",
+        "md5": "31ec5e4a9853a22e74b8af27bece847e",
+        "size": 10177060
+      },
+      "png": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/png/4k/circuit_board/circuit_board_diff_4k.png",
+        "md5": "ab7ade62248bd62ee7ce362f8f4d4447",
+        "size": 54713859
+      }
+    }
+  },
+  "Metal": {
+    "1k": {
+      "exr": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/1k/circuit_board/circuit_board_metal_1k.exr",
+        "md5": "b27b9ae9b14f6a1679b6cf9817eeb119",
+        "size": 579555
+      },
+      "jpg": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/circuit_board/circuit_board_metal_1k.jpg",
+        "md5": "5ff18116c005d4f8369181b72afed2db",
+        "size": 475290
+      },
+      "png": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/png/1k/circuit_board/circuit_board_metal_1k.png",
+        "md5": "7ccce13675878dc03abe00febcae61ef",
+        "size": 442845
+      }
+    },
+    "2k": {
+      "exr": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/2k/circuit_board/circuit_board_metal_2k.exr",
+        "md5": "b16ce597b7afbfaa949950d00eac027c",
+        "size": 1545836
+      },
+      "jpg": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/2k/circuit_board/circuit_board_metal_2k.jpg",
+        "md5": "a6149060d441bd7ef938d4e7fc634ff5",
+        "size": 1340668
+      },
+      "png": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/png/2k/circuit_board/circuit_board_metal_2k.png",
+        "md5": "2f31e677b18dad4b9499525293c4d71a",
+        "size": 1057050
+      }
+    },
+    "4k": {
+      "exr": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/4k/circuit_board/circuit_board_metal_4k.exr",
+        "md5": "48740d0b11ed57fe6a9a096126b5d3e5",
+        "size": 3937796
+      },
+      "jpg": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/4k/circuit_board/circuit_board_metal_4k.jpg",
+        "md5": "8873d54d4034ac1e9ac7dbc6eacd563a",
+        "size": 3631542
+      },
+      "png": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/png/4k/circuit_board/circuit_board_metal_4k.png",
+        "md5": "0c793bb3bd5eac41f9bf346c3d0c5311",
+        "size": 2159305
+      }
+    }
+  },
+  "nor_dx": {
+    "1k": {
+      "exr": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/1k/circuit_board/circuit_board_nor_dx_1k.exr",
+        "md5": "5c00b174c5b2dfb13525ea1c05279fc1",
+        "size": 1895330
+      },
+      "jpg": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/circuit_board/circuit_board_nor_dx_1k.jpg",
+        "md5": "848345522013627f64e4fc904b12230f",
+        "size": 849647
+      },
+      "png": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/png/1k/circuit_board/circuit_board_nor_dx_1k.png",
+        "md5": "dd0437d28229a6093216dad3b08a0bd1",
+        "size": 4380690
+      }
+    },
+    "2k": {
+      "exr": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/2k/circuit_board/circuit_board_nor_dx_2k.exr",
+        "md5": "88c7fafc5dd344a0636e1a7a7a201eae",
+        "size": 7021933
+      },
+      "jpg": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/2k/circuit_board/circuit_board_nor_dx_2k.jpg",
+        "md5": "0f7ff945ed66e169655d1837612fefb4",
+        "size": 3231532
+      },
+      "png": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/png/2k/circuit_board/circuit_board_nor_dx_2k.png",
+        "md5": "c40ff50ee6f708fbce83e960a677b26f",
+        "size": 14660355
+      }
+    },
+    "4k": {
+      "exr": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/4k/circuit_board/circuit_board_nor_dx_4k.exr",
+        "md5": "96fd936ae199fc8df46148fb95f9d68a",
+        "size": 25587080
+      },
+      "jpg": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/4k/circuit_board/circuit_board_nor_dx_4k.jpg",
+        "md5": "fcce5a0f2becac91de1af9a976f1a0a4",
+        "size": 12249698
+      },
+      "png": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/png/4k/circuit_board/circuit_board_nor_dx_4k.png",
+        "md5": "9a8ef572cbfee89d8dfcd77ab37a7533",
+        "size": 50679048
+      }
+    }
+  },
+  "nor_gl": {
+    "1k": {
+      "exr": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/1k/circuit_board/circuit_board_nor_gl_1k.exr",
+        "md5": "28b532f1a62b6d1682792dfe2232db16",
+        "size": 1894329
+      },
+      "jpg": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/circuit_board/circuit_board_nor_gl_1k.jpg",
+        "md5": "4bd51f1630a546dc54e212325c08c6f6",
+        "size": 853499
+      },
+      "png": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/png/1k/circuit_board/circuit_board_nor_gl_1k.png",
+        "md5": "ca9520e88e1bb1b942a3ce5c3c401946",
+        "size": 4380758
+      }
+    },
+    "2k": {
+      "exr": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/2k/circuit_board/circuit_board_nor_gl_2k.exr",
+        "md5": "859b0b963502f8b29100f517603d7c54",
+        "size": 7016830
+      },
+      "jpg": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/2k/circuit_board/circuit_board_nor_gl_2k.jpg",
+        "md5": "58c72feca0733628a6efc8c19a56e5ee",
+        "size": 3243069
+      },
+      "png": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/png/2k/circuit_board/circuit_board_nor_gl_2k.png",
+        "md5": "100a9c347fb75342efd6eefa0db90b95",
+        "size": 14660385
+      }
+    },
+    "4k": {
+      "exr": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/4k/circuit_board/circuit_board_nor_gl_4k.exr",
+        "md5": "4062cf2c8ced40443fe41e0233a8e557",
+        "size": 25567172
+      },
+      "jpg": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/4k/circuit_board/circuit_board_nor_gl_4k.jpg",
+        "md5": "ddf311a083b4a8f93b761de550304b9a",
+        "size": 12269823
+      },
+      "png": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/png/4k/circuit_board/circuit_board_nor_gl_4k.png",
+        "md5": "a307442270282e3abb0086e5b24fbd3c",
+        "size": 50686163
+      }
+    }
+  },
+  "Rough": {
+    "1k": {
+      "exr": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/1k/circuit_board/circuit_board_rough_1k.exr",
+        "md5": "166e9e446cc6a14bd9c0df6fb5c7f40b",
+        "size": 572071
+      },
+      "jpg": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/circuit_board/circuit_board_rough_1k.jpg",
+        "md5": "74313af2976cf2154d08674a588b2a0d",
+        "size": 517295
+      },
+      "png": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/png/1k/circuit_board/circuit_board_rough_1k.png",
+        "md5": "d6eafa7c1b179f63baca1915b13986ae",
+        "size": 1025028
+      }
+    },
+    "2k": {
+      "exr": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/2k/circuit_board/circuit_board_rough_2k.exr",
+        "md5": "c995400092bc69ca70082496e758bfff",
+        "size": 1732364
+      },
+      "jpg": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/2k/circuit_board/circuit_board_rough_2k.jpg",
+        "md5": "2cbbfa0587fbbbcf16306b17586b69fc",
+        "size": 1578573
+      },
+      "png": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/png/2k/circuit_board/circuit_board_rough_2k.png",
+        "md5": "a335082e6d5306016f3fba1e141af004",
+        "size": 2810037
+      }
+    },
+    "4k": {
+      "exr": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/4k/circuit_board/circuit_board_rough_4k.exr",
+        "md5": "81fc1c4f9c4441219f5b3ee33ac9c603",
+        "size": 5183886
+      },
+      "jpg": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/4k/circuit_board/circuit_board_rough_4k.jpg",
+        "md5": "cd9f042383fb48035c375bdfc245ee45",
+        "size": 5010332
+      },
+      "png": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/png/4k/circuit_board/circuit_board_rough_4k.png",
+        "md5": "57a4d80e156ea7b95e0b6defc333608f",
+        "size": 4997454
+      }
+    }
+  },
+  "fbx": {
+    "1k": {
+      "fbx": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/fbx/1k/circuit_board/circuit_board_1k.fbx",
+        "md5": "d15dbb1ea4a16f03140f8579532eab3e",
+        "size": 410220,
+        "include": {
+          "textures/circuit_board_alpha_1k.png": {
+            "url": "https://dl.polyhaven.org/file/ph-assets/Models/png/1k/circuit_board/circuit_board_alpha_1k.png",
+            "md5": "80a499466a85e27c2684c1cbde888335",
+            "size": 181637
+          },
+          "textures/circuit_board_diff_1k.jpg": {
+            "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/circuit_board/circuit_board_diff_1k.jpg",
+            "md5": "0fe13f1bc5ff853f4b7dd98a23db02d4",
+            "size": 855935
+          },
+          "textures/circuit_board_metal_1k.exr": {
+            "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/1k/circuit_board/circuit_board_metal_1k.exr",
+            "md5": "b27b9ae9b14f6a1679b6cf9817eeb119",
+            "size": 579555
+          },
+          "textures/circuit_board_nor_gl_1k.exr": {
+            "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/1k/circuit_board/circuit_board_nor_gl_1k.exr",
+            "md5": "28b532f1a62b6d1682792dfe2232db16",
+            "size": 1894329
+          },
+          "textures/circuit_board_rough_1k.exr": {
+            "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/1k/circuit_board/circuit_board_rough_1k.exr",
+            "md5": "166e9e446cc6a14bd9c0df6fb5c7f40b",
+            "size": 572071
+          }
+        }
+      }
+    },
+    "2k": {
+      "fbx": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/fbx/2k/circuit_board/circuit_board_2k.fbx",
+        "md5": "86fcb57c92f8193bf59e088754175558",
+        "size": 410220,
+        "include": {
+          "textures/circuit_board_alpha_2k.png": {
+            "url": "https://dl.polyhaven.org/file/ph-assets/Models/png/2k/circuit_board/circuit_board_alpha_2k.png",
+            "md5": "57cea9e4b0fa672fda2207e06f3241dd",
+            "size": 358705
+          },
+          "textures/circuit_board_diff_2k.jpg": {
+            "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/2k/circuit_board/circuit_board_diff_2k.jpg",
+            "md5": "97e4f09007c31b61e8aa695289d409d6",
+            "size": 2991379
+          },
+          "textures/circuit_board_metal_2k.exr": {
+            "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/2k/circuit_board/circuit_board_metal_2k.exr",
+            "md5": "b16ce597b7afbfaa949950d00eac027c",
+            "size": 1545836
+          },
+          "textures/circuit_board_nor_gl_2k.exr": {
+            "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/2k/circuit_board/circuit_board_nor_gl_2k.exr",
+            "md5": "859b0b963502f8b29100f517603d7c54",
+            "size": 7016830
+          },
+          "textures/circuit_board_rough_2k.exr": {
+            "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/2k/circuit_board/circuit_board_rough_2k.exr",
+            "md5": "c995400092bc69ca70082496e758bfff",
+            "size": 1732364
+          }
+        }
+      }
+    },
+    "4k": {
+      "fbx": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/fbx/4k/circuit_board/circuit_board_4k.fbx",
+        "md5": "ed0bd5477ef3c19f6cf80de984713b52",
+        "size": 410220,
+        "include": {
+          "textures/circuit_board_alpha_4k.png": {
+            "url": "https://dl.polyhaven.org/file/ph-assets/Models/png/4k/circuit_board/circuit_board_alpha_4k.png",
+            "md5": "2da9eccb7025a8e112baedba9f928912",
+            "size": 630893
+          },
+          "textures/circuit_board_diff_4k.jpg": {
+            "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/4k/circuit_board/circuit_board_diff_4k.jpg",
+            "md5": "31ec5e4a9853a22e74b8af27bece847e",
+            "size": 10177060
+          },
+          "textures/circuit_board_metal_4k.exr": {
+            "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/4k/circuit_board/circuit_board_metal_4k.exr",
+            "md5": "48740d0b11ed57fe6a9a096126b5d3e5",
+            "size": 3937796
+          },
+          "textures/circuit_board_nor_gl_4k.exr": {
+            "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/4k/circuit_board/circuit_board_nor_gl_4k.exr",
+            "md5": "4062cf2c8ced40443fe41e0233a8e557",
+            "size": 25567172
+          },
+          "textures/circuit_board_rough_4k.exr": {
+            "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/4k/circuit_board/circuit_board_rough_4k.exr",
+            "md5": "81fc1c4f9c4441219f5b3ee33ac9c603",
+            "size": 5183886
+          }
+        }
+      }
+    }
+  },
+  "gltf": {
+    "1k": {
+      "gltf": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/1k/circuit_board/circuit_board_1k.gltf",
+        "md5": "843c41f2c60018c22c8226dbb2f576f7",
+        "size": 4682,
+        "include": {
+          "textures/circuit_board_nor_gl_1k.jpg": {
+            "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/circuit_board/circuit_board_nor_gl_1k.jpg",
+            "md5": "4bd51f1630a546dc54e212325c08c6f6",
+            "size": 853499
+          },
+          "textures/circuit_board_diff_1k.jpg": {
+            "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/circuit_board/circuit_board_diff_1k.jpg",
+            "md5": "0fe13f1bc5ff853f4b7dd98a23db02d4",
+            "size": 855935
+          },
+          "textures/circuit_board_arm_1k.jpg": {
+            "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/circuit_board/circuit_board_arm_1k.jpg",
+            "md5": "62c30cacf27cffa18e54dd85d4d8ccfc",
+            "size": 903261
+          },
+          "circuit_board.bin": {
+            "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/4k/circuit_board/circuit_board.bin",
+            "md5": "3c80df445a368bf4a93207473a49c181",
+            "size": 671316
+          }
+        }
+      }
+    },
+    "2k": {
+      "gltf": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/2k/circuit_board/circuit_board_2k.gltf",
+        "md5": "60b9f627988891ec45ae1ec160d43c94",
+        "size": 4682,
+        "include": {
+          "textures/circuit_board_nor_gl_2k.jpg": {
+            "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/2k/circuit_board/circuit_board_nor_gl_2k.jpg",
+            "md5": "58c72feca0733628a6efc8c19a56e5ee",
+            "size": 3243069
+          },
+          "textures/circuit_board_diff_2k.jpg": {
+            "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/2k/circuit_board/circuit_board_diff_2k.jpg",
+            "md5": "97e4f09007c31b61e8aa695289d409d6",
+            "size": 2991379
+          },
+          "textures/circuit_board_arm_2k.jpg": {
+            "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/2k/circuit_board/circuit_board_arm_2k.jpg",
+            "md5": "7159b3615b79f4f87942c62b63fbc180",
+            "size": 2986066
+          },
+          "circuit_board.bin": {
+            "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/4k/circuit_board/circuit_board.bin",
+            "md5": "3c80df445a368bf4a93207473a49c181",
+            "size": 671316
+          }
+        }
+      }
+    },
+    "4k": {
+      "gltf": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/4k/circuit_board/circuit_board_4k.gltf",
+        "md5": "aa983945c357c463684adc2f2b054f12",
+        "size": 4682,
+        "include": {
+          "textures/circuit_board_nor_gl_4k.jpg": {
+            "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/4k/circuit_board/circuit_board_nor_gl_4k.jpg",
+            "md5": "ddf311a083b4a8f93b761de550304b9a",
+            "size": 12269823
+          },
+          "textures/circuit_board_diff_4k.jpg": {
+            "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/4k/circuit_board/circuit_board_diff_4k.jpg",
+            "md5": "31ec5e4a9853a22e74b8af27bece847e",
+            "size": 10177060
+          },
+          "textures/circuit_board_arm_4k.jpg": {
+            "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/4k/circuit_board/circuit_board_arm_4k.jpg",
+            "md5": "0a864e4d76cfc8cc7aafc9925e1970a6",
+            "size": 9822908
+          },
+          "circuit_board.bin": {
+            "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/4k/circuit_board/circuit_board.bin",
+            "md5": "3c80df445a368bf4a93207473a49c181",
+            "size": 671316
+          }
+        }
+      }
+    }
+  },
+  "usd": {
+    "1k": {
+      "usd": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/usd/1k/circuit_board/circuit_board_1k.usdc",
+        "md5": "6e11fd71e491d3a604d342be3a2befa9",
+        "size": 621526,
+        "include": {
+          "textures/circuit_board_alpha_1k.png": {
+            "url": "https://dl.polyhaven.org/file/ph-assets/Models/png/1k/circuit_board/circuit_board_alpha_1k.png",
+            "md5": "80a499466a85e27c2684c1cbde888335",
+            "size": 181637
+          },
+          "textures/circuit_board_diff_1k.jpg": {
+            "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/circuit_board/circuit_board_diff_1k.jpg",
+            "md5": "0fe13f1bc5ff853f4b7dd98a23db02d4",
+            "size": 855935
+          },
+          "textures/circuit_board_metal_1k.exr": {
+            "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/1k/circuit_board/circuit_board_metal_1k.exr",
+            "md5": "b27b9ae9b14f6a1679b6cf9817eeb119",
+            "size": 579555
+          },
+          "textures/circuit_board_nor_gl_1k.exr": {
+            "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/1k/circuit_board/circuit_board_nor_gl_1k.exr",
+            "md5": "28b532f1a62b6d1682792dfe2232db16",
+            "size": 1894329
+          },
+          "textures/circuit_board_rough_1k.exr": {
+            "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/1k/circuit_board/circuit_board_rough_1k.exr",
+            "md5": "166e9e446cc6a14bd9c0df6fb5c7f40b",
+            "size": 572071
+          }
+        }
+      }
+    },
+    "2k": {
+      "usd": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/usd/2k/circuit_board/circuit_board_2k.usdc",
+        "md5": "f10a85d8f556ac662ad6c80b78ca5951",
+        "size": 621524,
+        "include": {
+          "textures/circuit_board_alpha_2k.png": {
+            "url": "https://dl.polyhaven.org/file/ph-assets/Models/png/2k/circuit_board/circuit_board_alpha_2k.png",
+            "md5": "57cea9e4b0fa672fda2207e06f3241dd",
+            "size": 358705
+          },
+          "textures/circuit_board_diff_2k.jpg": {
+            "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/2k/circuit_board/circuit_board_diff_2k.jpg",
+            "md5": "97e4f09007c31b61e8aa695289d409d6",
+            "size": 2991379
+          },
+          "textures/circuit_board_metal_2k.exr": {
+            "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/2k/circuit_board/circuit_board_metal_2k.exr",
+            "md5": "b16ce597b7afbfaa949950d00eac027c",
+            "size": 1545836
+          },
+          "textures/circuit_board_nor_gl_2k.exr": {
+            "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/2k/circuit_board/circuit_board_nor_gl_2k.exr",
+            "md5": "859b0b963502f8b29100f517603d7c54",
+            "size": 7016830
+          },
+          "textures/circuit_board_rough_2k.exr": {
+            "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/2k/circuit_board/circuit_board_rough_2k.exr",
+            "md5": "c995400092bc69ca70082496e758bfff",
+            "size": 1732364
+          }
+        }
+      }
+    },
+    "4k": {
+      "usd": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/usd/4k/circuit_board/circuit_board_4k.usdc",
+        "md5": "2b9316435d549ac9db1dd5ce72cd7c36",
+        "size": 621501,
+        "include": {
+          "textures/circuit_board_alpha_4k.png": {
+            "url": "https://dl.polyhaven.org/file/ph-assets/Models/png/4k/circuit_board/circuit_board_alpha_4k.png",
+            "md5": "2da9eccb7025a8e112baedba9f928912",
+            "size": 630893
+          },
+          "textures/circuit_board_diff_4k.jpg": {
+            "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/4k/circuit_board/circuit_board_diff_4k.jpg",
+            "md5": "31ec5e4a9853a22e74b8af27bece847e",
+            "size": 10177060
+          },
+          "textures/circuit_board_metal_4k.exr": {
+            "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/4k/circuit_board/circuit_board_metal_4k.exr",
+            "md5": "48740d0b11ed57fe6a9a096126b5d3e5",
+            "size": 3937796
+          },
+          "textures/circuit_board_nor_gl_4k.exr": {
+            "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/4k/circuit_board/circuit_board_nor_gl_4k.exr",
+            "md5": "4062cf2c8ced40443fe41e0233a8e557",
+            "size": 25567172
+          },
+          "textures/circuit_board_rough_4k.exr": {
+            "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/4k/circuit_board/circuit_board_rough_4k.exr",
+            "md5": "81fc1c4f9c4441219f5b3ee33ac9c603",
+            "size": 5183886
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "id": "combination_wrench",
+  "name": "Combination Wrench",
+  "source_page": "https://polyhaven.com/a/combination_wrench",
+  "info_api": "https://api.polyhaven.com/info/combination_wrench",
+  "files_api": "https://api.polyhaven.com/files/combination_wrench",
+  "author": [
+    "BKS"
+  ],
+  "license": "CC0-1.0",
+  "license_page": "https://polyhaven.com/license",
+  "license_text": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "source_dimensions_mm": [
+    56.58109299838543,
+    336.9841277599335,
+    21.513011306524277
+  ],
+  "source_triangles": 1986,
+  "downloaded_at_utc": "2026-10-07T02:19:41Z",
+  "files": [
+    {
+      "path": "Models/LunarBase/Downloads/combination_wrench/combination_wrench_2k.fbx",
+      "url": "https://dl.polyhaven.org/file/ph-assets/Models/fbx/2k/combination_wrench/combination_wrench_2k.fbx",
+      "bytes": 86972,
+      "md5": "c4a30e9a61c74713b64ebaaa9fce7a92",
+      "sha256": "8a41e0deb37aab3b43545094eedfc52b9bd996b5a4e938b11ef21bf17e434099"
+    },
+    {
+      "path": "Models/LunarBase/Downloads/combination_wrench/combination_wrench_2k.blend",
+      "url": "https://dl.polyhaven.org/file/ph-assets/Models/blend/2k/combination_wrench/combination_wrench_2k.blend",
+      "bytes": 154275,
+      "md5": "0d4c162b5d89ae44edd954ef3ecfe5eb",
+      "sha256": "317f2f22ab32de336387a57ee0862f73da853af372932468d9f4a91d64bf0836"
+    },
+    {
+      "path": "Models/LunarBase/Downloads/combination_wrench/textures/combination_wrench_diff_2k.jpg",
+      "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/2k/combination_wrench/combination_wrench_diff_2k.jpg",
+      "bytes": 1801425,
+      "md5": "df5f40c540ed2e1eda362df44ca78c5e",
+      "sha256": "bfbf6af7d428aee25fc7a8a30a74f04053ff533afde8f028facb35be10f409ad"
+    },
+    {
+      "path": "Models/LunarBase/Downloads/combination_wrench/textures/combination_wrench_nor_gl_2k.png",
+      "url": "https://dl.polyhaven.org/file/ph-assets/Models/png/2k/combination_wrench/combination_wrench_nor_gl_2k.png",
+      "bytes": 8889066,
+      "md5": "f9db6ffe930b02e5fdb9ee25b1a879af",
+      "sha256": "ed27b814fc918be098628394decbf5a8f068ae4b35f06cbcc89605e029195d4d"
+    },
+    {
+      "path": "Models/LunarBase/Downloads/combination_wrench/textures/combination_wrench_arm_2k.png",
+      "url": "https://dl.polyhaven.org/file/ph-assets/Models/png/2k/combination_wrench/combination_wrench_arm_2k.png",
+      "bytes": 6078442,
+      "md5": "e40e3ecae7ee0adab6f490786a22a136",
+      "sha256": "de475fdafbb55b21336f2814176833555eb51393484fb991bf723da4072ff03d"
+    }
+  ]
+}

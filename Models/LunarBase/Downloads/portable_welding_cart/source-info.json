@@ -1,0 +1,58 @@
+{
+  "type": 2,
+  "name": "Portable Welding Cart",
+  "categories": [
+    "collection: project_lighthouse",
+    "industrial",
+    "containers"
+  ],
+  "category": "Tools & Equipment/Workshop Equipment/Welding Equipment",
+  "tags": [
+    "fuel",
+    "welding",
+    "cart",
+    "gas torch",
+    "oxygen tank",
+    "acetylene tank",
+    "hand truck",
+    "cylinder",
+    "hoses"
+  ],
+  "description": "Free 8K model of a portable welding cart with green and red gas cylinders, brass gauges and torch, coiled hoses, scuffed paint, and chunky rubber wheels.",
+  "authors": {
+    "Georgii Gorbunov": "All"
+  },
+  "donated": true,
+  "category_id": "352f74ae-4976-5df0-83ee-84c34b87ff54",
+  "max_resolution": [
+    8192,
+    8192
+  ],
+  "polycount": 29418,
+  "files_hash": "54d2c0b8e1d0da2bf8e86e668062ca0fa071f0e3",
+  "texel_density": 3418.105542508696,
+  "dimensions": [
+    838.2881879806519,
+    654.903918504715,
+    1563.1701946258545
+  ],
+  "date_published": 1783036800,
+  "staging": null,
+  "collections": [
+    "project_lighthouse"
+  ],
+  "attributes": {
+    "material": [
+      "steel",
+      "rubber",
+      "brass",
+      "fabric"
+    ],
+    "condition": [
+      "worn"
+    ]
+  },
+  "img_version": "7509a5ff",
+  "download_count": 774,
+  "thumbnail_url": "https://cdn.polyhaven.com/asset_img/thumbs/portable_welding_cart.png?width=256&height=256&format=webp&v=7509a5ff"
+}

@@ -1,0 +1,57 @@
+{
+  "id": "metal_toolbox",
+  "name": "Metal Toolbox",
+  "source_page": "https://polyhaven.com/a/metal_toolbox",
+  "info_api": "https://api.polyhaven.com/info/metal_toolbox",
+  "files_api": "https://api.polyhaven.com/files/metal_toolbox",
+  "author": [
+    "Mateusz Sadek"
+  ],
+  "license": "CC0-1.0",
+  "license_page": "https://polyhaven.com/license",
+  "license_text": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "source_dimensions_mm": [
+    400.0099003314972,
+    292.32875257730484,
+    347.10586071014404
+  ],
+  "source_triangles": 14228,
+  "downloaded_at_utc": "2026-10-07T02:19:41Z",
+  "files": [
+    {
+      "path": "Models/LunarBase/Downloads/metal_toolbox/metal_toolbox_2k.fbx",
+      "url": "https://dl.polyhaven.org/file/ph-assets/Models/fbx/2k/metal_toolbox/metal_toolbox_2k.fbx",
+      "bytes": 536476,
+      "md5": "2a39bbcb4aeb4cbf8da8a978bdd2e925",
+      "sha256": "023bec6ae542df94d07b4a2bcdab0dc6c7fdbdd4313465a239b7f9d3ee710cd3"
+    },
+    {
+      "path": "Models/LunarBase/Downloads/metal_toolbox/metal_toolbox_2k.blend",
+      "url": "https://dl.polyhaven.org/file/ph-assets/Models/blend/2k/metal_toolbox/metal_toolbox_2k.blend",
+      "bytes": 451321,
+      "md5": "a2a6bc6410e02d60a8ab4ca0727c16ee",
+      "sha256": "bb434d051e065db446118e3a02ac1d5204208ab545db8bff0f7b1967a9965af6"
+    },
+    {
+      "path": "Models/LunarBase/Downloads/metal_toolbox/textures/metal_toolbox_diff_2k.jpg",
+      "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/2k/metal_toolbox/metal_toolbox_diff_2k.jpg",
+      "bytes": 2884619,
+      "md5": "870d4d3804daadd9c4df40f746d56fa7",
+      "sha256": "ff84f51ac4c88c13407a591abd2111ed6210566b3528232c655806429e4e0b44"
+    },
+    {
+      "path": "Models/LunarBase/Downloads/metal_toolbox/textures/metal_toolbox_nor_gl_2k.png",
+      "url": "https://dl.polyhaven.org/file/ph-assets/Models/png/2k/metal_toolbox/metal_toolbox_nor_gl_2k.png",
+      "bytes": 18906017,
+      "md5": "aa7f9e3efe988e54c95c130293c7dab4",
+      "sha256": "ca941ed5e91495c8936a3f1d75a3a1ba204ca31f469f8266b86607828b7bbd60"
+    },
+    {
+      "path": "Models/LunarBase/Downloads/metal_toolbox/textures/metal_toolbox_arm_2k.png",
+      "url": "https://dl.polyhaven.org/file/ph-assets/Models/png/2k/metal_toolbox/metal_toolbox_arm_2k.png",
+      "bytes": 14152459,
+      "md5": "b8e36a335dab2438852bf9c3f0f0733f",
+      "sha256": "7506f8beff038c802fe5bccd0a6a0d43a4191450990eabfa4818d34f8508fb2b"
+    }
+  ]
+}

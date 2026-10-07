@@ -1,0 +1,60 @@
+{
+  "type": 2,
+  "name": "Metal Toolbox",
+  "categories": [
+    "collection: project_lighthouse",
+    "containers",
+    "tools",
+    "industrial"
+  ],
+  "tags": [
+    "vintage",
+    "rustic",
+    "garage",
+    "workshop",
+    "metal",
+    "storage",
+    "shed",
+    "construction",
+    "carpentry",
+    "tool chest"
+  ],
+  "description": "Free 4K model of a vintage metal toolbox with chipped olive paint, brass latches, a wood handle with red band, rusted edges and a round badge.",
+  "authors": {
+    "Mateusz Sadek": "All"
+  },
+  "donated": true,
+  "max_resolution": [
+    4096,
+    4096
+  ],
+  "polycount": 14228,
+  "date_published": 1776330926,
+  "staging": null,
+  "social_post_pending": false,
+  "files_hash": "df0982cb97ade9651921bf5d76047a33a388118a",
+  "texel_density": 3692.8859841447725,
+  "dimensions": [
+    400.0099003314972,
+    292.32875257730484,
+    347.10586071014404
+  ],
+  "category_id": "c7d5a298-97b0-5709-918e-e87832bf31a4",
+  "category": "Tools & Equipment/Workshop Equipment/Tool Chests",
+  "collections": [
+    "project_lighthouse"
+  ],
+  "attributes": {
+    "condition": [
+      "worn"
+    ],
+    "material": [
+      "metal",
+      "brass",
+      "wood"
+    ]
+  },
+  "img_version": "a19ffa89",
+  "download_count": 1478,
+  "thumbnail_url": "https://cdn.polyhaven.com/asset_img/thumbs/metal_toolbox.png?width=256&height=256&format=webp&v=a19ffa89"
+}

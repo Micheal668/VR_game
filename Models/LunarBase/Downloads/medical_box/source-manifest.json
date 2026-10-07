@@ -1,0 +1,57 @@
+{
+  "id": "medical_box",
+  "name": "Medical Box",
+  "source_page": "https://polyhaven.com/a/medical_box",
+  "info_api": "https://api.polyhaven.com/info/medical_box",
+  "files_api": "https://api.polyhaven.com/files/medical_box",
+  "author": [
+    "Ulan Cabanilla"
+  ],
+  "license": "CC0-1.0",
+  "license_page": "https://polyhaven.com/license",
+  "license_text": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "source_dimensions_mm": [
+    525.4814624786377,
+    350.16927123069763,
+    97.5121483206749
+  ],
+  "source_triangles": 3718,
+  "downloaded_at_utc": "2026-10-07T02:19:41Z",
+  "files": [
+    {
+      "path": "Models/LunarBase/Downloads/medical_box/medical_box_2k.fbx",
+      "url": "https://dl.polyhaven.org/file/ph-assets/Models/fbx/2k/medical_box/medical_box_2k.fbx",
+      "bytes": 139628,
+      "md5": "ee53f20b2d733545ee4ccf33f65e7efe",
+      "sha256": "a9a07fb8261fb98f83d4955eb261861bb069cddde1fec9a62c209886cf800acb"
+    },
+    {
+      "path": "Models/LunarBase/Downloads/medical_box/medical_box_2k.blend",
+      "url": "https://dl.polyhaven.org/file/ph-assets/Models/blend/2k/medical_box/medical_box_2k.blend",
+      "bytes": 194462,
+      "md5": "10e6c0e7a5130bc1b2852375bb28d9ba",
+      "sha256": "9cf7bd5aed3d2dead1c707edb6d0bd27284c009b5ee9d96b19827dec15b9aa34"
+    },
+    {
+      "path": "Models/LunarBase/Downloads/medical_box/textures/medical_box_diff_2k.jpg",
+      "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/2k/medical_box/medical_box_diff_2k.jpg",
+      "bytes": 2536442,
+      "md5": "00935657710a6bea894aefc4fd0d5880",
+      "sha256": "589255b0a99ea2dfa931474bf16041e1fda6cd353c299006a0f7292f35c3af5d"
+    },
+    {
+      "path": "Models/LunarBase/Downloads/medical_box/textures/medical_box_nor_gl_2k.png",
+      "url": "https://dl.polyhaven.org/file/ph-assets/Models/png/2k/medical_box/medical_box_nor_gl_2k.png",
+      "bytes": 10581423,
+      "md5": "ad80423945ec686bd5ab351b85f2f89c",
+      "sha256": "db8fb6e4781c0632f492821647ee1852f3c0b650d4448dc524c1dd83e082aafa"
+    },
+    {
+      "path": "Models/LunarBase/Downloads/medical_box/textures/medical_box_arm_2k.png",
+      "url": "https://dl.polyhaven.org/file/ph-assets/Models/png/2k/medical_box/medical_box_arm_2k.png",
+      "bytes": 11176222,
+      "md5": "4107fc84ba2e2772c3a96388524953d8",
+      "sha256": "a6d7a871a36d730c61db9c6d1dc928e83e1a99f2f582528a16d70dccbfe84058"
+    }
+  ]
+}

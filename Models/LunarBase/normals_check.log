@@ -1,0 +1,13 @@
+00:00.422  blend            | Read blend: "C:\Coding\Projects\VR_game\Models\LunarBase\LunarStation_Realistic.blend"
+NORMALS_CHECKED 194 CORRECTED 182
+信息: 已另存为 "LunarStation_Realistic.blend"
+
+FBX export starting... 'C:\\Coding\\Projects\\VR_game\\Assets\\_LunarEscape\\Art\\LunarBaseGeometry\\LunarStationExterior.fbx'
+export finished in 0.0732 sec.
+
+FBX export starting... 'C:\\Coding\\Projects\\VR_game\\Assets\\_LunarEscape\\Art\\LunarBaseGeometry\\LunarStationInterior.fbx'
+export finished in 0.0458 sec.
+LUNAR_BASE_NORMALS_EXPORTED
+Blender 5.2.2 LTS (hash d13f752e3b9c built 2026-09-15 01:37:04)
+
+Blender quit

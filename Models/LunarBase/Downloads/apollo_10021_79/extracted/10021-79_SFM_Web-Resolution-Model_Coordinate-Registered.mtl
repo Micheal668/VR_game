@@ -1,0 +1,6 @@
+# Wavefront material file
+newmtl material_0
+
+newmtl material_1
+map_Kd 10021-79_SFM_Web-Resolution-Model_Coordinate-Registered.jpg
+

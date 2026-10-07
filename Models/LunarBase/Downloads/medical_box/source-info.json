@@ -1,0 +1,53 @@
+{
+  "type": 2,
+  "name": "Medical Box",
+  "categories": [
+    "collection: project_lighthouse",
+    "props",
+    "containers"
+  ],
+  "tags": [
+    "worn",
+    "metal",
+    "green",
+    "medical",
+    "first aid",
+    "storage",
+    "scratched"
+  ],
+  "description": "Free, 4K model of a vintage green metal medical box, open with hinged lid, riveted handle, twin latches, metallic interior, worn paint and edge scuffs.",
+  "authors": {
+    "Ulan Cabanilla": "All"
+  },
+  "donated": true,
+  "max_resolution": [
+    4096,
+    4096
+  ],
+  "polycount": 3718,
+  "texel_density": 3406.3204512005645,
+  "dimensions": [
+    525.4814624786377,
+    350.16927123069763,
+    97.5121483206749
+  ],
+  "date_published": 1781913600,
+  "staging": null,
+  "category_id": "5d67f643-870a-5c10-bc96-5cd28d507a85",
+  "category": "Apparel & Personal Items/Mobility & Medical/Medical Kits",
+  "collections": [
+    "project_lighthouse"
+  ],
+  "attributes": {
+    "condition": [
+      "worn"
+    ],
+    "material": [
+      "metal"
+    ]
+  },
+  "files_hash": "e88c35fdfce2d2c4e77c406f49bcf39563c2dadc",
+  "img_version": "a65ebaa5",
+  "download_count": 475,
+  "thumbnail_url": "https://cdn.polyhaven.com/asset_img/thumbs/medical_box.png?width=256&height=256&format=webp&v=a65ebaa5"
+}

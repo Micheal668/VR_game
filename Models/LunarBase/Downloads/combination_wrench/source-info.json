@@ -1,0 +1,50 @@
+{
+  "type": 2,
+  "name": "Combination Wrench",
+  "categories": [
+    "collection: project_lighthouse",
+    "tools",
+    "industrial"
+  ],
+  "category": "Tools & Equipment/Hand Tools/Wrenches & Spanners",
+  "tags": [
+    "garage",
+    "workshop",
+    "construction",
+    "scratched"
+  ],
+  "description": "Free 4K model of a steel combination wrench with open and 12\u2011point box ends, crisp chamfers, brushed metal, and realistic wear, scratches, and grime.",
+  "authors": {
+    "BKS": "All"
+  },
+  "donated": true,
+  "category_id": "8df19fe5-50db-5ca2-a9bf-8eb52962c94a",
+  "max_resolution": [
+    4096,
+    4096
+  ],
+  "polycount": 1986,
+  "files_hash": "66f73753979a340ab6fa34460f7e4085ca7c861a",
+  "texel_density": 15169.612674997454,
+  "dimensions": [
+    56.58109299838543,
+    336.9841277599335,
+    21.513011306524277
+  ],
+  "date_published": 1783036800,
+  "staging": null,
+  "collections": [
+    "project_lighthouse"
+  ],
+  "attributes": {
+    "material": [
+      "steel"
+    ],
+    "condition": [
+      "worn"
+    ]
+  },
+  "img_version": "8564fe7b",
+  "download_count": 988,
+  "thumbnail_url": "https://cdn.polyhaven.com/asset_img/thumbs/combination_wrench.png?width=256&height=256&format=webp&v=8564fe7b"
+}

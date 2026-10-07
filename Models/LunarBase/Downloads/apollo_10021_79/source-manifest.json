@@ -1,0 +1,37 @@
+{
+  "id": "apollo_10021_79",
+  "name": "Apollo 11 lunar sample 10021,79",
+  "source_page": "https://ares.jsc.nasa.gov/astromaterials3d/explorer/?sample=10021-79",
+  "download_url": "https://ares-a3d.s3.us-gov-east-1.amazonaws.com/samples/10021-79/2b_10021-79_SFM_Web-Resolution-Model_Coordinate-Registered/10021-79_SFM_Web-Resolution-Model_Coordinate-Registered.zip",
+  "author": "NASA Astromaterials 3D / Lunar Sample Laboratory Facility",
+  "license": "Public domain (NASA Astromaterials3D FAQ)",
+  "license_page": "https://ares.jsc.nasa.gov/astromaterials3d/faqs.htm",
+  "credit": "NASA / Astromaterials 3D; 3D reconstructed image data produced at the Lunar Sample Laboratory Facility in NASA Acquisition and Curation Office; funded by NASA Planetary Data Archiving, Restoration, and Tools Program, Proposal 15-PDART15_2-0041.",
+  "files": [
+    {
+      "path": "Models/LunarBase/Downloads/apollo_10021_79/source.zip",
+      "bytes": 4441270,
+      "sha256": "052897cfca13b6d7d92c49c6e82e9b6a503108ee1e42757b2a5bcb7e71284b8b"
+    },
+    {
+      "path": "Models/LunarBase/Downloads/apollo_10021_79/extracted/10021-79_SFM_Web-Resolution-Model_Coordinate-Registered.jpg",
+      "bytes": 2297731,
+      "sha256": "ef365920534f675435b2a061dbac4fdda9f055d232cd10b3e73f56c644acd637"
+    },
+    {
+      "path": "Models/LunarBase/Downloads/apollo_10021_79/extracted/10021-79_SFM_Web-Resolution-Model_Coordinate-Registered.mtl",
+      "bytes": 131,
+      "sha256": "6e136523346557b0172f63bf397224278b042a23de3d96efa19bf8b1eebc5837"
+    },
+    {
+      "path": "Models/LunarBase/Downloads/apollo_10021_79/extracted/10021-79_SFM_Web-Resolution-Model_Coordinate-Registered.obj",
+      "bytes": 6192047,
+      "sha256": "1f25ee40b80abb9f30ba732ea177ee85d36f46440469ea7ed6387be9f0a97058"
+    },
+    {
+      "path": "Models/LunarBase/Downloads/apollo_10021_79/extracted/A3D_OBJ_10021-79_2020-06-16_Model-Parameters.pdf",
+      "bytes": 605719,
+      "sha256": "0bd1fae4dba4df9d5c227c3a8e1bbf3da401d4fc5b3e0deb94f5dba75e8940ec"
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "id": "power_box_01",
+  "fbx": "Assets/_LunarEscape/Art/StationProps/power_box_01/power_box_01.fbx",
+  "source_id": "power_box_01",
+  "source_url": "https://polyhaven.com/a/power_box_01",
+  "author": "Rico Cilliers, Yann Kervran",
+  "license": "CC0-1.0",
+  "bounds_m": [
+    0.3774920701980591,
+    0.503142774105072,
+    0.41845703125
+  ],
+  "triangles": 21272,
+  "materials": [
+    {
+      "name": "power_box_01",
+      "base_color": "Assets/_LunarEscape/Art/StationProps/power_box_01/textures/power_box_01_diff_2k.jpg",
+      "normal": "Assets/_LunarEscape/Art/StationProps/power_box_01/textures/power_box_01_nor_gl_2k.png",
+      "metallic_smoothness": "Assets/_LunarEscape/Art/StationProps/power_box_01/textures/power_box_01_metallic_smoothness_2k.png",
+      "occlusion": "Assets/_LunarEscape/Art/StationProps/power_box_01/textures/power_box_01_ao_2k.png",
+      "alpha_clip": false
+    }
+  ],
+  "notes": "Displayed source pose baked; open door and breakers preserved. Suitable for wall-mounted equipment, not a handheld battery.",
+  "sha256": "3701f4bfe8b2069b3b8da50d08da97eb1b4151812708c70323af89f47a8cd05f"
+}
