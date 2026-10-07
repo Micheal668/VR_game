@@ -119,65 +119,51 @@ namespace LunarEscape.Tests
         [UnityTest]
         public IEnumerator RealWrenchSelectionRepairsAndOpeningDoorKeepsBodyRouteClear()
         {
+            // 主场景的维修是气闸 A 抢修：扳手用于拧松舱门锁销，修好并拉杆放行后舱门才在撤离时打开。
             var tool = Object.FindAnyObjectByType<RepairTool>();
-            var grab = tool.GetComponent<XRGrabInteractable>();
-            var contact = Object.FindAnyObjectByType<RepairContact>();
-            var task = session.Mission.RepairTask;
-            var manager = Object.FindAnyObjectByType<XRInteractionManager>();
-            var hand = CreateHand(manager);
+            var airlock = Object.FindAnyObjectByType<AirlockRepair>();
+            var driver = new AirlockTestDriver(airlock);
             var initialToolPosition = tool.transform.position;
             yield return null;
-
-            var door = NamedChild(layout.BaseExterior.transform, "Evacuation Door").gameObject;
-            Physics.SyncTransforms();
-            Assert.That(CorridorHits().Any(hit => hit.collider.gameObject == door), Is.True,
-                "开始撤离前，真实身体路径必须被关闭的气闸门阻挡。");
-            session.BeginMission();
-            MoveTip(tool, contact.RepairPoint.position);
-            session.Advance(0.1f);
-            Assert.That(task.Progress, Is.Zero, "工具外观接触目标但没有抓取时不能维修。");
-
-            manager.SelectEnter((IXRSelectInteractor)hand, (IXRSelectInteractable)grab);
-            Assert.That(tool.IsHeld, Is.True);
-            MoveTip(tool, contact.RepairPoint.position + Vector3.right * contact.ContactRadius * 2);
-            session.Advance(0.1f);
-            Assert.That(task.Progress, Is.Zero, "新工具仍以工具头位置判定接触。");
-            MoveTip(tool, contact.RepairPoint.position);
-            session.Advance(task.DurationSeconds * 0.25f);
-            Assert.That(task.Progress, Is.EqualTo(0.25f).Within(0.001f));
-
-            manager.SelectExit((IXRSelectInteractor)hand, (IXRSelectInteractable)grab);
-            MoveTip(tool, contact.RepairPoint.position);
-            session.Advance(0.1f);
-            Assert.That(task.State, Is.EqualTo(RepairState.Paused));
-            Assert.That(task.Progress, Is.EqualTo(0.25f).Within(0.001f));
-            manager.SelectEnter((IXRSelectInteractor)hand, (IXRSelectInteractable)grab);
-            MoveTip(tool, contact.RepairPoint.position);
-            session.Advance(task.RemainingSeconds);
-            Assert.That(session.Mission.RepairRestored, Is.True);
-            Assert.That(task.State, Is.EqualTo(RepairState.Complete));
-            manager.SelectExit((IXRSelectInteractor)hand, (IXRSelectInteractable)grab);
-
-            session.Advance(session.Mission.RemainingSeconds);
-            Assert.That(session.Mission.Phase, Is.EqualTo(StationMissionPhase.Evacuation));
-            Physics.SyncTransforms();
-            Assert.That(door.activeSelf, Is.False);
-            var hits = CorridorHits();
-            Assert.That(hits, Is.Empty, "写实门框或装饰阻挡撤离路径：" + string.Join(", ", hits.Select(hit => hit.collider.name)));
-            for (float x = 3.4f; x <= 8f; x += 0.25f)
+            try
             {
-                Assert.That(Physics.Raycast(new Vector3(x, 0.35f, 1.7f), Vector3.down, out var hit, 0.5f,
-                    Physics.DefaultRaycastLayers, QueryTriggerInteraction.Ignore), Is.True, "走廊缺地板 x=" + x);
-                Assert.That(hit.point.y, Is.InRange(-0.02f, 0.02f));
-                Assert.That(hit.normal.y, Is.GreaterThan(0.9f));
+                var door = NamedChild(layout.BaseExterior.transform, "Evacuation Door").gameObject;
+                Physics.SyncTransforms();
+                Assert.That(CorridorHits().Any(hit => hit.collider.gameObject == door), Is.True,
+                    "开始撤离前，真实身体路径必须被关闭的气闸门阻挡。");
+                session.BeginMission();
+                yield return driver.ReplaceFuse();
+                yield return driver.TurnValve(720f);
+                yield return driver.UnboltAll(tool);
+                Assert.That(driver.Latches.IsFixed, Is.True, "写实扳手的工具头能套住并拧松锁销。");
+                yield return driver.PullLever(1.8f);
+                Assert.That(airlock.IsReleased, Is.True);
+                session.Advance(0.5f);
+                Assert.That(session.Mission.RepairRestored, Is.True);
+
+                session.Advance(session.Mission.RemainingSeconds);
+                Assert.That(session.Mission.Phase, Is.EqualTo(StationMissionPhase.Evacuation));
+                Physics.SyncTransforms();
+                Assert.That(door.activeSelf, Is.False);
+                var hits = CorridorHits();
+                Assert.That(hits, Is.Empty, "写实门框或装饰阻挡撤离路径：" + string.Join(", ", hits.Select(hit => hit.collider.name)));
+                for (float x = 3.4f; x <= 8f; x += 0.25f)
+                {
+                    Assert.That(Physics.Raycast(new Vector3(x, 0.35f, 1.7f), Vector3.down, out var hit, 0.5f,
+                        Physics.DefaultRaycastLayers, QueryTriggerInteraction.Ignore), Is.True, "走廊缺地板 x=" + x);
+                    Assert.That(hit.point.y, Is.InRange(-0.02f, 0.02f));
+                    Assert.That(hit.normal.y, Is.GreaterThan(0.9f));
+                }
+                session.RetryMission();
+                yield return null;
+                yield return null;
+                Assert.That(door.activeSelf, Is.True);
+                Assert.That(airlock.IsReleased, Is.False);
+                Assert.That(tool.IsHeld, Is.False);
+                Assert.That(Vector3.Distance(tool.transform.position, initialToolPosition), Is.LessThan(0.1f));
+                AssertPropVisual(tool.transform);
             }
-            session.RetryMission();
-            yield return null;
-            Assert.That(door.activeSelf, Is.True);
-            Assert.That(tool.IsHeld, Is.False);
-            Assert.That(Vector3.Distance(tool.transform.position, initialToolPosition), Is.LessThan(0.1f));
-            Assert.That(task.Progress, Is.Zero);
-            AssertPropVisual(tool.transform);
+            finally { driver.Dispose(); }
         }
 
         [UnityTest]

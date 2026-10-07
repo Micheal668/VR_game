@@ -16,6 +16,8 @@ namespace LunarEscape
         [SerializeField] private ReturnFallenTool tool;
         [SerializeField] private bool requireExitConfirmation;
         [SerializeField] private AscentMission ascent;
+        [Tooltip("主场景：维修内容为气闸 A 抢修。为空时沿用工具接触维修点的旧规则。")]
+        [SerializeField] private AirlockRepair airlock;
         private bool exitConfirmed;
         private GravityProvider gravity;
         private MissionTeleportationProvider teleport;
@@ -26,6 +28,13 @@ namespace LunarEscape
         public XROrigin Player => player;
         public Transform SpawnPoint => spawnPoint;
         public bool RequiresExitConfirmation => requireExitConfirmation;
+        public AirlockRepair Airlock => airlock;
+
+        public void ConfigureAirlock(AirlockRepair repair)
+        {
+            if (repair != null && repair.Mission != mission) throw new ArgumentException("气闸抢修必须连接同一基地任务。");
+            airlock = repair;
+        }
 
         // 第四步需要进舱后确认，旧教学场景仍然保持走到出口就完成。
         public void ConfigureExitConfirmation(bool required)
@@ -99,7 +108,9 @@ namespace LunarEscape
             ValidateReferences();
             // 点击时已核对身体区域；合法确认后锁存这次请求，避免下一帧小幅移动使登舱卡住。
             // Tick 仍先结算截止时间，因此本帧到期不会被点击绕过。
-            mission.Tick(dt, contact.HasValidContact(),requireExitConfirmation ? exitConfirmed : exit.ContainsPlayer);
+            // 气闸放行即视为本阶段维修成功；旧场景仍按工具接触推进维修。
+            bool canRepair = airlock != null ? airlock.IsReleased : contact.HasValidContact();
+            mission.Tick(dt, canRepair, requireExitConfirmation ? exitConfirmed : exit.ContainsPlayer);
         }
 
         public void RetryMission()

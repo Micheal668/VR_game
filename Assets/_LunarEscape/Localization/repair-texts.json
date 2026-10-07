@@ -1289,6 +1289,228 @@
       "zh": "按住主推\n>12 m",
       "en": "HOLD: MAIN\n>12 m",
       "ru": "ДЕРЖАТЬ: МАРШЕВЫЙ\n>12 м"
+    },
+    {
+      "key": "airlock.briefing.title",
+      "zh": "“塞勒涅-3”：A 号气闸卡死",
+      "en": "SELENE-3: AIRLOCK A JAMMED",
+      "ru": "«Селена-3»: шлюз А заблокирован"
+    },
+    {
+      "key": "airlock.briefing.instructions",
+      "zh": "夜间电涌让 A 号气闸卡死——这是通往上升器的唯一出口。趁一切还平静，排除三处故障。若下达撤离命令，修好的气闸能多给你 {0} 秒。",
+      "en": "A night-time power surge jammed Airlock A, the only way out to the ascent module. Clear its three faults while things are quiet. A working airlock buys you +{0} s if evacuation is called.",
+      "ru": "Ночью скачок напряжения заблокировал шлюз А — единственный выход к взлётному модулю. Устраните три неисправности, пока всё спокойно. Исправный шлюз даст +{0} с, если объявят эвакуацию."
+    },
+    {
+      "key": "airlock.repair.title",
+      "zh": "A 号气闸故障排查",
+      "en": "AIRLOCK A DIAGNOSTICS",
+      "ru": "Диагностика шлюза А"
+    },
+    {
+      "key": "airlock.repair.instructions",
+      "zh": "门旁配电盒：换掉烧坏的保险丝（备件在后墙）。右后墙阀门：把压差拧到绿区。舱门：用工作台上的扳手拧松三颗锁销。最后拉下门旁拉杆。",
+      "en": "Door panel: replace the burnt fuse (spares on the rear wall). Valve on the far wall: turn the needle into the green. Door: free three latch pins with the bench wrench. Then pull the release lever.",
+      "ru": "Щиток у двери: замените сгоревший предохранитель (запасные — у задней стены). Вентиль: стрелку в зелёную зону. Дверь: открутите ключом с верстака три штифта. Затем рычаг вниз."
+    },
+    {
+      "key": "airlock.stabilized.title",
+      "zh": "A 号气闸已恢复",
+      "en": "AIRLOCK A RESTORED",
+      "ru": "Шлюз А восстановлен"
+    },
+    {
+      "key": "airlock.stabilized.instructions",
+      "zh": "气闸循环完成。反应堆传感器报告冷却剂温度持续上升……做好准备。",
+      "en": "The airlock has cycled. Reactor sensors report coolant temperature still climbing... Stand by.",
+      "ru": "Шлюз прошёл цикл. Датчики реактора фиксируют рост температуры теплоносителя… Будьте готовы."
+    },
+    {
+      "key": "airlock.evacuation.title",
+      "zh": "反应堆冷却失效：立即撤离！",
+      "en": "REACTOR COOLING FAILURE: EVACUATE",
+      "ru": "Отказ охлаждения реактора. Эвакуация!"
+    },
+    {
+      "key": "airlock.evacuation.instructions.repaired",
+      "zh": "气闸已开，多出 {0} 秒。把至多 3 类物资扣到腰带上，沿青色标记跑向上升器舷梯。",
+      "en": "Airlock open, +{0} s gained. Clip up to 3 kinds of supplies to your belt and follow the teal markers to the module ladder.",
+      "ru": "Шлюз открыт, у вас +{0} с. Пристегните к поясу до 3 видов припасов и бегите по бирюзовым меткам к лестнице модуля."
+    },
+    {
+      "key": "airlock.evacuation.instructions.unrepaired",
+      "zh": "气闸仍然卡死！在撤离倒计时中完成抢修，把物资扣上腰带，冲向上升器。",
+      "en": "The airlock is still jammed! Finish the repair against the clock, clip supplies to your belt and run for the module.",
+      "ru": "Шлюз всё ещё заблокирован! Доделайте ремонт под отсчёт эвакуации, пристегните припасы к поясу — и к модулю."
+    },
+    {
+      "key": "airlock.completed.title",
+      "zh": "已抵达上升器",
+      "en": "AT THE ASCENT MODULE",
+      "ru": "Вы у взлётного модуля"
+    },
+    {
+      "key": "airlock.completed.instructions",
+      "zh": "正在登舱。基地倒计时仍在继续。",
+      "en": "Boarding. The station's countdown keeps running.",
+      "ru": "Посадка. Отсчёт до отказа станции продолжается."
+    },
+    {
+      "key": "airlock.failed.title",
+      "zh": "乘员信号中断",
+      "en": "CREW SIGNAL LOST",
+      "ru": "Связь с экипажем потеряна"
+    },
+    {
+      "key": "airlock.failed.instructions",
+      "zh": "你没能及时撤离。请在结算窗口点击重新开始。",
+      "en": "You did not get out in time. Press Retry in the summary.",
+      "ru": "Вы не успели покинуть станцию. Нажмите «Начать заново» в окне итогов."
+    },
+    {
+      "key": "airlock.summary.pending",
+      "zh": "在警报前修好气闸：撤离时间 +{0} 秒。",
+      "en": "Fix the airlock before the alarm: +{0} s to evacuate.",
+      "ru": "Шлюз до тревоги: +{0} с на эвакуацию."
+    },
+    {
+      "key": "airlock.summary.repaired",
+      "zh": "气闸已修复：撤离时间 +{0} 秒。",
+      "en": "Airlock restored: +{0} s to evacuate.",
+      "ru": "Шлюз исправен: +{0} с на эвакуацию."
+    },
+    {
+      "key": "airlock.summary.unrepaired",
+      "zh": "气闸未修好：需在撤离倒计时中抢修。",
+      "en": "Airlock not ready: repair it on the evacuation clock.",
+      "ru": "Шлюз не готов: ремонт под отсчёт эвакуации."
+    },
+    {
+      "key": "airlock.status.faults",
+      "zh": "A 号气闸：剩余 {0} 处故障",
+      "en": "Airlock A: {0} fault(s) remaining",
+      "ru": "Шлюз А: осталось неисправностей — {0}"
+    },
+    {
+      "key": "airlock.status.ready",
+      "zh": "故障已排除：拉下门旁拉杆并保持",
+      "en": "Faults cleared: pull the lever by the door and hold",
+      "ru": "Неисправности устранены: тяните рычаг у двери и держите"
+    },
+    {
+      "key": "airlock.status.released",
+      "zh": "A 号气闸：循环完成",
+      "en": "Airlock A: cycle complete",
+      "ru": "Шлюз А: цикл завершён"
+    },
+    {
+      "key": "airlock.exit.jammed",
+      "zh": "A 号气闸卡死",
+      "en": "Airlock A jammed",
+      "ru": "Шлюз А заблокирован"
+    },
+    {
+      "key": "airlock.panel.title",
+      "zh": "A 号气闸 · 诊断",
+      "en": "AIRLOCK A · DIAGNOSTICS",
+      "ru": "ШЛЮЗ А · ДИАГНОСТИКА"
+    },
+    {
+      "key": "airlock.row.power.bad",
+      "zh": "驱动电源：断开 · F3 保险丝烧毁",
+      "en": "DRIVE POWER: OFF · fuse F3 blown",
+      "ru": "ПИТАНИЕ ПРИВОДА: НЕТ · сгорел F3"
+    },
+    {
+      "key": "airlock.row.power.open",
+      "zh": "驱动电源：断开 · 需要备用 F3",
+      "en": "DRIVE POWER: OFF · spare F3 needed",
+      "ru": "ПИТАНИЕ ПРИВОДА: НЕТ · нужен запасной F3"
+    },
+    {
+      "key": "airlock.row.power.ok",
+      "zh": "驱动电源：正常",
+      "en": "DRIVE POWER: NOMINAL",
+      "ru": "ПИТАНИЕ ПРИВОДА: НОРМА"
+    },
+    {
+      "key": "airlock.row.pressure.bad",
+      "zh": "压差：{0} kPa · 打开平衡阀",
+      "en": "PRESSURE DELTA: {0} kPa · open the valve",
+      "ru": "ПЕРЕПАД ДАВЛЕНИЯ: {0} кПа · вентиль"
+    },
+    {
+      "key": "airlock.row.pressure.over",
+      "zh": "超压，正在泄压！把阀门往回拧",
+      "en": "OVERPRESSURE, venting! Turn the valve back",
+      "ru": "ПЕРЕДАВЛЕНИЕ, сброс! Верните вентиль"
+    },
+    {
+      "key": "airlock.row.pressure.ok",
+      "zh": "压力：已平衡",
+      "en": "PRESSURE: EQUALIZED",
+      "ru": "ДАВЛЕНИЕ: ВЫРОВНЕНО"
+    },
+    {
+      "key": "airlock.row.latch.bad",
+      "zh": "锁销：已松开 {0}/{1} · 需要扳手",
+      "en": "LATCH PINS: {0} of {1} free · use the wrench",
+      "ru": "ЗАПОРНЫЕ ШТИФТЫ: {0} из {1} · нужен ключ"
+    },
+    {
+      "key": "airlock.row.latch.ok",
+      "zh": "锁销：全部松开",
+      "en": "LATCH PINS: FREE",
+      "ru": "ЗАПОРНЫЕ ШТИФТЫ: СВОБОДНЫ"
+    },
+    {
+      "key": "airlock.row.lever.locked",
+      "zh": "手动开门：闭锁中",
+      "en": "MANUAL RELEASE: INHIBITED",
+      "ru": "РУЧНОЕ ОТКРЫТИЕ: БЛОКИРОВАНО"
+    },
+    {
+      "key": "airlock.row.lever.ready",
+      "zh": "手动开门：向下拉住拉杆",
+      "en": "MANUAL RELEASE: pull the lever and hold",
+      "ru": "РУЧНОЕ ОТКРЫТИЕ: тяните рычаг и держите"
+    },
+    {
+      "key": "airlock.row.lever.cycling",
+      "zh": "气闸循环：{0}% · 保持",
+      "en": "AIRLOCK CYCLE: {0}% · hold",
+      "ru": "ЦИКЛ ШЛЮЗА: {0}% · держите"
+    },
+    {
+      "key": "airlock.row.lever.open",
+      "zh": "门锁已解除 · 舱门就绪",
+      "en": "LOCKS RELEASED · door ready",
+      "ru": "ЗАМКИ СНЯТЫ · дверь готова"
+    },
+    {
+      "key": "airlock.box.label",
+      "zh": "A 号气闸配电盒\n驱动 · F3",
+      "en": "AIRLOCK A PANEL\nDRIVE · F3",
+      "ru": "ЩИТОК ШЛЮЗА А\nПРИВОД · F3"
+    },
+    {
+      "key": "airlock.spare.label",
+      "zh": "备件\n保险丝 F3",
+      "en": "SPARES\nfuse F3",
+      "ru": "ЗАПЧАСТИ\nпредохранитель F3"
+    },
+    {
+      "key": "airlock.valve.label",
+      "zh": "压力\n平衡阀",
+      "en": "PRESSURE\nEQUALIZER",
+      "ru": "ВЫРАВНИВАНИЕ\nДАВЛЕНИЯ"
+    },
+    {
+      "key": "airlock.lever.label",
+      "zh": "手动开门\n向下拉",
+      "en": "MANUAL RELEASE\npull down",
+      "ru": "РУЧНОЕ ОТКРЫТИЕ\nтянуть вниз"
     }
   ]
 }

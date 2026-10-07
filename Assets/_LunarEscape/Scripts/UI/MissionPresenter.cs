@@ -15,10 +15,19 @@ namespace LunarEscape
         [SerializeField] private Button retryButton;
         [SerializeField] private GameObject repairDetails;
         [SerializeField] private string instructionPrefix = "mission.";
+        [Tooltip("标题与维修结果文案的前缀；主场景使用 airlock. 讲述气闸抢修。")]
+        [SerializeField] private string headingPrefix = "mission.";
 
         public void ConfigureInstructionPrefix(string prefix)
         {
             instructionPrefix = prefix;
+            hasDisplayed = false;
+            Refresh();
+        }
+
+        public void ConfigureHeadingPrefix(string prefix)
+        {
+            headingPrefix = prefix;
             hasDisplayed = false;
             Refresh();
         }
@@ -103,7 +112,7 @@ namespace LunarEscape
                 StationMissionPhase.Failed => "failed",
                 _ => "briefing"
             };
-            SetText(heading, "mission." + stage + ".title");
+            SetText(heading, headingPrefix + stage + ".title");
             string instructionKey = instructionPrefix + stage + ".instructions";
             if (phase == StationMissionPhase.Evacuation)
                 instructionKey += mission.RepairRestored ? ".repaired" : ".unrepaired";
@@ -112,7 +121,7 @@ namespace LunarEscape
             bool repairEnded = phase == StationMissionPhase.Evacuation
                 || phase == StationMissionPhase.Completed || phase == StationMissionPhase.Failed;
             string result = mission.RepairRestored ? "repaired" : repairEnded ? "unrepaired" : "pending";
-            SetText(repairSummary, "mission.summary." + result, bonus);
+            SetText(repairSummary, headingPrefix + "summary." + result, bonus);
         }
 
         private void RefreshClock(StationMissionPhase phase, int seconds)

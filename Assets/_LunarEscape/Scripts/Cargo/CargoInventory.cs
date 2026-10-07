@@ -201,6 +201,17 @@ namespace LunarEscape
             }
         }
 
+        // 从腰带插槽取回一件已收纳物资：先恢复为世界物体放在插槽处，再由调用方让手抓住它。
+        // 抓住时重新经过同一份额度检查，因此取出再放回不会多占或少算。
+        public bool TryUnpack(CargoItem item, Vector3 position, Quaternion rotation)
+        {
+            if (!CanChange()) return Reject(CargoRejection.WrongPhase);
+            if (!Owns(item) || item.State != CargoState.Packed) return Reject(CargoRejection.NotStored);
+            item.SetState(CargoState.World);
+            item.RestoreAt(position, rotation);
+            return Accept();
+        }
+
         public bool LoadPackedIntoShip() => LoadIntoShip(false);
         public bool LoadAllCarriedIntoShip() => LoadIntoShip(true);
 
