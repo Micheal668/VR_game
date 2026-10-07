@@ -1,0 +1,13 @@
+C:\Coding\Projects\VR_game\Tools\build_industrial_battery.py:46: DeprecationWarning: 'Material.use_nodes' is expected to be removed in Blender 6.0
+  mat=bpy.data.materials.new('industrial_battery_'+name);mat.diffuse_color=color;mat.use_nodes=True
+C:\Coding\Projects\VR_game\Tools\build_industrial_battery.py:222: DeprecationWarning: 'World.use_nodes' is expected to be removed in Blender 6.0
+  scene.world=bpy.data.worlds.new('Studio');scene.world.use_nodes=True
+00:07.406  render           | Saved: 'C:\Coding\Projects\VR_game\Models\LunarBase\Downloads\Previews\industrial_battery.png'
+
+FBX export starting... 'C:\\Coding\\Projects\\VR_game\\Assets\\_LunarEscape\\Art\\StationProps\\industrial_battery\\industrial_battery.fbx'
+export finished in 0.0307 sec.
+Info: Saved as "IndustrialBattery.blend"
+INDUSTRIAL_BATTERY_COMPLETE {"triangles": 11450, "bounds": [0.3410000205039978, 0.28700000047683716, 0.22220000624656677], "fbx": "C:\\Coding\\Projects\\VR_game\\Assets\\_LunarEscape\\Art\\StationProps\\industrial_battery\\industrial_battery.fbx"}
+Blender 5.2.2 LTS (hash d13f752e3b9c built 2026-09-15 01:37:04)
+
+Blender quit

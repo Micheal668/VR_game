@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Astromaterials 3D Explorer</title>
+
+    <meta name="description" content="Astromaterials 3D Explorer" />
+    <meta name="author" content="NASA, JSC, ARES" />
+
+    <link rel="image_src" href="https://ares.jsc.nasa.gov/astromaterials3d/explorer/images/screenshot.png" />
+    <meta name="description" content="Analyse the exterior and interior of the NASA Astromaterials collection." />
+
+    <meta property="og:title" content="Astromaterials 3D Explorer" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://ares.jsc.nasa.gov/astromaterials3d/explorer/images/screenshot.png" />
+    <meta property="og:url" content="https://ares.jsc.nasa.gov/astromaterials3d/explorer/" />
+    <meta property="og:description" content="Analyse the exterior and interior of the NASA Astromaterials collection." />
+    <meta property="og:site_name" content="Astromaterials 3D Explorer" />
+
+    <link rel="icon" type="image/png" href="images/favicon.ico" />
+    <link href="https://fonts.googleapis.com/css2?family=Encode+Sans+Semi+Expanded:wght@300;400;500;700&family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet" />
+    <link href="css/jquery.modal.min.css" rel="stylesheet" />
+    <link href="css/omni-slider.css" rel="stylesheet" />
+    <link href="css/anno.css" rel="stylesheet" />
+    <link href="css/style.css" rel="stylesheet" />
+
+    <script src="/_utilities/jquery/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+
+    <script src="lib/jquery.modal_0.9.1.min.js"></script>
+    <script src="lib/jquery_extensions.js"></script>
+    <script src="lib/three.95.js"></script>
+    <script src="lib/OBJLoader.js"></script>
+    <script src="lib/OrbitControls.js"></script>
+    <script src="lib/AnaglyphEffect.js"></script>
+    <script src="lib/Detector.js"></script>
+    <script src="lib/paper-full.min.js"></script>
+    <script src="lib/anno.js"></script>
+    <script src="lib/json-url/json-url.js"></script>
+    <script src="lib/omni-slider.js"></script>
+    <script src="js/cubeNav.js"></script>
+    <script src="js/svgs.js"></script>
+    <script src="js/menu.js"></script>
+    <script src="js/tour.js"></script>
+    <script src="js/moonrocks.js"></script>
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-138174119-1"></script>
+    <script>
+      var url = window.location.origin;
+      if (url.indexOf("ares.jsc.nasa.gov")) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag() {
+          dataLayer.push(arguments);
+        }
+        gtag("js", new Date());
+        gtag("config", "UA-138174119-1");
+
+        var js = document.createElement("script");
+        js.id = "_fed_an_ua_tag";
+        js.src = "https://dap.digitalgov.gov/Universal-Federated-Analytics-Min.js";
+        js.src += "?agency=NASA&subagency=JSC&dclink=true";
+        document.body.appendChild(js);
+      }
+    </script>
+  </head>
+
+  <body>
+    <div id="rockContainer" class="backgroundLunar"></div>
+    <div id="moveMouseContainer" style="display: none">
+      <div id="svgMoveMouse"></div>
+    </div>
+    <div id="oriContainer"></div>
+    <div class="pageContainer">
+      <div class="pageLeft">
+        <a href="../" target="_blank" rel="noopener">
+          <div class="titleContainer">
+            <!--            <div class="titleChild"><img src="images/logo-nasa.png" style="width: 75px;" alt="NASA Logo"></div>-->
+            <!--            <div class="titleChild titleText">Astromaterials 3D<BR><span class="light">Explorer</span></div>-->
+            <h1><img srcset="images/wordmark_1.png 1x, images/wordmark_1@2x.png 2x" src="images/wordmark_1.png" alt="Astromaterials 3D Explorer" /></h1>
+          </div>
+        </a>
+      </div>
+      <div class="pageRight">
+        <div id="rightNav" class="transition">
+          <canvas id="navCanvas" resize>
+            <nav>
+              <ul title="Screen Reader Main Navigation">
+                <li><a href="#" onclick="selectMenuItem('navItem_Details');" tabindex="0">Details</a></li>
+                <li><a href="#" onclick="selectMenuItem('navItem_Slice');" tabindex="0">XCT Scan Slices</a></li>
+                <li><a href="#" onclick="selectMenuItem('navItem_View');" tabindex="0">View</a></li>
+                <li><a href="#" onclick="selectMenuItem('navItem_Pin');" tabindex="0">Pins</a></li>
+                <li><a href="#" onclick="selectMenuItem('navItem_Download');" tabindex="0">Download Screenshot</a></li>
+                <li><a href="#" onclick="selectMenuItem('navItem_Share');" tabindex="0">Share and Save</a></li>
+              </ul>
+            </nav>
+          </canvas>
+          <div id="rightNavContents" class="rightNavContents">
+            <div class="card">
+              <div class="sampleNumCardBody">
+                <div class="sampleTable">
+                  <div class="sampleTableRow">
+                    <div class="sampleTableCell sampleNum">Sample</div>
+                    <a href="#" target="_blank" rel="noopener" id="sampleDetailsHref" class="sampleNumValueHref">
+                      <div id="sampleNumSpan" class="sampleTableCell sampleNumValue">???</div>
+                    </a>
+                  </div>
+                  <div class="sampleTableRow">
+                    <div class="sampleTableCell sampleNumSubtext">Collection</div>
+                    <a href="#" target="_blank" rel="noopener" id="sampleCollectionHref" class="sampleNumValueHref">
+                      <div id="sampleCollectionSpan" class="sampleTableCell sampleNumSubtextValue">Apollo Lunar Collection</div>
+                    </a>
+                  </div>
+                  <div class="sampleTableRow">
+                    <div class="sampleTableCell sampleNumSubtext">Origin</div>
+                    <div id="sampleOriginSpan" class="sampleTableCell sampleNumSubtextValue">???</div>
+                  </div>
+                  <div class="sampleTableRow">
+                    <div class="sampleTableCell sampleNumSubtext">Collected</div>
+                    <div id="sampleCollectedSpan" class="sampleTableCell sampleNumSubtextValue">???</div>
+                  </div>
+                  <div class="sampleTableRow">
+                    <div class="sampleTableCell sampleNumSubtext">Classification</div>
+                    <div id="sampleTypeSpan" class="sampleTableCell sampleNumSubtextValue">???</div>
+                  </div>
+                </div>
+                <div class="rightNavClose">
+                  <div style="float: right">
+                    <div style="text-align: center" onclick="toggleRightNav();">
+                      <div class="svgClose"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="tabPanel" id="tabDetails">
+              <div class="card">
+                <div id="storyDetails">
+                  <div id="titleDetails" class="card-title">
+                    <!--                            <input type="button" style="float: right; margin-right: 20px;" class="btn btn-primary" id="curationDetailsButton" value="Curation Details" onclick="">-->
+                    Every Rock has a Story
+                  </div>
+                  <div class="card-body">
+                    <span id="detailParagraph">???</span><a href="#" target="_blank" rel="noopener" id="sampleDetailsHref2"><span style="color: #868686">Read more</span></a>
+                  </div>
+                </div>
+                <div id="xctOnlyStory">
+                  <div id="CTDataDetails">
+                    <div class="card-title">XCT-Only Sample</div>
+                    <div class="card-body">
+                      <div>
+                        The XCT-Only models display only the unprocessed X-ray computed tomography image data of the interior of the rock. These models differ from our “fusion” models that display both the exterior high-resolution photogrammetric image data and the interior X-ray computed tomography data. Since the Astromaterials Research & Exploration Science CT Laboratory at NASA Johnson Space Center produces extensive image data for samples, Astromaterials 3D has created this special section to serve selections of this important data to researchers and the public. You will notice that the XCT image data shown here may have less contrast or look less in focus than in the “fusion” models—this is because the data here has not been adjusted at all. In the fusion model, our team adjusts the image data within certain acceptable scientific parameters to bring out details in the data, but what you see here is the unprocessed data as it is output by the XCT scanner. You are welcome to download this data for your own exploration and research—link below!
+                        <br /><br />A note about the XCT-Only mesh visualization: The 3D mesh visible in this XCT-Only sample has very low fidelity to balance preservation of the general surface geometry while allowing a visually clear wireframe representation for our web application. Deviations between the XCT data and mesh geometry may occur as a result. The XCT data—not the mesh—is the definitive representation of the sample geometry.
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="card-title"><span id="processingSampleNum">???</span> Processing Details</div>
+
+                <div id="descriptionTableHRPP">
+                  <div class="card-title sub">High-Resolution Precision Photography (HRPP)</div>
+                  <div class="card-body">
+                    <a href="" target="_blank" rel="noopener" id="turntableImageLink">
+                      <img id="turntableImage" src="" style="float: right; padding: 0.5em 0 0.5em 0.5em; width: 280px" alt="image of rock being photographed" />
+                    </a>
+                    The HRPP process creates the images of the rock’s surface. Each of the hundreds of photographs taken per rock were captured by hand using custom-designed equipment inside a nitrogen cabinet in the cleanroom laboratories—no 3D-scanner was used for the exterior model. 360-degree photosets were taken at 7.5- or 15-degree rotations on both hemispheres of the rock at 0, 15, 30, 45, and 60-degree elevations.
+                    <div class="table-parent">
+                      <div class="table-column">
+                        <div class="table-cell">&nbsp;</div>
+                        <div class="table-cell">Camera</div>
+                        <div class="table-cell">Lens</div>
+                        <div class="table-cell">Mega Pixels</div>
+                        <div class="table-cell">Photos</div>
+                        <div class="table-cell" style="line-height: 30px">Total Size</div>
+                      </div>
+                      <div class="table-column-margin-first">
+                        <div class="table-cell-margin">&nbsp;</div>
+                        <div class="table-cell-margin">&nbsp;</div>
+                        <div class="table-cell-margin">&nbsp;</div>
+                        <div class="table-cell-margin">&nbsp;</div>
+                        <div class="table-cell-margin">&nbsp;</div>
+                        <div class="table-cell-margin" style="line-height: 30px">&nbsp;</div>
+                      </div>
+                      <div class="table-column">
+                        <div class="table-cell">Photography</div>
+                        <div class="table-cell" id="detailsField_camera">value</div>
+                        <div class="table-cell" id="detailsField_lens">value</div>
+                        <div class="table-cell" id="detailsField_mPixels">value</div>
+                        <div class="table-cell" id="detailsField_photoCount">value</div>
+                        <div class="table-cell" id="detailsField_totalPhotosSize" style="line-height: 30px">value</div>
+                      </div>
+                      <div class="table-column-margin">
+                        <div class="table-cell-margin" style="background-color: #000000"></div>
+                      </div>
+                      <div class="table-column" style="background-color: #000000"></div>
+                    </div>
+                  </div>
+                </div>
+                <div id="descriptionTableSFM">
+                  <div class="card-title sub">Structure-From-Motion Photogrammetry (SFM)</div>
+                  <div class="card-body">
+                    The SFM process is used to produce the 3D mesh of the rock’s exterior surface from the HRPP using photogrammetric principles. The rock’s texture is derived from HRPP and mapped to the mesh resulting in photorealistic color.
+                    <div class="table-parent">
+                      <div class="table-column">
+                        <div class="table-cell">&nbsp;</div>
+                        <div class="table-cell">Modeling Time</div>
+                        <div class="table-cell">Faces</div>
+                        <div class="table-cell">Vertices</div>
+                        <div class="table-cell">Texture Resolution</div>
+                        <div class="table-cell">Mesh File Size</div>
+                        <div class="table-cell">&nbsp;</div>
+                      </div>
+                      <div class="table-column-margin-first">
+                        <div class="table-cell-margin">&nbsp;</div>
+                        <div class="table-cell-margin">&nbsp;</div>
+                        <div class="table-cell-margin">&nbsp;</div>
+                        <div class="table-cell-margin">&nbsp;</div>
+                        <div class="table-cell-margin">&nbsp;</div>
+                        <div class="table-cell-margin">&nbsp;</div>
+                        <div class="table-cell-margin">&nbsp;</div>
+                      </div>
+                      <div class="table-column">
+                        <div class="table-cell">Full Resolution Mesh</div>
+                        <div class="table-cell" id="detailsField_modelTime">value</div>
+                        <div class="table-cell" id="detailsField_faces">value</div>
+                        <div class="table-cell" id="detailsField_vertices">value</div>
+                        <div class="table-cell" id="detailsField_textureRes">value</div>
+                        <div class="table-cell" id="detailsField_meshSize">value</div>
+                        <div class="table-cell">
+                          <a href="" id="sfm-fullres-url" target="_blank" rel="noopener" title="Download full resolution mesh data">
+                            <button class="download-button">DOWNLOAD (.ZIP)</button>
+                          </a>
+                        </div>
+                      </div>
+                      <div class="table-column-margin">
+                        <div class="table-cell-margin">&nbsp;</div>
+                        <div class="table-cell-margin">&nbsp;</div>
+                        <div class="table-cell-margin">&nbsp;</div>
+                        <div class="table-cell-margin">&nbsp;</div>
+                        <div class="table-cell-margin">&nbsp;</div>
+                        <div class="table-cell-margin">&nbsp;</div>
+                        <div class="table-cell-margin">&nbsp;</div>
+                      </div>
+                      <div class="table-column">
+                        <div class="table-cell">Low Resolution Mesh</div>
+                        <div class="table-cell" id="detailsField_webModelTime"></div>
+                        <div class="table-cell" id="detailsField_webFaces">value</div>
+                        <div class="table-cell" id="detailsField_webVertices">value</div>
+                        <div class="table-cell" id="detailsField_webTextureRes">value</div>
+                        <div class="table-cell" id="detailsField_webMeshSize">value</div>
+                        <div class="table-cell">
+                          <a href="" id="sfm-webres-url" target="_blank" rel="noopener" title="Download web resolution mesh data">
+                            <button class="download-button">DOWNLOAD (.ZIP)</button>
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div id="descriptionTableXCT">
+                  <div id="CTDataDetails">
+                    <div class="card-title sub">Micro X-ray Computed Tomography (XCT)</div>
+                    <div class="card-body">
+                      The XCT images allow you to look inside the rock itself, where the brightness variation of textural features you see is related to density and composition. For example, the bright tones would indicate metal or metal-rich features and the darker tones would indicate silica-rich features. Interior black features are voids.
+                      <div class="table-parent">
+                        <div class="table-column">
+                          <div class="table-cell">&nbsp;</div>
+                          <div class="table-cell">X-ray Power Output</div>
+                          <div class="table-cell">XCT X Slices</div>
+                          <div class="table-cell">XCT Y Slices</div>
+                          <div class="table-cell">XCT Z Slices</div>
+                          <div class="table-cell">Voxel Size</div>
+                          <div class="table-cell">Total Data Size</div>
+                          <div class="table-cell">&nbsp;</div>
+                        </div>
+                        <div class="table-column-margin-first">
+                          <div class="table-cell-margin">&nbsp;</div>
+                          <div class="table-cell-margin">&nbsp;</div>
+                          <div class="table-cell-margin">&nbsp;</div>
+                          <div class="table-cell-margin">&nbsp;</div>
+                          <div class="table-cell-margin">&nbsp;</div>
+                          <div class="table-cell-margin">&nbsp;</div>
+                          <div class="table-cell-margin">&nbsp;</div>
+                          <div class="table-cell-margin">&nbsp;</div>
+                        </div>
+                        <div class="table-column">
+                          <div class="table-cell">Raw XCT Imagery</div>
+                          <div class="table-cell" id="detailsField_xrayPower">value</div>
+                          <div class="table-cell" id="detailsField_YZCount">value</div>
+                          <div class="table-cell" id="detailsField_XZCount">value</div>
+                          <div class="table-cell" id="detailsField_XYCount">value</div>
+                          <div class="table-cell" id="detailsField_voxelSize">value</div>
+                          <div class="table-cell" id="detailsField_totalCTSize">value</div>
+                          <div class="table-cell">
+                            <a href="" id="xct-url" target="_blank" rel="noopener" title="Download XCT data">
+                              <button class="download-button">DOWNLOAD (.ZIP)</button>
+                            </a>
+                          </div>
+                        </div>
+                        <div class="table-column-margin">
+                          <div class="table-cell-margin" style="background-color: #000000"></div>
+                        </div>
+                        <div class="table-column" style="background-color: #000000"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div id="descriptionTableCuration">
+                  <div id="CTDataDetails">
+                    <div class="card-title">Curation Details</div>
+                    <div class="card-body">
+                      <div>You can learn more about the curation details, bulk chemical composition, and the scientific research that has been published to date on this sample's curation page.</div>
+                      <div style="margin-top: 5px">
+                        <a href="" id="curation-url" target="_blank" rel="noopener" title="Open Curation Website">
+                          <button class="download-button">OPEN PAGE</button>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="card-body footer">
+                  <div style="padding-top: 25px; padding-bottom: 10px">
+                    <a href="https://ares.jsc.nasa.gov" style="font-size: 1em; font-weight: 600" target="_blank" rel="noopener" rel="noopener">ARES &#8226; ASTROMATERIALS RESEARCH AND EXPLORATION SCIENCE</a>
+                  </div>
+                  <div style="display: flex">
+                    <div style="flex: 2">
+                      <div>
+                        <a href="https://www.nasa.gov/offices/odeo/no-fear-act" target="_blank" rel="noopener">No Fear Act</a>
+                        <br /><a href="https://www.nasa.gov/about/highlights/HP_Privacy.html" target="_blank" rel="noopener">Privacy Policy & Important Notices</a> <br /><a href="https://www.nasa.gov/FOIA/" target="_blank" rel="noopener">Freedom of Information Act</a>
+                      </div>
+                      <div>
+                        <a href="https://www.nasa.gov/news/budget/index.html" target="_blank" rel="noopener">Agency Financial Reports</a>
+                        <br /><a href="https://oig.nasa.gov/" target="_blank" rel="noopener">Office of Inspector General</a>
+                      </div>
+                    </div>
+                    <div style="flex: 1">
+                      <div style="font-size: 1em; font-weight: 600">CONTACTS</div>
+                      <div>
+                        <div>
+                          <a href="mailto:laura.m.lucier@nasa.gov">Laura M. Lucier</a>
+                          <div style="font-size: 0.8em">Responsible NASA Official</div>
+                        </div>
+                        <div style="padding-top: 6px">
+                          <a href="mailto:jsc-ares-developers@mail.nasa.gov?subject=Astromaterials 3D">ARES Developers</a>
+                          <div style="font-size: 0.8em">Website Curators</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!--                            <div style="flex: 1">-->
+                  <!--                                <img src="images/logo_ares.png" style="width: 70px; float: right; margin-right: 30px;" alt="ARES Logo">-->
+                  <!--                            </div>-->
+                </div>
+              </div>
+            </div>
+            <div class="tabPanel" id="tabSlice">
+              <div class="card">
+                <div id="titleSlice" class="card-title">Micro X-Ray Computed Tomography</div>
+                <div class="card-body">
+                  <p id="sliceIntroCopy">Cut into the rock from three different orientations to reveal X-Ray CT imagery of the rock's interior.</p>
+                </div>
+              </div>
+              <div class="card">
+                <div id="CTDisableDiv" class="CTDisableDiv"></div>
+                <div class="card-body">
+                  <div id="sliceSelectionTitle" class="card-title sub">Slice Orientation and Position</div>
+                  <p>Use your mouse to drag the sliders below. Release the mouse for full resolution imagery.</p>
+                  <span class="sliderLabel">X</span>
+                  <div id="YZRange" class="sliderCustomized"></div>
+                  <div class="distanceCalloutContainer">
+                    <div class="distanceCallout" id="YZDistanceCallout">
+                      <img class="distanceCalloutArrow" src="images/distance_arrowhead2.png" alt="" />
+                      <span class="distanceCalloutValue" id="YZDistance">0cm</span>
+                    </div>
+                  </div>
+
+                  <span class="sliderLabel">Y</span>
+                  <div id="XZRange" class="sliderCustomized"></div>
+                  <div class="distanceCalloutContainer">
+                    <div class="distanceCallout" id="XZDistanceCallout">
+                      <img class="distanceCalloutArrow" src="images/distance_arrowhead2.png" alt="" />
+                      <span class="distanceCalloutValue" id="XZDistance">0cm</span>
+                    </div>
+                  </div>
+
+                  <span class="sliderLabel">Z</span>
+                  <div id="XYRange" class="sliderCustomized"></div>
+                  <div class="distanceCalloutContainer">
+                    <div class="distanceCallout" id="XYDistanceCallout">
+                      <img class="distanceCalloutArrow" src="images/distance_arrowhead2.png" alt="" />
+                      <span class="distanceCalloutValue" id="XYDistance">0cm</span>
+                    </div>
+                  </div>
+                </div>
+                <div id="sliceDetailsTitle" class="card-title sub" style="margin-top: 0">Details</div>
+                <div class="card-body">
+                  <p>Make fine selection changes with +- and open high resolution slice imagery.</p>
+                  <div class="divTable sliceDetailsTable">
+                    <div class="divTableBody">
+                      <div class="divTableRow sliceTableRow">
+                        <div class="divTableCell sliceTableCell"></div>
+                        <div class="divTableCell sliceTableCell">View XCT Planes</div>
+                        <div class="divTableCell sliceTableCell">XCT Slice Number</div>
+                        <div class="divTableCell sliceTableCell">View Slice</div>
+                        <div class="divTableCell sliceTableCell">XCT Slice Number</div>
+                        <div class="divTableCell sliceTableCell">View Slice</div>
+                      </div>
+                      <div class="divTableRow sliceTableRow">
+                        <div class="divTableCell sliceTableCell sliderLabel">X</div>
+                        <div class="divTableCell sliceTableCell" onclick="toggleSlicerHelpers('YZ');" tabindex="0" title="Toggle X axis CT planes visibility">
+                          <div class="svgView" id="YZHelpersIcon"></div>
+                        </div>
+                        <div class="divTableCell sliceTableCell">
+                          <div class="sliceNumContainer">
+                            <div class="decIncButton dec" onclick="incrementHighresSliceImage('YZ0', -1)" tabindex="0" title="Decrement X axis first CT image">-</div>
+                            <div class="sliceNumDiv" id="YZ0sliceNumText">0000</div>
+                            <div class="decIncButton inc" onclick="incrementHighresSliceImage('YZ0', 1)" tabindex="0" title="Increment X axis first CT image">+</div>
+                          </div>
+                        </div>
+                        <div class="divTableCell sliceTableCell" onclick="downloadSlice('YZ0')">
+                          <div class="svgCamera" tabindex="0" title="Open X axis first CT image in a new window"></div>
+                        </div>
+                        <div class="divTableCell sliceTableCell">
+                          <div class="sliceNumContainer">
+                            <div class="decIncButton dec" onclick="incrementHighresSliceImage('YZ1', -1)" tabindex="0" title="Decrement X axis second CT image">-</div>
+                            <div class="sliceNumDiv" id="YZ1sliceNumText">0000</div>
+                            <div class="decIncButton inc" onclick="incrementHighresSliceImage('YZ1', 1)" tabindex="0" title="Increment X axis second CT image">+</div>
+                          </div>
+                        </div>
+                        <div class="divTableCell sliceTableCell" onclick="downloadSlice('YZ1')">
+                          <div class="svgCamera" tabindex="0" title="Open X axis second CT image in a new window"></div>
+                        </div>
+                      </div>
+                      <div class="divTableRow sliceTableRow">
+                        <div class="divTableCell sliceTableCell sliderLabel">Y</div>
+                        <div class="divTableCell sliceTableCell" onclick="toggleSlicerHelpers('XZ');" tabindex="0" title="Toggle Y axis CT planes visibility">
+                          <div class="svgView" id="XZHelpersIcon"></div>
+                        </div>
+                        <div class="divTableCell sliceTableCell">
+                          <div class="sliceNumContainer">
+                            <div class="decIncButton dec" onclick="incrementHighresSliceImage('XZ0', -1)" tabindex="0" title="Decrement Y axis first CT image">-</div>
+                            <div class="sliceNumDiv" id="XZ0sliceNumText">0000</div>
+                            <div class="decIncButton inc" onclick="incrementHighresSliceImage('XZ0', 1)" tabindex="0" title="Increment Y axis first CT image">+</div>
+                          </div>
+                        </div>
+                        <div class="divTableCell sliceTableCell" onclick="downloadSlice('XZ0')">
+                          <div class="svgCamera" tabindex="0" title="Open Y axis first CT image in a new window"></div>
+                        </div>
+                        <div class="divTableCell sliceTableCell">
+                          <div class="sliceNumContainer">
+                            <div class="decIncButton dec" onclick="incrementHighresSliceImage('XZ1', -1)" tabindex="0" title="Decrement Y axis second CT image">-</div>
+                            <div class="sliceNumDiv" id="XZ1sliceNumText">0000</div>
+                            <div class="decIncButton inc" onclick="incrementHighresSliceImage('XZ1', 1)" tabindex="0" title="Increment Y axis second CT image">+</div>
+                          </div>
+                        </div>
+                        <div class="divTableCell sliceTableCell" onclick="downloadSlice('XZ1')">
+                          <div class="svgCamera" tabindex="0" title="Open Y axis second CT image in a new window"></div>
+                        </div>
+                      </div>
+                      <div class="divTableRow sliceTableRow">
+                        <div class="divTableCell sliceTableCell sliderLabel">Z</div>
+                        <div class="divTableCell sliceTableCell" onclick="toggleSlicerHelpers('XY');" tabindex="0" title="Toggle Z axis CT planes visibility">
+                          <div class="svgView" id="XYHelpersIcon"></div>
+                        </div>
+                        <div class="divTableCell sliceTableCell">
+                          <div class="sliceNumContainer">
+                            <div class="decIncButton dec" onclick="incrementHighresSliceImage('XY0', -1)" tabindex="0" title="Decrement Z axis first CT image">-</div>
+                            <div class="sliceNumDiv" id="XY0sliceNumText">0000</div>
+                            <div class="decIncButton inc" onclick="incrementHighresSliceImage('XY0', 1)" tabindex="0" title="Increment Z axis first CT image">+</div>
+                          </div>
+                        </div>
+                        <div class="divTableCell sliceTableCell" onclick="downloadSlice('XY0')">
+                          <div class="svgCamera" tabindex="0" title="Open Z axis first CT image in a new window"></div>
+                        </div>
+                        <div class="divTableCell sliceTableCell">
+                          <div class="sliceNumContainer">
+                            <div class="decIncButton dec" onclick="incrementHighresSliceImage('XY1', -1)" tabindex="0" title="Decrement Z axis second CT image">-</div>
+                            <div class="sliceNumDiv" id="XY1sliceNumText">0000</div>
+                            <div class="decIncButton inc" onclick="incrementHighresSliceImage('XY1', 1)" tabindex="0" title="Increment Z axis second CT image">+</div>
+                          </div>
+                        </div>
+                        <div class="divTableCell sliceTableCell" onclick="downloadSlice('XY1')">
+                          <div class="svgCamera" tabindex="0" title="Open Z axis second CT image in a new window"></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="tabPanel" id="tabView">
+              <div class="card">
+                <div id="titleView" class="card-title">View</div>
+                <div class="card-body" style="padding-bottom: 5px">
+                  <p>Select a XCT scan orientation or nudge the view using the arrows.</p>
+                </div>
+                <div class="viewBodyContainer">
+                  <div class="viewControlsContainer">
+                    <svg style="position: absolute; width: 400px; height: 400px">
+                      <circle cx="200" cy="200" r="130" stroke="#4c4c4c" stroke-width="1" fill="#141414"></circle>
+                    </svg>
+                    <div id="viewExplodedCube"></div>
+                    <div class="viewArrow svgArrowUp" style="top: 0; left: 175px" onclick="panCameraControls('up');"></div>
+                    <div class="viewArrow svgArrowDown" style="top: 350px; left: 175px" onclick="panCameraControls('down');"></div>
+                    <div class="viewArrow svgArrowLeft" style="top: 175px; left: 0" onclick="panCameraControls('left');"></div>
+                    <div class="viewArrow svgArrowRight" style="top: 175px; left: 350px" onclick="panCameraControls('right');"></div>
+                    <div class="viewArrow svgArrowUpLeft" style="top: 50px; left: 50px" onclick="panCameraControls('up'); panCameraControls('left');"></div>
+                    <div class="viewArrow svgArrowUpRight" style="top: 50px; left: 300px" onclick="panCameraControls('up'); panCameraControls('right');"></div>
+                    <div class="viewArrow svgArrowDownLeft" style="top: 300px; left: 50px" onclick="panCameraControls('down'); panCameraControls('left');"></div>
+                    <div class="viewArrow svgArrowDownRight" style="top: 300px; left: 300px" onclick="panCameraControls('down'); panCameraControls('right');"></div>
+                  </div>
+                </div>
+                <div class="viewIconsContainer">
+                  <div class="viewIconContainer" onclick="toggleAmbientLight();" tabindex="0">
+                    <div id="viewAmbient" class="viewIcon svgAmbientLight selected"></div>
+                    <div class="viewIconText">Ambient<br />Light</div>
+                  </div>
+                  <div class="viewIconContainer" onclick="toggleSpotLight();" tabindex="0">
+                    <div id="viewSpotlight" class="viewIcon svgSpotLight"></div>
+                    <div class="viewIconText">Spot<br />Light</div>
+                  </div>
+                  <div class="viewIconContainer" onclick="toggleAnaglyph();" tabindex="0">
+                    <div id="viewAnaglyph" class="viewIcon svgAnaglyph"></div>
+                    <div class="viewIconText">Anaglyph<br />3D</div>
+                  </div>
+                  <div class="viewIconContainer" onclick="toggleScale();" tabindex="0">
+                    <div id="viewScaleGuide" class="viewIcon svgScaleGuide"></div>
+                    <div class="viewIconText">Scale<br />Guide</div>
+                  </div>
+                  <div class="viewIconContainer" onclick="toggleHelperGrid();" tabindex="0">
+                    <div id="viewHelperGrid" class="viewIcon svgHelperGrid"></div>
+                    <div class="viewIconText">Grid<br />Plane</div>
+                  </div>
+                  <div class="viewIconContainer">
+                    <div id="viewHReset" class="viewIcon svgReset" onclick="resetView();" tabindex="0"></div>
+                    <div class="viewIconText">Reset<br />View</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="tabPanel" id="tabPin">
+              <div class="card">
+                <div id="titlePin" class="card-title">
+                  <div class="pinTitleContainer">
+                    <div class="pinTitleItem" id="pinsTitleText">Pins</div>
+                    <div class="pinTitleItem">
+                      <div id="pinType_navigation">
+                        <span class="pinType_navigation_item pinType_navigation_item_active" id="pinType_left" onclick="togglePinTab('nasaPins');">NASA Pins</span>
+                        <span class="pinType_navigation_item" id="pinType_right" onclick="togglePinTab('customPins');">Custom Pins</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div id="nasaPins">
+                  <p id="pinDescriptionText">The following pins were selected by NASA curators to showcase interesting features for each sample. Click the corresponding view button <img src="images/view_inline.png" style="vertical-align: middle" /> to locate each pin.</p>
+                  <div class="card">
+                    <div class="card-body">
+                      <div class="pinTable" id="nasaPinTable"></div>
+                    </div>
+                  </div>
+                </div>
+                <div id="customPins">
+                  <p id="pinDescriptionText">Pin, comment on, and share points of interest within the sample. Click the corresponding view button <img src="images/view_inline.png" style="vertical-align: middle" /> to view each pin after creation.</p>
+                  <div class="card">
+                    <div class="card-body">
+                      <div class="pinButtonsContainer">
+                        <div>
+                          <input type="button" class="pinBtn btn btn-primary" id="addPinsButton" value="Add Pin" onclick="toggleAddPinMode();" tabindex="0" />
+                        </div>
+                        <div>
+                          <input type="button" class="pinBtn btn btn-secondary" id="shareButton" value="Save & Share" onclick="saveStateModal();" tabindex="0" />
+                        </div>
+                      </div>
+                      <div class="pinTable" id="customPinTable"></div>
+                      <div class="pinButtonsContainer">
+                        <div>
+                          <input type="button" class="pinBtn btn btn-secondary" id="clearPinsButton" value="Clear Pins & Notes" onclick="clearPinsModal();" tabindex="0" />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="clearPinsModal" class="modal">
+      <div class="title">Are you Sure?</div>
+      <p>This will delete all pins and comments.</p>
+      <div class="pinButtonsContainer">
+        <div>
+          <input type="button" class="pinBtn btn btn-secondary" value="Cancel" onclick="$.modal.close();" />
+        </div>
+        <div>
+          <input type="button" class="pinBtn btn btn-primary" value="Yes, Clear Pins" onclick="clearCustomPins();" />
+        </div>
+      </div>
+    </div>
+    <div id="loaderModal" class="modal loader">
+      <div class="loaderContainer">
+        <div class="loaderCircleContents">
+          <div class="loaderCircleItem">
+            <img class="progressGif" src="images/loading_sample6.gif" alt="Loading sample" />
+          </div>
+          <div class="loadingText">
+            LOADING<br />
+            <span id="loaderSampleNum"></span>
+          </div>
+        </div>
+        <svg class="progressRings">
+          <circle stroke="#454545" stroke-width="2" fill="#000000" r="180" cx="200" cy="200"></circle>
+
+          <circle id="progress-ring__circle" stroke="#ffffff" stroke-width="4" fill="transparent" r="178" cx="200" cy="200"></circle>
+        </svg>
+      </div>
+      <div class="loaderTextItemsContainer">
+        <div class="loaderTextItems">
+          3D Mesh Attributes...<span id="loaderJSON"></span><br />
+          3D Mesh...<span id="loaderMesh"></span><br />
+          Sample Texture...<span id="loaderTexture"></span><br />
+          Sample Bounding Box...<span id="loaderBounding"></span><br />
+          Interior XCT Data X-Axis...<span id="loaderSpritesheetYZ"></span><br />
+          Interior XCT Data Y-Axis...<span id="loaderSpritesheetXZ"></span><br />
+          Interior XCT Data Z-Axis...<span id="loaderSpritesheetXY"></span><br />
+        </div>
+      </div>
+    </div>
+    <div id="saveStateModal" class="modal">
+      <div class="title">Save & Share</div>
+      <div class="body">
+        <p>
+          All pin and orientation data has been saved in this link.<br /><br />
+          Link to share
+        </p>
+        <input id="shareURL" type="text" name="shareURL" />
+        <div class="pinButtonsContainer">
+          <div>
+            <input type="button" id="copyLinkButton" class="pinBtn btn btn-primary" value="Copy Link" onclick="copyShareURL();" title="Copy link" />
+          </div>
+          <div>
+            <input type="button" id="shareModalCloseButton" class="pinBtn btn btn-secondary" value="Close" onclick="$.modal.close();" title="Close" />
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="sliceCanvasContainer">
+      <canvas class="sliceCanvas" id="XY0sliceCanvas"></canvas>
+      <canvas class="sliceCanvas" id="XY1sliceCanvas"></canvas>
+      <canvas class="sliceCanvas" id="XZ0sliceCanvas"></canvas>
+      <canvas class="sliceCanvas" id="XZ1sliceCanvas"></canvas>
+      <canvas class="sliceCanvas" id="YZ0sliceCanvas"></canvas>
+      <canvas class="sliceCanvas" id="YZ1sliceCanvas"></canvas>
+    </div>
+    <a href="#" id="downloadSlice" target="_blank" rel="noopener"></a>
+    <a href="#" id="downloadSnapshot" download="Astromaterials3D_snapshot.png"></a>
+
+    <div id="tooltip" style="display: none">Tooltip Text</div>
+  </body>
+
+  <script type="text/html" id="pinRowTemplate">
+    <div class="pinTableRow" id="pinEntry_@pinName">
+      <div class="pinTableCell pinLabelContainer">
+        <div class="pinLabel">@pinName</div>
+      </div>
+
+      <div class="pinTableCell">
+        <div class="pinText" id="pinText@pinName" contenteditable="true" onInput="updateCustomPinComments();">@pinComment</div>
+      </div>
+      <div class="pinTableCell">
+        <div title="View pin" class="pinButton" id="pinButtonId_@pinName" onclick="showPin('@pinName');">
+          <div class="svgViewPin"></div>
+        </div>
+        <div title="Delete pin" class="pinButton deletePinButton" onclick="deletePin('@pinName')">
+          <div class="svgTrash"></div>
+        </div>
+      </div>
+    </div>
+  </script>
+</html>
+
+<script id="XrayVertexShader" type="x-shader/x-vertex">
+  uniform float p;
+  varying float intensity;
+
+  #include <clipping_planes_pars_vertex>
+
+  void main()
+  {
+    #include <begin_vertex>
+
+      vec3 vNormal = normalize( normalMatrix * normal );
+      intensity = pow(abs(1.0 - abs(dot(vNormal, vec3(0, 0, 1)))), p);
+
+      #include <project_vertex>
+      #include <clipping_planes_vertex>
+  }
+</script>
+<script id="XrayFragmentShader" type="x-shader/x-vertex">
+  uniform vec3 glowColor;
+  varying float intensity;
+
+  #include <clipping_planes_pars_fragment>
+
+  void main()
+  {
+    #include <clipping_planes_fragment>
+
+      vec3 glow = glowColor * intensity;
+      gl_FragColor = vec4( glow, 1.0 );
+  }
+</script>
+

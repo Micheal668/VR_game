@@ -1,0 +1,64 @@
+{
+  "id": "portable_welding_cart",
+  "name": "Portable Welding Cart",
+  "source_page": "https://polyhaven.com/a/portable_welding_cart",
+  "info_api": "https://api.polyhaven.com/info/portable_welding_cart",
+  "files_api": "https://api.polyhaven.com/files/portable_welding_cart",
+  "author": [
+    "Georgii Gorbunov"
+  ],
+  "license": "CC0-1.0",
+  "license_page": "https://polyhaven.com/license",
+  "license_text": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "source_dimensions_mm": [
+    838.2881879806519,
+    654.903918504715,
+    1563.1701946258545
+  ],
+  "source_triangles": 29418,
+  "downloaded_at_utc": "2026-10-07T02:19:45Z",
+  "files": [
+    {
+      "path": "Models/LunarBase/Downloads/portable_welding_cart/portable_welding_cart_2k.fbx",
+      "url": "https://dl.polyhaven.org/file/ph-assets/Models/fbx/2k/portable_welding_cart/portable_welding_cart_2k.fbx",
+      "bytes": 786252,
+      "md5": "d8c0aedca78b2171f2b40099cc756ba7",
+      "sha256": "7064a8c19c5e78600c5ade9e63eda89ce7df8cf324a3d5050fe9f93a68a66279"
+    },
+    {
+      "path": "Models/LunarBase/Downloads/portable_welding_cart/portable_welding_cart_2k.blend",
+      "url": "https://dl.polyhaven.org/file/ph-assets/Models/blend/2k/portable_welding_cart/portable_welding_cart_2k.blend",
+      "bytes": 712515,
+      "md5": "57af03b6faa274ba6361ab10e0cd0b8d",
+      "sha256": "839b32ec296c9ac2b90ff57c3069b06c4891d81d64effe4a6f163238df0c4011"
+    },
+    {
+      "path": "Models/LunarBase/Downloads/portable_welding_cart/textures/portable_welding_cart_diff_2k.jpg",
+      "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/2k/portable_welding_cart/portable_welding_cart_diff_2k.jpg",
+      "bytes": 2556249,
+      "md5": "b719e546c84868187bc87d7461914670",
+      "sha256": "3232c4d4fe935ba538415d2cea1d4642bcef760425490dac99ec7954089a8b8f"
+    },
+    {
+      "path": "Models/LunarBase/Downloads/portable_welding_cart/textures/portable_welding_cart_nor_gl_2k.png",
+      "url": "https://dl.polyhaven.org/file/ph-assets/Models/png/2k/portable_welding_cart/portable_welding_cart_nor_gl_2k.png",
+      "bytes": 17091755,
+      "md5": "013a19d38c3a76d5d172c074d62ae1c5",
+      "sha256": "20c435fad7b29f2e34877ef1eec4f8dc593e2132c6966246968cc5c1ff8d1603"
+    },
+    {
+      "path": "Models/LunarBase/Downloads/portable_welding_cart/textures/portable_welding_cart_arm_2k.png",
+      "url": "https://dl.polyhaven.org/file/ph-assets/Models/png/2k/portable_welding_cart/portable_welding_cart_arm_2k.png",
+      "bytes": 10336418,
+      "md5": "c9c8ca20b843a40a3d1f27c5bc1935bc",
+      "sha256": "7d6e7e8786e2335f56765ed53a395da9f7c9a0545626eafba6261fd9fe8e4dfd"
+    },
+    {
+      "path": "Models/LunarBase/Downloads/portable_welding_cart/textures/portable_welding_cart_alpha_2k.png",
+      "url": "https://dl.polyhaven.org/file/ph-assets/Models/png/2k/portable_welding_cart/portable_welding_cart_alpha_2k.png",
+      "bytes": 137877,
+      "md5": "a23157926261e44ea69fe0daaa425fd1",
+      "sha256": "52923e33d027514ad55f7a22e1947961250c5684e5cc1acc17796da756c05313"
+    }
+  ]
+}

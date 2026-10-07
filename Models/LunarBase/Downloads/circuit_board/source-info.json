@@ -1,0 +1,57 @@
+{
+  "type": 2,
+  "name": "Circuit Board",
+  "categories": [
+    "collection: project_lighthouse",
+    "electronics"
+  ],
+  "tags": [
+    "computer",
+    "components",
+    "chip",
+    "motherboard",
+    "pc hardware",
+    "connectors",
+    "wiring",
+    "power supply",
+    "circuit",
+    "power",
+    "electrical"
+  ],
+  "description": "Free 4K model of a retro green motherboard with CPU cooler, tall RAM sticks, capacitors, sockets, rich PCB traces, connectors, and printed labels.",
+  "authors": {
+    "Benny Weimer": "All"
+  },
+  "donated": true,
+  "max_resolution": [
+    4096,
+    4096
+  ],
+  "polycount": 14430,
+  "files_hash": "804d8b735c30e6a9df2ae66b6307a7368ef8291b",
+  "texel_density": 3886.4045037562605,
+  "dimensions": [
+    403.5058617591858,
+    397.3844349384308,
+    78.29589396715164
+  ],
+  "date_published": 1781913600,
+  "staging": null,
+  "category_id": "6d9ed9c5-ba79-5f2e-85a0-14356f0d227c",
+  "category": "Electronics & Appliances/Computing/Components",
+  "collections": [
+    "project_lighthouse"
+  ],
+  "attributes": {
+    "condition": [
+      "worn"
+    ],
+    "material": [
+      "plastic",
+      "metal"
+    ]
+  },
+  "img_version": "f5e75c42",
+  "download_count": 1493,
+  "thumbnail_url": "https://cdn.polyhaven.com/asset_img/thumbs/circuit_board.png?width=256&height=256&format=webp&v=f5e75c42"
+}

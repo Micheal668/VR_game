@@ -1,0 +1,729 @@
+{
+  "blend": {
+    "1k": {
+      "blend": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/blend/1k/medical_box/medical_box_1k.blend",
+        "md5": "49887a70ca294de33a969314bb00da66",
+        "size": 194463,
+        "include": {
+          "textures/medical_box_diff_1k.jpg": {
+            "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/medical_box/medical_box_diff_1k.jpg",
+            "md5": "671ae67229ffd836b6a5dc259cdae74f",
+            "size": 674432
+          },
+          "textures/medical_box_metal_1k.exr": {
+            "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/1k/medical_box/medical_box_metal_1k.exr",
+            "md5": "b483c58e02c125eb9fba540efc871da7",
+            "size": 588247
+          },
+          "textures/medical_box_nor_gl_1k.exr": {
+            "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/1k/medical_box/medical_box_nor_gl_1k.exr",
+            "md5": "a40f917a87e1fa9bd0605f247433906c",
+            "size": 749680
+          },
+          "textures/medical_box_rough_1k.exr": {
+            "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/1k/medical_box/medical_box_rough_1k.exr",
+            "md5": "e6d8a2dca64808632014d065bc7a7d62",
+            "size": 786756
+          }
+        }
+      }
+    },
+    "2k": {
+      "blend": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/blend/2k/medical_box/medical_box_2k.blend",
+        "md5": "10e6c0e7a5130bc1b2852375bb28d9ba",
+        "size": 194462,
+        "include": {
+          "textures/medical_box_diff_2k.jpg": {
+            "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/2k/medical_box/medical_box_diff_2k.jpg",
+            "md5": "00935657710a6bea894aefc4fd0d5880",
+            "size": 2536442
+          },
+          "textures/medical_box_metal_2k.exr": {
+            "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/2k/medical_box/medical_box_metal_2k.exr",
+            "md5": "2f6bc75a6778d8b99dd8991d3d5518c7",
+            "size": 1729037
+          },
+          "textures/medical_box_nor_gl_2k.exr": {
+            "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/2k/medical_box/medical_box_nor_gl_2k.exr",
+            "md5": "08712ff6c627c28126036c0245fc0ec1",
+            "size": 2870839
+          },
+          "textures/medical_box_rough_2k.exr": {
+            "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/2k/medical_box/medical_box_rough_2k.exr",
+            "md5": "d4d9c9d259fca986b025be666e8d0f37",
+            "size": 2856351
+          }
+        }
+      }
+    },
+    "4k": {
+      "blend": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/blend/4k/medical_box/medical_box_4k.blend",
+        "md5": "eab1f5bfea9e78054266fbcf4d69cc44",
+        "size": 194462,
+        "include": {
+          "textures/medical_box_diff_4k.jpg": {
+            "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/4k/medical_box/medical_box_diff_4k.jpg",
+            "md5": "e2dfb5833f6d194262b1e5fdcfdfd5fa",
+            "size": 9993089
+          },
+          "textures/medical_box_metal_4k.exr": {
+            "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/4k/medical_box/medical_box_metal_4k.exr",
+            "md5": "9955c0969365426d1fff96d230599c5f",
+            "size": 4938898
+          },
+          "textures/medical_box_nor_gl_4k.exr": {
+            "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/4k/medical_box/medical_box_nor_gl_4k.exr",
+            "md5": "d9522cacbbd5d82b91e58923b693c1e5",
+            "size": 11412841
+          },
+          "textures/medical_box_rough_4k.exr": {
+            "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/4k/medical_box/medical_box_rough_4k.exr",
+            "md5": "a2538d9ebf4eac125736a3ba622c6d51",
+            "size": 10378994
+          }
+        }
+      }
+    }
+  },
+  "AO": {
+    "1k": {
+      "exr": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/1k/medical_box/medical_box_ao_1k.exr",
+        "md5": "cceadd781ba3a71e6bcdb56ff4fdbd54",
+        "size": 271141
+      },
+      "jpg": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/medical_box/medical_box_ao_1k.jpg",
+        "md5": "07ac16878744a7e8cd5543640ca6019d",
+        "size": 221602
+      },
+      "png": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/png/1k/medical_box/medical_box_ao_1k.png",
+        "md5": "40e6074a0922c8127dacc88791c891a4",
+        "size": 657374
+      }
+    },
+    "2k": {
+      "exr": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/2k/medical_box/medical_box_ao_2k.exr",
+        "md5": "8ee1b987578c6f5bc3bc2dee5a9b955a",
+        "size": 663902
+      },
+      "jpg": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/2k/medical_box/medical_box_ao_2k.jpg",
+        "md5": "84cd1f5e4047115a3e8cadaafb70cbe4",
+        "size": 609236
+      },
+      "png": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/png/2k/medical_box/medical_box_ao_2k.png",
+        "md5": "d3b1ac6f0bfc5875dbf3641e385ed319",
+        "size": 2476416
+      }
+    },
+    "4k": {
+      "exr": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/4k/medical_box/medical_box_ao_4k.exr",
+        "md5": "c2607d8dde25c33db09238f69b8586e5",
+        "size": 1671366
+      },
+      "jpg": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/4k/medical_box/medical_box_ao_4k.jpg",
+        "md5": "eb5c75064269add581695c9b7f7a58a7",
+        "size": 1841617
+      },
+      "png": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/png/4k/medical_box/medical_box_ao_4k.png",
+        "md5": "2d7778aa967ab19697b467bebcdc72ba",
+        "size": 8948679
+      }
+    }
+  },
+  "arm": {
+    "1k": {
+      "exr": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/1k/medical_box/medical_box_arm_1k.exr",
+        "md5": "0b06f55389dac4817cc81edc670f3870",
+        "size": 2118253
+      },
+      "jpg": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/medical_box/medical_box_arm_1k.jpg",
+        "md5": "2eda0debe31e7bfc8dfd1066be399154",
+        "size": 805882
+      },
+      "png": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/png/1k/medical_box/medical_box_arm_1k.png",
+        "md5": "c712a4f9d1ae59181b3e717f01548b70",
+        "size": 3313042
+      }
+    },
+    "2k": {
+      "exr": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/2k/medical_box/medical_box_arm_2k.exr",
+        "md5": "87cb768cd6cef83647da626440ea79e5",
+        "size": 7697950
+      },
+      "jpg": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/2k/medical_box/medical_box_arm_2k.jpg",
+        "md5": "0ef56767c433c7b58961d2f9d05f2a13",
+        "size": 2981163
+      },
+      "png": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/png/2k/medical_box/medical_box_arm_2k.png",
+        "md5": "4107fc84ba2e2772c3a96388524953d8",
+        "size": 11176222
+      }
+    },
+    "4k": {
+      "exr": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/4k/medical_box/medical_box_arm_4k.exr",
+        "md5": "b21bf654ad51c26df7b52a3fbebcf52c",
+        "size": 27491942
+      },
+      "jpg": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/4k/medical_box/medical_box_arm_4k.jpg",
+        "md5": "4df85655c13c6c5bea333fc5f8ac79f2",
+        "size": 10796029
+      },
+      "png": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/png/4k/medical_box/medical_box_arm_4k.png",
+        "md5": "8cdfc5f08e9a985eba7c80c11406c3f3",
+        "size": 30192942
+      }
+    }
+  },
+  "Diffuse": {
+    "1k": {
+      "exr": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/1k/medical_box/medical_box_diff_1k.exr",
+        "md5": "9361c61d0c122ce203daa80f4f9052e4",
+        "size": 1438133
+      },
+      "jpg": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/medical_box/medical_box_diff_1k.jpg",
+        "md5": "671ae67229ffd836b6a5dc259cdae74f",
+        "size": 674432
+      },
+      "png": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/png/1k/medical_box/medical_box_diff_1k.png",
+        "md5": "0f4e68c50e13e5fde55e9265b4b7c625",
+        "size": 5130582
+      }
+    },
+    "2k": {
+      "exr": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/2k/medical_box/medical_box_diff_2k.exr",
+        "md5": "6bdb0fff472f000dfa9c5a6466a6ffb1",
+        "size": 5239578
+      },
+      "jpg": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/2k/medical_box/medical_box_diff_2k.jpg",
+        "md5": "00935657710a6bea894aefc4fd0d5880",
+        "size": 2536442
+      },
+      "png": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/png/2k/medical_box/medical_box_diff_2k.png",
+        "md5": "6ac20719f9dce08801ef1401746c81e2",
+        "size": 18308340
+      }
+    },
+    "4k": {
+      "exr": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/4k/medical_box/medical_box_diff_4k.exr",
+        "md5": "580f957a1677fd2269b10984db9b394b",
+        "size": 21444946
+      },
+      "jpg": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/4k/medical_box/medical_box_diff_4k.jpg",
+        "md5": "e2dfb5833f6d194262b1e5fdcfdfd5fa",
+        "size": 9993089
+      },
+      "png": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/png/4k/medical_box/medical_box_diff_4k.png",
+        "md5": "297f825a6c56926b0923cc4c367774ef",
+        "size": 56314912
+      }
+    }
+  },
+  "Metal": {
+    "1k": {
+      "exr": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/1k/medical_box/medical_box_metal_1k.exr",
+        "md5": "b483c58e02c125eb9fba540efc871da7",
+        "size": 588247
+      },
+      "jpg": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/medical_box/medical_box_metal_1k.jpg",
+        "md5": "50b6ce263cf730a0ffe7657faa87d49a",
+        "size": 400320
+      },
+      "png": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/png/1k/medical_box/medical_box_metal_1k.png",
+        "md5": "2318ab04c85831890b23300e3f6d438d",
+        "size": 574029
+      }
+    },
+    "2k": {
+      "exr": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/2k/medical_box/medical_box_metal_2k.exr",
+        "md5": "2f6bc75a6778d8b99dd8991d3d5518c7",
+        "size": 1729037
+      },
+      "jpg": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/2k/medical_box/medical_box_metal_2k.jpg",
+        "md5": "951bcd0ba64e6a28be0fc5e55a3f1c38",
+        "size": 1223005
+      },
+      "png": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/png/2k/medical_box/medical_box_metal_2k.png",
+        "md5": "057a18305a2189f9a4145de086dcf135",
+        "size": 1483487
+      }
+    },
+    "4k": {
+      "exr": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/4k/medical_box/medical_box_metal_4k.exr",
+        "md5": "9955c0969365426d1fff96d230599c5f",
+        "size": 4938898
+      },
+      "jpg": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/4k/medical_box/medical_box_metal_4k.jpg",
+        "md5": "1ab49ff2f2bbe2e567503a334ff51979",
+        "size": 3654090
+      },
+      "png": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/png/4k/medical_box/medical_box_metal_4k.png",
+        "md5": "216ac6a9b97815a3bcefe04f7227e681",
+        "size": 3168065
+      }
+    }
+  },
+  "nor_dx": {
+    "1k": {
+      "exr": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/1k/medical_box/medical_box_nor_dx_1k.exr",
+        "md5": "2a7e057d2a1ada4786cd17dfe68281ec",
+        "size": 751340
+      },
+      "jpg": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/medical_box/medical_box_nor_dx_1k.jpg",
+        "md5": "e56a0ad0a251e19be1ce4795a8a94196",
+        "size": 372297
+      },
+      "png": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/png/1k/medical_box/medical_box_nor_dx_1k.png",
+        "md5": "57d9595aa3abed6001c261b848510a37",
+        "size": 3139894
+      }
+    },
+    "2k": {
+      "exr": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/2k/medical_box/medical_box_nor_dx_2k.exr",
+        "md5": "1b3e03714e4c4326d144854905ac52db",
+        "size": 2874830
+      },
+      "jpg": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/2k/medical_box/medical_box_nor_dx_2k.jpg",
+        "md5": "23af7393ceffca65fccea0136c4ca0ec",
+        "size": 1395811
+      },
+      "png": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/png/2k/medical_box/medical_box_nor_dx_2k.png",
+        "md5": "e4ee846e65ec2f117d606251fbc5048e",
+        "size": 10610083
+      }
+    },
+    "4k": {
+      "exr": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/4k/medical_box/medical_box_nor_dx_4k.exr",
+        "md5": "e355e9cfe5051f00a7578047c6c1036b",
+        "size": 11388018
+      },
+      "jpg": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/4k/medical_box/medical_box_nor_dx_4k.jpg",
+        "md5": "84339a571799e7635e5f5bb61648bb69",
+        "size": 5437147
+      },
+      "png": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/png/4k/medical_box/medical_box_nor_dx_4k.png",
+        "md5": "8576f9f759ecf7e3d944beddc225a75e",
+        "size": 33421377
+      }
+    }
+  },
+  "nor_gl": {
+    "1k": {
+      "exr": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/1k/medical_box/medical_box_nor_gl_1k.exr",
+        "md5": "a40f917a87e1fa9bd0605f247433906c",
+        "size": 749680
+      },
+      "jpg": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/medical_box/medical_box_nor_gl_1k.jpg",
+        "md5": "494d022a087d7b97be59b7d5c7138195",
+        "size": 358278
+      },
+      "png": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/png/1k/medical_box/medical_box_nor_gl_1k.png",
+        "md5": "f4348ecede27dc1baf8db8a57cf22e70",
+        "size": 3137374
+      }
+    },
+    "2k": {
+      "exr": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/2k/medical_box/medical_box_nor_gl_2k.exr",
+        "md5": "08712ff6c627c28126036c0245fc0ec1",
+        "size": 2870839
+      },
+      "jpg": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/2k/medical_box/medical_box_nor_gl_2k.jpg",
+        "md5": "c71f1e5581bbd4ffca91f7f3924e0470",
+        "size": 1368602
+      },
+      "png": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/png/2k/medical_box/medical_box_nor_gl_2k.png",
+        "md5": "ad80423945ec686bd5ab351b85f2f89c",
+        "size": 10581423
+      }
+    },
+    "4k": {
+      "exr": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/4k/medical_box/medical_box_nor_gl_4k.exr",
+        "md5": "d9522cacbbd5d82b91e58923b693c1e5",
+        "size": 11412841
+      },
+      "jpg": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/4k/medical_box/medical_box_nor_gl_4k.jpg",
+        "md5": "0eeadc7fed3091e44a0f057fd960412b",
+        "size": 5439784
+      },
+      "png": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/png/4k/medical_box/medical_box_nor_gl_4k.png",
+        "md5": "6ee7b7a7184dc33ec8a9311aea413fc0",
+        "size": 33458161
+      }
+    }
+  },
+  "Rough": {
+    "1k": {
+      "exr": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/1k/medical_box/medical_box_rough_1k.exr",
+        "md5": "e6d8a2dca64808632014d065bc7a7d62",
+        "size": 786756
+      },
+      "jpg": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/medical_box/medical_box_rough_1k.jpg",
+        "md5": "94030b9701dd4c1d99d8060046a11aa5",
+        "size": 621917
+      },
+      "png": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/png/1k/medical_box/medical_box_rough_1k.png",
+        "md5": "f80f471520a2ceab0b3155e43388e46f",
+        "size": 1603547
+      }
+    },
+    "2k": {
+      "exr": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/2k/medical_box/medical_box_rough_2k.exr",
+        "md5": "d4d9c9d259fca986b025be666e8d0f37",
+        "size": 2856351
+      },
+      "jpg": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/2k/medical_box/medical_box_rough_2k.jpg",
+        "md5": "6ada0f8ecb9b779839f1a6a0eaa81e44",
+        "size": 2313493
+      },
+      "png": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/png/2k/medical_box/medical_box_rough_2k.png",
+        "md5": "77c8f9b0bd85aed14e7ed163e6e912b8",
+        "size": 5305809
+      }
+    },
+    "4k": {
+      "exr": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/4k/medical_box/medical_box_rough_4k.exr",
+        "md5": "a2538d9ebf4eac125736a3ba622c6d51",
+        "size": 10378994
+      },
+      "jpg": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/4k/medical_box/medical_box_rough_4k.jpg",
+        "md5": "d3764ad3699ce0c88c2341c5396da679",
+        "size": 8497039
+      },
+      "png": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/png/4k/medical_box/medical_box_rough_4k.png",
+        "md5": "f2a7fdec09be56fe027308fe8309ec7a",
+        "size": 10983059
+      }
+    }
+  },
+  "fbx": {
+    "1k": {
+      "fbx": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/fbx/1k/medical_box/medical_box_1k.fbx",
+        "md5": "fa44408a4a30d62a0608b505b51e6182",
+        "size": 139628,
+        "include": {
+          "textures/medical_box_diff_1k.jpg": {
+            "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/medical_box/medical_box_diff_1k.jpg",
+            "md5": "671ae67229ffd836b6a5dc259cdae74f",
+            "size": 674432
+          },
+          "textures/medical_box_metal_1k.exr": {
+            "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/1k/medical_box/medical_box_metal_1k.exr",
+            "md5": "b483c58e02c125eb9fba540efc871da7",
+            "size": 588247
+          },
+          "textures/medical_box_nor_gl_1k.exr": {
+            "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/1k/medical_box/medical_box_nor_gl_1k.exr",
+            "md5": "a40f917a87e1fa9bd0605f247433906c",
+            "size": 749680
+          },
+          "textures/medical_box_rough_1k.exr": {
+            "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/1k/medical_box/medical_box_rough_1k.exr",
+            "md5": "e6d8a2dca64808632014d065bc7a7d62",
+            "size": 786756
+          }
+        }
+      }
+    },
+    "2k": {
+      "fbx": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/fbx/2k/medical_box/medical_box_2k.fbx",
+        "md5": "ee53f20b2d733545ee4ccf33f65e7efe",
+        "size": 139628,
+        "include": {
+          "textures/medical_box_diff_2k.jpg": {
+            "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/2k/medical_box/medical_box_diff_2k.jpg",
+            "md5": "00935657710a6bea894aefc4fd0d5880",
+            "size": 2536442
+          },
+          "textures/medical_box_metal_2k.exr": {
+            "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/2k/medical_box/medical_box_metal_2k.exr",
+            "md5": "2f6bc75a6778d8b99dd8991d3d5518c7",
+            "size": 1729037
+          },
+          "textures/medical_box_nor_gl_2k.exr": {
+            "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/2k/medical_box/medical_box_nor_gl_2k.exr",
+            "md5": "08712ff6c627c28126036c0245fc0ec1",
+            "size": 2870839
+          },
+          "textures/medical_box_rough_2k.exr": {
+            "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/2k/medical_box/medical_box_rough_2k.exr",
+            "md5": "d4d9c9d259fca986b025be666e8d0f37",
+            "size": 2856351
+          }
+        }
+      }
+    },
+    "4k": {
+      "fbx": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/fbx/4k/medical_box/medical_box_4k.fbx",
+        "md5": "14a11915ff96a64cbe5360293706833d",
+        "size": 139628,
+        "include": {
+          "textures/medical_box_diff_4k.jpg": {
+            "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/4k/medical_box/medical_box_diff_4k.jpg",
+            "md5": "e2dfb5833f6d194262b1e5fdcfdfd5fa",
+            "size": 9993089
+          },
+          "textures/medical_box_metal_4k.exr": {
+            "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/4k/medical_box/medical_box_metal_4k.exr",
+            "md5": "9955c0969365426d1fff96d230599c5f",
+            "size": 4938898
+          },
+          "textures/medical_box_nor_gl_4k.exr": {
+            "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/4k/medical_box/medical_box_nor_gl_4k.exr",
+            "md5": "d9522cacbbd5d82b91e58923b693c1e5",
+            "size": 11412841
+          },
+          "textures/medical_box_rough_4k.exr": {
+            "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/4k/medical_box/medical_box_rough_4k.exr",
+            "md5": "a2538d9ebf4eac125736a3ba622c6d51",
+            "size": 10378994
+          }
+        }
+      }
+    }
+  },
+  "gltf": {
+    "1k": {
+      "gltf": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/1k/medical_box/medical_box_1k.gltf",
+        "md5": "8ffb8e133bdddb8d7647f3349ffe296f",
+        "size": 8820,
+        "include": {
+          "textures/medical_box_nor_gl_1k.jpg": {
+            "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/medical_box/medical_box_nor_gl_1k.jpg",
+            "md5": "494d022a087d7b97be59b7d5c7138195",
+            "size": 358278
+          },
+          "textures/medical_box_diff_1k.jpg": {
+            "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/medical_box/medical_box_diff_1k.jpg",
+            "md5": "671ae67229ffd836b6a5dc259cdae74f",
+            "size": 674432
+          },
+          "textures/medical_box_arm_1k.jpg": {
+            "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/medical_box/medical_box_arm_1k.jpg",
+            "md5": "2eda0debe31e7bfc8dfd1066be399154",
+            "size": 805882
+          },
+          "medical_box.bin": {
+            "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/4k/medical_box/medical_box.bin",
+            "md5": "22d04371779d87a0e65ee97c4ad7389c",
+            "size": 127972
+          }
+        }
+      }
+    },
+    "2k": {
+      "gltf": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/2k/medical_box/medical_box_2k.gltf",
+        "md5": "8fd7e39fb292b12609086ceb225d4e1b",
+        "size": 8820,
+        "include": {
+          "textures/medical_box_nor_gl_2k.jpg": {
+            "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/2k/medical_box/medical_box_nor_gl_2k.jpg",
+            "md5": "c71f1e5581bbd4ffca91f7f3924e0470",
+            "size": 1368602
+          },
+          "textures/medical_box_diff_2k.jpg": {
+            "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/2k/medical_box/medical_box_diff_2k.jpg",
+            "md5": "00935657710a6bea894aefc4fd0d5880",
+            "size": 2536442
+          },
+          "textures/medical_box_arm_2k.jpg": {
+            "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/2k/medical_box/medical_box_arm_2k.jpg",
+            "md5": "0ef56767c433c7b58961d2f9d05f2a13",
+            "size": 2981163
+          },
+          "medical_box.bin": {
+            "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/4k/medical_box/medical_box.bin",
+            "md5": "22d04371779d87a0e65ee97c4ad7389c",
+            "size": 127972
+          }
+        }
+      }
+    },
+    "4k": {
+      "gltf": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/4k/medical_box/medical_box_4k.gltf",
+        "md5": "72fbbcb81942d6317abfc81da462802c",
+        "size": 8820,
+        "include": {
+          "textures/medical_box_nor_gl_4k.jpg": {
+            "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/4k/medical_box/medical_box_nor_gl_4k.jpg",
+            "md5": "0eeadc7fed3091e44a0f057fd960412b",
+            "size": 5439784
+          },
+          "textures/medical_box_diff_4k.jpg": {
+            "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/4k/medical_box/medical_box_diff_4k.jpg",
+            "md5": "e2dfb5833f6d194262b1e5fdcfdfd5fa",
+            "size": 9993089
+          },
+          "textures/medical_box_arm_4k.jpg": {
+            "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/4k/medical_box/medical_box_arm_4k.jpg",
+            "md5": "4df85655c13c6c5bea333fc5f8ac79f2",
+            "size": 10796029
+          },
+          "medical_box.bin": {
+            "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/4k/medical_box/medical_box.bin",
+            "md5": "22d04371779d87a0e65ee97c4ad7389c",
+            "size": 127972
+          }
+        }
+      }
+    }
+  },
+  "usd": {
+    "1k": {
+      "usd": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/usd/1k/medical_box/medical_box_1k.usdc",
+        "md5": "cde238eff3f55fb85569266dc44ce9e7",
+        "size": 167441,
+        "include": {
+          "textures/medical_box_diff_1k.jpg": {
+            "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/medical_box/medical_box_diff_1k.jpg",
+            "md5": "671ae67229ffd836b6a5dc259cdae74f",
+            "size": 674432
+          },
+          "textures/medical_box_metal_1k.exr": {
+            "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/1k/medical_box/medical_box_metal_1k.exr",
+            "md5": "b483c58e02c125eb9fba540efc871da7",
+            "size": 588247
+          },
+          "textures/medical_box_nor_gl_1k.exr": {
+            "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/1k/medical_box/medical_box_nor_gl_1k.exr",
+            "md5": "a40f917a87e1fa9bd0605f247433906c",
+            "size": 749680
+          },
+          "textures/medical_box_rough_1k.exr": {
+            "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/1k/medical_box/medical_box_rough_1k.exr",
+            "md5": "e6d8a2dca64808632014d065bc7a7d62",
+            "size": 786756
+          }
+        }
+      }
+    },
+    "2k": {
+      "usd": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/usd/2k/medical_box/medical_box_2k.usdc",
+        "md5": "8b02bd1e69a7009c830e1e70eb696df2",
+        "size": 167483,
+        "include": {
+          "textures/medical_box_diff_2k.jpg": {
+            "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/2k/medical_box/medical_box_diff_2k.jpg",
+            "md5": "00935657710a6bea894aefc4fd0d5880",
+            "size": 2536442
+          },
+          "textures/medical_box_metal_2k.exr": {
+            "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/2k/medical_box/medical_box_metal_2k.exr",
+            "md5": "2f6bc75a6778d8b99dd8991d3d5518c7",
+            "size": 1729037
+          },
+          "textures/medical_box_nor_gl_2k.exr": {
+            "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/2k/medical_box/medical_box_nor_gl_2k.exr",
+            "md5": "08712ff6c627c28126036c0245fc0ec1",
+            "size": 2870839
+          },
+          "textures/medical_box_rough_2k.exr": {
+            "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/2k/medical_box/medical_box_rough_2k.exr",
+            "md5": "d4d9c9d259fca986b025be666e8d0f37",
+            "size": 2856351
+          }
+        }
+      }
+    },
+    "4k": {
+      "usd": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/usd/4k/medical_box/medical_box_4k.usdc",
+        "md5": "ef5476af812e1698c20878dd0c4593a2",
+        "size": 167493,
+        "include": {
+          "textures/medical_box_diff_4k.jpg": {
+            "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/4k/medical_box/medical_box_diff_4k.jpg",
+            "md5": "e2dfb5833f6d194262b1e5fdcfdfd5fa",
+            "size": 9993089
+          },
+          "textures/medical_box_metal_4k.exr": {
+            "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/4k/medical_box/medical_box_metal_4k.exr",
+            "md5": "9955c0969365426d1fff96d230599c5f",
+            "size": 4938898
+          },
+          "textures/medical_box_nor_gl_4k.exr": {
+            "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/4k/medical_box/medical_box_nor_gl_4k.exr",
+            "md5": "d9522cacbbd5d82b91e58923b693c1e5",
+            "size": 11412841
+          },
+          "textures/medical_box_rough_4k.exr": {
+            "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/4k/medical_box/medical_box_rough_4k.exr",
+            "md5": "a2538d9ebf4eac125736a3ba622c6d51",
+            "size": 10378994
+          }
+        }
+      }
+    }
+  }
+}

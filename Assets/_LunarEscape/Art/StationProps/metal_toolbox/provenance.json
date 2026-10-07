@@ -1,0 +1,26 @@
+{
+  "id": "metal_toolbox",
+  "fbx": "Assets/_LunarEscape/Art/StationProps/metal_toolbox/metal_toolbox.fbx",
+  "source_id": "metal_toolbox",
+  "source_url": "https://polyhaven.com/a/metal_toolbox",
+  "author": "Mateusz Sadek",
+  "license": "CC0-1.0",
+  "bounds_m": [
+    0.4000099003314972,
+    0.22465138137340546,
+    0.2208164930343628
+  ],
+  "triangles": 14228,
+  "materials": [
+    {
+      "name": "metal_toolbox",
+      "base_color": "Assets/_LunarEscape/Art/StationProps/metal_toolbox/textures/metal_toolbox_diff_2k.jpg",
+      "normal": "Assets/_LunarEscape/Art/StationProps/metal_toolbox/textures/metal_toolbox_nor_gl_2k.png",
+      "metallic_smoothness": "Assets/_LunarEscape/Art/StationProps/metal_toolbox/textures/metal_toolbox_metallic_smoothness_2k.png",
+      "occlusion": "Assets/_LunarEscape/Art/StationProps/metal_toolbox/textures/metal_toolbox_ao_2k.png",
+      "alpha_clip": false
+    }
+  ],
+  "notes": "Source lid closed; meshes combined, original UV/PBR preserved.",
+  "sha256": "8afa38934f27ffd97e4657def3e716290acaa0ab820ddcf834fe9d6b678cef83"
+}

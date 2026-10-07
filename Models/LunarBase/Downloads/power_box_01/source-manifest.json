@@ -1,0 +1,58 @@
+{
+  "id": "power_box_01",
+  "name": "Power Box 01",
+  "source_page": "https://polyhaven.com/a/power_box_01",
+  "info_api": "https://api.polyhaven.com/info/power_box_01",
+  "files_api": "https://api.polyhaven.com/files/power_box_01",
+  "author": [
+    "Rico Cilliers",
+    "Yann Kervran"
+  ],
+  "license": "CC0-1.0",
+  "license_page": "https://polyhaven.com/license",
+  "license_text": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "source_dimensions_mm": [
+    377.4920701980591,
+    418.45703125,
+    503.142774105072
+  ],
+  "source_triangles": 21272,
+  "downloaded_at_utc": "2026-10-07T02:19:43Z",
+  "files": [
+    {
+      "path": "Models/LunarBase/Downloads/power_box_01/power_box_01_2k.fbx",
+      "url": "https://dl.polyhaven.org/file/ph-assets/Models/fbx/2k/power_box_01/power_box_01_2k.fbx",
+      "bytes": 1099948,
+      "md5": "554c847419fedd6dbbed84acf0f682b8",
+      "sha256": "4e3cf0ec5235f1d427bb96022747b8b19b8d9d17143bc951ab144b98f728d73a"
+    },
+    {
+      "path": "Models/LunarBase/Downloads/power_box_01/power_box_01_2k.blend",
+      "url": "https://dl.polyhaven.org/file/ph-assets/Models/blend/2k/power_box_01/power_box_01_2k.blend",
+      "bytes": 617332,
+      "md5": "4fdf87d15158f12c9d609bea80cf6dbc",
+      "sha256": "06fecde4356c9f6cb01595b203e3f3064636c3dec3638984fcacd2ed4e7c4f81"
+    },
+    {
+      "path": "Models/LunarBase/Downloads/power_box_01/textures/power_box_01_diff_2k.jpg",
+      "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/2k/power_box_01/power_box_01_diff_2k.jpg",
+      "bytes": 1883678,
+      "md5": "c911f1ffb29ea558069498a01d5ccc5a",
+      "sha256": "045f04100a6a95bf6d43ea0989545b52008c84dd1d1d238ad0d7fa89789f8d0b"
+    },
+    {
+      "path": "Models/LunarBase/Downloads/power_box_01/textures/power_box_01_nor_gl_2k.png",
+      "url": "https://dl.polyhaven.org/file/ph-assets/Models/png/2k/power_box_01/power_box_01_nor_gl_2k.png",
+      "bytes": 19142988,
+      "md5": "eab701dd9ec6d1ba5b8b7ee166db57d5",
+      "sha256": "3901bbe3514707f6178d58acc76c4c842fabf6d31a0b28c40f760b432bc9657c"
+    },
+    {
+      "path": "Models/LunarBase/Downloads/power_box_01/textures/power_box_01_arm_2k.png",
+      "url": "https://dl.polyhaven.org/file/ph-assets/Models/png/2k/power_box_01/power_box_01_arm_2k.png",
+      "bytes": 5220981,
+      "md5": "6384a2231047ce2b22ae5017dbffec12",
+      "sha256": "fb6ad4de438849d9004de38df0fa6a050b4055d41b8899f3f90190a442a43fd6"
+    }
+  ]
+}

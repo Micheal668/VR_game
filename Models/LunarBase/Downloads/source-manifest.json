@@ -1,0 +1,439 @@
+{
+  "assets": [
+    {
+      "id": "combination_wrench",
+      "name": "Combination Wrench",
+      "source_page": "https://polyhaven.com/a/combination_wrench",
+      "info_api": "https://api.polyhaven.com/info/combination_wrench",
+      "files_api": "https://api.polyhaven.com/files/combination_wrench",
+      "author": [
+        "BKS"
+      ],
+      "license": "CC0-1.0",
+      "license_page": "https://polyhaven.com/license",
+      "license_text": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "source_dimensions_mm": [
+        56.58109299838543,
+        336.9841277599335,
+        21.513011306524277
+      ],
+      "source_triangles": 1986,
+      "downloaded_at_utc": "2026-10-07T02:19:41Z",
+      "files": [
+        {
+          "path": "Models/LunarBase/Downloads/combination_wrench/combination_wrench_2k.fbx",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/fbx/2k/combination_wrench/combination_wrench_2k.fbx",
+          "bytes": 86972,
+          "md5": "c4a30e9a61c74713b64ebaaa9fce7a92",
+          "sha256": "8a41e0deb37aab3b43545094eedfc52b9bd996b5a4e938b11ef21bf17e434099"
+        },
+        {
+          "path": "Models/LunarBase/Downloads/combination_wrench/combination_wrench_2k.blend",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/blend/2k/combination_wrench/combination_wrench_2k.blend",
+          "bytes": 154275,
+          "md5": "0d4c162b5d89ae44edd954ef3ecfe5eb",
+          "sha256": "317f2f22ab32de336387a57ee0862f73da853af372932468d9f4a91d64bf0836"
+        },
+        {
+          "path": "Models/LunarBase/Downloads/combination_wrench/textures/combination_wrench_diff_2k.jpg",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/2k/combination_wrench/combination_wrench_diff_2k.jpg",
+          "bytes": 1801425,
+          "md5": "df5f40c540ed2e1eda362df44ca78c5e",
+          "sha256": "bfbf6af7d428aee25fc7a8a30a74f04053ff533afde8f028facb35be10f409ad"
+        },
+        {
+          "path": "Models/LunarBase/Downloads/combination_wrench/textures/combination_wrench_nor_gl_2k.png",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/png/2k/combination_wrench/combination_wrench_nor_gl_2k.png",
+          "bytes": 8889066,
+          "md5": "f9db6ffe930b02e5fdb9ee25b1a879af",
+          "sha256": "ed27b814fc918be098628394decbf5a8f068ae4b35f06cbcc89605e029195d4d"
+        },
+        {
+          "path": "Models/LunarBase/Downloads/combination_wrench/textures/combination_wrench_arm_2k.png",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/png/2k/combination_wrench/combination_wrench_arm_2k.png",
+          "bytes": 6078442,
+          "md5": "e40e3ecae7ee0adab6f490786a22a136",
+          "sha256": "de475fdafbb55b21336f2814176833555eb51393484fb991bf723da4072ff03d"
+        }
+      ]
+    },
+    {
+      "id": "metal_toolbox",
+      "name": "Metal Toolbox",
+      "source_page": "https://polyhaven.com/a/metal_toolbox",
+      "info_api": "https://api.polyhaven.com/info/metal_toolbox",
+      "files_api": "https://api.polyhaven.com/files/metal_toolbox",
+      "author": [
+        "Mateusz Sadek"
+      ],
+      "license": "CC0-1.0",
+      "license_page": "https://polyhaven.com/license",
+      "license_text": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "source_dimensions_mm": [
+        400.0099003314972,
+        292.32875257730484,
+        347.10586071014404
+      ],
+      "source_triangles": 14228,
+      "downloaded_at_utc": "2026-10-07T02:19:41Z",
+      "files": [
+        {
+          "path": "Models/LunarBase/Downloads/metal_toolbox/metal_toolbox_2k.fbx",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/fbx/2k/metal_toolbox/metal_toolbox_2k.fbx",
+          "bytes": 536476,
+          "md5": "2a39bbcb4aeb4cbf8da8a978bdd2e925",
+          "sha256": "023bec6ae542df94d07b4a2bcdab0dc6c7fdbdd4313465a239b7f9d3ee710cd3"
+        },
+        {
+          "path": "Models/LunarBase/Downloads/metal_toolbox/metal_toolbox_2k.blend",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/blend/2k/metal_toolbox/metal_toolbox_2k.blend",
+          "bytes": 451321,
+          "md5": "a2a6bc6410e02d60a8ab4ca0727c16ee",
+          "sha256": "bb434d051e065db446118e3a02ac1d5204208ab545db8bff0f7b1967a9965af6"
+        },
+        {
+          "path": "Models/LunarBase/Downloads/metal_toolbox/textures/metal_toolbox_diff_2k.jpg",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/2k/metal_toolbox/metal_toolbox_diff_2k.jpg",
+          "bytes": 2884619,
+          "md5": "870d4d3804daadd9c4df40f746d56fa7",
+          "sha256": "ff84f51ac4c88c13407a591abd2111ed6210566b3528232c655806429e4e0b44"
+        },
+        {
+          "path": "Models/LunarBase/Downloads/metal_toolbox/textures/metal_toolbox_nor_gl_2k.png",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/png/2k/metal_toolbox/metal_toolbox_nor_gl_2k.png",
+          "bytes": 18906017,
+          "md5": "aa7f9e3efe988e54c95c130293c7dab4",
+          "sha256": "ca941ed5e91495c8936a3f1d75a3a1ba204ca31f469f8266b86607828b7bbd60"
+        },
+        {
+          "path": "Models/LunarBase/Downloads/metal_toolbox/textures/metal_toolbox_arm_2k.png",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/png/2k/metal_toolbox/metal_toolbox_arm_2k.png",
+          "bytes": 14152459,
+          "md5": "b8e36a335dab2438852bf9c3f0f0733f",
+          "sha256": "7506f8beff038c802fe5bccd0a6a0d43a4191450990eabfa4818d34f8508fb2b"
+        }
+      ]
+    },
+    {
+      "id": "medical_box",
+      "name": "Medical Box",
+      "source_page": "https://polyhaven.com/a/medical_box",
+      "info_api": "https://api.polyhaven.com/info/medical_box",
+      "files_api": "https://api.polyhaven.com/files/medical_box",
+      "author": [
+        "Ulan Cabanilla"
+      ],
+      "license": "CC0-1.0",
+      "license_page": "https://polyhaven.com/license",
+      "license_text": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "source_dimensions_mm": [
+        525.4814624786377,
+        350.16927123069763,
+        97.5121483206749
+      ],
+      "source_triangles": 3718,
+      "downloaded_at_utc": "2026-10-07T02:19:41Z",
+      "files": [
+        {
+          "path": "Models/LunarBase/Downloads/medical_box/medical_box_2k.fbx",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/fbx/2k/medical_box/medical_box_2k.fbx",
+          "bytes": 139628,
+          "md5": "ee53f20b2d733545ee4ccf33f65e7efe",
+          "sha256": "a9a07fb8261fb98f83d4955eb261861bb069cddde1fec9a62c209886cf800acb"
+        },
+        {
+          "path": "Models/LunarBase/Downloads/medical_box/medical_box_2k.blend",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/blend/2k/medical_box/medical_box_2k.blend",
+          "bytes": 194462,
+          "md5": "10e6c0e7a5130bc1b2852375bb28d9ba",
+          "sha256": "9cf7bd5aed3d2dead1c707edb6d0bd27284c009b5ee9d96b19827dec15b9aa34"
+        },
+        {
+          "path": "Models/LunarBase/Downloads/medical_box/textures/medical_box_diff_2k.jpg",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/2k/medical_box/medical_box_diff_2k.jpg",
+          "bytes": 2536442,
+          "md5": "00935657710a6bea894aefc4fd0d5880",
+          "sha256": "589255b0a99ea2dfa931474bf16041e1fda6cd353c299006a0f7292f35c3af5d"
+        },
+        {
+          "path": "Models/LunarBase/Downloads/medical_box/textures/medical_box_nor_gl_2k.png",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/png/2k/medical_box/medical_box_nor_gl_2k.png",
+          "bytes": 10581423,
+          "md5": "ad80423945ec686bd5ab351b85f2f89c",
+          "sha256": "db8fb6e4781c0632f492821647ee1852f3c0b650d4448dc524c1dd83e082aafa"
+        },
+        {
+          "path": "Models/LunarBase/Downloads/medical_box/textures/medical_box_arm_2k.png",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/png/2k/medical_box/medical_box_arm_2k.png",
+          "bytes": 11176222,
+          "md5": "4107fc84ba2e2772c3a96388524953d8",
+          "sha256": "a6d7a871a36d730c61db9c6d1dc928e83e1a99f2f582528a16d70dccbfe84058"
+        }
+      ]
+    },
+    {
+      "id": "circuit_board",
+      "name": "Circuit Board",
+      "source_page": "https://polyhaven.com/a/circuit_board",
+      "info_api": "https://api.polyhaven.com/info/circuit_board",
+      "files_api": "https://api.polyhaven.com/files/circuit_board",
+      "author": [
+        "Benny Weimer"
+      ],
+      "license": "CC0-1.0",
+      "license_page": "https://polyhaven.com/license",
+      "license_text": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "source_dimensions_mm": [
+        403.5058617591858,
+        397.3844349384308,
+        78.29589396715164
+      ],
+      "source_triangles": 14430,
+      "downloaded_at_utc": "2026-10-07T02:19:44Z",
+      "files": [
+        {
+          "path": "Models/LunarBase/Downloads/circuit_board/circuit_board_2k.fbx",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/fbx/2k/circuit_board/circuit_board_2k.fbx",
+          "bytes": 410220,
+          "md5": "86fcb57c92f8193bf59e088754175558",
+          "sha256": "4ab171845da7bc5a28109d0fe61b0b74211db3b22342cb68edd02a603a1fd732"
+        },
+        {
+          "path": "Models/LunarBase/Downloads/circuit_board/circuit_board_2k.blend",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/blend/2k/circuit_board/circuit_board_2k.blend",
+          "bytes": 430035,
+          "md5": "ca44d18e282b3023fb35e4122f49f1c0",
+          "sha256": "31e07834d133f89bc1dad39f62c64366524ef5bc04750733fc398a8497424c7c"
+        },
+        {
+          "path": "Models/LunarBase/Downloads/circuit_board/textures/circuit_board_diff_2k.jpg",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/2k/circuit_board/circuit_board_diff_2k.jpg",
+          "bytes": 2991379,
+          "md5": "97e4f09007c31b61e8aa695289d409d6",
+          "sha256": "7f31614278919fbb42e192d151ebe900119ff6b441439258193bd03323085f43"
+        },
+        {
+          "path": "Models/LunarBase/Downloads/circuit_board/textures/circuit_board_nor_gl_2k.png",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/png/2k/circuit_board/circuit_board_nor_gl_2k.png",
+          "bytes": 14660385,
+          "md5": "100a9c347fb75342efd6eefa0db90b95",
+          "sha256": "f52c1b2437bcae1fb0d01a4c3a2c0fa1cc63b1ae164d84c055ca61b6a894b822"
+        },
+        {
+          "path": "Models/LunarBase/Downloads/circuit_board/textures/circuit_board_arm_2k.png",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/png/2k/circuit_board/circuit_board_arm_2k.png",
+          "bytes": 9485265,
+          "md5": "cccb0bb8b5ecea975f39cb543126a22e",
+          "sha256": "4280582eb4a47da27f3ccf8e5a5e54742ee883fd4defe8036abb86349b5532e2"
+        },
+        {
+          "path": "Models/LunarBase/Downloads/circuit_board/textures/circuit_board_alpha_2k.png",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/png/2k/circuit_board/circuit_board_alpha_2k.png",
+          "bytes": 358705,
+          "md5": "57cea9e4b0fa672fda2207e06f3241dd",
+          "sha256": "4cfb4f8ae50a0032fc2e6126c89d42ab20324d931bce3c2884583ef3ecbd923d"
+        }
+      ]
+    },
+    {
+      "id": "power_box_01",
+      "name": "Power Box 01",
+      "source_page": "https://polyhaven.com/a/power_box_01",
+      "info_api": "https://api.polyhaven.com/info/power_box_01",
+      "files_api": "https://api.polyhaven.com/files/power_box_01",
+      "author": [
+        "Rico Cilliers",
+        "Yann Kervran"
+      ],
+      "license": "CC0-1.0",
+      "license_page": "https://polyhaven.com/license",
+      "license_text": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "source_dimensions_mm": [
+        377.4920701980591,
+        418.45703125,
+        503.142774105072
+      ],
+      "source_triangles": 21272,
+      "downloaded_at_utc": "2026-10-07T02:19:43Z",
+      "files": [
+        {
+          "path": "Models/LunarBase/Downloads/power_box_01/power_box_01_2k.fbx",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/fbx/2k/power_box_01/power_box_01_2k.fbx",
+          "bytes": 1099948,
+          "md5": "554c847419fedd6dbbed84acf0f682b8",
+          "sha256": "4e3cf0ec5235f1d427bb96022747b8b19b8d9d17143bc951ab144b98f728d73a"
+        },
+        {
+          "path": "Models/LunarBase/Downloads/power_box_01/power_box_01_2k.blend",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/blend/2k/power_box_01/power_box_01_2k.blend",
+          "bytes": 617332,
+          "md5": "4fdf87d15158f12c9d609bea80cf6dbc",
+          "sha256": "06fecde4356c9f6cb01595b203e3f3064636c3dec3638984fcacd2ed4e7c4f81"
+        },
+        {
+          "path": "Models/LunarBase/Downloads/power_box_01/textures/power_box_01_diff_2k.jpg",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/2k/power_box_01/power_box_01_diff_2k.jpg",
+          "bytes": 1883678,
+          "md5": "c911f1ffb29ea558069498a01d5ccc5a",
+          "sha256": "045f04100a6a95bf6d43ea0989545b52008c84dd1d1d238ad0d7fa89789f8d0b"
+        },
+        {
+          "path": "Models/LunarBase/Downloads/power_box_01/textures/power_box_01_nor_gl_2k.png",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/png/2k/power_box_01/power_box_01_nor_gl_2k.png",
+          "bytes": 19142988,
+          "md5": "eab701dd9ec6d1ba5b8b7ee166db57d5",
+          "sha256": "3901bbe3514707f6178d58acc76c4c842fabf6d31a0b28c40f760b432bc9657c"
+        },
+        {
+          "path": "Models/LunarBase/Downloads/power_box_01/textures/power_box_01_arm_2k.png",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/png/2k/power_box_01/power_box_01_arm_2k.png",
+          "bytes": 5220981,
+          "md5": "6384a2231047ce2b22ae5017dbffec12",
+          "sha256": "fb6ad4de438849d9004de38df0fa6a050b4055d41b8899f3f90190a442a43fd6"
+        }
+      ]
+    },
+    {
+      "id": "portable_welding_cart",
+      "name": "Portable Welding Cart",
+      "source_page": "https://polyhaven.com/a/portable_welding_cart",
+      "info_api": "https://api.polyhaven.com/info/portable_welding_cart",
+      "files_api": "https://api.polyhaven.com/files/portable_welding_cart",
+      "author": [
+        "Georgii Gorbunov"
+      ],
+      "license": "CC0-1.0",
+      "license_page": "https://polyhaven.com/license",
+      "license_text": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "source_dimensions_mm": [
+        838.2881879806519,
+        654.903918504715,
+        1563.1701946258545
+      ],
+      "source_triangles": 29418,
+      "downloaded_at_utc": "2026-10-07T02:19:45Z",
+      "files": [
+        {
+          "path": "Models/LunarBase/Downloads/portable_welding_cart/portable_welding_cart_2k.fbx",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/fbx/2k/portable_welding_cart/portable_welding_cart_2k.fbx",
+          "bytes": 786252,
+          "md5": "d8c0aedca78b2171f2b40099cc756ba7",
+          "sha256": "7064a8c19c5e78600c5ade9e63eda89ce7df8cf324a3d5050fe9f93a68a66279"
+        },
+        {
+          "path": "Models/LunarBase/Downloads/portable_welding_cart/portable_welding_cart_2k.blend",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/blend/2k/portable_welding_cart/portable_welding_cart_2k.blend",
+          "bytes": 712515,
+          "md5": "57af03b6faa274ba6361ab10e0cd0b8d",
+          "sha256": "839b32ec296c9ac2b90ff57c3069b06c4891d81d64effe4a6f163238df0c4011"
+        },
+        {
+          "path": "Models/LunarBase/Downloads/portable_welding_cart/textures/portable_welding_cart_diff_2k.jpg",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/2k/portable_welding_cart/portable_welding_cart_diff_2k.jpg",
+          "bytes": 2556249,
+          "md5": "b719e546c84868187bc87d7461914670",
+          "sha256": "3232c4d4fe935ba538415d2cea1d4642bcef760425490dac99ec7954089a8b8f"
+        },
+        {
+          "path": "Models/LunarBase/Downloads/portable_welding_cart/textures/portable_welding_cart_nor_gl_2k.png",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/png/2k/portable_welding_cart/portable_welding_cart_nor_gl_2k.png",
+          "bytes": 17091755,
+          "md5": "013a19d38c3a76d5d172c074d62ae1c5",
+          "sha256": "20c435fad7b29f2e34877ef1eec4f8dc593e2132c6966246968cc5c1ff8d1603"
+        },
+        {
+          "path": "Models/LunarBase/Downloads/portable_welding_cart/textures/portable_welding_cart_arm_2k.png",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/png/2k/portable_welding_cart/portable_welding_cart_arm_2k.png",
+          "bytes": 10336418,
+          "md5": "c9c8ca20b843a40a3d1f27c5bc1935bc",
+          "sha256": "7d6e7e8786e2335f56765ed53a395da9f7c9a0545626eafba6261fd9fe8e4dfd"
+        },
+        {
+          "path": "Models/LunarBase/Downloads/portable_welding_cart/textures/portable_welding_cart_alpha_2k.png",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/png/2k/portable_welding_cart/portable_welding_cart_alpha_2k.png",
+          "bytes": 137877,
+          "md5": "a23157926261e44ea69fe0daaa425fd1",
+          "sha256": "52923e33d027514ad55f7a22e1947961250c5684e5cc1acc17796da756c05313"
+        }
+      ]
+    },
+    {
+      "id": "apollo_10021_79",
+      "name": "Apollo 11 lunar sample 10021,79",
+      "source_page": "https://ares.jsc.nasa.gov/astromaterials3d/explorer/?sample=10021-79",
+      "download_url": "https://ares-a3d.s3.us-gov-east-1.amazonaws.com/samples/10021-79/2b_10021-79_SFM_Web-Resolution-Model_Coordinate-Registered/10021-79_SFM_Web-Resolution-Model_Coordinate-Registered.zip",
+      "author": "NASA Astromaterials 3D / Lunar Sample Laboratory Facility",
+      "license": "Public domain (NASA Astromaterials3D FAQ)",
+      "license_page": "https://ares.jsc.nasa.gov/astromaterials3d/faqs.htm",
+      "credit": "NASA / Astromaterials 3D; 3D reconstructed image data produced at the Lunar Sample Laboratory Facility in NASA Acquisition and Curation Office; funded by NASA Planetary Data Archiving, Restoration, and Tools Program, Proposal 15-PDART15_2-0041.",
+      "files": [
+        {
+          "path": "Models/LunarBase/Downloads/apollo_10021_79/source.zip",
+          "bytes": 4441270,
+          "sha256": "052897cfca13b6d7d92c49c6e82e9b6a503108ee1e42757b2a5bcb7e71284b8b"
+        },
+        {
+          "path": "Models/LunarBase/Downloads/apollo_10021_79/extracted/10021-79_SFM_Web-Resolution-Model_Coordinate-Registered.jpg",
+          "bytes": 2297731,
+          "sha256": "ef365920534f675435b2a061dbac4fdda9f055d232cd10b3e73f56c644acd637"
+        },
+        {
+          "path": "Models/LunarBase/Downloads/apollo_10021_79/extracted/10021-79_SFM_Web-Resolution-Model_Coordinate-Registered.mtl",
+          "bytes": 131,
+          "sha256": "6e136523346557b0172f63bf397224278b042a23de3d96efa19bf8b1eebc5837"
+        },
+        {
+          "path": "Models/LunarBase/Downloads/apollo_10021_79/extracted/10021-79_SFM_Web-Resolution-Model_Coordinate-Registered.obj",
+          "bytes": 6192047,
+          "sha256": "1f25ee40b80abb9f30ba732ea177ee85d36f46440469ea7ed6387be9f0a97058"
+        },
+        {
+          "path": "Models/LunarBase/Downloads/apollo_10021_79/extracted/A3D_OBJ_10021-79_2020-06-16_Model-Parameters.pdf",
+          "bytes": 605719,
+          "sha256": "0bd1fae4dba4df9d5c227c3a8e1bbf3da401d4fc5b3e0deb94f5dba75e8940ec"
+        }
+      ]
+    },
+    {
+      "id": "industrial_battery",
+      "model_origin": "original_project_model",
+      "fbx": "Assets/_LunarEscape/Art/StationProps/industrial_battery/industrial_battery.fbx",
+      "editable_blend": "Models/LunarBase/IndustrialBattery.blend",
+      "source_id": "original_industrial_battery",
+      "source_url": "https://www.victronenergy.com/media/pg/Lithium_Battery_Smart_-_Circuit_Board_Replacement_Instructions/en/replacing-the-circuit-board.html",
+      "reference_urls": [
+        "https://www.victronenergy.com/media/pg/Lithium_Battery_Smart_-_Circuit_Board_Replacement_Instructions/en/replacing-the-circuit-board.html"
+      ],
+      "author": "Lunar Escape project - original procedural Blender asset",
+      "license": "Original project asset; no downloaded third-party model or image content",
+      "notes": "Newly modeled game prop, not a downloaded battery. Manufacturer service manual was consulted for separate protected terminals, fasteners and sealed case construction only. All geometry, polymer textures, rating plate, project labels and colors were created for this project. Rating text is fictional game-prop labeling; no manufacturer branding or reference images are included. Source blend retains separate editable components. Single FBX mesh with named material slots; centered bounds pivot.",
+      "files": [
+        {
+          "path": "Models/LunarBase/IndustrialBattery.blend",
+          "bytes": 206656,
+          "sha256": "5686a046a84e08f762e210ba23369ccc865d3825fdd131e6b13619e2b55ae4f8"
+        },
+        {
+          "path": "Assets/_LunarEscape/Art/StationProps/industrial_battery/industrial_battery.fbx",
+          "bytes": 1011036,
+          "sha256": "d1f21870bb144c8acb727cc5de05792afa5f7641c320df7b78bbcf0ac35b6922"
+        },
+        {
+          "path": "Assets/_LunarEscape/Art/StationProps/industrial_battery/textures/industrial_battery_polymer_base_1k.png",
+          "bytes": 727675,
+          "sha256": "3d92be63d6bd0876a0c955caad68fdedc83b26bbd8530237a53e31f27af42632"
+        },
+        {
+          "path": "Assets/_LunarEscape/Art/StationProps/industrial_battery/textures/industrial_battery_polymer_metallic_smoothness_1k.png",
+          "bytes": 843772,
+          "sha256": "9241bf063fd76d792c38a949aeb290423e2f3e04cf345237918cd60896a65c86"
+        },
+        {
+          "path": "Assets/_LunarEscape/Art/StationProps/industrial_battery/textures/industrial_battery_polymer_normal_1k.png",
+          "bytes": 1684766,
+          "sha256": "4d578d4e2b54b5dd5b00ef9d3b155e4adf27b978c3d3db195dbf9f3e76704500"
+        }
+      ]
+    }
+  ]
+}

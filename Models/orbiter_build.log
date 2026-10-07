@@ -1,0 +1,27 @@
+C:\Coding\Projects\VR_game\Tools\build_orbiter_blender.py:118: DeprecationWarning: 'Material.use_nodes' is expected to be removed in Blender 6.0
+  m=bpy.data.materials.new(name);m.diffuse_color=(*color,1);m.use_nodes=True;m.node_tree.nodes.clear()
+
+FBX export starting... 'C:\\Coding\\Projects\\VR_game\\Assets\\_LunarEscape\\Art\\LunarOrbiter\\OrbiterLOD0.fbx'
+export finished in 0.0446 sec.
+ORBITER_MODEL {"id": "lod0", "fbx": "OrbiterLOD0.fbx", "meshCount": 8, "triangleCount": 63160, "boundsUnity": {"minimum": [-8.104000091552734, -1.9959999322891235, -0.12000000476837158], "maximum": [8.104000091552734, 1.9959999322891235, 9.062517166137695]}}
+
+FBX export starting... 'C:\\Coding\\Projects\\VR_game\\Assets\\_LunarEscape\\Art\\LunarOrbiter\\OrbiterLOD1.fbx'
+export finished in 0.0287 sec.
+ORBITER_MODEL {"id": "lod1", "fbx": "OrbiterLOD1.fbx", "meshCount": 8, "triangleCount": 22303, "boundsUnity": {"minimum": [-8.102720260620117, -1.9959999322891235, -0.11834674328565598], "maximum": [8.102720260620117, 1.9959999322891235, 9.062518119812012]}}
+
+FBX export starting... 'C:\\Coding\\Projects\\VR_game\\Assets\\_LunarEscape\\Art\\LunarOrbiter\\OrbiterLOD2.fbx'
+export finished in 0.0137 sec.
+ORBITER_MODEL {"id": "lod2", "fbx": "OrbiterLOD2.fbx", "meshCount": 6, "triangleCount": 7172, "boundsUnity": {"minimum": [-8.102720260620117, -1.9959684610366821, -0.09335803985595703], "maximum": [8.102720260620117, 1.995997667312622, 9.062522888183594]}}
+
+FBX export starting... 'C:\\Coding\\Projects\\VR_game\\Assets\\_LunarEscape\\Art\\LunarOrbiter\\CaptureIndicator.fbx'
+export finished in 0.0034 sec.
+ORBITER_MODEL {"id": "capture", "fbx": "CaptureIndicator.fbx", "meshCount": 1, "triangleCount": 108, "boundsUnity": {"minimum": [-0.2175000011920929, 0.8709999918937683, -0.1145000010728836], "maximum": [0.2175000011920929, 0.9289999604225159, -0.08949999511241913]}}
+C:\Coding\Projects\VR_game\Tools\build_orbiter_blender.py:375: DeprecationWarning: 'World.use_nodes' is expected to be removed in Blender 6.0
+  world=bpy.data.worlds.new('Orbital preview black');scene.world=world;world.use_nodes=True;world.node_tree.nodes.clear()
+00:19.531  render           | Saved: 'C:\Coding\Projects\VR_game\Models\LunarOrbiter\Orbiter_Overview.png'
+00:55.313  render           | Saved: 'C:\Coding\Projects\VR_game\Models\LunarOrbiter\Orbiter_DockingPort.png'
+信息: 已另存为 "LunarOrbiter_Realistic.blend"
+ORBITER_BUILD_COMPLETE
+Blender 5.2.2 LTS (hash d13f752e3b9c built 2026-09-15 01:37:04)
+
+Blender quit

@@ -1,0 +1,26 @@
+{
+  "id": "oxygen_cylinder",
+  "fbx": "Assets/_LunarEscape/Art/StationProps/oxygen_cylinder/oxygen_cylinder.fbx",
+  "source_id": "portable_welding_cart",
+  "source_url": "https://polyhaven.com/a/portable_welding_cart",
+  "author": "Georgii Gorbunov",
+  "license": "CC0-1.0",
+  "bounds_m": [
+    0.2749846577644348,
+    0.5600000023841858,
+    0.21756063401699066
+  ],
+  "triangles": 7149,
+  "materials": [
+    {
+      "name": "oxygen_cylinder",
+      "base_color": "Assets/_LunarEscape/Art/StationProps/oxygen_cylinder/textures/oxygen_cylinder_diff_2k.jpg",
+      "normal": "Assets/_LunarEscape/Art/StationProps/oxygen_cylinder/textures/oxygen_cylinder_nor_gl_2k.png",
+      "metallic_smoothness": "Assets/_LunarEscape/Art/StationProps/oxygen_cylinder/textures/oxygen_cylinder_metallic_smoothness_2k.png",
+      "occlusion": "Assets/_LunarEscape/Art/StationProps/oxygen_cylinder/textures/oxygen_cylinder_ao_2k.png",
+      "alpha_clip": false
+    }
+  ],
+  "notes": "Green oxygen vessel/regulator extracted from source welding cart; straight barrel shortened to make a 0.56 m portable game prop; transparent gauge covers removed, gauge faces preserved.",
+  "sha256": "115f9b77ba1f8f1dc0785da6ff0ce4913ad0469802f5aeb270752f9a21644b3d"
+}

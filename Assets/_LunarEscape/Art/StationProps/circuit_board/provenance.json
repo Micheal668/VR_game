@@ -1,0 +1,35 @@
+{
+  "id": "circuit_board",
+  "fbx": "Assets/_LunarEscape/Art/StationProps/circuit_board/circuit_board.fbx",
+  "source_id": "circuit_board",
+  "source_url": "https://polyhaven.com/a/circuit_board",
+  "author": "Benny Weimer",
+  "license": "CC0-1.0",
+  "bounds_m": [
+    0.4035058617591858,
+    0.07829589396715164,
+    0.3973844349384308
+  ],
+  "triangles": 14430,
+  "materials": [
+    {
+      "name": "circuit_board",
+      "base_color": "Assets/_LunarEscape/Art/StationProps/circuit_board/textures/circuit_board_diff_2k.jpg",
+      "normal": "Assets/_LunarEscape/Art/StationProps/circuit_board/textures/circuit_board_nor_gl_2k.png",
+      "metallic_smoothness": "Assets/_LunarEscape/Art/StationProps/circuit_board/textures/circuit_board_metallic_smoothness_2k.png",
+      "occlusion": "Assets/_LunarEscape/Art/StationProps/circuit_board/textures/circuit_board_ao_2k.png",
+      "alpha_clip": false
+    },
+    {
+      "name": "circuit_board_alpha",
+      "base_color": "Assets/_LunarEscape/Art/StationProps/circuit_board/textures/circuit_board_diff_alpha_2k.png",
+      "normal": "Assets/_LunarEscape/Art/StationProps/circuit_board/textures/circuit_board_nor_gl_2k.png",
+      "metallic_smoothness": "Assets/_LunarEscape/Art/StationProps/circuit_board/textures/circuit_board_metallic_smoothness_2k.png",
+      "occlusion": "Assets/_LunarEscape/Art/StationProps/circuit_board/textures/circuit_board_ao_2k.png",
+      "alpha_clip": true,
+      "alpha_cutoff": 0.5
+    }
+  ],
+  "notes": "Original electronics board; second material uses source alpha mask packed into base-color alpha.",
+  "sha256": "3f054d229b0d533338c9273d53305648c846082c2fdc9bfc6a1b53d47d309ebd"
+}

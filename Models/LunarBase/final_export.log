@@ -1,0 +1,17 @@
+00:00.421  blend            | Read blend: "C:\Coding\Projects\VR_game\Models\LunarBase\LunarStation_Realistic.blend"
+C:\Coding\Projects\VR_game\Models\LunarBase\refine_export.py:14: DeprecationWarning: 'Material.use_nodes' is expected to be removed in Blender 6.0
+  if not m.use_nodes: continue
+信息: 已另存为 "LunarStation_Realistic.blend"
+
+FBX export starting... 'C:\\Coding\\Projects\\VR_game\\Assets\\_LunarEscape\\Art\\LunarBaseGeometry\\LunarStationExterior.fbx'
+export finished in 0.0733 sec.
+
+FBX export starting... 'C:\\Coding\\Projects\\VR_game\\Assets\\_LunarEscape\\Art\\LunarBaseGeometry\\LunarStationInterior.fbx'
+export finished in 0.0449 sec.
+LUNAR_BASE_FINAL_EXPORT 183072
+00:29.000  render           | Saved: 'C:\Coding\Projects\VR_game\Models\LunarBase\LunarStation_Exterior.png'
+01:38.093  render           | Saved: 'C:\Coding\Projects\VR_game\Models\LunarBase\LunarStation_Interior.png'
+LUNAR_BASE_FINAL_COMPLETE
+Blender 5.2.2 LTS (hash d13f752e3b9c built 2026-09-15 01:37:04)
+
+Blender quit

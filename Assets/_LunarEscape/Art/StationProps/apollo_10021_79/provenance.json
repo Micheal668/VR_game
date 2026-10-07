@@ -1,0 +1,38 @@
+{
+  "id": "apollo_10021_79",
+  "fbx": "Assets/_LunarEscape/Art/StationProps/apollo_10021_79/apollo_10021_79.fbx",
+  "source_id": "apollo_10021_79",
+  "source_url": "https://ares.jsc.nasa.gov/astromaterials3d/explorer/?sample=10021-79",
+  "author": "NASA / Astromaterials 3D / Lunar Sample Laboratory Facility",
+  "license": "Public domain (NASA Astromaterials 3D FAQ)",
+  "bounds_m": [
+    0.25999999046325684,
+    0.14224307239055634,
+    0.23694412410259247
+  ],
+  "source_bounds_m": [
+    0.03326699882745743,
+    0.018200000748038292,
+    0.030316999182105064
+  ],
+  "source_triangles": 98184,
+  "triangles": 16000,
+  "source_texture_dimensions": [
+    3250,
+    3250
+  ],
+  "materials": [
+    {
+      "name": "apollo_10021_79",
+      "base_color": "Assets/_LunarEscape/Art/StationProps/apollo_10021_79/textures/apollo_10021_79_diff_2k.png",
+      "normal": "",
+      "metallic_smoothness": "",
+      "occlusion": "",
+      "alpha_clip": false,
+      "metallic": 0,
+      "smoothness": 0.12
+    }
+  ],
+  "notes": "Actual Apollo 11 lunar sample 10021,79 photogrammetric model. Decimated for VR and source color texture resized to 2K; original color/UV retained. Uniformly enlarged to 0.26 m for gameplay readability; this in-game copy is not the real sample size. No synthetic normal or PBR data presented as measured NASA data.",
+  "sha256": "3d66c20a58b069ce34a4789149eadb727b99d705b62ce8dd18eb69d68a0b2949"
+}

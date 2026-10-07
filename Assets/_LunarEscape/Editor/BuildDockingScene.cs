@@ -43,6 +43,9 @@ namespace LunarEscape.Editor
             scene.GroundRoot.SetActive(true);scene.FlightWorld.SetActive(false);
             BuildEarthSky.ApplyToCurrentScene();
             BuildCrewSuit.ApplyToCurrentScene();
+            BuildApolloExterior.ApplyToCurrentScene();
+            BuildRealisticStation.ApplyToCurrentScene();
+            BuildOrbiterSurface.ApplyToCurrentScene();
             EditorSceneManager.SaveScene(SceneManager.GetActiveScene(),ScenePath);AssetDatabase.SaveAssets();
             EditorBuildSettings.scenes=new[]{new EditorBuildSettingsScene(ScenePath,true)}.Concat(EditorBuildSettings.scenes.Where(s=>s.path!=ScenePath)).ToArray();Debug.Log("LUNAR_DOCKING_SCENE_READY");
         }

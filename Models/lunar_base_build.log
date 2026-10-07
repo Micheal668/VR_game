@@ -1,0 +1,20 @@
+C:\Coding\Projects\VR_game\Tools\build_lunar_base_blender.py:92: DeprecationWarning: 'Material.use_nodes' is expected to be removed in Blender 6.0
+  m=bpy.data.materials.new(name);m.diffuse_color=(*color,1);m.use_nodes=True
+C:\Coding\Projects\VR_game\Tools\build_lunar_base_blender.py:431: DeprecationWarning: 'Material.use_nodes' is expected to be removed in Blender 6.0
+  ground=bpy.data.materials.new('Preview regolith');ground.diffuse_color=(.15,.145,.13,1);ground.use_nodes=True
+C:\Coding\Projects\VR_game\Tools\build_lunar_base_blender.py:451: DeprecationWarning: 'World.use_nodes' is expected to be removed in Blender 6.0
+  world=bpy.data.worlds.new('Preview space') if not bpy.data.worlds else bpy.data.worlds[0];scene.world=world;world.use_nodes=True
+信息: 已另存为 "LunarStation_Realistic.blend"
+
+FBX export starting... 'C:\\Coding\\Projects\\VR_game\\Assets\\_LunarEscape\\Art\\LunarBaseGeometry\\LunarStationExterior.fbx'
+export finished in 0.0704 sec.
+
+FBX export starting... 'C:\\Coding\\Projects\\VR_game\\Assets\\_LunarEscape\\Art\\LunarBaseGeometry\\LunarStationInterior.fbx'
+export finished in 0.0517 sec.
+LUNAR_BASE_EXPORT {"meshes": 48, "triangles": 182424, "editableObjects": 1729}
+02:44.156  render           | Saved: 'C:\Coding\Projects\VR_game\Models\LunarBase\LunarStation_Exterior.png'
+04:12.500  render           | Saved: 'C:\Coding\Projects\VR_game\Models\LunarBase\LunarStation_Interior.png'
+LUNAR_BASE_COMPLETE
+Blender 5.2.2 LTS (hash d13f752e3b9c built 2026-09-15 01:37:04)
+
+Blender quit
