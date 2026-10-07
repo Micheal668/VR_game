@@ -14,6 +14,8 @@ namespace LunarEscape
         [SerializeField] private HapticImpulsePlayer[] hands = new HapticImpulsePlayer[0];
         [Tooltip("RCS 推进按钮；按住它们的那只手会额外感到喷气震动。")]
         [SerializeField] private ButtonPressFeedback[] thrustButtons = new ButtonPressFeedback[0];
+        [Tooltip("驾驶台上的手控器、刹车与主推按钮；握住并接通推进的手会感到喷气震动。")]
+        [SerializeField] private CockpitControl[] cockpitThrust = new CockpitControl[0];
         [Header("音量")]
         [SerializeField, Range(0f, 1f)] private float engineVolume = 0.35f;
         [SerializeField, Range(0f, 1f)] private float thrusterVolume = 0.3f;
@@ -37,6 +39,8 @@ namespace LunarEscape
             hands = controllers ?? new HapticImpulsePlayer[0];
             thrustButtons = thrusters ?? new ButtonPressFeedback[0];
         }
+
+        public void ConfigureCockpit(CockpitControl[] controls) => cockpitThrust = controls ?? new CockpitControl[0];
 
         private void Awake()
         {
@@ -120,6 +124,8 @@ namespace LunarEscape
         {
             foreach (var button in thrustButtons)
                 if (button != null && button.IsHeld && button.HeldBy == hand) return true;
+            foreach (var control in cockpitThrust)
+                if (control != null && control.IsEngaged && control.HoldingHand == hand) return true;
             return false;
         }
 

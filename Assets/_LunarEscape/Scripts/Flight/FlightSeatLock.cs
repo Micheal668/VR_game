@@ -5,6 +5,7 @@ using Unity.XR.CoreUtils;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using UnityEngine.XR.Interaction.Toolkit;
 using UnityEngine.XR.Interaction.Toolkit.Interactables;
 using UnityEngine.XR.Interaction.Toolkit.Interactors;
 using UnityEngine.XR.Interaction.Toolkit.Locomotion;
@@ -20,6 +21,8 @@ namespace LunarEscape
         [SerializeField] private GameObject flightPanel;
         [SerializeField] private XROrigin player;
         [SerializeField] private GameObject summaryRoot;
+        [Tooltip("登舱后仍允许手部交互的层：舱内实体驾驶台。为空时与原来一样关闭全部世界交互。")]
+        [SerializeField] private InteractionLayerMask cockpitLayers;
         private readonly List<(Behaviour component, bool enabled)> behaviours = new();
         private readonly List<(Selectable control, bool interactable)> controls = new();
         private readonly List<(XRBaseInteractor interactor, int layers)> interactors = new();
@@ -30,6 +33,9 @@ namespace LunarEscape
         private Quaternion stoppedRotation;
 
         public bool IsLocked { get; private set; }
+        public InteractionLayerMask CockpitLayers => cockpitLayers;
+
+        public void ConfigureCockpitLayers(InteractionLayerMask layers) => cockpitLayers = layers;
 
         public void Configure(AscentMission task, XROrigin origin, GameObject summary, GameObject controlsPanel)
         {
@@ -78,19 +84,24 @@ namespace LunarEscape
             }
             foreach (var provider in player.GetComponentsInChildren<LocomotionProvider>(true))
                 Disable(provider);
+            bool cockpit = cockpitLayers.value != 0;
             foreach (var simulator in SceneComponents<CollisionAwareSimulator>())
             {
                 simulators.Add((simulator, simulator.BodyMovementEnabled, simulator.usePointAndClick));
                 simulator.BodyMovementEnabled = false;
                 // 归还普通鼠标给 UI：死亡时即使仍处于手柄模式，也能直接点击重新开始。
-                simulator.usePointAndClick = false;
+                // 有实体驾驶台时保留手柄模式的鼠标点选，否则键鼠无法握住开关和手控器；
+                // 头部模式下鼠标照常点击面板。
+                if (!cockpit) simulator.usePointAndClick = false;
             }
 
+            int defaultLayer = InteractionLayerMask.GetMask("Default");
             foreach (var interactor in player.GetComponentsInChildren<XRBaseInteractor>(true))
             {
                 interactors.Add((interactor, interactor.interactionLayers.value));
                 // 仅清除世界物体交互层，不关闭射线组件或它的 UI 点选能力。
-                interactor.interactionLayers = 0;
+                // 原本能抓世界物体的手改为只能操作驾驶台；传送射线等其他交互器保持关闭。
+                interactor.interactionLayers = (interactor.interactionLayers.value & defaultLayer) != 0 ? cockpitLayers.value : 0;
             }
             foreach (var grab in SceneComponents<XRGrabInteractable>())
             {

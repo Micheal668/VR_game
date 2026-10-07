@@ -1253,6 +1253,42 @@
       "zh": "主推加速（远距离）",
       "en": "MAIN BOOST (>12 m)",
       "ru": "МАРШЕВАЯ ТЯГА (>12 м)"
+    },
+    {
+      "key": "cockpit.translation",
+      "zh": "平移手柄\n握住，推向要去的方向",
+      "en": "TRANSLATION\nGrab and push where to go",
+      "ru": "ПЕРЕМЕЩЕНИЕ\nВозьмите и тяните, куда лететь"
+    },
+    {
+      "key": "cockpit.rotation",
+      "zh": "姿态球\n握住，转动手腕",
+      "en": "ATTITUDE\nGrab and twist your wrist",
+      "ru": "ОРИЕНТАЦИЯ\nВозьмите и поверните кисть"
+    },
+    {
+      "key": "cockpit.assist",
+      "zh": "对接辅助",
+      "en": "DOCK ASSIST",
+      "ru": "ПОМОЩЬ СТЫКОВКИ"
+    },
+    {
+      "key": "cockpit.burn",
+      "zh": "入轨点火",
+      "en": "ORBIT BURN",
+      "ru": "КОРРЕКЦИЯ ОРБИТЫ"
+    },
+    {
+      "key": "cockpit.brake",
+      "zh": "按住制动",
+      "en": "HOLD: BRAKE",
+      "ru": "ДЕРЖАТЬ: ТОРМОЗ"
+    },
+    {
+      "key": "cockpit.boost",
+      "zh": "按住主推\n>12 m",
+      "en": "HOLD: MAIN\n>12 m",
+      "ru": "ДЕРЖАТЬ: МАРШЕВЫЙ\n>12 м"
     }
   ]
 }
