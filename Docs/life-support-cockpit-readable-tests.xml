@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="1" result="Passed" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-07 19:50:29Z" end-time="2026-10-07 19:50:31Z" duration="2.2449935">
+  <test-suite type="TestSuite" id="1167" name="Lunar Escape VR" fullname="Lunar Escape VR" runstate="Runnable" testcasecount="138" result="Passed" start-time="2026-10-07 19:50:29Z" end-time="2026-10-07 19:50:31Z" duration="2.244994" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="PlayMode" />
+    </properties>
+    <test-suite type="Assembly" id="1328" name="LunarEscape.PlayModeTests.dll" fullname="C:/Coding/Projects/VR_game/Library/ScriptAssemblies/LunarEscape.PlayModeTests.dll" runstate="Runnable" testcasecount="138" result="Passed" start-time="2026-10-07 19:50:29Z" end-time="2026-10-07 19:50:31Z" duration="2.235611" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="44596" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="PlayMode" />
+        <property name="EditorOnly" value="False" />
+      </properties>
+      <test-suite type="TestSuite" id="1329" name="LunarEscape" fullname="LunarEscape" runstate="Runnable" testcasecount="138" result="Passed" start-time="2026-10-07 19:50:29Z" end-time="2026-10-07 19:50:31Z" duration="2.233826" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-suite type="TestSuite" id="1330" name="Tests" fullname="LunarEscape.Tests" runstate="Runnable" testcasecount="138" result="Passed" start-time="2026-10-07 19:50:29Z" end-time="2026-10-07 19:50:31Z" duration="2.232420" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-suite type="TestFixture" id="1247" name="LifeSupportTests" fullname="LunarEscape.Tests.LifeSupportTests" classname="LunarEscape.Tests.LifeSupportTests" runstate="Runnable" testcasecount="19" result="Passed" start-time="2026-10-07 19:50:29Z" end-time="2026-10-07 19:50:31Z" duration="2.229917" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1256" name="MinimumReservesWithSuppliesCanRescueWalkBoardAndOperateIntegratedCockpit" fullname="LunarEscape.Tests.LifeSupportTests.MinimumReservesWithSuppliesCanRescueWalkBoardAndOperateIntegratedCockpit" methodname="MinimumReservesWithSuppliesCanRescueWalkBoardAndOperateIntegratedCockpit" classname="LunarEscape.Tests.LifeSupportTests" runstate="Runnable" seed="241984137" result="Passed" start-time="2026-10-07 19:50:29Z" end-time="2026-10-07 19:50:31Z" duration="2.219731" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[Saving results to: C:/Users/MichealC/AppData/LocalLow/Lunar Escape Project/Lunar Escape VR\TestResults.xml
+]]></output>
+            </test-case>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

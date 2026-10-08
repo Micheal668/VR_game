@@ -13,6 +13,7 @@ namespace LunarEscape
         private float explosionAge=-1;
         private Material explosionMaterial;
         public Transform Target=>target;
+        public Vector3 PlayerPort=>playerPort;
         public bool ExplosionVisible=>explosion!=null&&explosion.gameObject.activeSelf;
         public void Configure(AscentMission task,DockingMission controller,Transform craft,Transform blast,Renderer lamp)
         {flight=task;docking=controller;target=craft;explosion=blast;captureLight=lamp;}

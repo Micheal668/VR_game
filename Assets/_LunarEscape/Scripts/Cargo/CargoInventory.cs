@@ -15,9 +15,13 @@ namespace LunarEscape
         [SerializeField] private CargoPackZone packZone;
         [SerializeField] private EvacuationZone shipZone;
         [SerializeField] private AscentMission flightUse;
+        [SerializeField] private CrewMission crewUse;
+        [SerializeField] private LifeSupportMission lifeSupportUse;
         private ReadOnlyCollection<CargoItem> readOnlyItems;
         private readonly Dictionary<CargoItem, float> releasedNearPack = new();
         private readonly List<CargoItem> pendingPackChecks = new();
+        private uint crewConsumptionVersion;
+        private bool crewConsumptionInProgress;
 
         public StationMission Mission => mission;
         public CargoConfig Config => config;
@@ -122,6 +126,63 @@ namespace LunarEscape
             return false;
         }
 
+        public void ConfigureCrewUse(CrewMission crew)
+        {
+            if (crew == null || crew.Inventory != this || crew.Station != mission || crew.Flight != flightUse)
+                throw new ArgumentException("乘员只能消费所连接任务的同一份物资。");
+            crewUse = crew;
+        }
+
+        public void ConfigureLifeSupportUse(LifeSupportMission source)
+        {
+            if (source == null || source.Inventory != this || source.Station != mission)
+                throw new ArgumentException("宇航服补给只能使用当前任务物资。");
+            lifeSupportUse = source;
+        }
+        internal bool TryConsumeForSuit(CargoItem item, LifeSupportMission requester)
+        {
+            if (crewConsumptionInProgress || requester == null || requester != lifeSupportUse || !Owns(item)
+                || !requester.CanUseSupply(item)) return false;
+            return ConsumeCarriedItem(item);
+        }
+
+        internal bool TryConsumeHeldMedicalForCrew(CargoItem item, CrewMission requester)
+        {
+            if (!ValidCrewRequester(requester) || !Owns(item) || !requester.CanTreatCommanderWith(item)
+                || item.Kind != CargoKind.MedicalKit || item.State != CargoState.Held || !item.Grab.isSelected) return false;
+            return ConsumeCarriedItem(item);
+        }
+
+        internal bool TryConsumeLoadedMedicalForCrew(CrewMission requester)
+        {
+            if (!ValidCrewRequester(requester) || mission.Phase != StationMissionPhase.Completed
+                || !requester.CanUseLoadedMedicalOnCommander) return false;
+            foreach (var item in items)
+                if (item != null && item.Kind == CargoKind.MedicalKit && item.State == CargoState.Loaded)
+                    return ConsumeCarriedItem(item);
+            return false;
+        }
+
+        private bool ValidCrewRequester(CrewMission requester) => !crewConsumptionInProgress && requester != null && requester == crewUse
+            && requester.IsConfigured && requester.isActiveAndEnabled && requester.Inventory == this && requester.Station == mission && requester.Flight == flightUse;
+
+        private bool ConsumeCarriedItem(CargoItem item)
+        {
+            // 先锁定并标记具体物品，再取消 XR 抓取；选择退出/清单更新回调不能二次消费。
+            uint current = crewConsumptionVersion;
+            crewConsumptionInProgress = true;
+            try
+            {
+                releasedNearPack.Remove(item);
+                item.SetState(CargoState.Consumed);
+                item.HideForStorage();
+                if (current != crewConsumptionVersion) return false;
+                Changed?.Invoke();
+                return current == crewConsumptionVersion && item.State == CargoState.Consumed;
+            }
+            finally { if (current == crewConsumptionVersion) crewConsumptionInProgress = false; }
+        }
+
         public bool CanAcquire(CargoItem item, out CargoRejection rejection)
         {
             rejection = CargoRejection.None;
@@ -186,11 +247,13 @@ namespace LunarEscape
         private void FixedUpdate()
         {
             if (!CanChange()) { releasedNearPack.Clear(); return; }
+            uint current = crewConsumptionVersion;
             pendingPackChecks.Clear(); pendingPackChecks.AddRange(releasedNearPack.Keys);
             foreach (var item in pendingPackChecks)
             {
+                if (current != crewConsumptionVersion) return;
                 if (item == null || item.State != CargoState.World || item.Grab.isSelected
-                    || !item.isActiveAndEnabled || Time.time > releasedNearPack[item])
+                    || !item.isActiveAndEnabled || !releasedNearPack.TryGetValue(item, out float until) || Time.time > until)
                 { releasedNearPack.Remove(item); continue; }
                 if (packZone == null || !packZone.Contains(item)) continue;
                 releasedNearPack.Remove(item);
@@ -242,6 +305,8 @@ namespace LunarEscape
                 Reject(CargoRejection.WrongPhase);
                 return;
             }
+            ++crewConsumptionVersion;
+            crewConsumptionInProgress = false;
             releasedNearPack.Clear();
             foreach (CargoItem item in items)
                 if (item != null) item.SetState(CargoState.World);
@@ -276,7 +341,8 @@ namespace LunarEscape
             return true;
         }
 
-        private bool CanChange() => mission != null && config != null && mission.Phase == StationMissionPhase.Evacuation;
+        private bool CanChange() => mission != null && config != null && (mission.Phase == StationMissionPhase.Evacuation
+            || lifeSupportUse != null && lifeSupportUse.IsGroundActive);
         private bool Owns(CargoItem item) => item != null && item.Inventory == this && Array.IndexOf(items, item) >= 0;
 
         private int CountState(CargoState? state)

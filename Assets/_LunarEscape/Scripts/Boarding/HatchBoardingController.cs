@@ -22,6 +22,7 @@ namespace LunarEscape
         public Button AccessibleButton => accessibleButton;
         public bool CanBoard => !requested && session != null && session.Mission.Phase == StationMissionPhase.Evacuation
             && session.Mission.RemainingSeconds > 0 && session.Exit.ContainsPlayer
+            && (session.Mission.LifeSupport == null || session.Mission.LifeSupport.SuitWorn && session.Mission.LifeSupport.DoorOpen)
             && Vector3.Distance(session.Player.Camera.transform.position, hatch.position) <= reachDistance;
         public void Configure(StationMissionSession flow, CargoInventory cargo, Transform door,
             Button control, XRSimpleInteractable interactable, LocalizedText instructions)
@@ -39,9 +40,11 @@ namespace LunarEscape
             button.interactable=ready;
             // 射线可见，但远离梯子时点击不能绕过身体距离判断。
             doorInteraction.enabled=session.Mission.Phase==StationMissionPhase.Evacuation && !requested;
-            hint.SetKey(ready ? "lander.hatch.ready" : "lander.hatch.approach");
+            bool needsSuit=session.Mission.LifeSupport!=null&&!session.Mission.LifeSupport.SuitWorn;
+            bool needsAirlock=session.Mission.LifeSupport!=null&&!session.Mission.LifeSupport.DoorOpen;
+            hint.SetKey(needsSuit ? "life.board.suit_required" : needsAirlock ? "life.board.hatch_required" : ready ? "lander.hatch.ready" : "lander.hatch.approach");
             if(accessibleButton!=null) accessibleButton.interactable=ready;
-            if(accessibleHint!=null) accessibleHint.SetKey(ready ? "boarding.ready" : "boarding.approach");
+            if(accessibleHint!=null) accessibleHint.SetKey(needsSuit ? "life.board.suit_required" : needsAirlock ? "life.board.hatch_required" : ready ? "boarding.ready" : "boarding.approach");
         }
         public void OnSelected(SelectEnterEventArgs args) => RequestBoarding();
         public void RequestBoarding()

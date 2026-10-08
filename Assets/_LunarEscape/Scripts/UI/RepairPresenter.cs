@@ -12,6 +12,7 @@ namespace LunarEscape
         [SerializeField] private LocalizedText progressText;
         [SerializeField] private Image progressFill;
         [SerializeField] private Renderer indicator;
+        [SerializeField] private string statusPrefix = "repair.";
         private readonly Color waiting = new(1f, 0.62f, 0.2f);
         private readonly Color working = new(0.22f, 0.85f, 1f);
         private readonly Color complete = new(0.2f, 0.95f, 0.65f);
@@ -20,7 +21,7 @@ namespace LunarEscape
         private RepairState lastState;
 
         public void Configure(TimedRepairTask source, LocalizedText statusText,
-            LocalizedText percentage, Image fill, Renderer targetIndicator)
+            LocalizedText percentage, Image fill, Renderer targetIndicator, string prefix = "repair.")
         {
             if (isActiveAndEnabled && task != null) task.Changed -= Refresh;
             task = source;
@@ -28,6 +29,7 @@ namespace LunarEscape
             progressText = percentage;
             progressFill = fill;
             indicator = targetIndicator;
+            statusPrefix = prefix;
             if (isActiveAndEnabled && task != null) task.Changed += Refresh;
             lastPercent = -1;
             Refresh();
@@ -56,10 +58,10 @@ namespace LunarEscape
             lastState = task.State;
             string key = task.State switch
             {
-                RepairState.Working => "repair.working",
-                RepairState.Paused => "repair.paused",
-                RepairState.Complete => "repair.complete",
-                _ => "repair.ready"
+                RepairState.Working => statusPrefix + "working",
+                RepairState.Paused => statusPrefix + "paused",
+                RepairState.Complete => statusPrefix + "complete",
+                _ => statusPrefix + "ready"
             };
             status.SetKey(key, percent);
             if (progressText != null) progressText.SetKey("repair.progress", percent);

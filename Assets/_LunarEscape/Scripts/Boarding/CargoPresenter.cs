@@ -50,17 +50,18 @@ namespace LunarEscape
             if (inventory == null || inventory.Config == null || localization == null || rows == null) return;
             capacity.SetKey("cargo.capacity", inventory.TypeCount, inventory.Config.MaxTypes,
                 inventory.TotalWeightKg, inventory.Config.MaxWeightKg);
+            bool canManage = mission.Phase == StationMissionPhase.Evacuation || mission.LifeSupport != null && mission.LifeSupport.IsGroundActive;
             for (int i = 0; i < rows.Length; i++)
             {
                 var kind = (CargoKind)i;
                 rows[i].SetKey("cargo.row", localization.Format("cargo.kind." + kind), inventory.GetCount(kind));
-                discardButtons[i].interactable = mission.Phase == StationMissionPhase.Evacuation
+                discardButtons[i].interactable = canManage
                     && inventory.Items.Any(item => item.Kind == kind
                         && (item.State == CargoState.Packed || item.State == CargoState.Loaded));
             }
             string key;
             if (mission.Phase == StationMissionPhase.Completed) key = "cargo.done";
-            else if (mission.Phase != StationMissionPhase.Evacuation) key = "cargo.status.ready";
+            else if (!canManage) key = "cargo.status.ready";
             else key = inventory.LastRejection switch
             {
                 CargoRejection.TypeLimit => "cargo.reject.types",

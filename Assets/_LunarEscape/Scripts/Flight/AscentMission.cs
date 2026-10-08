@@ -76,6 +76,8 @@ namespace LunarEscape
         public event Action Changed;
         public event Action<AscentPhase> PhaseChanged;
         public event Action Exploded;
+        // 只发布已经扣过资源的实际步长；失败、爆炸及对接成功在其后判定。
+        public event Action<float> TimeAdvanced;
 
         public void Configure(AscentConfig settings, StationMission task, CargoInventory cargo)
         {
@@ -89,6 +91,7 @@ namespace LunarEscape
         private void OnEnable()
         {
             if (station == null) return;
+            station.PhaseChanged -= StationChanged;
             station.PhaseChanged += StationChanged;
             if (station.Phase == StationMissionPhase.Briefing) ResetFlight();
         }
@@ -100,7 +103,7 @@ namespace LunarEscape
         }
         public void ResetFlight()
         {
-            ++version;
+            uint current = ++version;
             Phase = AscentPhase.AwaitingBoarding; Failure = AscentFailure.None; Damage = AscentDamage.None;
             Operation = StartupOperation.None; operationRemaining = phaseRemaining = 0;
             Oxygen = config != null ? config.InitialOxygen : 0; Health = config != null ? config.InitialHealth : 0;
@@ -109,8 +112,10 @@ namespace LunarEscape
             Powered = NavigationReady = EngineReady = BaseExploded = false; SuppliesUsed = 0;
             recoveryComplete=false;
             MainFuel=100;docking?.ResetDocking();
+            if (current != version) return;
             FeedbackKey = "flight.feedback.ready";
-            PhaseChanged?.Invoke(Phase); Changed?.Invoke();
+            PublishPhase(Phase, current);
+            if (current == version) Changed?.Invoke();
         }
         private void BeginBoarding()
         {
@@ -205,6 +210,8 @@ namespace LunarEscape
                 if (Operation != StartupOperation.None) operationRemaining = Mathf.Max(0, operationRemaining - step);
                 if (Phase == AscentPhase.Ascent || Phase == AscentPhase.Recovery || Phase==AscentPhase.OrbitalInsertion || Phase==AscentPhase.Circularizing) AirborneSeconds += step;
                 left = Mathf.Max(0, left - step);
+                if (step > 0) PublishTime(step, current);
+                if (current != version) return;
                 if (Oxygen <= 0.00001f) { Fail(AscentFailure.OxygenDepleted); break; }
                 if (Health <= 0.00001f) { Fail(AscentFailure.HealthDepleted); break; }
                 if (Powered && Power <= 0.00001f) { Fail(AscentFailure.PowerDepleted); break; }
@@ -215,7 +222,11 @@ namespace LunarEscape
                     BaseExploded = true;
                     if (Phase != AscentPhase.Ascent && Phase != AscentPhase.Recovery)
                     {
-                        Fail(AscentFailure.BaseExplosion); Exploded?.Invoke(); break;
+                        Fail(AscentFailure.BaseExplosion);
+                        if (current != version) return;
+                        PublishExplosion(current);
+                        if (current != version) return;
+                        break;
                     }
                     Damage = DepartureMargin >= config.SafeDepartureSeconds ? AscentDamage.None
                         : DepartureMargin >= config.LightDepartureSeconds ? AscentDamage.Light : AscentDamage.Heavy;
@@ -225,7 +236,7 @@ namespace LunarEscape
                     FeedbackKey = "flight.damage." + Damage;
                     Enter(AscentPhase.Recovery, config.RecoverySeconds);
                     if (current != version) return;
-                    Exploded?.Invoke();
+                    PublishExplosion(current);
                     if (current != version) return;
                     if (Health <= 0) { Fail(AscentFailure.HealthDepleted); break; }
                     if (Power <= 0) { Fail(AscentFailure.PowerDepleted); break; }
@@ -245,6 +256,7 @@ namespace LunarEscape
                         case AscentPhase.Circularizing:
                             FeedbackKey=docking!=null?"dock.feedback.ready":"orbit.feedback.stable";
                             if(docking!=null)docking.BeginApproach();
+                            if(current!=version)return;
                             Enter(docking!=null?AscentPhase.Rendezvous:AscentPhase.Orbit);break;
                     }
                 }
@@ -261,12 +273,46 @@ namespace LunarEscape
             }
             if (current == version) Changed?.Invoke();
         }
-        private void Fail(AscentFailure reason) { Failure = reason;docking?.StopForFailure(); Enter(AscentPhase.Failed); }
+        private void Fail(AscentFailure reason)
+        {
+            uint current = version;
+            Failure = reason; docking?.StopForFailure();
+            if (current == version) Enter(AscentPhase.Failed);
+        }
         private void Feedback(string key) { FeedbackKey = key; Changed?.Invoke(); }
         private void Enter(AscentPhase phase, float duration = 0)
         {
+            uint current = version;
             Phase = phase; phaseRemaining = duration;
-            PhaseChanged?.Invoke(phase); Changed?.Invoke();
+            PublishPhase(phase, current);
+            if (current == version) Changed?.Invoke();
+        }
+        private void PublishTime(float step, uint current)
+        {
+            if (TimeAdvanced == null) return;
+            foreach (Action<float> listener in TimeAdvanced.GetInvocationList())
+            {
+                if (current != version) return;
+                listener(step);
+            }
+        }
+        private void PublishPhase(AscentPhase phase, uint current)
+        {
+            if (PhaseChanged == null) return;
+            foreach (Action<AscentPhase> listener in PhaseChanged.GetInvocationList())
+            {
+                if (current != version || Phase != phase) return;
+                listener(phase);
+            }
+        }
+        private void PublishExplosion(uint current)
+        {
+            if (Exploded == null) return;
+            foreach (Action listener in Exploded.GetInvocationList())
+            {
+                if (current != version || !BaseExploded) return;
+                listener();
+            }
         }
     }
 }

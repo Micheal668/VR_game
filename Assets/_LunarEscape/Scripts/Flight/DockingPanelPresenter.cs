@@ -15,6 +15,7 @@ namespace LunarEscape
         [SerializeField] private Button[] thrustButtons;
         [SerializeField] private Button assist,retry;
         [SerializeField] private GameObject commandRoot;
+        [SerializeField] private MissionScore missionScore;
         public GameObject Panel=>dockingPanel;
         public Button RetryButton=>retry;
         public void Configure(AscentMission task,DockingMission controller,GameObject oldPanel,GameObject newPanel,
@@ -25,10 +26,18 @@ namespace LunarEscape
             thrustButtons=controls;assist=assistance;retry=restart;commandRoot=controlRoot;
             alignment=axes;supplyButtons=supplies;
         }
-        private void OnEnable(){if(flight!=null){flight.Changed+=Refresh;docking.Changed+=Refresh;Refresh();}}
-        private void OnDisable(){if(flight!=null){flight.Changed-=Refresh;docking.Changed-=Refresh;}docking?.ReleaseControls();}
+        public void ConfigureScore(MissionScore score)
+        {
+            if(missionScore!=null)missionScore.Changed-=Refresh;
+            missionScore=score;
+            if(isActiveAndEnabled&&missionScore!=null)missionScore.Changed+=Refresh;
+        }
+        private void OnEnable(){if(flight!=null){flight.Changed+=Refresh;docking.Changed+=Refresh;if(missionScore!=null)missionScore.Changed+=Refresh;Refresh();}}
+        private void OnDisable(){if(flight!=null){flight.Changed-=Refresh;docking.Changed-=Refresh;}if(missionScore!=null)missionScore.Changed-=Refresh;docking?.ReleaseControls();}
         private void Refresh()
         {
+            // 新版使用统一阶段结算；历史场景没有评分组件，仍沿用原有对接完成面板。
+            if(missionScore!=null&&missionScore.HasResult){ascentPanel.SetActive(false);dockingPanel.SetActive(false);return;}
             bool visible=flight.Phase==AscentPhase.Rendezvous||flight.Phase==AscentPhase.Docking||flight.Phase==AscentPhase.Docked;
             ascentPanel.SetActive(!visible);dockingPanel.SetActive(visible);
             if(!visible)return;

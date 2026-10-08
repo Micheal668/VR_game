@@ -1,0 +1,237 @@
+{
+  "materials": [
+    {
+      "name": "LS_PearlShell",
+      "color": [
+        0.69,
+        0.72,
+        0.73,
+        1
+      ],
+      "metallic": 0.15,
+      "roughness": 0.34,
+      "emission": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "LS_WhiteFabric",
+      "color": [
+        0.47,
+        0.5,
+        0.53,
+        1
+      ],
+      "metallic": 0,
+      "roughness": 0.84,
+      "emission": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "LS_Graphite",
+      "color": [
+        0.018,
+        0.024,
+        0.031,
+        1
+      ],
+      "metallic": 0.28,
+      "roughness": 0.38,
+      "emission": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "LS_BrushedAlloy",
+      "color": [
+        0.32,
+        0.37,
+        0.4,
+        1
+      ],
+      "metallic": 0.82,
+      "roughness": 0.31,
+      "emission": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "LS_Rubber",
+      "color": [
+        0.009,
+        0.011,
+        0.013,
+        1
+      ],
+      "metallic": 0,
+      "roughness": 0.92,
+      "emission": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "LS_SeatFabric",
+      "color": [
+        0.028,
+        0.042,
+        0.055,
+        1
+      ],
+      "metallic": 0,
+      "roughness": 0.8,
+      "emission": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "LS_Light",
+      "color": [
+        0.55,
+        0.74,
+        0.87,
+        1
+      ],
+      "metallic": 0,
+      "roughness": 0.25,
+      "emission": [
+        1.7,
+        2.3,
+        2.7
+      ]
+    },
+    {
+      "name": "LS_Amber",
+      "color": [
+        0.8,
+        0.29,
+        0.045,
+        1
+      ],
+      "metallic": 0.05,
+      "roughness": 0.38,
+      "emission": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "LS_NavyCloth",
+      "color": [
+        0.026,
+        0.064,
+        0.102,
+        1
+      ],
+      "metallic": 0,
+      "roughness": 0.86,
+      "emission": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "LS_ClothSeam",
+      "color": [
+        0.08,
+        0.13,
+        0.17,
+        1
+      ],
+      "metallic": 0,
+      "roughness": 0.9,
+      "emission": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "LS_Skin",
+      "color": [
+        0.43,
+        0.255,
+        0.16,
+        1
+      ],
+      "metallic": 0,
+      "roughness": 0.68,
+      "emission": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "LS_Hair",
+      "color": [
+        0.025,
+        0.017,
+        0.013,
+        1
+      ],
+      "metallic": 0,
+      "roughness": 0.94,
+      "emission": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "LS_WhiteMarking",
+      "color": [
+        0.77,
+        0.82,
+        0.83,
+        1
+      ],
+      "metallic": 0,
+      "roughness": 0.55,
+      "emission": [
+        0,
+        0,
+        0
+      ]
+    }
+  ],
+  "models": [
+    {
+      "id": "cabin",
+      "fbx": "DragonInspiredCabin.fbx",
+      "meshCount": 9,
+      "triangleCount": 29356
+    },
+    {
+      "id": "uniform",
+      "fbx": "StationWorkUniform.fbx",
+      "meshCount": 20,
+      "triangleCount": 19172
+    }
+  ],
+  "references": [
+    {
+      "url": "https://www.nasa.gov/commercial-crew-program-press-kit/",
+      "use": "Crew Dragon interior, touchscreen controls and window layout; visual reference only."
+    },
+    {
+      "url": "https://science.nasa.gov/moon/facts/",
+      "use": "Lunar day/night thermal extremes; game timing is deliberately compressed."
+    }
+  ],
+  "design": "Original game capsule interior inspired by Crew Dragon; retains existing lunar lander dimensions and visible windows. Original station work uniform. No third-party meshes or textures."
+}

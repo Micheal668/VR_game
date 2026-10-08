@@ -1253,6 +1253,738 @@
       "zh": "主推加速（远距离）",
       "en": "MAIN BOOST (>12 m)",
       "ru": "МАРШЕВАЯ ТЯГА (>12 м)"
+    },
+    {
+      "key": "crew.title",
+      "zh": "指挥官 · 救援与医疗",
+      "en": "COMMANDER · RESCUE & CARE",
+      "ru": "КОМАНДИР · СПАСЕНИЕ И ПОМОЩЬ"
+    },
+    {
+      "key": "crew.telemetry",
+      "zh": "{0}\n生命 {1}% · 解锁 {2}%",
+      "en": "{0}\nHealth {1}% · Release {2}%",
+      "ru": "{0}\nЗдоровье {1}% · Освобождение {2}%"
+    },
+    {
+      "key": "crew.help.ready",
+      "zh": "警报后检查指挥官。\n先稳定基地供氧，可以减轻他的伤势。",
+      "en": "Check the commander after the alarm.\nRepairing station oxygen reduces his injuries.",
+      "ru": "Проверьте командира после тревоги.\nРемонт кислородной системы уменьшит травмы."
+    },
+    {
+      "key": "crew.help.rescue",
+      "zh": "靠近并持续握住黄色解锁把手5秒。\n医疗包贴近胸前接口后按扳机或治疗按钮。",
+      "en": "Stay close and hold the yellow release for 5 s.\nHold a medkit at the chest port, then activate or press Treat.",
+      "ru": "Вблизи удерживайте жёлтую рукоятку 5 с.\nПоднесите аптечку к груди и нажмите «Лечить»."
+    },
+    {
+      "key": "crew.help.follow",
+      "zh": "指挥官已获救，会沿通道跟随。\n在登舱区等他到达；受伤时仍可治疗。",
+      "en": "The commander follows the marked escape route.\nWait at the boarding area. Treat injuries if needed.",
+      "ru": "Командир следует по пути эвакуации.\nДождитесь его у корабля; при травмах лечите."
+    },
+    {
+      "key": "crew.rescue.hold",
+      "zh": "按住：解锁救援",
+      "en": "HOLD TO RELEASE",
+      "ru": "УДЕРЖИВАТЬ: ОСВОБОДИТЬ"
+    },
+    {
+      "key": "crew.medical.ground",
+      "zh": "手持医疗包：治疗",
+      "en": "TREAT WITH HELD MEDKIT",
+      "ru": "ЛЕЧИТЬ АПТЕЧКОЙ В РУКЕ"
+    },
+    {
+      "key": "crew.medical.cabin",
+      "zh": "用舱内医疗包救治指挥官",
+      "en": "USE MEDKIT ON COMMANDER",
+      "ru": "АПТЕЧКА ДЛЯ КОМАНДИРА"
+    },
+    {
+      "key": "crew.board.ready",
+      "zh": "指挥官已到登舱区\n现在登舱可两人同行。",
+      "en": "Commander ready at the hatch.\nBoard now to evacuate together.",
+      "ru": "Командир у люка.\nВходите в корабль вместе."
+    },
+    {
+      "key": "crew.board.alone",
+      "zh": "指挥官：{0}\n尚未到登舱区；现在登舱将独自撤离。",
+      "en": "Commander: {0}\nNot at the hatch. Boarding now leaves him behind.",
+      "ru": "Командир: {0}\nЕго нет у люка. Войдя сейчас, вы оставите его."
+    },
+    {
+      "key": "crew.cabin.title",
+      "zh": "指挥官生命监测",
+      "en": "COMMANDER VITALS",
+      "ru": "СОСТОЯНИЕ КОМАНДИРА"
+    },
+    {
+      "key": "crew.cabin.status",
+      "zh": "{0}\n生命 {1}% · 伤势消耗 {2}/秒\n与玩家共用整舱供氧。",
+      "en": "{0}\nHealth {1}% · Injury drain {2}/s\nCabin oxygen is shared.",
+      "ru": "{0}\nЗдоровье {1}% · Потеря {2}/с\nКислород в кабине общий."
+    },
+    {
+      "key": "crew.state.Ready",
+      "zh": "安全待命",
+      "en": "Standing by",
+      "ru": "В готовности"
+    },
+    {
+      "key": "crew.state.Trapped",
+      "zh": "受困 · 需要救援",
+      "en": "Trapped · needs rescue",
+      "ru": "Заблокирован · нужна помощь"
+    },
+    {
+      "key": "crew.state.Following",
+      "zh": "已救出 · 跟随撤离",
+      "en": "Rescued · following",
+      "ru": "Освобождён · следует за вами"
+    },
+    {
+      "key": "crew.state.Boarded",
+      "zh": "已登舱",
+      "en": "On board",
+      "ru": "На борту"
+    },
+    {
+      "key": "crew.state.LeftBehind",
+      "zh": "未撤离",
+      "en": "Left behind",
+      "ru": "Оставлен на базе"
+    },
+    {
+      "key": "crew.state.Survived",
+      "zh": "生还",
+      "en": "Survived",
+      "ru": "Выжил"
+    },
+    {
+      "key": "crew.state.Dead",
+      "zh": "死亡",
+      "en": "Deceased",
+      "ru": "Погиб"
+    },
+    {
+      "key": "score.title",
+      "zh": "月面撤离阶段结算",
+      "en": "LUNAR EVACUATION REPORT",
+      "ru": "ИТОГИ ЛУННОЙ ЭВАКУАЦИИ"
+    },
+    {
+      "key": "score.outcome.docked",
+      "zh": "轨道器对接完成",
+      "en": "Orbiter docking completed",
+      "ru": "Стыковка с орбитальным кораблём завершена"
+    },
+    {
+      "key": "score.total",
+      "zh": "{0} / {1} 分 · 等级 {2}",
+      "en": "{0} / {1} POINTS · RANK {2}",
+      "ru": "{0} / {1} ОЧКОВ · РАНГ {2}"
+    },
+    {
+      "key": "score.crew",
+      "zh": "乘员生还：{0}/3\n玩家：{1} · 指挥官：{2}\n轨道驾驶员：{3}",
+      "en": "Crew survival: {0}/3\nYou: {1} · Commander: {2}\nOrbital pilot: {3}",
+      "ru": "Выжившие: {0}/3\nВы: {1} · Командир: {2}\nОрбитальный пилот: {3}"
+    },
+    {
+      "key": "score.science",
+      "zh": "成功交付：数据核心 {0} · 月壤样本 {1}",
+      "en": "Delivered: data cores {0} · lunar samples {1}",
+      "ru": "Доставлено: блоки данных {0} · образцы {1}"
+    },
+    {
+      "key": "score.scope",
+      "zh": "本次评分仅覆盖月面撤离至轨道对接；返航尚未开始。",
+      "en": "This report covers lunar evacuation through docking; Earth return has not begun.",
+      "ru": "Оценка охватывает эвакуацию и стыковку; возвращение на Землю ещё не начато."
+    },
+    {
+      "key": "score.line.CrewSurvival",
+      "zh": "乘员生还                 {0} / {1}",
+      "en": "Crew survival                 {0} / {1}",
+      "ru": "Выживание экипажа                 {0} / {1}"
+    },
+    {
+      "key": "score.line.FlightOperations",
+      "zh": "飞行操作                 {0} / {1}",
+      "en": "Flight operations                 {0} / {1}",
+      "ru": "Полётные операции                 {0} / {1}"
+    },
+    {
+      "key": "score.line.StationOperations",
+      "zh": "基地维护                 {0} / {1}",
+      "en": "Station maintenance                 {0} / {1}",
+      "ru": "Обслуживание базы                 {0} / {1}"
+    },
+    {
+      "key": "score.line.ScientificRecovery",
+      "zh": "科研回收                 {0} / {1}",
+      "en": "Scientific recovery                 {0} / {1}",
+      "ru": "Научные материалы                 {0} / {1}"
+    },
+    {
+      "key": "score.line.EmergencyResponse",
+      "zh": "应急处置                 {0} / {1}",
+      "en": "Emergency response                 {0} / {1}",
+      "ru": "Действия в аварии                 {0} / {1}"
+    },
+    {
+      "key": "score.line.ResourceManagement",
+      "zh": "资源管理                 {0} / {1}",
+      "en": "Resource management                 {0} / {1}",
+      "ru": "Управление ресурсами                 {0} / {1}"
+    },
+    {
+      "key": "life.remaining",
+      "zh": "预计剩余",
+      "en": "TIME LEFT",
+      "ru": "ОСТАЛОСЬ"
+    },
+    {
+      "key": "life.oxygen",
+      "zh": "氧气储量",
+      "en": "OXYGEN RESERVE",
+      "ru": "ЗАПАС КИСЛОРОДА"
+    },
+    {
+      "key": "life.power",
+      "zh": "电池电量",
+      "en": "BATTERY CHARGE",
+      "ru": "ЗАРЯД БАТАРЕИ"
+    },
+    {
+      "key": "life.day",
+      "zh": "月昼",
+      "en": "DAY",
+      "ru": "ДЕНЬ"
+    },
+    {
+      "key": "life.night",
+      "zh": "月夜",
+      "en": "NIGHT",
+      "ru": "НОЧЬ"
+    },
+    {
+      "key": "life.base.title",
+      "zh": "环境控制 / 生命保障",
+      "en": "ENVIRONMENT / LIFE SUPPORT",
+      "ru": "СРЕДА / ЖИЗНЕОБЕСПЕЧЕНИЕ"
+    },
+    {
+      "key": "life.base.serial",
+      "zh": "月面基地 · ECLSS 01 · 压力舱",
+      "en": "LUNAR HABITAT · ECLSS 01 · PRESSURIZED",
+      "ru": "ЛУННАЯ БАЗА · ECLSS 01 · ГЕРМООТСЕК"
+    },
+    {
+      "key": "life.base.temperature",
+      "zh": "舱温 {0}°C  /  {1} · 月面 {2}°C",
+      "en": "CABIN {0}°C  /  {1} · SURFACE {2}°C",
+      "ru": "В ОТСЕКЕ {0}°C  /  {1} · ПОВЕРХНОСТЬ {2}°C"
+    },
+    {
+      "key": "life.base.sealed",
+      "zh": "舱门密封 · 氧气持续消耗",
+      "en": "HATCH SEALED · OXYGEN IN USE",
+      "ru": "ЛЮК ЗАКРЫТ · КИСЛОРОД РАСХОДУЕТСЯ"
+    },
+    {
+      "key": "life.base.vented",
+      "zh": "已泄压 · 舱内氧气 0%",
+      "en": "VENTED · CABIN OXYGEN 0%",
+      "ru": "РАЗГЕРМЕТИЗАЦИЯ · КИСЛОРОД 0%"
+    },
+    {
+      "key": "life.base.no_air",
+      "zh": "氧气耗尽 · 立即穿戴宇航服",
+      "en": "NO OXYGEN · PUT ON YOUR SUIT",
+      "ru": "КИСЛОРОДА НЕТ · НАДЕНЬТЕ СКАФАНДР"
+    },
+    {
+      "key": "life.base.no_power",
+      "zh": "基地断电 · 供氧消耗加速",
+      "en": "POWER LOST · OXYGEN USE INCREASED",
+      "ru": "НЕТ ПИТАНИЯ · РАСХОД КИСЛОРОДА РАСТЁТ"
+    },
+    {
+      "key": "life.cargo.title",
+      "zh": "应急物资 / 携带清单",
+      "en": "EMERGENCY SUPPLIES / CARGO",
+      "ru": "АВАРИЙНЫЕ ЗАПАСЫ / ГРУЗ"
+    },
+    {
+      "key": "life.suit.title",
+      "zh": "应急宇航服",
+      "en": "EMERGENCY SUIT",
+      "ru": "АВАРИЙНЫЙ СКАФАНДР"
+    },
+    {
+      "key": "life.suit.serial",
+      "zh": "EVA 01 · 密封检查",
+      "en": "EVA 01 · SEAL CHECK",
+      "ru": "EVA 01 · ПРОВЕРКА ГЕРМЕТИЧНОСТИ"
+    },
+    {
+      "key": "life.suit.progress",
+      "zh": "穿戴进度 {0}%",
+      "en": "SUITING UP {0}%",
+      "ru": "НАДЕВАНИЕ {0}%"
+    },
+    {
+      "key": "life.suit.ready",
+      "zh": "密封完成 · 乘员已同步穿戴",
+      "en": "SEALED · BOTH CREW SUITED",
+      "ru": "ГЕРМЕТИЧНО · ОБА В СКАФАНДРАХ"
+    },
+    {
+      "key": "life.suit.instructions",
+      "zh": "靠近服装架，持续握住手柄或按住下方按钮 {0} 秒。松开即暂停。",
+      "en": "Stay at the rack. Hold the grip or button for {0}s. Release to pause.",
+      "ru": "У стойки удерживайте рукоятку или кнопку {0} с. Отпустите для паузы."
+    },
+    {
+      "key": "life.suit.get_supplies",
+      "zh": "先收纳氧气瓶和电池。开门后基地空气无法恢复。",
+      "en": "Pack oxygen and a battery. Opening the hatch vents the habitat.",
+      "ru": "Возьмите кислород и батарею. Открытие люка выпустит воздух."
+    },
+    {
+      "key": "life.suit.don",
+      "zh": "按住 · 穿戴",
+      "en": "HOLD · SUIT UP",
+      "ru": "УДЕРЖИВАТЬ · НАДЕТЬ"
+    },
+    {
+      "key": "life.suit.sync",
+      "zh": "乘员服装同步联动",
+      "en": "CREW SUIT SYNC",
+      "ru": "СИНХРОНИЗАЦИЯ СКАФАНДРОВ"
+    },
+    {
+      "key": "life.suit.oxygen",
+      "zh": "宇航服氧气",
+      "en": "SUIT OXYGEN",
+      "ru": "КИСЛОРОД СКАФАНДРА"
+    },
+    {
+      "key": "life.suit.power",
+      "zh": "宇航服电量",
+      "en": "SUIT BATTERY",
+      "ru": "БАТАРЕЯ СКАФАНДРА"
+    },
+    {
+      "key": "life.suit.thermal",
+      "zh": "体温 {0}°C\n温控余量 {1}%",
+      "en": "BODY {0}°C\nTHERMAL MARGIN {1}%",
+      "ru": "ТЕЛО {0}°C\nТЕПЛОВОЙ РЕЗЕРВ {1}%"
+    },
+    {
+      "key": "life.hatch.title",
+      "zh": "气闸控制",
+      "en": "AIRLOCK CONTROL",
+      "ru": "УПРАВЛЕНИЕ ШЛЮЗОМ"
+    },
+    {
+      "key": "life.hatch.serial",
+      "zh": "舱门 01 · 手动泄压",
+      "en": "HATCH 01 · MANUAL VENT",
+      "ru": "ЛЮК 01 · СБРОС ДАВЛЕНИЯ"
+    },
+    {
+      "key": "life.hatch.warning",
+      "zh": "未穿宇航服\n开门将立即排空氧气！",
+      "en": "NO SUIT\nOPENING VENTS ALL OXYGEN!",
+      "ru": "НЕТ СКАФАНДРА\nОТКРЫТИЕ ВЫПУСТИТ КИСЛОРОД!"
+    },
+    {
+      "key": "life.hatch.suited",
+      "zh": "宇航服已穿戴\n确认补给后打开舱门",
+      "en": "SUIT SEALED\nCHECK SUPPLIES BEFORE OPENING",
+      "ru": "СКАФАНДР ГОТОВ\nПРОВЕРЬТЕ ЗАПАСЫ"
+    },
+    {
+      "key": "life.hatch.open",
+      "zh": "舱门开启\n氧气 0% · 温度失控",
+      "en": "HATCH OPEN\nOXYGEN 0% · THERMAL CONTROL LOST",
+      "ru": "ЛЮК ОТКРЫТ\nКИСЛОРОД 0% · ТЕРМОКОНТРОЛЬ ОТКЛЮЧЁН"
+    },
+    {
+      "key": "life.hatch.release",
+      "zh": "打开舱门 / 泄压",
+      "en": "OPEN HATCH / VENT",
+      "ru": "ОТКРЫТЬ / СБРОСИТЬ ДАВЛЕНИЕ"
+    },
+    {
+      "key": "life.hatch.vent_note",
+      "zh": "操作后无法重新加压",
+      "en": "REPRESSURIZATION UNAVAILABLE",
+      "ru": "ПОВТОРНАЯ ГЕРМЕТИЗАЦИЯ НЕДОСТУПНА"
+    },
+    {
+      "key": "life.hud.route_hatch",
+      "zh": "前往气闸 · {0} m",
+      "en": "AIRLOCK · {0} m",
+      "ru": "К ШЛЮЗУ · {0} м"
+    },
+    {
+      "key": "life.hud.route_ship",
+      "zh": "前往飞船 · {0} m",
+      "en": "LANDER · {0} m",
+      "ru": "К КОРАБЛЮ · {0} м"
+    },
+    {
+      "key": "life.hud.nominal",
+      "zh": "生命保障正常 · 检查补给",
+      "en": "LIFE SUPPORT NOMINAL · CHECK SUPPLIES",
+      "ru": "СИСТЕМЫ В НОРМЕ · ПРОВЕРЬТЕ ЗАПАСЫ"
+    },
+    {
+      "key": "life.hud.hypoxia",
+      "zh": "缺氧！剩余 {0} · 立即补氧",
+      "en": "NO OXYGEN! {0} · REFILL NOW",
+      "ru": "НЕТ КИСЛОРОДА! {0} · ПОПОЛНИТЕ ЗАПАС"
+    },
+    {
+      "key": "life.hud.battery",
+      "zh": "电量偏低 · 尽快更换电池",
+      "en": "LOW BATTERY · REPLACE SOON",
+      "ru": "НИЗКИЙ ЗАРЯД · ЗАМЕНИТЕ БАТАРЕЮ"
+    },
+    {
+      "key": "life.hud.oxygen",
+      "zh": "氧气偏低 · 尽快补充",
+      "en": "LOW OXYGEN · REFILL SOON",
+      "ru": "МАЛО КИСЛОРОДА · ПОПОЛНИТЕ ЗАПАС"
+    },
+    {
+      "key": "life.use.oxygen",
+      "zh": "使用携带氧气瓶",
+      "en": "USE CARRIED OXYGEN",
+      "ru": "ИСПОЛЬЗОВАТЬ КИСЛОРОД"
+    },
+    {
+      "key": "life.use.battery",
+      "zh": "更换携带电池",
+      "en": "USE CARRIED BATTERY",
+      "ru": "ЗАМЕНИТЬ БАТАРЕЮ"
+    },
+    {
+      "key": "life.wrist.title",
+      "zh": "机械补给阀",
+      "en": "MANUAL SUPPLY VALVES",
+      "ru": "РУЧНАЯ ПОДАЧА"
+    },
+    {
+      "key": "life.wrist.oxygen",
+      "zh": "补氧",
+      "en": "O2",
+      "ru": "O2"
+    },
+    {
+      "key": "life.wrist.battery",
+      "zh": "换电",
+      "en": "PWR",
+      "ru": "ПИТ."
+    },
+    {
+      "key": "life.board.suit_required",
+      "zh": "必须先穿戴宇航服才能登船",
+      "en": "Put on your suit before boarding.",
+      "ru": "Перед посадкой наденьте скафандр."
+    },
+    {
+      "key": "life.feedback.ready",
+      "zh": "检查氧气与电量，先穿宇航服。",
+      "en": "Check reserves and put on your suit.",
+      "ru": "Проверьте запасы и наденьте скафандр."
+    },
+    {
+      "key": "life.feedback.no_suit",
+      "zh": "需要先穿戴宇航服。",
+      "en": "A suit is required.",
+      "ru": "Сначала наденьте скафандр."
+    },
+    {
+      "key": "life.feedback.suited",
+      "zh": "穿戴完成，指挥官已同步穿戴。",
+      "en": "Suit sealed. Commander suited too.",
+      "ru": "Скафандр готов. Командир тоже экипирован."
+    },
+    {
+      "key": "life.feedback.vented",
+      "zh": "基地已泄压。",
+      "en": "Habitat vented.",
+      "ru": "База разгерметизирована."
+    },
+    {
+      "key": "life.feedback.oxygen",
+      "zh": "氧气瓶已接入。",
+      "en": "Oxygen refill connected.",
+      "ru": "Кислород подключён."
+    },
+    {
+      "key": "life.feedback.battery",
+      "zh": "电池已更换。",
+      "en": "Battery replaced.",
+      "ru": "Батарея заменена."
+    },
+    {
+      "key": "life.cabin.resources",
+      "zh": "生命保障 / 储备",
+      "en": "LIFE SUPPORT / RESERVES",
+      "ru": "ЖИЗНЕОБЕСПЕЧЕНИЕ"
+    },
+    {
+      "key": "life.thermal_reserve",
+      "zh": "温控保障 / 供电余量",
+      "en": "THERMAL / POWER RESERVE",
+      "ru": "ТЕРМОКОНТРОЛЬ / ПИТАНИЕ"
+    },
+    {
+      "key": "life.cabin.temperature",
+      "zh": "舱温 {0}°C",
+      "en": "CABIN {0}°C",
+      "ru": "В ОТСЕКЕ {0}°C"
+    },
+    {
+      "key": "life.cabin.crew",
+      "zh": "指挥官 {0} · 健康 {1}%  /  基地剩余 {2}",
+      "en": "COMMANDER {0} · HEALTH {1}%  /  BASE {2}",
+      "ru": "КОМАНДИР {0} · ЗДОРОВЬЕ {1}%  /  БАЗА {2}"
+    },
+    {
+      "key": "life.dock.title",
+      "zh": "前视光学 / 交会对接",
+      "en": "FORWARD OPTICS / RENDEZVOUS",
+      "ru": "ПЕРЕДНЯЯ КАМЕРА / СТЫКОВКА"
+    },
+    {
+      "key": "life.dock.telemetry",
+      "zh": "距离 {0} m   接近 {1} m/s\n横向 {2} m   对准 {3}°",
+      "en": "RANGE {0} m   CLOSURE {1} m/s\nLATERAL {2} m   ALIGN {3}°",
+      "ru": "ДИСТ. {0} м   СБЛИЖ. {1} м/с\nСМЕЩ. {2} м   УГОЛ {3}°"
+    },
+    {
+      "key": "life.dock.axes",
+      "zh": "X {0}   Y {1}   俯仰 {2}°   偏航 {3}°\n主燃料 {4}% / 姿控 {5}%",
+      "en": "X {0}   Y {1}   PITCH {2}°   YAW {3}°\nMAIN {4}% / RCS {5}%",
+      "ru": "X {0}   Y {1}   ТАНГАЖ {2}°   КУРС {3}°\nТОПЛИВО {4}% / RCS {5}%"
+    },
+    {
+      "key": "life.dock.manual",
+      "zh": "对准目标菱形 · 低速接近",
+      "en": "ALIGN TARGET DIAMOND · APPROACH SLOWLY",
+      "ru": "СОВМЕСТИТЕ РОМБ · СБЛИЖАЙТЕСЬ МЕДЛЕННО"
+    },
+    {
+      "key": "life.dock.capture_ready",
+      "zh": "捕获窗口有效 · 可辅助对接",
+      "en": "CAPTURE WINDOW · ASSIST AVAILABLE",
+      "ru": "ОКНО ЗАХВАТА · ПОМОЩЬ ДОСТУПНА"
+    },
+    {
+      "key": "life.dock.capturing",
+      "zh": "正在捕获 · 保持稳定",
+      "en": "CAPTURING · HOLD STEADY",
+      "ru": "ЗАХВАТ · ДЕРЖИТЕ КУРС"
+    },
+    {
+      "key": "life.flight.circularize",
+      "zh": "到达入轨点 · 执行圆化点火",
+      "en": "INSERTION POINT · CIRCULARIZE",
+      "ru": "ТОЧКА ВЫХОДА · КРУГОВАЯ ОРБИТА"
+    },
+    {
+      "key": "life.flight.checklist",
+      "zh": "外部摄像机在线 · 完成启动程序",
+      "en": "OPTICS ONLINE · COMPLETE STARTUP",
+      "ru": "КАМЕРА ВКЛЮЧЕНА · ВЫПОЛНИТЕ ЗАПУСК"
+    },
+    {
+      "key": "life.key.oxygen",
+      "zh": "补氧",
+      "en": "O2",
+      "ru": "O2"
+    },
+    {
+      "key": "life.key.battery",
+      "zh": "换电",
+      "en": "PWR",
+      "ru": "ПИТ."
+    },
+    {
+      "key": "life.key.repair",
+      "zh": "修漏",
+      "en": "REPAIR",
+      "ru": "РЕМОНТ"
+    },
+    {
+      "key": "life.key.medical",
+      "zh": "治疗",
+      "en": "MED",
+      "ru": "ЛЕЧ."
+    },
+    {
+      "key": "life.key.brake",
+      "zh": "制动",
+      "en": "BRAKE",
+      "ru": "ТОРМОЗ"
+    },
+    {
+      "key": "life.key.boost",
+      "zh": "助推",
+      "en": "BOOST",
+      "ru": "РАЗГОН"
+    },
+    {
+      "key": "life.key.crew",
+      "zh": "乘员医疗",
+      "en": "CREW MED",
+      "ru": "ЭКИПАЖ"
+    },
+    {
+      "key": "life.key.orbit",
+      "zh": "入轨",
+      "en": "ORBIT",
+      "ru": "ОРБИТА"
+    },
+    {
+      "key": "life.failure.Suffocation",
+      "zh": "氧气耗尽，玩家窒息。",
+      "en": "Oxygen exhausted. You suffocated.",
+      "ru": "Кислород закончился. Вы задохнулись."
+    },
+    {
+      "key": "life.failure.Hypothermia",
+      "zh": "温控失效，月夜低温致死。",
+      "en": "Thermal control lost. Fatal cold exposure.",
+      "ru": "Термоконтроль отказал. Смертельное переохлаждение."
+    },
+    {
+      "key": "life.failure.Hyperthermia",
+      "zh": "温控失效，月昼高温致死。",
+      "en": "Thermal control lost. Fatal heat exposure.",
+      "ru": "Термоконтроль отказал. Смертельный перегрев."
+    },
+    {
+      "key": "lifeground.briefing.instructions",
+      "zh": "先查看环境读数。开始后，找到右侧墙上的宇航服，备好氧气瓶与电池。",
+      "en": "Check reserves. After starting, find the suit on the right wall. Pack oxygen and a battery.",
+      "ru": "Проверьте запасы. После старта найдите скафандр справа. Возьмите кислород и батарею."
+    },
+    {
+      "key": "lifeground.repair.instructions",
+      "zh": "穿服、补给并修好门锁。开门后指挥官跟随撤离；修复氧气设备可增加撤离时间。",
+      "en": "Suit up, pack supplies and repair the lock. Opening starts evacuation with the commander. Oxygen repair adds time.",
+      "ru": "Скафандр, запасы, ремонт замка. Откройте люк — командир пойдёт за вами. Ремонт кислорода даёт время."
+    },
+    {
+      "key": "lifeground.stabilized.instructions",
+      "zh": "维修已稳定。收纳补给，确认宇航服电量，准备撤离。",
+      "en": "Repair stabilized. Pack supplies and check suit battery before evacuation.",
+      "ru": "Ремонт завершён. Возьмите запасы и проверьте батарею перед эвакуацией."
+    },
+    {
+      "key": "lifeground.evacuation.repaired.instructions",
+      "zh": "警报！可先救援指挥官。穿服、补给、开门，沿头盔路线前往飞船。",
+      "en": "Alarm! Rescue the commander if able. Suit up, resupply, open the hatch and follow the route.",
+      "ru": "Тревога! По возможности спасите командира. Скафандр, запасы, люк — затем к кораблю."
+    },
+    {
+      "key": "lifeground.evacuation.unrepaired.instructions",
+      "zh": "警报！氧气设备未修复。检查穿服与补给，开门后立即撤离。",
+      "en": "Alarm! Oxygen unit unrepaired. Check suit and supplies. Evacuate after opening the hatch.",
+      "ru": "Тревога! Кислородный блок не починен. Проверьте скафандр и запасы. Откройте люк и уходите."
+    },
+    {
+      "key": "lifeground.completed.instructions",
+      "zh": "已进入飞船，使用实体控制台启动。",
+      "en": "Boarded. Use the cockpit controls to launch.",
+      "ru": "Вы на борту. Запустите корабль с пульта."
+    },
+    {
+      "key": "lifeground.failed.instructions",
+      "zh": "本次撤离失败，查看结果后重试。",
+      "en": "Evacuation failed. Review the result and retry.",
+      "ru": "Эвакуация не удалась. Посмотрите результат и повторите."
+    },
+    {
+      "key": "lifeground.evacuation.instructions.repaired",
+      "zh": "穿服、修门后开门，指挥官自动跟随。到飞船旁等待他，再点击登舱。",
+      "en": "Suit up, repair and open the hatch. The commander follows. Wait for him beside the ship, then board.",
+      "ru": "Наденьте скафандр, почините и откройте люк. Командир идёт за вами. Ждите его у корабля и садитесь."
+    },
+    {
+      "key": "lifeground.evacuation.instructions.unrepaired",
+      "zh": "氧气设备未修复。穿服、修门后开门撤离；到船旁等指挥官，再点击登舱。",
+      "en": "Oxygen unit unrepaired. Suit up, repair the lock and open. Wait for the commander beside the ship, then board.",
+      "ru": "Кислородный блок сломан. Скафандр, ремонт замка, выход. Ждите командира у корабля и садитесь."
+    },
+    {
+      "key": "life.suit.player",
+      "zh": "EVA 01 / 玩家宇航服",
+      "en": "EVA 01 / PLAYER SUIT",
+      "ru": "EVA 01 / СКАФАНДР ИГРОКА"
+    },
+    {
+      "key": "life.suit.commander",
+      "zh": "EVA 02 / 指挥官宇航服",
+      "en": "EVA 02 / COMMANDER SUIT",
+      "ru": "EVA 02 / СКАФАНДР КОМАНДИРА"
+    },
+    {
+      "key": "life.hatch.repair_required",
+      "zh": "门锁损坏 · {0}%\n用工具接触下方维修点",
+      "en": "LOCK FAULT · {0}%\nHOLD TOOL AT SOCKET BELOW",
+      "ru": "ЗАМОК СЛОМАН · {0}%\nИНСТРУМЕНТ К ГНЕЗДУ ВНИЗУ"
+    },
+    {
+      "key": "life.hatch.locked",
+      "zh": "先维修舱门",
+      "en": "REPAIR HATCH FIRST",
+      "ru": "СНАЧАЛА РЕМОНТ"
+    },
+    {
+      "key": "life.hatch.tool_point",
+      "zh": "门锁维修点 · 手持工具",
+      "en": "LOCK REPAIR · HOLD TOOL",
+      "ru": "РЕМОНТ ЗАМКА · ИНСТРУМЕНТ"
+    },
+    {
+      "key": "life.hatch.repair.ready",
+      "zh": "等待工具接触",
+      "en": "WAITING FOR TOOL",
+      "ru": "ПОДНЕСИТЕ ИНСТРУМЕНТ"
+    },
+    {
+      "key": "life.hatch.repair.working",
+      "zh": "正在维修 · {0}%",
+      "en": "REPAIRING · {0}%",
+      "ru": "РЕМОНТ · {0}%"
+    },
+    {
+      "key": "life.hatch.repair.paused",
+      "zh": "维修暂停 · {0}%",
+      "en": "REPAIR PAUSED · {0}%",
+      "ru": "РЕМОНТ ПРИОСТАНОВЛЕН · {0}%"
+    },
+    {
+      "key": "life.hatch.repair.complete",
+      "zh": "门锁修复完成",
+      "en": "LOCK REPAIRED",
+      "ru": "ЗАМОК ПОЧИНЕН"
+    },
+    {
+      "key": "life.board.hatch_required",
+      "zh": "先维修并开启基地舱门",
+      "en": "Repair and open the base airlock first.",
+      "ru": "Сначала почините и откройте шлюз базы."
     }
   ]
 }

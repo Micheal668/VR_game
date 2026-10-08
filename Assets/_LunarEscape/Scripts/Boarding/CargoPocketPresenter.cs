@@ -49,7 +49,7 @@ namespace LunarEscape
                 if (!hasItem) continue;
                 var kind = kinds[i];
                 rows[i].SetKey("cargo.row", localization.Format("cargo.kind." + kind), inventory.GetCount(kind));
-                buttons[i].interactable = inventory.Mission.Phase == StationMissionPhase.Evacuation
+                buttons[i].interactable = (inventory.Mission.Phase == StationMissionPhase.Evacuation || inventory.Mission.LifeSupport != null && inventory.Mission.LifeSupport.IsGroundActive)
                     && inventory.Items.Any(item => item.Kind == kind && (item.State == CargoState.Packed || item.State == CargoState.Loaded));
             }
         }

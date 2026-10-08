@@ -23,6 +23,9 @@ Shader "LunarEscape/Lunar Regolith"
             #pragma vertex Vert
             #pragma fragment Frag
             #pragma multi_compile_instancing
+            #pragma multi_compile _ _ADDITIONAL_LIGHTS_VERTEX _ADDITIONAL_LIGHTS
+            #pragma multi_compile_fragment _ _ADDITIONAL_LIGHT_SHADOWS
+            #pragma multi_compile _ _CLUSTER_LIGHT_LOOP
             #pragma multi_compile _ _MAIN_LIGHT_SHADOWS _MAIN_LIGHT_SHADOWS_CASCADE _MAIN_LIGHT_SHADOWS_SCREEN
             #pragma multi_compile_fragment _ _SHADOWS_SOFT
             #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl"
@@ -78,6 +81,25 @@ Shader "LunarEscape/Lunar Regolith"
                     albedo*=.94+.12*Noise(mapPoint*.7);
                 }
                 float3 illumination=.10+SampleSH(normal)*.65+sun.color*saturate(dot(normal,sun.direction))*sun.shadowAttenuation;
+                // Shoulder lamps and other local lights must also illuminate the custom lunar surface.
+                #if defined(_ADDITIONAL_LIGHTS) || defined(_ADDITIONAL_LIGHTS_VERTEX)
+                InputData inputData=(InputData)0;
+                inputData.positionWS=input.positionWS;
+                inputData.normalizedScreenSpaceUV=GetNormalizedScreenSpaceUV(input.positionCS);
+                #if USE_CLUSTER_LIGHT_LOOP
+                [loop] for(uint lightIndex=0;lightIndex<min(URP_FP_DIRECTIONAL_LIGHTS_COUNT,MAX_VISIBLE_LIGHTS);lightIndex++)
+                {
+                    CLUSTER_LIGHT_LOOP_SUBTRACTIVE_LIGHT_CHECK
+                    Light localLight=GetAdditionalLight(lightIndex,input.positionWS,half4(1,1,1,1));
+                    illumination+=localLight.color*saturate(dot(normal,localLight.direction))*localLight.distanceAttenuation*localLight.shadowAttenuation;
+                }
+                #endif
+                uint lightCount=GetAdditionalLightsCount();
+                LIGHT_LOOP_BEGIN(lightCount)
+                    Light localLight=GetAdditionalLight(lightIndex,input.positionWS,half4(1,1,1,1));
+                    illumination+=localLight.color*saturate(dot(normal,localLight.direction))*localLight.distanceAttenuation*localLight.shadowAttenuation;
+                LIGHT_LOOP_END
+                #endif
                 return half4(albedo*illumination,lerp(1,_Visibility,_UseMap));
             }
             ENDHLSL

@@ -46,6 +46,7 @@ namespace LunarEscape.Editor
             BuildApolloExterior.ApplyToCurrentScene();
             BuildRealisticStation.ApplyToCurrentScene();
             BuildOrbiterSurface.ApplyToCurrentScene();
+            BuildCrewRescue.ApplyToCurrentScene();
             EditorSceneManager.SaveScene(SceneManager.GetActiveScene(),ScenePath);AssetDatabase.SaveAssets();
             EditorBuildSettings.scenes=new[]{new EditorBuildSettingsScene(ScenePath,true)}.Concat(EditorBuildSettings.scenes.Where(s=>s.path!=ScenePath)).ToArray();Debug.Log("LUNAR_DOCKING_SCENE_READY");
         }

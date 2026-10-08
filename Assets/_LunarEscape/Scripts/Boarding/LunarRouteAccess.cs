@@ -26,14 +26,17 @@ namespace LunarEscape
         {
             if (mission == null) return;
             mission.PhaseChanged += Refresh;
+            if (mission.LifeSupport != null) mission.LifeSupport.Changed += RefreshLife;
             Refresh(mission.Phase);
         }
-        private void OnDisable() { if (mission != null) mission.PhaseChanged -= Refresh; }
+        private void OnDisable() { if (mission != null) { mission.PhaseChanged -= Refresh; if (mission.LifeSupport != null) mission.LifeSupport.Changed -= RefreshLife; } }
+        private void RefreshLife() => Refresh(mission.Phase);
         private void Refresh(StationMissionPhase phase)
         {
             foreach (var area in areas)
-                if (area != null) area.enabled = phase == StationMissionPhase.Evacuation
-                    || (phase == StationMissionPhase.Completed && area == cabinTeleport);
+                if (area != null) area.enabled = mission.LifeSupport != null
+                    ? mission.LifeSupport.IsGroundActive && mission.LifeSupport.DoorOpen
+                    : phase == StationMissionPhase.Evacuation || phase == StationMissionPhase.Completed && area == cabinTeleport;
             if (cabinDoor != null) cabinDoor.SetActive(phase == StationMissionPhase.Completed);
         }
     }

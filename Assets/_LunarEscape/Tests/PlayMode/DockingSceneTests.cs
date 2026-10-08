@@ -40,6 +40,23 @@ namespace LunarEscape.Tests
             var body=session.Exit.PlayerBody;var center=body.transform.TransformPoint(body.center);body.enabled=false;body.transform.position+=new Vector3(48-center.x,0,-6-center.z);body.enabled=true;Physics.SyncTransforms();
             Assert.That(hatch.CanBoard,Is.True);hatch.RequestBoarding();session.Advance(0);flight.Tick(.951f);Assert.That(flight.Phase,Is.EqualTo(AscentPhase.Startup));
         }
+        private void BoardWithRescuedCommander()
+        {
+            // 主场景同乘外观现在来自真实救援，不能再用普通登舱凭空生成指挥官。
+            var crew=session.GetComponent<CrewMission>();var ground=session.GetComponent<GroundCrewController>();
+            session.BeginMission();session.Advance(session.Mission.Config.RepairWindowSeconds);
+            var body=session.Exit.PlayerBody;
+            void MoveBody(Vector3 destination)
+            {var centre=body.transform.TransformPoint(body.center);body.enabled=false;body.transform.position+=new Vector3(destination.x-centre.x,0,destination.z-centre.z);body.enabled=true;Physics.SyncTransforms();}
+            MoveBody(crew.Commander.position+Vector3.right*.9f);
+            var pointer=new PointerEventData(EventSystem.current){button=PointerEventData.InputButton.Left};
+            ground.RescueHandle.OnPointerDown(pointer);session.Advance(crew.Config.RescueSeconds);ground.RescueHandle.OnPointerUp(pointer);
+            Assert.That(crew.CommanderState,Is.EqualTo(CrewState.Following));MoveBody(crew.BoardingAnchor.position);
+            for(int step=0;step<240&&!ground.ReachedBoarding;step++)session.Advance(.25f);
+            Assert.That(ground.ReachedBoarding,Is.True);Assert.That(hatch.CanBoard,Is.True);
+            hatch.RequestBoarding();session.Advance(0);flight.Tick(.951f);
+            Assert.That(flight.Phase,Is.EqualTo(AscentPhase.Startup));Assert.That(crew.CommanderBoarded,Is.True);
+        }
         private void Launch(){flight.PowerOn();flight.StartNavigation();flight.Tick(2);flight.PrepareEngine();flight.Tick(2);flight.Ignite();flight.Tick(3);Assert.That(flight.Phase,Is.EqualTo(AscentPhase.Ascent));}
         private void Orbit(){flight.Tick(flight.OrbitAscentSeconds-flight.AirborneSeconds);Assert.That(flight.Phase,Is.EqualTo(AscentPhase.OrbitalInsertion));flight.Circularize();flight.Tick(6);Assert.That(flight.Phase,Is.EqualTo(AscentPhase.Rendezvous));}
         private void StartAt(Vector3 position,Vector3 velocity=default,Vector3 euler=default,string configOverride=null)
@@ -173,7 +190,7 @@ namespace LunarEscape.Tests
             Assert.That(Vector3.Distance(left.position,originalLeftPosition),Is.LessThan(.02f));
             Assert.That(Vector3.Distance(right.position,originalRightPosition),Is.LessThan(.02f));
             Assert.That(Vector3.Distance(originalCameraPosition,session.Player.Camera.transform.position),Is.LessThan(.02f));
-            Board();yield return null;yield return null;
+            BoardWithRescuedCommander();yield return null;yield return null;
             var eye=session.Player.Camera.transform.position;
             yield return CaptureEarth("crew-npc",eye,crew.Companion.transform.position+Vector3.up*1.25f-eye);
             yield return CaptureEarth("crew-first-person",eye,Vector3.down*.9f+Vector3.forward*.4f);
@@ -288,7 +305,7 @@ namespace LunarEscape.Tests
             Assert.That(docking.Distance,Is.EqualTo(.22f).Within(.001f));Assert.That(docking.RelativeSpeed,Is.Zero);Assert.That(docking.RcsFuel,Is.GreaterThan(0));
             yield return null;Capture("docked",session.Player.Camera.transform.position,view.Target.position);Capture("docked-panel",session.Player.Camera.transform.position,panel.Panel.transform.position);
             float fuel=docking.RcsFuel,oxygen=flight.Oxygen;flight.Tick(1000);Assert.That(docking.RcsFuel,Is.EqualTo(fuel));Assert.That(flight.Oxygen,Is.EqualTo(oxygen));Assert.That(session.Player.Origin.transform.position,Is.EqualTo(origin));
-            yield return Click(panel.RetryButton);yield return null;
+            yield return Click(session.GetComponent<MissionScorePresenter>().RetryButton);yield return null;
             Assert.That(flight.Phase,Is.EqualTo(AscentPhase.AwaitingBoarding));Assert.That(docking.State,Is.EqualTo(DockingState.Waiting));Assert.That(docking.ActiveCommandCount,Is.Zero);Assert.That(flight.MainFuel,Is.EqualTo(100));Assert.That(docking.RcsFuel,Is.EqualTo(100));Assert.That(scene.GroundRoot.activeSelf,Is.True);
         }
         [UnityTest]public IEnumerator DefaultOffsetAndAttitudeCanBeManuallyCorrectedWithAvailableFuel()

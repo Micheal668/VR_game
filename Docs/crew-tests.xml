@@ -1,0 +1,1180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="119" result="Passed" total="119" passed="119" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-07 12:26:24Z" end-time="2026-10-07 12:27:08Z" duration="44.0173635">
+  <test-suite type="TestSuite" id="1147" name="Lunar Escape VR" fullname="Lunar Escape VR" runstate="Runnable" testcasecount="119" result="Passed" start-time="2026-10-07 12:26:24Z" end-time="2026-10-07 12:27:08Z" duration="44.017364" total="119" passed="119" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="PlayMode" />
+    </properties>
+    <test-suite type="Assembly" id="1288" name="LunarEscape.PlayModeTests.dll" fullname="C:/Coding/Projects/VR_game/Library/ScriptAssemblies/LunarEscape.PlayModeTests.dll" runstate="Runnable" testcasecount="119" result="Passed" start-time="2026-10-07 12:26:24Z" end-time="2026-10-07 12:27:08Z" duration="44.011701" total="119" passed="119" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="42920" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="PlayMode" />
+        <property name="EditorOnly" value="False" />
+      </properties>
+      <test-suite type="TestSuite" id="1289" name="LunarEscape" fullname="LunarEscape" runstate="Runnable" testcasecount="119" result="Passed" start-time="2026-10-07 12:26:24Z" end-time="2026-10-07 12:27:08Z" duration="44.010573" total="119" passed="119" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-suite type="TestSuite" id="1290" name="Tests" fullname="LunarEscape.Tests" runstate="Runnable" testcasecount="119" result="Passed" start-time="2026-10-07 12:26:24Z" end-time="2026-10-07 12:27:08Z" duration="44.009569" total="119" passed="119" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-suite type="TestFixture" id="1148" name="AscentSceneTests" fullname="LunarEscape.Tests.AscentSceneTests" classname="LunarEscape.Tests.AscentSceneTests" runstate="Runnable" testcasecount="13" result="Passed" start-time="2026-10-07 12:26:24Z" end-time="2026-10-07 12:26:28Z" duration="4.019812" total="13" passed="13" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1160" name="ActualFrameClockAdvancesOnceAcrossBoardingAndFade" fullname="LunarEscape.Tests.AscentSceneTests.ActualFrameClockAdvancesOnceAcrossBoardingAndFade" methodname="ActualFrameClockAdvancesOnceAcrossBoardingAndFade" classname="LunarEscape.Tests.AscentSceneTests" runstate="Runnable" seed="919694246" result="Passed" start-time="2026-10-07 12:26:24Z" end-time="2026-10-07 12:26:24Z" duration="0.674535" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[To avoid interfering with point and click interactions, XRUIInputModule mouse and touch input will be disabled while the simulated devices are active.
+Failed to get haptic capabilities of XRSimulatedController:/XRSimulatedController, error code -1. Continuing assuming a single haptic channel.
+Failed to get haptic capabilities of XRSimulatedController:/XRSimulatedController1, error code -1. Continuing assuming a single haptic channel.
+]]></output>
+            </test-case>
+            <test-case id="1154" name="BatteryAddsRealPowerAndCannotBeWastedAtFullCharge" fullname="LunarEscape.Tests.AscentSceneTests.BatteryAddsRealPowerAndCannotBeWastedAtFullCharge" methodname="BatteryAddsRealPowerAndCannotBeWastedAtFullCharge" classname="LunarEscape.Tests.AscentSceneTests" runstate="Runnable" seed="2083822821" result="Passed" start-time="2026-10-07 12:26:25Z" end-time="2026-10-07 12:26:25Z" duration="0.123880" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[To avoid interfering with point and click interactions, XRUIInputModule mouse and touch input will be disabled while the simulated devices are active.
+Failed to get haptic capabilities of XRSimulatedController:/XRSimulatedController, error code -1. Continuing assuming a single haptic channel.
+Failed to get haptic capabilities of XRSimulatedController:/XRSimulatedController1, error code -1. Continuing assuming a single haptic channel.
+]]></output>
+            </test-case>
+            <test-case id="1150" name="BlinkChangesWorldOnlyWhenBlackAndKeepsHeadAndUiTrackingLive" fullname="LunarEscape.Tests.AscentSceneTests.BlinkChangesWorldOnlyWhenBlackAndKeepsHeadAndUiTrackingLive" methodname="BlinkChangesWorldOnlyWhenBlackAndKeepsHeadAndUiTrackingLive" classname="LunarEscape.Tests.AscentSceneTests" runstate="Runnable" seed="988941875" result="Passed" start-time="2026-10-07 12:26:25Z" end-time="2026-10-07 12:26:25Z" duration="0.121159" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[To avoid interfering with point and click interactions, XRUIInputModule mouse and touch input will be disabled while the simulated devices are active.
+Failed to get haptic capabilities of XRSimulatedController:/XRSimulatedController, error code -1. Continuing assuming a single haptic channel.
+Failed to get haptic capabilities of XRSimulatedController:/XRSimulatedController1, error code -1. Continuing assuming a single haptic channel.
+]]></output>
+            </test-case>
+            <test-case id="1151" name="BoardingDoesNotResetDeadlineAndExplosionWinsIgnitionTie" fullname="LunarEscape.Tests.AscentSceneTests.BoardingDoesNotResetDeadlineAndExplosionWinsIgnitionTie" methodname="BoardingDoesNotResetDeadlineAndExplosionWinsIgnitionTie" classname="LunarEscape.Tests.AscentSceneTests" runstate="Runnable" seed="336451364" result="Passed" start-time="2026-10-07 12:26:25Z" end-time="2026-10-07 12:26:25Z" duration="0.121083" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[To avoid interfering with point and click interactions, XRUIInputModule mouse and touch input will be disabled while the simulated devices are active.
+Failed to get haptic capabilities of XRSimulatedController:/XRSimulatedController, error code -1. Continuing assuming a single haptic channel.
+Failed to get haptic capabilities of XRSimulatedController:/XRSimulatedController1, error code -1. Continuing assuming a single haptic channel.
+]]></output>
+            </test-case>
+            <test-case id="1152" name="EarlyDepartureAvoidsDamageAndPreservesScientificCargo" fullname="LunarEscape.Tests.AscentSceneTests.EarlyDepartureAvoidsDamageAndPreservesScientificCargo" methodname="EarlyDepartureAvoidsDamageAndPreservesScientificCargo" classname="LunarEscape.Tests.AscentSceneTests" runstate="Runnable" seed="6738640" result="Passed" start-time="2026-10-07 12:26:25Z" end-time="2026-10-07 12:26:25Z" duration="0.108767" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[To avoid interfering with point and click interactions, XRUIInputModule mouse and touch input will be disabled while the simulated devices are active.
+Failed to get haptic capabilities of XRSimulatedController:/XRSimulatedController, error code -1. Continuing assuming a single haptic channel.
+Failed to get haptic capabilities of XRSimulatedController:/XRSimulatedController1, error code -1. Continuing assuming a single haptic channel.
+]]></output>
+            </test-case>
+            <test-case id="1157" name="FlightPanelAcceptsActualMouseInputAfterSeatLock" fullname="LunarEscape.Tests.AscentSceneTests.FlightPanelAcceptsActualMouseInputAfterSeatLock" methodname="FlightPanelAcceptsActualMouseInputAfterSeatLock" classname="LunarEscape.Tests.AscentSceneTests" runstate="Runnable" seed="545780921" result="Passed" start-time="2026-10-07 12:26:25Z" end-time="2026-10-07 12:26:25Z" duration="0.141610" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[To avoid interfering with point and click interactions, XRUIInputModule mouse and touch input will be disabled while the simulated devices are active.
+Failed to get haptic capabilities of XRSimulatedController:/XRSimulatedController, error code -1. Continuing assuming a single haptic channel.
+Failed to get haptic capabilities of XRSimulatedController:/XRSimulatedController1, error code -1. Continuing assuming a single haptic channel.
+]]></output>
+            </test-case>
+            <test-case id="1159" name="InjuriesAndPowerCanEachCauseFailureBeforeCompletion" fullname="LunarEscape.Tests.AscentSceneTests.InjuriesAndPowerCanEachCauseFailureBeforeCompletion" methodname="InjuriesAndPowerCanEachCauseFailureBeforeCompletion" classname="LunarEscape.Tests.AscentSceneTests" runstate="Runnable" seed="1750087805" result="Passed" start-time="2026-10-07 12:26:25Z" end-time="2026-10-07 12:26:25Z" duration="0.118871" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[To avoid interfering with point and click interactions, XRUIInputModule mouse and touch input will be disabled while the simulated devices are active.
+Failed to get haptic capabilities of XRSimulatedController:/XRSimulatedController, error code -1. Continuing assuming a single haptic channel.
+Failed to get haptic capabilities of XRSimulatedController:/XRSimulatedController1, error code -1. Continuing assuming a single haptic channel.
+]]></output>
+            </test-case>
+            <test-case id="1153" name="LateDepartureNeedsTreatmentAndRepairAndConsumesOnlyOnce" fullname="LunarEscape.Tests.AscentSceneTests.LateDepartureNeedsTreatmentAndRepairAndConsumesOnlyOnce" methodname="LateDepartureNeedsTreatmentAndRepairAndConsumesOnlyOnce" classname="LunarEscape.Tests.AscentSceneTests" runstate="Runnable" seed="504123127" result="Passed" start-time="2026-10-07 12:26:25Z" end-time="2026-10-07 12:26:25Z" duration="0.107622" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[To avoid interfering with point and click interactions, XRUIInputModule mouse and touch input will be disabled while the simulated devices are active.
+Failed to get haptic capabilities of XRSimulatedController:/XRSimulatedController, error code -1. Continuing assuming a single haptic channel.
+Failed to get haptic capabilities of XRSimulatedController:/XRSimulatedController1, error code -1. Continuing assuming a single haptic channel.
+]]></output>
+            </test-case>
+            <test-case id="1158" name="ModerateDepartureProducesLightDamageAndMedicalStopsActualLoss" fullname="LunarEscape.Tests.AscentSceneTests.ModerateDepartureProducesLightDamageAndMedicalStopsActualLoss" methodname="ModerateDepartureProducesLightDamageAndMedicalStopsActualLoss" classname="LunarEscape.Tests.AscentSceneTests" runstate="Runnable" seed="1562738496" result="Passed" start-time="2026-10-07 12:26:25Z" end-time="2026-10-07 12:26:25Z" duration="0.119988" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[To avoid interfering with point and click interactions, XRUIInputModule mouse and touch input will be disabled while the simulated devices are active.
+Failed to get haptic capabilities of XRSimulatedController:/XRSimulatedController, error code -1. Continuing assuming a single haptic channel.
+Failed to get haptic capabilities of XRSimulatedController:/XRSimulatedController1, error code -1. Continuing assuming a single haptic channel.
+]]></output>
+            </test-case>
+            <test-case id="1156" name="ReplayRestoresConsumedCargoAndLoadedToolsToTheirOriginalState" fullname="LunarEscape.Tests.AscentSceneTests.ReplayRestoresConsumedCargoAndLoadedToolsToTheirOriginalState" methodname="ReplayRestoresConsumedCargoAndLoadedToolsToTheirOriginalState" classname="LunarEscape.Tests.AscentSceneTests" runstate="Runnable" seed="1368129429" result="Passed" start-time="2026-10-07 12:26:25Z" end-time="2026-10-07 12:26:26Z" duration="0.125743" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[To avoid interfering with point and click interactions, XRUIInputModule mouse and touch input will be disabled while the simulated devices are active.
+Failed to get haptic capabilities of XRSimulatedController:/XRSimulatedController, error code -1. Continuing assuming a single haptic channel.
+Failed to get haptic capabilities of XRSimulatedController:/XRSimulatedController1, error code -1. Continuing assuming a single haptic channel.
+]]></output>
+            </test-case>
+            <test-case id="1155" name="SevereDamageWithoutSuppliesFailsAndOnlyRestartRemains" fullname="LunarEscape.Tests.AscentSceneTests.SevereDamageWithoutSuppliesFailsAndOnlyRestartRemains" methodname="SevereDamageWithoutSuppliesFailsAndOnlyRestartRemains" classname="LunarEscape.Tests.AscentSceneTests" runstate="Runnable" seed="565104110" result="Passed" start-time="2026-10-07 12:26:26Z" end-time="2026-10-07 12:26:26Z" duration="0.118351" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[To avoid interfering with point and click interactions, XRUIInputModule mouse and touch input will be disabled while the simulated devices are active.
+Failed to get haptic capabilities of XRSimulatedController:/XRSimulatedController, error code -1. Continuing assuming a single haptic channel.
+Failed to get haptic capabilities of XRSimulatedController:/XRSimulatedController1, error code -1. Continuing assuming a single haptic channel.
+]]></output>
+            </test-case>
+            <test-case id="1149" name="StartupSequenceConsumesTimeAndRejectsOutOfOrderOrDoubleClicks" fullname="LunarEscape.Tests.AscentSceneTests.StartupSequenceConsumesTimeAndRejectsOutOfOrderOrDoubleClicks" methodname="StartupSequenceConsumesTimeAndRejectsOutOfOrderOrDoubleClicks" classname="LunarEscape.Tests.AscentSceneTests" runstate="Runnable" seed="793005533" result="Passed" start-time="2026-10-07 12:26:26Z" end-time="2026-10-07 12:26:26Z" duration="0.110532" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[To avoid interfering with point and click interactions, XRUIInputModule mouse and touch input will be disabled while the simulated devices are active.
+Failed to get haptic capabilities of XRSimulatedController:/XRSimulatedController, error code -1. Continuing assuming a single haptic channel.
+Failed to get haptic capabilities of XRSimulatedController:/XRSimulatedController1, error code -1. Continuing assuming a single haptic channel.
+]]></output>
+            </test-case>
+            <test-case id="1161" name="ThreeLanguagePanelAndRenderedWindowShowUsableFlightScene" fullname="LunarEscape.Tests.AscentSceneTests.ThreeLanguagePanelAndRenderedWindowShowUsableFlightScene" methodname="ThreeLanguagePanelAndRenderedWindowShowUsableFlightScene" classname="LunarEscape.Tests.AscentSceneTests" runstate="Runnable" seed="402293330" result="Passed" start-time="2026-10-07 12:26:26Z" end-time="2026-10-07 12:26:28Z" duration="2.016660" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[To avoid interfering with point and click interactions, XRUIInputModule mouse and touch input will be disabled while the simulated devices are active.
+Failed to get haptic capabilities of XRSimulatedController:/XRSimulatedController, error code -1. Continuing assuming a single haptic channel.
+Failed to get haptic capabilities of XRSimulatedController:/XRSimulatedController1, error code -1. Continuing assuming a single haptic channel.
+Your project uses a scriptable render pipeline. You can use Camera.stereoTargetEye only with the built-in renderer.
+Your project uses a scriptable render pipeline. You can use Camera.stereoTargetEye only with the built-in renderer.
+Your project uses a scriptable render pipeline. You can use Camera.stereoTargetEye only with the built-in renderer.
+Your project uses a scriptable render pipeline. You can use Camera.stereoTargetEye only with the built-in renderer.
+Your project uses a scriptable render pipeline. You can use Camera.stereoTargetEye only with the built-in renderer.
+Your project uses a scriptable render pipeline. You can use Camera.stereoTargetEye only with the built-in renderer.
+]]></output>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1162" name="BoardingSceneTests" fullname="LunarEscape.Tests.BoardingSceneTests" classname="LunarEscape.Tests.BoardingSceneTests" runstate="Runnable" testcasecount="5" result="Passed" start-time="2026-10-07 12:26:28Z" end-time="2026-10-07 12:26:30Z" duration="2.629995" total="5" passed="5" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1165" name="BoardingRequestCannotBeatTimeoutInTheSameClockStep" fullname="LunarEscape.Tests.BoardingSceneTests.BoardingRequestCannotBeatTimeoutInTheSameClockStep" methodname="BoardingRequestCannotBeatTimeoutInTheSameClockStep" classname="LunarEscape.Tests.BoardingSceneTests" runstate="Runnable" seed="163301634" result="Passed" start-time="2026-10-07 12:26:28Z" end-time="2026-10-07 12:26:28Z" duration="0.112886" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[To avoid interfering with point and click interactions, XRUIInputModule mouse and touch input will be disabled while the simulated devices are active.
+Failed to get haptic capabilities of XRSimulatedController:/XRSimulatedController, error code -1. Continuing assuming a single haptic channel.
+Failed to get haptic capabilities of XRSimulatedController:/XRSimulatedController1, error code -1. Continuing assuming a single haptic channel.
+]]></output>
+            </test-case>
+            <test-case id="1167" name="CaptureCargoRouteAndCabinPreviews" fullname="LunarEscape.Tests.BoardingSceneTests.CaptureCargoRouteAndCabinPreviews" methodname="CaptureCargoRouteAndCabinPreviews" classname="LunarEscape.Tests.BoardingSceneTests" runstate="Runnable" seed="1206118115" result="Passed" start-time="2026-10-07 12:26:28Z" end-time="2026-10-07 12:26:30Z" duration="2.035759" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[To avoid interfering with point and click interactions, XRUIInputModule mouse and touch input will be disabled while the simulated devices are active.
+Failed to get haptic capabilities of XRSimulatedController:/XRSimulatedController, error code -1. Continuing assuming a single haptic channel.
+Failed to get haptic capabilities of XRSimulatedController:/XRSimulatedController1, error code -1. Continuing assuming a single haptic channel.
+Your project uses a scriptable render pipeline. You can use Camera.stereoTargetEye only with the built-in renderer.
+Your project uses a scriptable render pipeline. You can use Camera.stereoTargetEye only with the built-in renderer.
+Your project uses a scriptable render pipeline. You can use Camera.stereoTargetEye only with the built-in renderer.
+Your project uses a scriptable render pipeline. You can use Camera.stereoTargetEye only with the built-in renderer.
+]]></output>
+            </test-case>
+            <test-case id="1166" name="CargoAndBoardingTextIsTranslatedAndFitsInAllThreeLanguages" fullname="LunarEscape.Tests.BoardingSceneTests.CargoAndBoardingTextIsTranslatedAndFitsInAllThreeLanguages" methodname="CargoAndBoardingTextIsTranslatedAndFitsInAllThreeLanguages" classname="LunarEscape.Tests.BoardingSceneTests" runstate="Runnable" seed="280324346" result="Passed" start-time="2026-10-07 12:26:30Z" end-time="2026-10-07 12:26:30Z" duration="0.206440" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[To avoid interfering with point and click interactions, XRUIInputModule mouse and touch input will be disabled while the simulated devices are active.
+Failed to get haptic capabilities of XRSimulatedController:/XRSimulatedController, error code -1. Continuing assuming a single haptic channel.
+Failed to get haptic capabilities of XRSimulatedController:/XRSimulatedController1, error code -1. Continuing assuming a single haptic channel.
+]]></output>
+            </test-case>
+            <test-case id="1164" name="MoonRouteHasContinuousFloorAndRealWalkingUsesTheExistingClockAndCollision" fullname="LunarEscape.Tests.BoardingSceneTests.MoonRouteHasContinuousFloorAndRealWalkingUsesTheExistingClockAndCollision" methodname="MoonRouteHasContinuousFloorAndRealWalkingUsesTheExistingClockAndCollision" classname="LunarEscape.Tests.BoardingSceneTests" runstate="Runnable" seed="1154954881" result="Passed" start-time="2026-10-07 12:26:30Z" end-time="2026-10-07 12:26:30Z" duration="0.165101" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[To avoid interfering with point and click interactions, XRUIInputModule mouse and touch input will be disabled while the simulated devices are active.
+Failed to get haptic capabilities of XRSimulatedController:/XRSimulatedController, error code -1. Continuing assuming a single haptic channel.
+Failed to get haptic capabilities of XRSimulatedController:/XRSimulatedController1, error code -1. Continuing assuming a single haptic channel.
+]]></output>
+            </test-case>
+            <test-case id="1163" name="OnlyPlayerInsideCabinCanConfirmBoardingAndWalkingInDoesNotComplete" fullname="LunarEscape.Tests.BoardingSceneTests.OnlyPlayerInsideCabinCanConfirmBoardingAndWalkingInDoesNotComplete" methodname="OnlyPlayerInsideCabinCanConfirmBoardingAndWalkingInDoesNotComplete" classname="LunarEscape.Tests.BoardingSceneTests" runstate="Runnable" seed="1990976240" result="Passed" start-time="2026-10-07 12:26:30Z" end-time="2026-10-07 12:26:30Z" duration="0.104978" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[To avoid interfering with point and click interactions, XRUIInputModule mouse and touch input will be disabled while the simulated devices are active.
+Failed to get haptic capabilities of XRSimulatedController:/XRSimulatedController, error code -1. Continuing assuming a single haptic channel.
+Failed to get haptic capabilities of XRSimulatedController:/XRSimulatedController1, error code -1. Continuing assuming a single haptic channel.
+]]></output>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1179" name="CargoSceneTests" fullname="LunarEscape.Tests.CargoSceneTests" classname="LunarEscape.Tests.CargoSceneTests" runstate="Runnable" testcasecount="2" result="Passed" start-time="2026-10-07 12:26:30Z" end-time="2026-10-07 12:26:31Z" duration="0.274689" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1181" name="FailureFreezesWorldHeldPackedAndLoadedCargoAndRetryRestoresEveryItem" fullname="LunarEscape.Tests.CargoSceneTests.FailureFreezesWorldHeldPackedAndLoadedCargoAndRetryRestoresEveryItem" methodname="FailureFreezesWorldHeldPackedAndLoadedCargoAndRetryRestoresEveryItem" classname="LunarEscape.Tests.CargoSceneTests" runstate="Runnable" seed="781701232" result="Passed" start-time="2026-10-07 12:26:30Z" end-time="2026-10-07 12:26:31Z" duration="0.145639" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[To avoid interfering with point and click interactions, XRUIInputModule mouse and touch input will be disabled while the simulated devices are active.
+]]></output>
+            </test-case>
+            <test-case id="1180" name="RealGrabReleasePacksDropsAndSecuresTheSameCargoWhenBoarding" fullname="LunarEscape.Tests.CargoSceneTests.RealGrabReleasePacksDropsAndSecuresTheSameCargoWhenBoarding" methodname="RealGrabReleasePacksDropsAndSecuresTheSameCargoWhenBoarding" classname="LunarEscape.Tests.CargoSceneTests" runstate="Runnable" seed="1278795299" result="Passed" start-time="2026-10-07 12:26:31Z" end-time="2026-10-07 12:26:31Z" duration="0.127566" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[To avoid interfering with point and click interactions, XRUIInputModule mouse and touch input will be disabled while the simulated devices are active.
+]]></output>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1168" name="CargoStabilityTests" fullname="LunarEscape.Tests.CargoStabilityTests" classname="LunarEscape.Tests.CargoStabilityTests" runstate="Runnable" testcasecount="4" result="Passed" start-time="2026-10-07 12:26:31Z" end-time="2026-10-07 12:26:32Z" duration="0.954742" total="4" passed="4" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1172" name="CanceledGrabAbovePouchDoesNotCountAsIntentionalStorage" fullname="LunarEscape.Tests.CargoStabilityTests.CanceledGrabAbovePouchDoesNotCountAsIntentionalStorage" methodname="CanceledGrabAbovePouchDoesNotCountAsIntentionalStorage" classname="LunarEscape.Tests.CargoStabilityTests" runstate="Runnable" seed="441831128" result="Passed" start-time="2026-10-07 12:26:31Z" end-time="2026-10-07 12:26:31Z" duration="0.260680" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[To avoid interfering with point and click interactions, XRUIInputModule mouse and touch input will be disabled while the simulated devices are active.
+]]></output>
+            </test-case>
+            <test-case id="1171" name="FallingIntoPouchRechecksQuotaInsteadOfAddingFourthType" fullname="LunarEscape.Tests.CargoStabilityTests.FallingIntoPouchRechecksQuotaInsteadOfAddingFourthType" methodname="FallingIntoPouchRechecksQuotaInsteadOfAddingFourthType" classname="LunarEscape.Tests.CargoStabilityTests" runstate="Runnable" seed="1171681436" result="Passed" start-time="2026-10-07 12:26:31Z" end-time="2026-10-07 12:26:31Z" duration="0.147150" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[To avoid interfering with point and click interactions, XRUIInputModule mouse and touch input will be disabled while the simulated devices are active.
+]]></output>
+            </test-case>
+            <test-case id="1170" name="ReleasedItemEnteringPouchFromAboveIsActuallyStored" fullname="LunarEscape.Tests.CargoStabilityTests.ReleasedItemEnteringPouchFromAboveIsActuallyStored" methodname="ReleasedItemEnteringPouchFromAboveIsActuallyStored" classname="LunarEscape.Tests.CargoStabilityTests" runstate="Runnable" seed="1539177257" result="Passed" start-time="2026-10-07 12:26:31Z" end-time="2026-10-07 12:26:31Z" duration="0.138272" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[To avoid interfering with point and click interactions, XRUIInputModule mouse and touch input will be disabled while the simulated devices are active.
+]]></output>
+            </test-case>
+            <test-case id="1169" name="SuppliesRemainOnShelfDuringInitialWaitingAndRepair" fullname="LunarEscape.Tests.CargoStabilityTests.SuppliesRemainOnShelfDuringInitialWaitingAndRepair" methodname="SuppliesRemainOnShelfDuringInitialWaitingAndRepair" classname="LunarEscape.Tests.CargoStabilityTests" runstate="Runnable" seed="957297111" result="Passed" start-time="2026-10-07 12:26:31Z" end-time="2026-10-07 12:26:32Z" duration="0.406971" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[To avoid interfering with point and click interactions, XRUIInputModule mouse and touch input will be disabled while the simulated devices are active.
+]]></output>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1173" name="CargoTests" fullname="LunarEscape.Tests.CargoTests" classname="LunarEscape.Tests.CargoTests" runstate="Runnable" testcasecount="5" result="Passed" start-time="2026-10-07 12:26:32Z" end-time="2026-10-07 12:26:32Z" duration="0.018819" total="5" passed="5" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1176" name="EachKindRejectsItsExtraCopyWithoutReservingWeightOrQuantity" fullname="LunarEscape.Tests.CargoTests.EachKindRejectsItsExtraCopyWithoutReservingWeightOrQuantity" methodname="EachKindRejectsItsExtraCopyWithoutReservingWeightOrQuantity" classname="LunarEscape.Tests.CargoTests" runstate="Runnable" seed="347785550" result="Passed" start-time="2026-10-07 12:26:32Z" end-time="2026-10-07 12:26:32Z" duration="0.006846" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[There are multiple active and enabled XR Interaction Manager components in the loaded scenes. This is supported, but may not be intended since interactors and interactables are not able to interact with those registered to a different manager. You can use the <b>Window</b> > <b>Analysis</b> > <b>XR Interaction Debugger</b> window to verify the interactors and interactables registered with each. The default manager that interactors and interactables automatically register with when None is: <b>09_LunarStation_Orbit</b>/XR Interaction Manager You can also adjust settings related to the runtime behavior of the manager in <b>Edit</b> > <b>Project Settings</b> > <b>XR Plug-in Management</b> > <b>XR Interaction Toolkit</b>.
+]]></output>
+            </test-case>
+            <test-case id="1174" name="ExactTwelveKilogramsAcrossThreeKindsIsAcceptedWithAssignedWeights" fullname="LunarEscape.Tests.CargoTests.ExactTwelveKilogramsAcrossThreeKindsIsAcceptedWithAssignedWeights" methodname="ExactTwelveKilogramsAcrossThreeKindsIsAcceptedWithAssignedWeights" classname="LunarEscape.Tests.CargoTests" runstate="Runnable" seed="348430949" result="Passed" start-time="2026-10-07 12:26:32Z" end-time="2026-10-07 12:26:32Z" duration="0.002170" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[There are multiple active and enabled XR Interaction Manager components in the loaded scenes. This is supported, but may not be intended since interactors and interactables are not able to interact with those registered to a different manager. You can use the <b>Window</b> > <b>Analysis</b> > <b>XR Interaction Debugger</b> window to verify the interactors and interactables registered with each. The default manager that interactors and interactables automatically register with when None is: <b>09_LunarStation_Orbit</b>/XR Interaction Manager You can also adjust settings related to the runtime behavior of the manager in <b>Edit</b> > <b>Project Settings</b> > <b>XR Plug-in Management</b> > <b>XR Interaction Toolkit</b>.
+]]></output>
+            </test-case>
+            <test-case id="1177" name="HeldPackedAndShipCargoShareLimitsAndDropOrDiscardActuallyFreesThem" fullname="LunarEscape.Tests.CargoTests.HeldPackedAndShipCargoShareLimitsAndDropOrDiscardActuallyFreesThem" methodname="HeldPackedAndShipCargoShareLimitsAndDropOrDiscardActuallyFreesThem" classname="LunarEscape.Tests.CargoTests" runstate="Runnable" seed="295399028" result="Passed" start-time="2026-10-07 12:26:32Z" end-time="2026-10-07 12:26:32Z" duration="0.002583" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[There are multiple active and enabled XR Interaction Manager components in the loaded scenes. This is supported, but may not be intended since interactors and interactables are not able to interact with those registered to a different manager. You can use the <b>Window</b> > <b>Analysis</b> > <b>XR Interaction Debugger</b> window to verify the interactors and interactables registered with each. The default manager that interactors and interactables automatically register with when None is: <b>09_LunarStation_Orbit</b>/XR Interaction Manager You can also adjust settings related to the runtime behavior of the manager in <b>Edit</b> > <b>Project Settings</b> > <b>XR Plug-in Management</b> > <b>XR Interaction Toolkit</b>.
+]]></output>
+            </test-case>
+            <test-case id="1178" name="PublicCargoMutationsCannotChangeAnyNonEvacuationPhase" fullname="LunarEscape.Tests.CargoTests.PublicCargoMutationsCannotChangeAnyNonEvacuationPhase" methodname="PublicCargoMutationsCannotChangeAnyNonEvacuationPhase" classname="LunarEscape.Tests.CargoTests" runstate="Runnable" seed="1625065622" result="Passed" start-time="2026-10-07 12:26:32Z" end-time="2026-10-07 12:26:32Z" duration="0.003709" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[There are multiple active and enabled XR Interaction Manager components in the loaded scenes. This is supported, but may not be intended since interactors and interactables are not able to interact with those registered to a different manager. You can use the <b>Window</b> > <b>Analysis</b> > <b>XR Interaction Debugger</b> window to verify the interactors and interactables registered with each. The default manager that interactors and interactables automatically register with when None is: <b>09_LunarStation_Orbit</b>/XR Interaction Manager You can also adjust settings related to the runtime behavior of the manager in <b>Edit</b> > <b>Project Settings</b> > <b>XR Plug-in Management</b> > <b>XR Interaction Toolkit</b>.
+]]></output>
+            </test-case>
+            <test-case id="1175" name="WeightAndTypeLimitsRejectOnlyTheNewItemWithoutChangingExistingCargo" fullname="LunarEscape.Tests.CargoTests.WeightAndTypeLimitsRejectOnlyTheNewItemWithoutChangingExistingCargo" methodname="WeightAndTypeLimitsRejectOnlyTheNewItemWithoutChangingExistingCargo" classname="LunarEscape.Tests.CargoTests" runstate="Runnable" seed="908295914" result="Passed" start-time="2026-10-07 12:26:32Z" end-time="2026-10-07 12:26:32Z" duration="0.002023" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[There are multiple active and enabled XR Interaction Manager components in the loaded scenes. This is supported, but may not be intended since interactors and interactables are not able to interact with those registered to a different manager. You can use the <b>Window</b> > <b>Analysis</b> > <b>XR Interaction Debugger</b> window to verify the interactors and interactables registered with each. The default manager that interactors and interactables automatically register with when None is: <b>09_LunarStation_Orbit</b>/XR Interaction Manager You can also adjust settings related to the runtime behavior of the manager in <b>Edit</b> > <b>Project Settings</b> > <b>XR Plug-in Management</b> > <b>XR Interaction Toolkit</b>.
+]]></output>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1182" name="CrewRescueTests" fullname="LunarEscape.Tests.CrewRescueTests" classname="LunarEscape.Tests.CrewRescueTests" runstate="Runnable" testcasecount="7" result="Passed" start-time="2026-10-07 12:26:32Z" end-time="2026-10-07 12:26:44Z" duration="11.892940" total="7" passed="7" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1187" name="CollisionFinalizesCrewBeforeScoreEvenWhenScoreSubscribesFirstAndRetryClearsOnlyNewAttempt" fullname="LunarEscape.Tests.CrewRescueTests.CollisionFinalizesCrewBeforeScoreEvenWhenScoreSubscribesFirstAndRetryClearsOnlyNewAttempt" methodname="CollisionFinalizesCrewBeforeScoreEvenWhenScoreSubscribesFirstAndRetryClearsOnlyNewAttempt" classname="LunarEscape.Tests.CrewRescueTests" runstate="Runnable" seed="369941974" result="Passed" start-time="2026-10-07 12:26:32Z" end-time="2026-10-07 12:26:35Z" duration="3.683219" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[Failed to get haptic capabilities of XRSimulatedController:/XRSimulatedController, error code -1. Continuing assuming a single haptic channel.
+Failed to get haptic capabilities of XRSimulatedController:/XRSimulatedController1, error code -1. Continuing assuming a single haptic channel.
+]]></output>
+            </test-case>
+            <test-case id="1184" name="MedicalNeedsActualHeldContactAndActivationThenConsumesOnlyOnceAndRetryRestoresIt" fullname="LunarEscape.Tests.CrewRescueTests.MedicalNeedsActualHeldContactAndActivationThenConsumesOnlyOnceAndRetryRestoresIt" methodname="MedicalNeedsActualHeldContactAndActivationThenConsumesOnlyOnceAndRetryRestoresIt" classname="LunarEscape.Tests.CrewRescueTests" runstate="Runnable" seed="1097127176" result="Passed" start-time="2026-10-07 12:26:35Z" end-time="2026-10-07 12:26:36Z" duration="0.191390" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1183" name="RealRescueHandleRequiresNearbyBodyAndFiveSecondsAndPausesOnRelease" fullname="LunarEscape.Tests.CrewRescueTests.RealRescueHandleRequiresNearbyBodyAndFiveSecondsAndPausesOnRelease" methodname="RealRescueHandleRequiresNearbyBodyAndFiveSecondsAndPausesOnRelease" classname="LunarEscape.Tests.CrewRescueTests" runstate="Runnable" seed="1899964946" result="Passed" start-time="2026-10-07 12:26:36Z" end-time="2026-10-07 12:26:42Z" duration="6.842127" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1188" name="RescueCompletionCannotOverrideEvacuationDeadlineInTheSameStep" fullname="LunarEscape.Tests.CrewRescueTests.RescueCompletionCannotOverrideEvacuationDeadlineInTheSameStep" methodname="RescueCompletionCannotOverrideEvacuationDeadlineInTheSameStep" classname="LunarEscape.Tests.CrewRescueTests" runstate="Runnable" seed="682040323" result="Passed" start-time="2026-10-07 12:26:42Z" end-time="2026-10-07 12:26:43Z" duration="0.192909" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1186" name="RescuedButDistantCommanderCannotAutoBoardAndDiesWhenBaseExplodes" fullname="LunarEscape.Tests.CrewRescueTests.RescuedButDistantCommanderCannotAutoBoardAndDiesWhenBaseExplodes" methodname="RescuedButDistantCommanderCannotAutoBoardAndDiesWhenBaseExplodes" classname="LunarEscape.Tests.CrewRescueTests" runstate="Runnable" seed="1107079764" result="Passed" start-time="2026-10-07 12:26:43Z" end-time="2026-10-07 12:26:43Z" duration="0.179229" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1185" name="RescuedCommanderFollowsRouteBoardsUsesSharedMedicalAndAllThreeSurviveWithDeliveredScience" fullname="LunarEscape.Tests.CrewRescueTests.RescuedCommanderFollowsRouteBoardsUsesSharedMedicalAndAllThreeSurviveWithDeliveredScience" methodname="RescuedCommanderFollowsRouteBoardsUsesSharedMedicalAndAllThreeSurviveWithDeliveredScience" classname="LunarEscape.Tests.CrewRescueTests" runstate="Runnable" seed="1523706843" result="Passed" start-time="2026-10-07 12:26:43Z" end-time="2026-10-07 12:26:43Z" duration="0.621515" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1189" name="RetryInsideTimeCallbackCannotApplyOldRescueTimeToTheNewAttempt" fullname="LunarEscape.Tests.CrewRescueTests.RetryInsideTimeCallbackCannotApplyOldRescueTimeToTheNewAttempt" methodname="RetryInsideTimeCallbackCannotApplyOldRescueTimeToTheNewAttempt" classname="LunarEscape.Tests.CrewRescueTests" runstate="Runnable" seed="2117463355" result="Passed" start-time="2026-10-07 12:26:43Z" end-time="2026-10-07 12:26:44Z" duration="0.180367" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1190" name="DockingSceneTests" fullname="LunarEscape.Tests.DockingSceneTests" classname="LunarEscape.Tests.DockingSceneTests" runstate="Runnable" testcasecount="17" result="Passed" start-time="2026-10-07 12:26:44Z" end-time="2026-10-07 12:26:52Z" duration="8.269303" total="17" passed="17" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1199" name="AssistanceCannotCaptureFarMisalignedOrFastApproaches" fullname="LunarEscape.Tests.DockingSceneTests.AssistanceCannotCaptureFarMisalignedOrFastApproaches" methodname="AssistanceCannotCaptureFarMisalignedOrFastApproaches" classname="LunarEscape.Tests.DockingSceneTests" runstate="Runnable" seed="1456045170" result="Passed" start-time="2026-10-07 12:26:44Z" end-time="2026-10-07 12:26:44Z" duration="0.223739" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1191" name="BlenderApolloExteriorKeepsBoardingCollisionAndFlightFlow" fullname="LunarEscape.Tests.DockingSceneTests.BlenderApolloExteriorKeepsBoardingCollisionAndFlightFlow" methodname="BlenderApolloExteriorKeepsBoardingCollisionAndFlightFlow" classname="LunarEscape.Tests.DockingSceneTests" runstate="Runnable" seed="833442630" result="Passed" start-time="2026-10-07 12:26:44Z" end-time="2026-10-07 12:26:46Z" duration="2.122449" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1205" name="CloseRangeMainBoostIsDisabledAndOffAxisAssistConsumesFuel" fullname="LunarEscape.Tests.DockingSceneTests.CloseRangeMainBoostIsDisabledAndOffAxisAssistConsumesFuel" methodname="CloseRangeMainBoostIsDisabledAndOffAxisAssistConsumesFuel" classname="LunarEscape.Tests.DockingSceneTests" runstate="Runnable" seed="219124237" result="Passed" start-time="2026-10-07 12:26:46Z" end-time="2026-10-07 12:26:46Z" duration="0.215169" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1195" name="ContinuousMoonCoversLocalBoundaryAndIsPresentDuringEveryAscentStage" fullname="LunarEscape.Tests.DockingSceneTests.ContinuousMoonCoversLocalBoundaryAndIsPresentDuringEveryAscentStage" methodname="ContinuousMoonCoversLocalBoundaryAndIsPresentDuringEveryAscentStage" classname="LunarEscape.Tests.DockingSceneTests" runstate="Runnable" seed="739925760" result="Passed" start-time="2026-10-07 12:26:46Z" end-time="2026-10-07 12:26:48Z" duration="1.338220" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1194" name="CrewSuitReplacesNpcAndPlayerWithoutChangingTrackingOrInteraction" fullname="LunarEscape.Tests.DockingSceneTests.CrewSuitReplacesNpcAndPlayerWithoutChangingTrackingOrInteraction" methodname="CrewSuitReplacesNpcAndPlayerWithoutChangingTrackingOrInteraction" classname="LunarEscape.Tests.DockingSceneTests" runstate="Runnable" seed="221080470" result="Passed" start-time="2026-10-07 12:26:48Z" end-time="2026-10-07 12:26:48Z" duration="0.478939" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1201" name="DefaultOffsetAndAttitudeCanBeManuallyCorrectedWithAvailableFuel" fullname="LunarEscape.Tests.DockingSceneTests.DefaultOffsetAndAttitudeCanBeManuallyCorrectedWithAvailableFuel" methodname="DefaultOffsetAndAttitudeCanBeManuallyCorrectedWithAvailableFuel" classname="LunarEscape.Tests.DockingSceneTests" runstate="Runnable" seed="1833729129" result="Passed" start-time="2026-10-07 12:26:48Z" end-time="2026-10-07 12:26:48Z" duration="0.399974" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1207" name="DockingAndFlightControlsFitChineseEnglishRussian" fullname="LunarEscape.Tests.DockingSceneTests.DockingAndFlightControlsFitChineseEnglishRussian" methodname="DockingAndFlightControlsFitChineseEnglishRussian" classname="LunarEscape.Tests.DockingSceneTests" runstate="Runnable" seed="751902000" result="Passed" start-time="2026-10-07 12:26:48Z" end-time="2026-10-07 12:26:49Z" duration="0.371020" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1193" name="EarthRemainsVisibleFromSurfaceThroughOrbitAndResetsOnRetry" fullname="LunarEscape.Tests.DockingSceneTests.EarthRemainsVisibleFromSurfaceThroughOrbitAndResetsOnRetry" methodname="EarthRemainsVisibleFromSurfaceThroughOrbitAndResetsOnRetry" classname="LunarEscape.Tests.DockingSceneTests" runstate="Runnable" seed="109523905" result="Passed" start-time="2026-10-07 12:26:49Z" end-time="2026-10-07 12:26:49Z" duration="0.461515" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1204" name="EmptyRcsAndOxygenRemainRealFailureConditionsInRendezvous" fullname="LunarEscape.Tests.DockingSceneTests.EmptyRcsAndOxygenRemainRealFailureConditionsInRendezvous" methodname="EmptyRcsAndOxygenRemainRealFailureConditionsInRendezvous" classname="LunarEscape.Tests.DockingSceneTests" runstate="Runnable" seed="855657382" result="Passed" start-time="2026-10-07 12:26:49Z" end-time="2026-10-07 12:26:50Z" duration="0.432356" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1202" name="HighSpeedImpactExplodesAndCannotBeRescuedByAssist" fullname="LunarEscape.Tests.DockingSceneTests.HighSpeedImpactExplodesAndCannotBeRescuedByAssist" methodname="HighSpeedImpactExplodesAndCannotBeRescuedByAssist" classname="LunarEscape.Tests.DockingSceneTests" runstate="Runnable" seed="867071047" result="Passed" start-time="2026-10-07 12:26:50Z" end-time="2026-10-07 12:26:50Z" duration="0.248169" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1198" name="MainThrustRcsAndBrakeUseSeparateFuelAndPreserveCoasting" fullname="LunarEscape.Tests.DockingSceneTests.MainThrustRcsAndBrakeUseSeparateFuelAndPreserveCoasting" methodname="MainThrustRcsAndBrakeUseSeparateFuelAndPreserveCoasting" classname="LunarEscape.Tests.DockingSceneTests" runstate="Runnable" seed="1961217532" result="Passed" start-time="2026-10-07 12:26:50Z" end-time="2026-10-07 12:26:50Z" duration="0.180279" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1200" name="ManualApproachThenLocalAssistanceDocksAndRetryResetsEverything" fullname="LunarEscape.Tests.DockingSceneTests.ManualApproachThenLocalAssistanceDocksAndRetryResetsEverything" methodname="ManualApproachThenLocalAssistanceDocksAndRetryResetsEverything" classname="LunarEscape.Tests.DockingSceneTests" runstate="Runnable" seed="245124296" result="Passed" start-time="2026-10-07 12:26:50Z" end-time="2026-10-07 12:26:50Z" duration="0.412013" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1197" name="OrbitSurfaceMovesAtAdjustableRateWithoutMovingPlayer" fullname="LunarEscape.Tests.DockingSceneTests.OrbitSurfaceMovesAtAdjustableRateWithoutMovingPlayer" methodname="OrbitSurfaceMovesAtAdjustableRateWithoutMovingPlayer" classname="LunarEscape.Tests.DockingSceneTests" runstate="Runnable" seed="28328351" result="Passed" start-time="2026-10-07 12:26:50Z" end-time="2026-10-07 12:26:51Z" duration="0.456012" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1206" name="RealMouseHoldReleasesThrustAndOnlyOneFrameClockAdvances" fullname="LunarEscape.Tests.DockingSceneTests.RealMouseHoldReleasesThrustAndOnlyOneFrameClockAdvances" methodname="RealMouseHoldReleasesThrustAndOnlyOneFrameClockAdvances" classname="LunarEscape.Tests.DockingSceneTests" runstate="Runnable" seed="2126626023" result="Passed" start-time="2026-10-07 12:26:51Z" end-time="2026-10-07 12:26:51Z" duration="0.269611" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1192" name="RealWasdBindingsMoveBodyAfterStartAndKeepCollision" fullname="LunarEscape.Tests.DockingSceneTests.RealWasdBindingsMoveBodyAfterStartAndKeepCollision" methodname="RealWasdBindingsMoveBodyAfterStartAndKeepCollision" classname="LunarEscape.Tests.DockingSceneTests" runstate="Runnable" seed="907524946" result="Passed" start-time="2026-10-07 12:26:51Z" end-time="2026-10-07 12:26:52Z" duration="0.302215" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[To avoid interfering with point and click interactions, XRUIInputModule mouse and touch input will be disabled while the simulated devices are active.
+Failed to get haptic capabilities of XRSimulatedController:/XRSimulatedController, error code -1. Continuing assuming a single haptic channel.
+Failed to get haptic capabilities of XRSimulatedController:/XRSimulatedController1, error code -1. Continuing assuming a single haptic channel.
+WASD_DIAGNOSTIC mode=FPS, RightDevice enabled=True x=True z=True
+]]></output>
+            </test-case>
+            <test-case id="1203" name="SlowMisalignedContactAndDistantDriftFailForDistinctReasons" fullname="LunarEscape.Tests.DockingSceneTests.SlowMisalignedContactAndDistantDriftFailForDistinctReasons" methodname="SlowMisalignedContactAndDistantDriftFailForDistinctReasons" classname="LunarEscape.Tests.DockingSceneTests" runstate="Runnable" seed="1945785631" result="Passed" start-time="2026-10-07 12:26:52Z" end-time="2026-10-07 12:26:52Z" duration="0.183246" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1196" name="VerticalAscentDoesNotStopAtThreeSecondsAndTurnRateHasNoJump" fullname="LunarEscape.Tests.DockingSceneTests.VerticalAscentDoesNotStopAtThreeSecondsAndTurnRateHasNoJump" methodname="VerticalAscentDoesNotStopAtThreeSecondsAndTurnRateHasNoJump" classname="LunarEscape.Tests.DockingSceneTests" runstate="Runnable" seed="545039466" result="Passed" start-time="2026-10-07 12:26:52Z" end-time="2026-10-07 12:26:52Z" duration="0.171111" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1208" name="FailureSummaryTests" fullname="LunarEscape.Tests.FailureSummaryTests" classname="LunarEscape.Tests.FailureSummaryTests" runstate="Runnable" testcasecount="5" result="Passed" start-time="2026-10-07 12:26:52Z" end-time="2026-10-07 12:26:52Z" duration="0.558147" total="5" passed="5" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1211" name="FailedGrabAndTeleportAreBlockedAndPendingTeleportCannotReplayAfterRetry" fullname="LunarEscape.Tests.FailureSummaryTests.FailedGrabAndTeleportAreBlockedAndPendingTeleportCannotReplayAfterRetry" methodname="FailedGrabAndTeleportAreBlockedAndPendingTeleportCannotReplayAfterRetry" classname="LunarEscape.Tests.FailureSummaryTests" runstate="Runnable" seed="56669245" result="Passed" start-time="2026-10-07 12:26:52Z" end-time="2026-10-07 12:26:52Z" duration="0.108397" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[To avoid interfering with point and click interactions, XRUIInputModule mouse and touch input will be disabled while the simulated devices are active.
+]]></output>
+            </test-case>
+            <test-case id="1210" name="FailedSimulatorCannotWalkButHeadAndHandTrackingContinue" fullname="LunarEscape.Tests.FailureSummaryTests.FailedSimulatorCannotWalkButHeadAndHandTrackingContinue" methodname="FailedSimulatorCannotWalkButHeadAndHandTrackingContinue" classname="LunarEscape.Tests.FailureSummaryTests" runstate="Runnable" seed="2117452603" result="Passed" start-time="2026-10-07 12:26:52Z" end-time="2026-10-07 12:26:52Z" duration="0.149711" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[To avoid interfering with point and click interactions, XRUIInputModule mouse and touch input will be disabled while the simulated devices are active.
+]]></output>
+            </test-case>
+            <test-case id="1213" name="FailureSummaryExplainsBothRepairOutcomesInAllThreeLanguagesWithoutOverflow" fullname="LunarEscape.Tests.FailureSummaryTests.FailureSummaryExplainsBothRepairOutcomesInAllThreeLanguagesWithoutOverflow" methodname="FailureSummaryExplainsBothRepairOutcomesInAllThreeLanguagesWithoutOverflow" classname="LunarEscape.Tests.FailureSummaryTests" runstate="Runnable" seed="1582741632" result="Passed" start-time="2026-10-07 12:26:52Z" end-time="2026-10-07 12:26:52Z" duration="0.097588" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[To avoid interfering with point and click interactions, XRUIInputModule mouse and touch input will be disabled while the simulated devices are active.
+]]></output>
+            </test-case>
+            <test-case id="1212" name="ModalBlocksBackgroundClicksAndRealMouseRestartRestoresSpawnAndControls" fullname="LunarEscape.Tests.FailureSummaryTests.ModalBlocksBackgroundClicksAndRealMouseRestartRestoresSpawnAndControls" methodname="ModalBlocksBackgroundClicksAndRealMouseRestartRestoresSpawnAndControls" classname="LunarEscape.Tests.FailureSummaryTests" runstate="Runnable" seed="1368047954" result="Passed" start-time="2026-10-07 12:26:52Z" end-time="2026-10-07 12:26:52Z" duration="0.114698" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[To avoid interfering with point and click interactions, XRUIInputModule mouse and touch input will be disabled while the simulated devices are active.
+]]></output>
+            </test-case>
+            <test-case id="1209" name="TimeoutAutomaticallyShowsOneModalAndLeavesOnlyRestartInteractive" fullname="LunarEscape.Tests.FailureSummaryTests.TimeoutAutomaticallyShowsOneModalAndLeavesOnlyRestartInteractive" methodname="TimeoutAutomaticallyShowsOneModalAndLeavesOnlyRestartInteractive" classname="LunarEscape.Tests.FailureSummaryTests" runstate="Runnable" seed="497417898" result="Passed" start-time="2026-10-07 12:26:52Z" end-time="2026-10-07 12:26:52Z" duration="0.086215" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[To avoid interfering with point and click interactions, XRUIInputModule mouse and touch input will be disabled while the simulated devices are active.
+]]></output>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1214" name="FoundationTests" fullname="LunarEscape.Tests.FoundationTests" classname="LunarEscape.Tests.FoundationTests" runstate="Runnable" testcasecount="3" result="Passed" start-time="2026-10-07 12:26:52Z" end-time="2026-10-07 12:26:54Z" duration="1.589671" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1215" name="RoomHasCameraFloorAndConfiguredTool" fullname="LunarEscape.Tests.FoundationTests.RoomHasCameraFloorAndConfiguredTool" methodname="RoomHasCameraFloorAndConfiguredTool" classname="LunarEscape.Tests.FoundationTests" runstate="Runnable" seed="466941985" result="Passed" start-time="2026-10-07 12:26:52Z" end-time="2026-10-07 12:26:53Z" duration="0.081885" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[To avoid interfering with point and click interactions, XRUIInputModule mouse and touch input will be disabled while the simulated devices are active.
+]]></output>
+            </test-case>
+            <test-case id="1217" name="ToolFallsOntoBenchAndReturnsIfLost" fullname="LunarEscape.Tests.FoundationTests.ToolFallsOntoBenchAndReturnsIfLost" methodname="ToolFallsOntoBenchAndReturnsIfLost" classname="LunarEscape.Tests.FoundationTests" runstate="Runnable" seed="293955512" result="Passed" start-time="2026-10-07 12:26:53Z" end-time="2026-10-07 12:26:54Z" duration="1.427774" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[To avoid interfering with point and click interactions, XRUIInputModule mouse and touch input will be disabled while the simulated devices are active.
+]]></output>
+            </test-case>
+            <test-case id="1216" name="ToolkitGrabAndReleaseUpdatePracticeFeedback" fullname="LunarEscape.Tests.FoundationTests.ToolkitGrabAndReleaseUpdatePracticeFeedback" methodname="ToolkitGrabAndReleaseUpdatePracticeFeedback" classname="LunarEscape.Tests.FoundationTests" runstate="Runnable" seed="924329726" result="Passed" start-time="2026-10-07 12:26:54Z" end-time="2026-10-07 12:26:54Z" duration="0.078899" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[To avoid interfering with point and click interactions, XRUIInputModule mouse and touch input will be disabled while the simulated devices are active.
+]]></output>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1218" name="LanderRevisionTests" fullname="LunarEscape.Tests.LanderRevisionTests" classname="LunarEscape.Tests.LanderRevisionTests" runstate="Runnable" testcasecount="8" result="Passed" start-time="2026-10-07 12:26:54Z" end-time="2026-10-07 12:26:57Z" duration="3.079296" total="8" passed="8" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1225" name="AscentTurnsAfterVerticalClearanceAndBaseStaysVisibleAtRealScale" fullname="LunarEscape.Tests.LanderRevisionTests.AscentTurnsAfterVerticalClearanceAndBaseStaysVisibleAtRealScale" methodname="AscentTurnsAfterVerticalClearanceAndBaseStaysVisibleAtRealScale" classname="LunarEscape.Tests.LanderRevisionTests" runstate="Runnable" seed="1176803371" result="Passed" start-time="2026-10-07 12:26:54Z" end-time="2026-10-07 12:26:54Z" duration="0.268126" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[To avoid interfering with point and click interactions, XRUIInputModule mouse and touch input will be disabled while the simulated devices are active.
+Failed to get haptic capabilities of XRSimulatedController:/XRSimulatedController, error code -1. Continuing assuming a single haptic channel.
+Failed to get haptic capabilities of XRSimulatedController:/XRSimulatedController1, error code -1. Continuing assuming a single haptic channel.
+Your project uses a scriptable render pipeline. You can use Camera.stereoTargetEye only with the built-in renderer.
+Your project uses a scriptable render pipeline. You can use Camera.stereoTargetEye only with the built-in renderer.
+Your project uses a scriptable render pipeline. You can use Camera.stereoTargetEye only with the built-in renderer.
+]]></output>
+            </test-case>
+            <test-case id="1226" name="BlastShakeScalesWithDepartureMarginWithoutWritingHeadPoseAndResets" fullname="LunarEscape.Tests.LanderRevisionTests.BlastShakeScalesWithDepartureMarginWithoutWritingHeadPoseAndResets" methodname="BlastShakeScalesWithDepartureMarginWithoutWritingHeadPoseAndResets" classname="LunarEscape.Tests.LanderRevisionTests" runstate="Runnable" seed="729756107" result="Passed" start-time="2026-10-07 12:26:54Z" end-time="2026-10-07 12:26:55Z" duration="0.309174" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[To avoid interfering with point and click interactions, XRUIInputModule mouse and touch input will be disabled while the simulated devices are active.
+Failed to get haptic capabilities of XRSimulatedController:/XRSimulatedController, error code -1. Continuing assuming a single haptic channel.
+Failed to get haptic capabilities of XRSimulatedController:/XRSimulatedController1, error code -1. Continuing assuming a single haptic channel.
+Your project uses a scriptable render pipeline. You can use Camera.stereoTargetEye only with the built-in renderer.
+Your project uses a scriptable render pipeline. You can use Camera.stereoTargetEye only with the built-in renderer.
+Your project uses a scriptable render pipeline. You can use Camera.stereoTargetEye only with the built-in renderer.
+]]></output>
+            </test-case>
+            <test-case id="1219" name="ExteriorAndWindowUseSameMeshesAndMeterScaleWithSidewaysHatch" fullname="LunarEscape.Tests.LanderRevisionTests.ExteriorAndWindowUseSameMeshesAndMeterScaleWithSidewaysHatch" methodname="ExteriorAndWindowUseSameMeshesAndMeterScaleWithSidewaysHatch" classname="LunarEscape.Tests.LanderRevisionTests" runstate="Runnable" seed="1311758243" result="Passed" start-time="2026-10-07 12:26:55Z" end-time="2026-10-07 12:26:55Z" duration="0.211365" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[To avoid interfering with point and click interactions, XRUIInputModule mouse and touch input will be disabled while the simulated devices are active.
+Failed to get haptic capabilities of XRSimulatedController:/XRSimulatedController, error code -1. Continuing assuming a single haptic channel.
+Failed to get haptic capabilities of XRSimulatedController:/XRSimulatedController1, error code -1. Continuing assuming a single haptic channel.
+Your project uses a scriptable render pipeline. You can use Camera.stereoTargetEye only with the built-in renderer.
+Your project uses a scriptable render pipeline. You can use Camera.stereoTargetEye only with the built-in renderer.
+]]></output>
+            </test-case>
+            <test-case id="1222" name="HatchUsesRealMouseInputAndThreeLanguagesWithoutClipping" fullname="LunarEscape.Tests.LanderRevisionTests.HatchUsesRealMouseInputAndThreeLanguagesWithoutClipping" methodname="HatchUsesRealMouseInputAndThreeLanguagesWithoutClipping" classname="LunarEscape.Tests.LanderRevisionTests" runstate="Runnable" seed="1559072538" result="Passed" start-time="2026-10-07 12:26:55Z" end-time="2026-10-07 12:26:57Z" duration="1.746827" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[To avoid interfering with point and click interactions, XRUIInputModule mouse and touch input will be disabled while the simulated devices are active.
+Failed to get haptic capabilities of XRSimulatedController:/XRSimulatedController, error code -1. Continuing assuming a single haptic channel.
+Failed to get haptic capabilities of XRSimulatedController:/XRSimulatedController1, error code -1. Continuing assuming a single haptic channel.
+Your project uses a scriptable render pipeline. You can use Camera.stereoTargetEye only with the built-in renderer.
+]]></output>
+            </test-case>
+            <test-case id="1221" name="LadderAndCabinBlockActualSimulatorWalking" fullname="LunarEscape.Tests.LanderRevisionTests.LadderAndCabinBlockActualSimulatorWalking" methodname="LadderAndCabinBlockActualSimulatorWalking" classname="LunarEscape.Tests.LanderRevisionTests" runstate="Runnable" seed="1010172889" result="Passed" start-time="2026-10-07 12:26:57Z" end-time="2026-10-07 12:26:57Z" duration="0.188997" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[To avoid interfering with point and click interactions, XRUIInputModule mouse and touch input will be disabled while the simulated devices are active.
+Failed to get haptic capabilities of XRSimulatedController:/XRSimulatedController, error code -1. Continuing assuming a single haptic channel.
+Failed to get haptic capabilities of XRSimulatedController:/XRSimulatedController1, error code -1. Continuing assuming a single haptic channel.
+]]></output>
+            </test-case>
+            <test-case id="1224" name="LastFrameHatchClickCannotWinAgainstExpiredClock" fullname="LunarEscape.Tests.LanderRevisionTests.LastFrameHatchClickCannotWinAgainstExpiredClock" methodname="LastFrameHatchClickCannotWinAgainstExpiredClock" classname="LunarEscape.Tests.LanderRevisionTests" runstate="Runnable" seed="2134352188" result="Passed" start-time="2026-10-07 12:26:57Z" end-time="2026-10-07 12:26:57Z" duration="0.107865" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[To avoid interfering with point and click interactions, XRUIInputModule mouse and touch input will be disabled while the simulated devices are active.
+Failed to get haptic capabilities of XRSimulatedController:/XRSimulatedController, error code -1. Continuing assuming a single haptic channel.
+Failed to get haptic capabilities of XRSimulatedController:/XRSimulatedController1, error code -1. Continuing assuming a single haptic channel.
+]]></output>
+            </test-case>
+            <test-case id="1220" name="OnlyPlayerAtLadderCanBoardAndWalkingIntoApproachDoesNotTriggerIt" fullname="LunarEscape.Tests.LanderRevisionTests.OnlyPlayerAtLadderCanBoardAndWalkingIntoApproachDoesNotTriggerIt" methodname="OnlyPlayerAtLadderCanBoardAndWalkingIntoApproachDoesNotTriggerIt" classname="LunarEscape.Tests.LanderRevisionTests" runstate="Runnable" seed="659338486" result="Passed" start-time="2026-10-07 12:26:57Z" end-time="2026-10-07 12:26:57Z" duration="0.119124" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[To avoid interfering with point and click interactions, XRUIInputModule mouse and touch input will be disabled while the simulated devices are active.
+Failed to get haptic capabilities of XRSimulatedController:/XRSimulatedController, error code -1. Continuing assuming a single haptic channel.
+Failed to get haptic capabilities of XRSimulatedController:/XRSimulatedController1, error code -1. Continuing assuming a single haptic channel.
+]]></output>
+            </test-case>
+            <test-case id="1223" name="XrDoorSelectionUsesSameBodyAndDistanceGate" fullname="LunarEscape.Tests.LanderRevisionTests.XrDoorSelectionUsesSameBodyAndDistanceGate" methodname="XrDoorSelectionUsesSameBodyAndDistanceGate" classname="LunarEscape.Tests.LanderRevisionTests" runstate="Runnable" seed="1775602944" result="Passed" start-time="2026-10-07 12:26:57Z" end-time="2026-10-07 12:26:57Z" duration="0.126155" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[To avoid interfering with point and click interactions, XRUIInputModule mouse and touch input will be disabled while the simulated devices are active.
+Failed to get haptic capabilities of XRSimulatedController:/XRSimulatedController, error code -1. Continuing assuming a single haptic channel.
+Failed to get haptic capabilities of XRSimulatedController:/XRSimulatedController1, error code -1. Continuing assuming a single haptic channel.
+]]></output>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1227" name="LunarGravityTests" fullname="LunarEscape.Tests.LunarGravityTests" classname="LunarEscape.Tests.LunarGravityTests" runstate="Runnable" testcasecount="2" result="Passed" start-time="2026-10-07 12:26:57Z" end-time="2026-10-07 12:26:57Z" duration="0.207654" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1229" name="AirbornePlayerBodyReceivesLunarGravityOnce" fullname="LunarEscape.Tests.LunarGravityTests.AirbornePlayerBodyReceivesLunarGravityOnce" methodname="AirbornePlayerBodyReceivesLunarGravityOnce" classname="LunarEscape.Tests.LunarGravityTests" runstate="Runnable" seed="606815147" result="Passed" start-time="2026-10-07 12:26:57Z" end-time="2026-10-07 12:26:57Z" duration="0.097289" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[To avoid interfering with point and click interactions, XRUIInputModule mouse and touch input will be disabled while the simulated devices are active.
+Actual player body: g=1.620 m/s².
+]]></output>
+            </test-case>
+            <test-case id="1228" name="ReleasedToolFallsOneMetreWithLunarAcceleration" fullname="LunarEscape.Tests.LunarGravityTests.ReleasedToolFallsOneMetreWithLunarAcceleration" methodname="ReleasedToolFallsOneMetreWithLunarAcceleration" classname="LunarEscape.Tests.LunarGravityTests" runstate="Runnable" seed="800999024" result="Passed" start-time="2026-10-07 12:26:57Z" end-time="2026-10-07 12:26:57Z" duration="0.109433" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[To avoid interfering with point and click interactions, XRUIInputModule mouse and touch input will be disabled while the simulated devices are active.
+Released tool: g=1.620 m/s², 1 m fall=1.120 s.
+]]></output>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1230" name="MissionScoreTests" fullname="LunarEscape.Tests.MissionScoreTests" classname="LunarEscape.Tests.MissionScoreTests" runstate="Runnable" testcasecount="3" result="Passed" start-time="2026-10-07 12:26:57Z" end-time="2026-10-07 12:26:57Z" duration="0.002538" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1233" name="DockingCannotInventMissingCrewAndInvalidReservesCannotIncreaseScore" fullname="LunarEscape.Tests.MissionScoreTests.DockingCannotInventMissingCrewAndInvalidReservesCannotIncreaseScore" methodname="DockingCannotInventMissingCrewAndInvalidReservesCannotIncreaseScore" classname="LunarEscape.Tests.MissionScoreTests" runstate="Runnable" seed="1238696494" result="Passed" start-time="2026-10-07 12:26:57Z" end-time="2026-10-07 12:26:57Z" duration="0.000357" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1232" name="FailedFlightPreservesRealMilestonesButCannotDeliverScienceOrReservePoints" fullname="LunarEscape.Tests.MissionScoreTests.FailedFlightPreservesRealMilestonesButCannotDeliverScienceOrReservePoints" methodname="FailedFlightPreservesRealMilestonesButCannotDeliverScienceOrReservePoints" classname="LunarEscape.Tests.MissionScoreTests" runstate="Runnable" seed="250405594" result="Passed" start-time="2026-10-07 12:26:57Z" end-time="2026-10-07 12:26:57Z" duration="0.000383" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1231" name="FullCrewAndDeliveredScienceReachExactly10000WithoutDuplicateBonus" fullname="LunarEscape.Tests.MissionScoreTests.FullCrewAndDeliveredScienceReachExactly10000WithoutDuplicateBonus" methodname="FullCrewAndDeliveredScienceReachExactly10000WithoutDuplicateBonus" classname="LunarEscape.Tests.MissionScoreTests" runstate="Runnable" seed="740487947" result="Passed" start-time="2026-10-07 12:26:57Z" end-time="2026-10-07 12:26:57Z" duration="0.000980" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1234" name="OrbitalSceneTests" fullname="LunarEscape.Tests.OrbitalSceneTests" classname="LunarEscape.Tests.OrbitalSceneTests" runstate="Runnable" testcasecount="11" result="Passed" start-time="2026-10-07 12:26:57Z" end-time="2026-10-07 12:27:01Z" duration="4.063022" total="11" passed="11" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1236" name="AcceptedBoardingSurvivesSmallMovementButDeadlineStillWins" fullname="LunarEscape.Tests.OrbitalSceneTests.AcceptedBoardingSurvivesSmallMovementButDeadlineStillWins" methodname="AcceptedBoardingSurvivesSmallMovementButDeadlineStillWins" classname="LunarEscape.Tests.OrbitalSceneTests" runstate="Runnable" seed="1838121223" result="Passed" start-time="2026-10-07 12:26:57Z" end-time="2026-10-07 12:26:58Z" duration="0.210904" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[To avoid interfering with point and click interactions, XRUIInputModule mouse and touch input will be disabled while the simulated devices are active.
+Failed to get haptic capabilities of XRSimulatedController:/XRSimulatedController, error code -1. Continuing assuming a single haptic channel.
+Failed to get haptic capabilities of XRSimulatedController:/XRSimulatedController1, error code -1. Continuing assuming a single haptic channel.
+]]></output>
+            </test-case>
+            <test-case id="1237" name="ActualTerrainHasDeepCratersAndWalkableFlatEscapeRoute" fullname="LunarEscape.Tests.OrbitalSceneTests.ActualTerrainHasDeepCratersAndWalkableFlatEscapeRoute" methodname="ActualTerrainHasDeepCratersAndWalkableFlatEscapeRoute" classname="LunarEscape.Tests.OrbitalSceneTests" runstate="Runnable" seed="394193457" result="Passed" start-time="2026-10-07 12:26:58Z" end-time="2026-10-07 12:26:58Z" duration="0.527807" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[To avoid interfering with point and click interactions, XRUIInputModule mouse and touch input will be disabled while the simulated devices are active.
+Failed to get haptic capabilities of XRSimulatedController:/XRSimulatedController, error code -1. Continuing assuming a single haptic channel.
+Failed to get haptic capabilities of XRSimulatedController:/XRSimulatedController1, error code -1. Continuing assuming a single haptic channel.
+Your project uses a scriptable render pipeline. You can use Camera.stereoTargetEye only with the built-in renderer.
+]]></output>
+            </test-case>
+            <test-case id="1244" name="AddedControlsFitAllThreeLanguagesAcrossFlightStages" fullname="LunarEscape.Tests.OrbitalSceneTests.AddedControlsFitAllThreeLanguagesAcrossFlightStages" methodname="AddedControlsFitAllThreeLanguagesAcrossFlightStages" classname="LunarEscape.Tests.OrbitalSceneTests" runstate="Runnable" seed="429212604" result="Passed" start-time="2026-10-07 12:26:58Z" end-time="2026-10-07 12:26:58Z" duration="0.173064" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[To avoid interfering with point and click interactions, XRUIInputModule mouse and touch input will be disabled while the simulated devices are active.
+Failed to get haptic capabilities of XRSimulatedController:/XRSimulatedController, error code -1. Continuing assuming a single haptic channel.
+Failed to get haptic capabilities of XRSimulatedController:/XRSimulatedController1, error code -1. Continuing assuming a single haptic channel.
+]]></output>
+            </test-case>
+            <test-case id="1238" name="CabinHasSeparatedHumanSizedCrewStationsAndVisibleCompanion" fullname="LunarEscape.Tests.OrbitalSceneTests.CabinHasSeparatedHumanSizedCrewStationsAndVisibleCompanion" methodname="CabinHasSeparatedHumanSizedCrewStationsAndVisibleCompanion" classname="LunarEscape.Tests.OrbitalSceneTests" runstate="Runnable" seed="1344118189" result="Passed" start-time="2026-10-07 12:26:58Z" end-time="2026-10-07 12:27:00Z" duration="1.736635" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[To avoid interfering with point and click interactions, XRUIInputModule mouse and touch input will be disabled while the simulated devices are active.
+Failed to get haptic capabilities of XRSimulatedController:/XRSimulatedController, error code -1. Continuing assuming a single haptic channel.
+Failed to get haptic capabilities of XRSimulatedController:/XRSimulatedController1, error code -1. Continuing assuming a single haptic channel.
+Your project uses a scriptable render pipeline. You can use Camera.stereoTargetEye only with the built-in renderer.
+Your project uses a scriptable render pipeline. You can use Camera.stereoTargetEye only with the built-in renderer.
+Your project uses a scriptable render pipeline. You can use Camera.stereoTargetEye only with the built-in renderer.
+]]></output>
+            </test-case>
+            <test-case id="1239" name="FlightContinuesAfterBlastAndRequiresRealMouseInsertionClick" fullname="LunarEscape.Tests.OrbitalSceneTests.FlightContinuesAfterBlastAndRequiresRealMouseInsertionClick" methodname="FlightContinuesAfterBlastAndRequiresRealMouseInsertionClick" classname="LunarEscape.Tests.OrbitalSceneTests" runstate="Runnable" seed="1557041897" result="Passed" start-time="2026-10-07 12:27:00Z" end-time="2026-10-07 12:27:00Z" duration="0.410659" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[To avoid interfering with point and click interactions, XRUIInputModule mouse and touch input will be disabled while the simulated devices are active.
+Failed to get haptic capabilities of XRSimulatedController:/XRSimulatedController, error code -1. Continuing assuming a single haptic channel.
+Failed to get haptic capabilities of XRSimulatedController:/XRSimulatedController1, error code -1. Continuing assuming a single haptic channel.
+Your project uses a scriptable render pipeline. You can use Camera.stereoTargetEye only with the built-in renderer.
+Your project uses a scriptable render pipeline. You can use Camera.stereoTargetEye only with the built-in renderer.
+Your project uses a scriptable render pipeline. You can use Camera.stereoTargetEye only with the built-in renderer.
+Your project uses a scriptable render pipeline. You can use Camera.stereoTargetEye only with the built-in renderer.
+Your project uses a scriptable render pipeline. You can use Camera.stereoTargetEye only with the built-in renderer.
+]]></output>
+            </test-case>
+            <test-case id="1240" name="InsertionWaitStillConsumesOxygenAndCanFail" fullname="LunarEscape.Tests.OrbitalSceneTests.InsertionWaitStillConsumesOxygenAndCanFail" methodname="InsertionWaitStillConsumesOxygenAndCanFail" classname="LunarEscape.Tests.OrbitalSceneTests" runstate="Runnable" seed="1123634210" result="Passed" start-time="2026-10-07 12:27:00Z" end-time="2026-10-07 12:27:01Z" duration="0.121019" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[To avoid interfering with point and click interactions, XRUIInputModule mouse and touch input will be disabled while the simulated devices are active.
+Failed to get haptic capabilities of XRSimulatedController:/XRSimulatedController, error code -1. Continuing assuming a single haptic channel.
+Failed to get haptic capabilities of XRSimulatedController:/XRSimulatedController1, error code -1. Continuing assuming a single haptic channel.
+]]></output>
+            </test-case>
+            <test-case id="1235" name="LargeBoardingControlWorksWithLevelViewFromMultipleApproaches" fullname="LunarEscape.Tests.OrbitalSceneTests.LargeBoardingControlWorksWithLevelViewFromMultipleApproaches" methodname="LargeBoardingControlWorksWithLevelViewFromMultipleApproaches" classname="LunarEscape.Tests.OrbitalSceneTests" runstate="Runnable" seed="50182117" result="Passed" start-time="2026-10-07 12:27:01Z" end-time="2026-10-07 12:27:01Z" duration="0.408438" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[To avoid interfering with point and click interactions, XRUIInputModule mouse and touch input will be disabled while the simulated devices are active.
+Failed to get haptic capabilities of XRSimulatedController:/XRSimulatedController, error code -1. Continuing assuming a single haptic channel.
+Failed to get haptic capabilities of XRSimulatedController:/XRSimulatedController1, error code -1. Continuing assuming a single haptic channel.
+Your project uses a scriptable render pipeline. You can use Camera.stereoTargetEye only with the built-in renderer.
+Your project uses a scriptable render pipeline. You can use Camera.stereoTargetEye only with the built-in renderer.
+Your project uses a scriptable render pipeline. You can use Camera.stereoTargetEye only with the built-in renderer.
+Your project uses a scriptable render pipeline. You can use Camera.stereoTargetEye only with the built-in renderer.
+]]></output>
+            </test-case>
+            <test-case id="1242" name="LateFlightDamageCanBeRepairedAndReachOrbitWithThreeChosenSupplies" fullname="LunarEscape.Tests.OrbitalSceneTests.LateFlightDamageCanBeRepairedAndReachOrbitWithThreeChosenSupplies" methodname="LateFlightDamageCanBeRepairedAndReachOrbitWithThreeChosenSupplies" classname="LunarEscape.Tests.OrbitalSceneTests" runstate="Runnable" seed="626249623" result="Passed" start-time="2026-10-07 12:27:01Z" end-time="2026-10-07 12:27:01Z" duration="0.127242" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[To avoid interfering with point and click interactions, XRUIInputModule mouse and touch input will be disabled while the simulated devices are active.
+Failed to get haptic capabilities of XRSimulatedController:/XRSimulatedController, error code -1. Continuing assuming a single haptic channel.
+Failed to get haptic capabilities of XRSimulatedController:/XRSimulatedController1, error code -1. Continuing assuming a single haptic channel.
+]]></output>
+            </test-case>
+            <test-case id="1241" name="PowerDepletionDuringFinalBurnCannotBecomeOrbitSuccess" fullname="LunarEscape.Tests.OrbitalSceneTests.PowerDepletionDuringFinalBurnCannotBecomeOrbitSuccess" methodname="PowerDepletionDuringFinalBurnCannotBecomeOrbitSuccess" classname="LunarEscape.Tests.OrbitalSceneTests" runstate="Runnable" seed="2050750040" result="Passed" start-time="2026-10-07 12:27:01Z" end-time="2026-10-07 12:27:01Z" duration="0.112955" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[To avoid interfering with point and click interactions, XRUIInputModule mouse and touch input will be disabled while the simulated devices are active.
+Failed to get haptic capabilities of XRSimulatedController:/XRSimulatedController, error code -1. Continuing assuming a single haptic channel.
+Failed to get haptic capabilities of XRSimulatedController:/XRSimulatedController1, error code -1. Continuing assuming a single haptic channel.
+]]></output>
+            </test-case>
+            <test-case id="1243" name="RetryRestoresTerrainCrewControlsAndNextFlightCanComplete" fullname="LunarEscape.Tests.OrbitalSceneTests.RetryRestoresTerrainCrewControlsAndNextFlightCanComplete" methodname="RetryRestoresTerrainCrewControlsAndNextFlightCanComplete" classname="LunarEscape.Tests.OrbitalSceneTests" runstate="Runnable" seed="678346656" result="Passed" start-time="2026-10-07 12:27:01Z" end-time="2026-10-07 12:27:01Z" duration="0.121688" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[To avoid interfering with point and click interactions, XRUIInputModule mouse and touch input will be disabled while the simulated devices are active.
+Failed to get haptic capabilities of XRSimulatedController:/XRSimulatedController, error code -1. Continuing assuming a single haptic channel.
+Failed to get haptic capabilities of XRSimulatedController:/XRSimulatedController1, error code -1. Continuing assuming a single haptic channel.
+]]></output>
+            </test-case>
+            <test-case id="1245" name="TrajectoryIsContinuousAtVerticalTurnClimbAndOrbitBoundaries" fullname="LunarEscape.Tests.OrbitalSceneTests.TrajectoryIsContinuousAtVerticalTurnClimbAndOrbitBoundaries" methodname="TrajectoryIsContinuousAtVerticalTurnClimbAndOrbitBoundaries" classname="LunarEscape.Tests.OrbitalSceneTests" runstate="Runnable" seed="469780597" result="Passed" start-time="2026-10-07 12:27:01Z" end-time="2026-10-07 12:27:01Z" duration="0.110321" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[To avoid interfering with point and click interactions, XRUIInputModule mouse and touch input will be disabled while the simulated devices are active.
+Failed to get haptic capabilities of XRSimulatedController:/XRSimulatedController, error code -1. Continuing assuming a single haptic channel.
+Failed to get haptic capabilities of XRSimulatedController:/XRSimulatedController1, error code -1. Continuing assuming a single haptic channel.
+]]></output>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1246" name="OrbiterSurfaceArtTests" fullname="LunarEscape.Tests.OrbiterSurfaceArtTests" classname="LunarEscape.Tests.OrbiterSurfaceArtTests" runstate="Runnable" testcasecount="3" result="Passed" start-time="2026-10-07 12:27:01Z" end-time="2026-10-07 12:27:03Z" duration="1.645015" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1249" name="DetailedSurfaceSharesMeshesAndKeepsEvacuationRouteAndFlightProxyClear" fullname="LunarEscape.Tests.OrbiterSurfaceArtTests.DetailedSurfaceSharesMeshesAndKeepsEvacuationRouteAndFlightProxyClear" methodname="DetailedSurfaceSharesMeshesAndKeepsEvacuationRouteAndFlightProxyClear" classname="LunarEscape.Tests.OrbiterSurfaceArtTests" runstate="Runnable" seed="2127096146" result="Passed" start-time="2026-10-07 12:27:01Z" end-time="2026-10-07 12:27:02Z" duration="0.765151" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[BOARDING_MESH_EDGE point=(46.800, 0.000, -6.000); hit=(46.800, 0.000, -6.000); normal=(0.0000, 0.8030, 0.5960); collider=Walkable crater terrain; mesh=Detailed Lunar Terrain Near; triangle=28267 [14207,14399,14400]; world vertices=(47.0000, 0.7423, -7.0000)/(46.0000, 0.0000, -6.0000)/(47.0000, 0.0000, -6.0000); face normal=(0.0000, 0.8030, 0.5960); collider position=(0.000, 0.000, 0.000), rotation=(0.000, 0.000, 0.000), scale=(1.000, 1.000, 1.000); inside=(46.800, 0.000, -5.990), n=(0.0000, 1.0000, 0.0000), triangle=28650; outside=(46.800, 0.007, -6.010), n=(0.0000, 0.8030, 0.5960), triangle=28267
+BOARDING_MESH_EDGE (47.300, 0.000, -6.000); inside=(47.300, 0.000, -5.990), n=(0.0000, 1.0000, 0.0000), triangle=28652; outside=(47.300, 0.006, -6.010), n=(0.0000, 0.8598, 0.5106), triangle=28269
+BOARDING_MESH_EDGE (47.800, 0.000, -6.000); inside=(47.800, 0.000, -5.990), n=(0.0000, 1.0000, 0.0000), triangle=28652; outside=(47.800, 0.006, -6.010), n=(0.0000, 0.8598, 0.5106), triangle=28269
+]]></output>
+            </test-case>
+            <test-case id="1248" name="NewOrbiterPreservesApproachCaptureCollisionAndRetryWithoutMovingHeadset" fullname="LunarEscape.Tests.OrbiterSurfaceArtTests.NewOrbiterPreservesApproachCaptureCollisionAndRetryWithoutMovingHeadset" methodname="NewOrbiterPreservesApproachCaptureCollisionAndRetryWithoutMovingHeadset" classname="LunarEscape.Tests.OrbiterSurfaceArtTests" runstate="Runnable" seed="1675716953" result="Passed" start-time="2026-10-07 12:27:02Z" end-time="2026-10-07 12:27:03Z" duration="0.417025" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1247" name="OrbiterUsesPortOriginWithCompactDecreasingLodsAndVisibleSurfaceMaterials" fullname="LunarEscape.Tests.OrbiterSurfaceArtTests.OrbiterUsesPortOriginWithCompactDecreasingLodsAndVisibleSurfaceMaterials" methodname="OrbiterUsesPortOriginWithCompactDecreasingLodsAndVisibleSurfaceMaterials" classname="LunarEscape.Tests.OrbiterSurfaceArtTests" runstate="Runnable" seed="1576050475" result="Passed" start-time="2026-10-07 12:27:03Z" end-time="2026-10-07 12:27:03Z" duration="0.460896" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1254" name="RepairSceneTests" fullname="LunarEscape.Tests.RepairSceneTests" classname="LunarEscape.Tests.RepairSceneTests" runstate="Runnable" testcasecount="6" result="Passed" start-time="2026-10-07 12:27:03Z" end-time="2026-10-07 12:27:04Z" duration="0.533265" total="6" passed="6" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1260" name="CatalogGlyphsExistAndAllLanguagesFitTheirPanels" fullname="LunarEscape.Tests.RepairSceneTests.CatalogGlyphsExistAndAllLanguagesFitTheirPanels" methodname="CatalogGlyphsExistAndAllLanguagesFitTheirPanels" classname="LunarEscape.Tests.RepairSceneTests" runstate="Runnable" seed="442480530" result="Passed" start-time="2026-10-07 12:27:03Z" end-time="2026-10-07 12:27:03Z" duration="0.109441" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[To avoid interfering with point and click interactions, XRUIInputModule mouse and touch input will be disabled while the simulated devices are active.
+]]></output>
+            </test-case>
+            <test-case id="1256" name="LanguageButtonsRefreshStatusWithoutResettingProgress" fullname="LunarEscape.Tests.RepairSceneTests.LanguageButtonsRefreshStatusWithoutResettingProgress" methodname="LanguageButtonsRefreshStatusWithoutResettingProgress" classname="LunarEscape.Tests.RepairSceneTests" runstate="Runnable" seed="1427505167" result="Passed" start-time="2026-10-07 12:27:03Z" end-time="2026-10-07 12:27:03Z" duration="0.095733" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[To avoid interfering with point and click interactions, XRUIInputModule mouse and touch input will be disabled while the simulated devices are active.
+]]></output>
+            </test-case>
+            <test-case id="1257" name="MouseInputReachesEnglishLanguageButtonThroughEventSystem" fullname="LunarEscape.Tests.RepairSceneTests.MouseInputReachesEnglishLanguageButtonThroughEventSystem" methodname="MouseInputReachesEnglishLanguageButtonThroughEventSystem" classname="LunarEscape.Tests.RepairSceneTests" runstate="Runnable" seed="1014973263" result="Passed" start-time="2026-10-07 12:27:03Z" end-time="2026-10-07 12:27:03Z" duration="0.087551" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[To avoid interfering with point and click interactions, XRUIInputModule mouse and touch input will be disabled while the simulated devices are active.
+]]></output>
+            </test-case>
+            <test-case id="1255" name="OnlyHeldCorrectToolTipInsideRadiusCanRepair" fullname="LunarEscape.Tests.RepairSceneTests.OnlyHeldCorrectToolTipInsideRadiusCanRepair" methodname="OnlyHeldCorrectToolTipInsideRadiusCanRepair" classname="LunarEscape.Tests.RepairSceneTests" runstate="Runnable" seed="1062966275" result="Passed" start-time="2026-10-07 12:27:03Z" end-time="2026-10-07 12:27:03Z" duration="0.081430" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[To avoid interfering with point and click interactions, XRUIInputModule mouse and touch input will be disabled while the simulated devices are active.
+]]></output>
+            </test-case>
+            <test-case id="1259" name="ProgressBarGeometryMatchesTaskProgress" fullname="LunarEscape.Tests.RepairSceneTests.ProgressBarGeometryMatchesTaskProgress" methodname="ProgressBarGeometryMatchesTaskProgress" classname="LunarEscape.Tests.RepairSceneTests" runstate="Runnable" seed="1643281777" result="Passed" start-time="2026-10-07 12:27:03Z" end-time="2026-10-07 12:27:03Z" duration="0.079375" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[To avoid interfering with point and click interactions, XRUIInputModule mouse and touch input will be disabled while the simulated devices are active.
+]]></output>
+            </test-case>
+            <test-case id="1258" name="ResetButtonRestartsCompletedPracticeInCurrentLanguage" fullname="LunarEscape.Tests.RepairSceneTests.ResetButtonRestartsCompletedPracticeInCurrentLanguage" methodname="ResetButtonRestartsCompletedPracticeInCurrentLanguage" classname="LunarEscape.Tests.RepairSceneTests" runstate="Runnable" seed="1364531021" result="Passed" start-time="2026-10-07 12:27:03Z" end-time="2026-10-07 12:27:04Z" duration="0.078055" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[To avoid interfering with point and click interactions, XRUIInputModule mouse and touch input will be disabled while the simulated devices are active.
+]]></output>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1261" name="SimulatorMovementTests" fullname="LunarEscape.Tests.SimulatorMovementTests" classname="LunarEscape.Tests.SimulatorMovementTests" runstate="Runnable" testcasecount="5" result="Passed" start-time="2026-10-07 12:27:04Z" end-time="2026-10-07 12:27:04Z" duration="0.931584" total="5" passed="5" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1262" name="BothScenesHaveCollisionAdapterAndSolidRoom" fullname="LunarEscape.Tests.SimulatorMovementTests.BothScenesHaveCollisionAdapterAndSolidRoom" methodname="BothScenesHaveCollisionAdapterAndSolidRoom" classname="LunarEscape.Tests.SimulatorMovementTests" runstate="Runnable" seed="1986332818" result="Passed" start-time="2026-10-07 12:27:04Z" end-time="2026-10-07 12:27:04Z" duration="0.168210" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[To avoid interfering with point and click interactions, XRUIInputModule mouse and touch input will be disabled while the simulated devices are active.
+Failed to get haptic capabilities of XRSimulatedController:/XRSimulatedController, error code -1. Continuing assuming a single haptic channel.
+To avoid interfering with point and click interactions, XRUIInputModule mouse and touch input will be disabled while the simulated devices are active.
+]]></output>
+            </test-case>
+            <test-case id="1266" name="ControllerModeStillMovesHandUpAndDownWithoutMovingBody" fullname="LunarEscape.Tests.SimulatorMovementTests.ControllerModeStillMovesHandUpAndDownWithoutMovingBody" methodname="ControllerModeStillMovesHandUpAndDownWithoutMovingBody" classname="LunarEscape.Tests.SimulatorMovementTests" runstate="Runnable" seed="549318457" result="Passed" start-time="2026-10-07 12:27:04Z" end-time="2026-10-07 12:27:04Z" duration="0.110245" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[To avoid interfering with point and click interactions, XRUIInputModule mouse and touch input will be disabled while the simulated devices are active.
+]]></output>
+            </test-case>
+            <test-case id="1263" name="FpsAndHeadMovementStopAtRoomWall" fullname="LunarEscape.Tests.SimulatorMovementTests.FpsAndHeadMovementStopAtRoomWall" methodname="FpsAndHeadMovementStopAtRoomWall" classname="LunarEscape.Tests.SimulatorMovementTests" runstate="Runnable" seed="539574157" result="Passed" start-time="2026-10-07 12:27:04Z" end-time="2026-10-07 12:27:04Z" duration="0.369619" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[To avoid interfering with point and click interactions, XRUIInputModule mouse and touch input will be disabled while the simulated devices are active.
+To avoid interfering with point and click interactions, XRUIInputModule mouse and touch input will be disabled while the simulated devices are active.
+To avoid interfering with point and click interactions, XRUIInputModule mouse and touch input will be disabled while the simulated devices are active.
+]]></output>
+            </test-case>
+            <test-case id="1265" name="FpsAndHeadVerticalInputsCannotEnterFloorOrFly" fullname="LunarEscape.Tests.SimulatorMovementTests.FpsAndHeadVerticalInputsCannotEnterFloorOrFly" methodname="FpsAndHeadVerticalInputsCannotEnterFloorOrFly" classname="LunarEscape.Tests.SimulatorMovementTests" runstate="Runnable" seed="688657522" result="Passed" start-time="2026-10-07 12:27:04Z" end-time="2026-10-07 12:27:04Z" duration="0.164896" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[To avoid interfering with point and click interactions, XRUIInputModule mouse and touch input will be disabled while the simulated devices are active.
+]]></output>
+            </test-case>
+            <test-case id="1264" name="FpsWalkingCannotPassThroughWorkbench" fullname="LunarEscape.Tests.SimulatorMovementTests.FpsWalkingCannotPassThroughWorkbench" methodname="FpsWalkingCannotPassThroughWorkbench" classname="LunarEscape.Tests.SimulatorMovementTests" runstate="Runnable" seed="673922554" result="Passed" start-time="2026-10-07 12:27:04Z" end-time="2026-10-07 12:27:04Z" duration="0.117322" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[To avoid interfering with point and click interactions, XRUIInputModule mouse and touch input will be disabled while the simulated devices are active.
+Failed to get haptic capabilities of XRSimulatedController:/XRSimulatedController1, error code -1. Continuing assuming a single haptic channel.
+]]></output>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1267" name="StationArtSceneTests" fullname="LunarEscape.Tests.StationArtSceneTests" classname="LunarEscape.Tests.StationArtSceneTests" runstate="Runnable" testcasecount="3" result="Passed" start-time="2026-10-07 12:27:04Z" end-time="2026-10-07 12:27:06Z" duration="1.712038" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1268" name="RealisticStationAndPropsUseVisibleMaterialsAndSharedFlightMeshes" fullname="LunarEscape.Tests.StationArtSceneTests.RealisticStationAndPropsUseVisibleMaterialsAndSharedFlightMeshes" methodname="RealisticStationAndPropsUseVisibleMaterialsAndSharedFlightMeshes" classname="LunarEscape.Tests.StationArtSceneTests" runstate="Runnable" seed="236774727" result="Passed" start-time="2026-10-07 12:27:04Z" end-time="2026-10-07 12:27:06Z" duration="1.072397" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1269" name="RealWrenchSelectionRepairsAndOpeningDoorKeepsBodyRouteClear" fullname="LunarEscape.Tests.StationArtSceneTests.RealWrenchSelectionRepairsAndOpeningDoorKeepsBodyRouteClear" methodname="RealWrenchSelectionRepairsAndOpeningDoorKeepsBodyRouteClear" classname="LunarEscape.Tests.StationArtSceneTests" runstate="Runnable" seed="1880276506" result="Passed" start-time="2026-10-07 12:27:06Z" end-time="2026-10-07 12:27:06Z" duration="0.206061" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1270" name="SuppliesStayOnShelfThenGrabPackBoardExplodeAndResetWithTheirModels" fullname="LunarEscape.Tests.StationArtSceneTests.SuppliesStayOnShelfThenGrabPackBoardExplodeAndResetWithTheirModels" methodname="SuppliesStayOnShelfThenGrabPackBoardExplodeAndResetWithTheirModels" classname="LunarEscape.Tests.StationArtSceneTests" runstate="Runnable" seed="735758932" result="Passed" start-time="2026-10-07 12:27:06Z" end-time="2026-10-07 12:27:06Z" duration="0.432373" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1277" name="StationMissionSceneTests" fullname="LunarEscape.Tests.StationMissionSceneTests" classname="LunarEscape.Tests.StationMissionSceneTests" runstate="Runnable" testcasecount="6" result="Passed" start-time="2026-10-07 12:27:06Z" end-time="2026-10-07 12:27:07Z" duration="0.718799" total="6" passed="6" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1278" name="ActiveSimulatorHeadModeRestoresMouseAndStartsMissionThroughRealInput" fullname="LunarEscape.Tests.StationMissionSceneTests.ActiveSimulatorHeadModeRestoresMouseAndStartsMissionThroughRealInput" methodname="ActiveSimulatorHeadModeRestoresMouseAndStartsMissionThroughRealInput" classname="LunarEscape.Tests.StationMissionSceneTests" runstate="Runnable" seed="1533026583" result="Passed" start-time="2026-10-07 12:27:06Z" end-time="2026-10-07 12:27:06Z" duration="0.097857" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[To avoid interfering with point and click interactions, XRUIInputModule mouse and touch input will be disabled while the simulated devices are active.
+]]></output>
+            </test-case>
+            <test-case id="1279" name="BeginButtonAndHeldToolDriveOneRepairClockThenOpenEvacuation" fullname="LunarEscape.Tests.StationMissionSceneTests.BeginButtonAndHeldToolDriveOneRepairClockThenOpenEvacuation" methodname="BeginButtonAndHeldToolDriveOneRepairClockThenOpenEvacuation" classname="LunarEscape.Tests.StationMissionSceneTests" runstate="Runnable" seed="465599869" result="Passed" start-time="2026-10-07 12:27:06Z" end-time="2026-10-07 12:27:06Z" duration="0.111375" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[To avoid interfering with point and click interactions, XRUIInputModule mouse and touch input will be disabled while the simulated devices are active.
+]]></output>
+            </test-case>
+            <test-case id="1283" name="BothPanelsStaySynchronizedInEveryLanguageAndMissionPhase" fullname="LunarEscape.Tests.StationMissionSceneTests.BothPanelsStaySynchronizedInEveryLanguageAndMissionPhase" methodname="BothPanelsStaySynchronizedInEveryLanguageAndMissionPhase" classname="LunarEscape.Tests.StationMissionSceneTests" runstate="Runnable" seed="1285309649" result="Passed" start-time="2026-10-07 12:27:06Z" end-time="2026-10-07 12:27:07Z" duration="0.241085" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[To avoid interfering with point and click interactions, XRUIInputModule mouse and touch input will be disabled while the simulated devices are active.
+]]></output>
+            </test-case>
+            <test-case id="1280" name="DoorBlocksTheRouteUntilAlarmAndCorridorFloorHasNoGap" fullname="LunarEscape.Tests.StationMissionSceneTests.DoorBlocksTheRouteUntilAlarmAndCorridorFloorHasNoGap" methodname="DoorBlocksTheRouteUntilAlarmAndCorridorFloorHasNoGap" classname="LunarEscape.Tests.StationMissionSceneTests" runstate="Runnable" seed="528399396" result="Passed" start-time="2026-10-07 12:27:07Z" end-time="2026-10-07 12:27:07Z" duration="0.094586" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[To avoid interfering with point and click interactions, XRUIInputModule mouse and touch input will be disabled while the simulated devices are active.
+]]></output>
+            </test-case>
+            <test-case id="1282" name="RetryButtonsResetHeldToolAndWorldAfterSuccessAndFailure" fullname="LunarEscape.Tests.StationMissionSceneTests.RetryButtonsResetHeldToolAndWorldAfterSuccessAndFailure" methodname="RetryButtonsResetHeldToolAndWorldAfterSuccessAndFailure" classname="LunarEscape.Tests.StationMissionSceneTests" runstate="Runnable" seed="1366730266" result="Passed" start-time="2026-10-07 12:27:07Z" end-time="2026-10-07 12:27:07Z" duration="0.088876" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[To avoid interfering with point and click interactions, XRUIInputModule mouse and touch input will be disabled while the simulated devices are active.
+]]></output>
+            </test-case>
+            <test-case id="1281" name="ToolsAndHandsCannotEvacuateButTheBoundPlayerBodyCan" fullname="LunarEscape.Tests.StationMissionSceneTests.ToolsAndHandsCannotEvacuateButTheBoundPlayerBodyCan" methodname="ToolsAndHandsCannotEvacuateButTheBoundPlayerBodyCan" classname="LunarEscape.Tests.StationMissionSceneTests" runstate="Runnable" seed="155106713" result="Passed" start-time="2026-10-07 12:27:07Z" end-time="2026-10-07 12:27:07Z" duration="0.083299" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[To avoid interfering with point and click interactions, XRUIInputModule mouse and touch input will be disabled while the simulated devices are active.
+]]></output>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1271" name="StationMissionTests" fullname="LunarEscape.Tests.StationMissionTests" classname="LunarEscape.Tests.StationMissionTests" runstate="Runnable" testcasecount="5" result="Passed" start-time="2026-10-07 12:27:07Z" end-time="2026-10-07 12:27:07Z" duration="0.005296" total="5" passed="5" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1273" name="LargeStepsDistributeTimeAndInvalidTimeCannotAffectTheAttempt" fullname="LunarEscape.Tests.StationMissionTests.LargeStepsDistributeTimeAndInvalidTimeCannotAffectTheAttempt" methodname="LargeStepsDistributeTimeAndInvalidTimeCannotAffectTheAttempt" classname="LunarEscape.Tests.StationMissionTests" runstate="Runnable" seed="1746937736" result="Passed" start-time="2026-10-07 12:27:07Z" end-time="2026-10-07 12:27:07Z" duration="0.000855" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1275" name="PausingPreservesRepairButUsesWindowAndTimeoutRaisesAlarmWithoutBonus" fullname="LunarEscape.Tests.StationMissionTests.PausingPreservesRepairButUsesWindowAndTimeoutRaisesAlarmWithoutBonus" methodname="PausingPreservesRepairButUsesWindowAndTimeoutRaisesAlarmWithoutBonus" classname="LunarEscape.Tests.StationMissionTests" runstate="Runnable" seed="1871901671" result="Passed" start-time="2026-10-07 12:27:07Z" end-time="2026-10-07 12:27:07Z" duration="0.001637" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1274" name="RepairDeadlineAcceptsBeforeAndExactlyButRejectsAfter" fullname="LunarEscape.Tests.StationMissionTests.RepairDeadlineAcceptsBeforeAndExactlyButRejectsAfter" methodname="RepairDeadlineAcceptsBeforeAndExactlyButRejectsAfter" classname="LunarEscape.Tests.StationMissionTests" runstate="Runnable" seed="632260283" result="Passed" start-time="2026-10-07 12:27:07Z" end-time="2026-10-07 12:27:07Z" duration="0.000491" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1276" name="ResetAndReentrantChangeHandlersCannotAdvanceANewAttempt" fullname="LunarEscape.Tests.StationMissionTests.ResetAndReentrantChangeHandlersCannotAdvanceANewAttempt" methodname="ResetAndReentrantChangeHandlersCannotAdvanceANewAttempt" classname="LunarEscape.Tests.StationMissionTests" runstate="Runnable" seed="1260010015" result="Passed" start-time="2026-10-07 12:27:07Z" end-time="2026-10-07 12:27:07Z" duration="0.000683" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1272" name="SuccessfulRepairAddsBonusAndCompletedMissionStaysLocked" fullname="LunarEscape.Tests.StationMissionTests.SuccessfulRepairAddsBonusAndCompletedMissionStaysLocked" methodname="SuccessfulRepairAddsBonusAndCompletedMissionStaysLocked" classname="LunarEscape.Tests.StationMissionTests" runstate="Runnable" seed="1790365551" result="Passed" start-time="2026-10-07 12:27:07Z" end-time="2026-10-07 12:27:07Z" duration="0.000686" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1250" name="TimedRepairTaskTests" fullname="LunarEscape.Tests.TimedRepairTaskTests" classname="LunarEscape.Tests.TimedRepairTaskTests" runstate="Runnable" testcasecount="3" result="Passed" start-time="2026-10-07 12:27:07Z" end-time="2026-10-07 12:27:07Z" duration="0.002218" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1253" name="CompletionOccursOncePerPracticeAndResetAllowsAnother" fullname="LunarEscape.Tests.TimedRepairTaskTests.CompletionOccursOncePerPracticeAndResetAllowsAnother" methodname="CompletionOccursOncePerPracticeAndResetAllowsAnother" classname="LunarEscape.Tests.TimedRepairTaskTests" runstate="Runnable" seed="412721720" result="Passed" start-time="2026-10-07 12:27:07Z" end-time="2026-10-07 12:27:07Z" duration="0.000531" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1252" name="InterruptedContactPreservesProgressAndCanResume" fullname="LunarEscape.Tests.TimedRepairTaskTests.InterruptedContactPreservesProgressAndCanResume" methodname="InterruptedContactPreservesProgressAndCanResume" classname="LunarEscape.Tests.TimedRepairTaskTests" runstate="Runnable" seed="169964883" result="Passed" start-time="2026-10-07 12:27:07Z" end-time="2026-10-07 12:27:07Z" duration="0.000355" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1251" name="NoValidContactLeavesTaskReady" fullname="LunarEscape.Tests.TimedRepairTaskTests.NoValidContactLeavesTaskReady" methodname="NoValidContactLeavesTaskReady" classname="LunarEscape.Tests.TimedRepairTaskTests" runstate="Runnable" seed="173128193" result="Passed" start-time="2026-10-07 12:27:07Z" end-time="2026-10-07 12:27:07Z" duration="0.000271" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1284" name="ViveControlsTests" fullname="LunarEscape.Tests.ViveControlsTests" classname="LunarEscape.Tests.ViveControlsTests" runstate="Runnable" testcasecount="3" result="Passed" start-time="2026-10-07 12:27:07Z" end-time="2026-10-07 12:27:08Z" duration="0.897553" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1287" name="ArmsKeepBoneLengthsAndReturnToRestWhenTrackingIsLost" fullname="LunarEscape.Tests.ViveControlsTests.ArmsKeepBoneLengthsAndReturnToRestWhenTrackingIsLost" methodname="ArmsKeepBoneLengthsAndReturnToRestWhenTrackingIsLost" classname="LunarEscape.Tests.ViveControlsTests" runstate="Runnable" seed="692183870" result="Passed" start-time="2026-10-07 12:27:07Z" end-time="2026-10-07 12:27:07Z" duration="0.513182" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[Failed to get haptic capabilities of XRSimulatedController:/XRSimulatedController, error code -1. Continuing assuming a single haptic channel.
+Failed to get haptic capabilities of XRSimulatedController:/XRSimulatedController1, error code -1. Continuing assuming a single haptic channel.
+]]></output>
+            </test-case>
+            <test-case id="1285" name="BothHandsRequirePhysicalClickAndTracking" fullname="LunarEscape.Tests.ViveControlsTests.BothHandsRequirePhysicalClickAndTracking" methodname="BothHandsRequirePhysicalClickAndTracking" classname="LunarEscape.Tests.ViveControlsTests" runstate="Runnable" seed="428249982" result="Passed" start-time="2026-10-07 12:27:07Z" end-time="2026-10-07 12:27:08Z" duration="0.186015" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1286" name="PressMovesBodyReleaseStopsAndNeverTurns" fullname="LunarEscape.Tests.ViveControlsTests.PressMovesBodyReleaseStopsAndNeverTurns" methodname="PressMovesBodyReleaseStopsAndNeverTurns" classname="LunarEscape.Tests.ViveControlsTests" runstate="Runnable" seed="782462074" result="Passed" start-time="2026-10-07 12:27:08Z" end-time="2026-10-07 12:27:08Z" duration="0.197429" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[Failed to get haptic capabilities of ViveController:/ViveController, error code -1. Continuing assuming a single haptic channel.
+Failed to get haptic capabilities of ViveController:/ViveController1, error code -1. Continuing assuming a single haptic channel.
+Saving results to: C:/Users/MichealC/AppData/LocalLow/Lunar Escape Project/Lunar Escape VR\TestResults.xml
+]]></output>
+            </test-case>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

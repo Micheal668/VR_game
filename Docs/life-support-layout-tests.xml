@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="13" result="Passed" total="13" passed="13" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-07 16:07:22Z" end-time="2026-10-07 16:07:31Z" duration="8.7102747">
+  <test-suite type="TestSuite" id="1161" name="Lunar Escape VR" fullname="Lunar Escape VR" runstate="Runnable" testcasecount="132" result="Passed" start-time="2026-10-07 16:07:22Z" end-time="2026-10-07 16:07:31Z" duration="8.710275" total="13" passed="13" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="PlayMode" />
+    </properties>
+    <test-suite type="Assembly" id="1316" name="LunarEscape.PlayModeTests.dll" fullname="C:/Coding/Projects/VR_game/Library/ScriptAssemblies/LunarEscape.PlayModeTests.dll" runstate="Runnable" testcasecount="132" result="Passed" start-time="2026-10-07 16:07:22Z" end-time="2026-10-07 16:07:31Z" duration="8.704214" total="13" passed="13" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="29796" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="PlayMode" />
+        <property name="EditorOnly" value="False" />
+      </properties>
+      <test-suite type="TestSuite" id="1317" name="LunarEscape" fullname="LunarEscape" runstate="Runnable" testcasecount="132" result="Passed" start-time="2026-10-07 16:07:22Z" end-time="2026-10-07 16:07:31Z" duration="8.702740" total="13" passed="13" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-suite type="TestSuite" id="1318" name="Tests" fullname="LunarEscape.Tests" runstate="Runnable" testcasecount="132" result="Passed" start-time="2026-10-07 16:07:22Z" end-time="2026-10-07 16:07:31Z" duration="8.698420" total="13" passed="13" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-suite type="TestFixture" id="1241" name="LifeSupportTests" fullname="LunarEscape.Tests.LifeSupportTests" classname="LunarEscape.Tests.LifeSupportTests" runstate="Runnable" testcasecount="13" result="Passed" start-time="2026-10-07 16:07:22Z" end-time="2026-10-07 16:07:31Z" duration="8.696024" total="13" passed="13" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1254" name="ChevronNavigationFollowsTurnsAndTurnsOffWithSuitPower" fullname="LunarEscape.Tests.LifeSupportTests.ChevronNavigationFollowsTurnsAndTurnsOffWithSuitPower" methodname="ChevronNavigationFollowsTurnsAndTurnsOffWithSuitPower" classname="LunarEscape.Tests.LifeSupportTests" runstate="Runnable" seed="595198189" result="Passed" start-time="2026-10-07 16:07:22Z" end-time="2026-10-07 16:07:24Z" duration="1.543022" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1251" name="DayNightLampsBeaconPulsesAndThreeLanguageWallPanelsRemainReadable" fullname="LunarEscape.Tests.LifeSupportTests.DayNightLampsBeaconPulsesAndThreeLanguageWallPanelsRemainReadable" methodname="DayNightLampsBeaconPulsesAndThreeLanguageWallPanelsRemainReadable" classname="LunarEscape.Tests.LifeSupportTests" runstate="Runnable" seed="952603152" result="Passed" start-time="2026-10-07 16:07:24Z" end-time="2026-10-07 16:07:26Z" duration="2.614489" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1244" name="EmptySealedHabitatKillsAfterGracePeriodWithCoarseAndFineSteps" fullname="LunarEscape.Tests.LifeSupportTests.EmptySealedHabitatKillsAfterGracePeriodWithCoarseAndFineSteps" methodname="EmptySealedHabitatKillsAfterGracePeriodWithCoarseAndFineSteps" classname="LunarEscape.Tests.LifeSupportTests" runstate="Runnable" seed="1645671435" result="Passed" start-time="2026-10-07 16:07:26Z" end-time="2026-10-07 16:07:26Z" duration="0.227704" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1249" name="EmptySuitOxygenKillsEvenWithPowerAndDoesNotUseSealedHabitatAir" fullname="LunarEscape.Tests.LifeSupportTests.EmptySuitOxygenKillsEvenWithPowerAndDoesNotUseSealedHabitatAir" methodname="EmptySuitOxygenKillsEvenWithPowerAndDoesNotUseSealedHabitatAir" classname="LunarEscape.Tests.LifeSupportTests" runstate="Runnable" seed="453305884" result="Passed" start-time="2026-10-07 16:07:26Z" end-time="2026-10-07 16:07:27Z" duration="0.219860" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1242" name="EveryRetryRandomizesWithinBoundsAndStartsInCasualClothes" fullname="LunarEscape.Tests.LifeSupportTests.EveryRetryRandomizesWithinBoundsAndStartsInCasualClothes" methodname="EveryRetryRandomizesWithinBoundsAndStartsInCasualClothes" classname="LunarEscape.Tests.LifeSupportTests" runstate="Runnable" seed="979008340" result="Passed" start-time="2026-10-07 16:07:27Z" end-time="2026-10-07 16:07:27Z" duration="0.691180" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1253" name="ForwardViewHasNoWristBoxAndVisorRemainsReadableAcrossHands" fullname="LunarEscape.Tests.LifeSupportTests.ForwardViewHasNoWristBoxAndVisorRemainsReadableAcrossHands" methodname="ForwardViewHasNoWristBoxAndVisorRemainsReadableAcrossHands" classname="LunarEscape.Tests.LifeSupportTests" runstate="Runnable" seed="699286292" result="Passed" start-time="2026-10-07 16:07:27Z" end-time="2026-10-07 16:07:28Z" duration="0.381812" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1250" name="MinimumReservesWithSuppliesCanRescueWalkBoardAndOperateIntegratedCockpit" fullname="LunarEscape.Tests.LifeSupportTests.MinimumReservesWithSuppliesCanRescueWalkBoardAndOperateIntegratedCockpit" methodname="MinimumReservesWithSuppliesCanRescueWalkBoardAndOperateIntegratedCockpit" classname="LunarEscape.Tests.LifeSupportTests" runstate="Runnable" seed="2072140782" result="Passed" start-time="2026-10-07 16:07:28Z" end-time="2026-10-07 16:07:29Z" duration="1.025084" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1247" name="PowerLossBlacksOutHudAcceleratesOxygenAndWristBatteryRestoresIt" fullname="LunarEscape.Tests.LifeSupportTests.PowerLossBlacksOutHudAcceleratesOxygenAndWristBatteryRestoresIt" methodname="PowerLossBlacksOutHudAcceleratesOxygenAndWristBatteryRestoresIt" classname="LunarEscape.Tests.LifeSupportTests" runstate="Runnable" seed="1796069689" result="Passed" start-time="2026-10-07 16:07:29Z" end-time="2026-10-07 16:07:29Z" duration="0.226444" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1246" name="RealOxygenActivationAndPackedBatteryAreAtomicAndRetrySafe" fullname="LunarEscape.Tests.LifeSupportTests.RealOxygenActivationAndPackedBatteryAreAtomicAndRetrySafe" methodname="RealOxygenActivationAndPackedBatteryAreAtomicAndRetrySafe" classname="LunarEscape.Tests.LifeSupportTests" runstate="Runnable" seed="1898446738" result="Passed" start-time="2026-10-07 16:07:29Z" end-time="2026-10-07 16:07:29Z" duration="0.236218" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1245" name="RealSuitGripRequiresContactAndFourSecondsAndSynchronizesBothCrew" fullname="LunarEscape.Tests.LifeSupportTests.RealSuitGripRequiresContactAndFourSecondsAndSynchronizesBothCrew" methodname="RealSuitGripRequiresContactAndFourSecondsAndSynchronizesBothCrew" classname="LunarEscape.Tests.LifeSupportTests" runstate="Runnable" seed="185006699" result="Passed" start-time="2026-10-07 16:07:29Z" end-time="2026-10-07 16:07:30Z" duration="0.350403" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1252" name="RevisedEquipmentLayoutHasClearConsoleAndTwoSeparateSuitRacks" fullname="LunarEscape.Tests.LifeSupportTests.RevisedEquipmentLayoutHasClearConsoleAndTwoSeparateSuitRacks" methodname="RevisedEquipmentLayoutHasClearConsoleAndTwoSeparateSuitRacks" classname="LunarEscape.Tests.LifeSupportTests" runstate="Runnable" seed="2024557426" result="Passed" start-time="2026-10-07 16:07:30Z" end-time="2026-10-07 16:07:30Z" duration="0.438658" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1248" name="UnpoweredSuitDiesFromHeatByDayAndColdByNight" fullname="LunarEscape.Tests.LifeSupportTests.UnpoweredSuitDiesFromHeatByDayAndColdByNight" methodname="UnpoweredSuitDiesFromHeatByDayAndColdByNight" classname="LunarEscape.Tests.LifeSupportTests" runstate="Runnable" seed="688471638" result="Passed" start-time="2026-10-07 16:07:30Z" end-time="2026-10-07 16:07:30Z" duration="0.222859" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1243" name="UnsuitedHatchVentsImmediatelyAndSuffocatesAtSixSeconds" fullname="LunarEscape.Tests.LifeSupportTests.UnsuitedHatchVentsImmediatelyAndSuffocatesAtSixSeconds" methodname="UnsuitedHatchVentsImmediatelyAndSuffocatesAtSixSeconds" classname="LunarEscape.Tests.LifeSupportTests" runstate="Runnable" seed="1017346744" result="Passed" start-time="2026-10-07 16:07:30Z" end-time="2026-10-07 16:07:31Z" duration="0.506737" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[Saving results to: C:/Users/MichealC/AppData/LocalLow/Lunar Escape Project/Lunar Escape VR\TestResults.xml
+]]></output>
+            </test-case>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

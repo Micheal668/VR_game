@@ -14,8 +14,19 @@ namespace LunarEscape
         [SerializeField] private LocalizedText exitLabel;
         [SerializeField] private AudioSource alarmAudio;
         private MaterialPropertyBlock properties;
+        [SerializeField] private LifeSupportMission lifeSupport;
 
         public bool IsDoorOpen => door != null && !door.activeSelf;
+        public GameObject Door => door;
+
+        public void ConfigureLifeSupport(LifeSupportMission source)
+        {
+            if (lifeSupport != null) lifeSupport.Changed -= OnLifeSupportChanged;
+            lifeSupport = source;
+            if (isActiveAndEnabled && lifeSupport != null) lifeSupport.Changed += OnLifeSupportChanged;
+            if (mission != null) Refresh(mission.Phase);
+        }
+        private void OnLifeSupportChanged() { if (mission != null) Refresh(mission.Phase); }
 
         public void Configure(StationMission source, GameObject exitDoor, TeleportationArea teleport,
             Light[] lights, Renderer indicator, LocalizedText label, AudioSource audio)
@@ -36,12 +47,14 @@ namespace LunarEscape
         {
             if (mission == null) return;
             mission.PhaseChanged += Refresh;
+            if (lifeSupport != null) lifeSupport.Changed += OnLifeSupportChanged;
             Refresh(mission.Phase);
         }
 
         private void OnDisable()
         {
             if (mission != null) mission.PhaseChanged -= Refresh;
+            if (lifeSupport != null) lifeSupport.Changed -= OnLifeSupportChanged;
             if (alarmAudio != null) alarmAudio.Stop();
         }
 
@@ -49,12 +62,14 @@ namespace LunarEscape
         {
             bool open = phase == StationMissionPhase.Evacuation || phase == StationMissionPhase.Completed
                 || phase == StationMissionPhase.Failed;
+            if (lifeSupport != null) open = lifeSupport.DoorOpen;
             bool alarm = phase == StationMissionPhase.Evacuation;
             if (door != null) door.SetActive(!open);
             // 通道在警报前不接受传送，防止绕过关闭的门。
             if (corridorTeleport != null) corridorTeleport.enabled = open;
             if (exitLabel != null) exitLabel.SetKey(phase == StationMissionPhase.Failed
-                ? "mission.exit.failed" : open ? "mission.exit.open" : "mission.exit.locked");
+                ? "mission.exit.failed" : lifeSupport != null ? open ? "life.base.vented" : "life.hatch.title"
+                : open ? "mission.exit.open" : "mission.exit.locked");
             if (alarmLights != null)
                 foreach (var light in alarmLights)
                     if (light != null) light.enabled = alarm || phase == StationMissionPhase.Failed;

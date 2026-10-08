@@ -38,6 +38,7 @@ namespace LunarEscape
         {
             if (mission == null || exit == null || mission.Phase != StationMissionPhase.Evacuation
                 || !exit.ContainsPlayer || mission.RemainingSeconds <= 0f) return false;
+            if (mission.LifeSupport != null && (!mission.LifeSupport.SuitWorn || !mission.LifeSupport.DoorOpen)) return false;
             exitConfirmed = true;
             teleport?.CancelPendingTeleport();
             return true;
