@@ -1544,15 +1544,15 @@
     },
     {
       "key": "life.suit.instructions",
-      "zh": "靠近服装架，持续握住手柄或按住下方按钮 {0} 秒。松开即暂停。",
-      "en": "Stay at the rack. Hold the grip or button for {0}s. Release to pause.",
-      "ru": "У стойки удерживайте рукоятку или кнопку {0} с. Отпустите для паузы."
+      "zh": "按住 {0} 秒",
+      "en": "HOLD {0} S",
+      "ru": "ДЕРЖИТЕ {0} С"
     },
     {
       "key": "life.suit.get_supplies",
-      "zh": "先收纳氧气瓶和电池。开门后基地空气无法恢复。",
-      "en": "Pack oxygen and a battery. Opening the hatch vents the habitat.",
-      "ru": "Возьмите кислород и батарею. Открытие люка выпустит воздух."
+      "zh": "带上氧气瓶和电池",
+      "en": "TAKE O2 AND A BATTERY",
+      "ru": "ВОЗЬМИТЕ O2 И БАТАРЕЮ"
     },
     {
       "key": "life.suit.don",
@@ -1700,9 +1700,9 @@
     },
     {
       "key": "life.feedback.ready",
-      "zh": "先拉下照明总闸，检查储备，穿上航天服。",
-      "en": "Pull the lighting breaker, check reserves, suit up.",
-      "ru": "Включите свет рубильником, проверьте запасы, наденьте скафандр."
+      "zh": "等待地面指挥指令",
+      "en": "AWAIT MISSION CONTROL",
+      "ru": "ЖДИТЕ УКАЗАНИЙ ЦУП"
     },
     {
       "key": "life.feedback.no_suit",
@@ -1874,33 +1874,33 @@
     },
     {
       "key": "lifeground.briefing.instructions",
-      "zh": "先查看环境读数。开始后，找到右侧墙上的宇航服，备好氧气瓶与电池。",
-      "en": "Check reserves. After starting, find the suit on the right wall. Pack oxygen and a battery.",
-      "ru": "Проверьте запасы. После старта найдите скафандр справа. Возьмите кислород и батарею."
+      "zh": "地面指挥在线 · 按「开始演练」",
+      "en": "MISSION CONTROL ONLINE · PRESS BEGIN DRILL",
+      "ru": "СВЯЗЬ С ЦУП · НАЖМИТЕ «НАЧАТЬ»"
     },
     {
       "key": "lifeground.repair.instructions",
-      "zh": "穿服、补给并修好门锁。开门后指挥官跟随撤离；修复氧气设备可增加撤离时间。",
-      "en": "Suit up, pack supplies and repair the lock. Opening starts evacuation with the commander. Oxygen repair adds time.",
-      "ru": "Скафандр, запасы, ремонт замка. Откройте люк — командир пойдёт за вами. Ремонт кислорода даёт время."
+      "zh": "照明 · 宇航服 · 气闸——听地面指挥",
+      "en": "LIGHTS · SUIT · AIRLOCK — LISTEN TO CONTROL",
+      "ru": "СВЕТ · СКАФАНДР · ШЛЮЗ — СЛУШАЙТЕ ЦУП"
     },
     {
       "key": "lifeground.stabilized.instructions",
-      "zh": "维修已稳定。收纳补给，确认宇航服电量，准备撤离。",
-      "en": "Repair stabilized. Pack supplies and check suit battery before evacuation.",
-      "ru": "Ремонт завершён. Возьмите запасы и проверьте батарею перед эвакуацией."
+      "zh": "照明 · 宇航服 · 气闸——听地面指挥",
+      "en": "LIGHTS · SUIT · AIRLOCK — LISTEN TO CONTROL",
+      "ru": "СВЕТ · СКАФАНДР · ШЛЮЗ — СЛУШАЙТЕ ЦУП"
     },
     {
       "key": "lifeground.evacuation.repaired.instructions",
-      "zh": "警报！可先救援指挥官。穿服、补给、开门，沿头盔路线前往飞船。",
-      "en": "Alarm! Rescue the commander if able. Suit up, resupply, open the hatch and follow the route.",
-      "ru": "Тревога! По возможности спасите командира. Скафандр, запасы, люк — затем к кораблю."
+      "zh": "警报 · 沿头盔箭头前往飞船",
+      "en": "ALARM · FOLLOW THE ARROWS TO THE SHIP",
+      "ru": "ТРЕВОГА · К МОДУЛЮ ПО СТРЕЛКАМ"
     },
     {
       "key": "lifeground.evacuation.unrepaired.instructions",
-      "zh": "警报！氧气设备未修复。检查穿服与补给，开门后立即撤离。",
-      "en": "Alarm! Oxygen unit unrepaired. Check suit and supplies. Evacuate after opening the hatch.",
-      "ru": "Тревога! Кислородный блок не починен. Проверьте скафандр и запасы. Откройте люк и уходите."
+      "zh": "警报 · 沿头盔箭头前往飞船",
+      "en": "ALARM · FOLLOW THE ARROWS TO THE SHIP",
+      "ru": "ТРЕВОГА · К МОДУЛЮ ПО СТРЕЛКАМ"
     },
     {
       "key": "lifeground.completed.instructions",
@@ -1916,15 +1916,15 @@
     },
     {
       "key": "lifeground.evacuation.instructions.repaired",
-      "zh": "穿服、修门后开门，指挥官自动跟随。到飞船旁等待他，再点击登舱。",
-      "en": "Suit up, repair and open the hatch. The commander follows. Wait for him beside the ship, then board.",
-      "ru": "Наденьте скафандр, почините и откройте люк. Командир идёт за вами. Ждите его у корабля и садитесь."
+      "zh": "警报 · 沿头盔箭头前往飞船",
+      "en": "ALARM · FOLLOW THE ARROWS TO THE SHIP",
+      "ru": "ТРЕВОГА · К МОДУЛЮ ПО СТРЕЛКАМ"
     },
     {
       "key": "lifeground.evacuation.instructions.unrepaired",
-      "zh": "氧气设备未修复。穿服、修门后开门撤离；到船旁等指挥官，再点击登舱。",
-      "en": "Oxygen unit unrepaired. Suit up, repair the lock and open. Wait for the commander beside the ship, then board.",
-      "ru": "Кислородный блок сломан. Скафандр, ремонт замка, выход. Ждите командира у корабля и садитесь."
+      "zh": "警报 · 沿头盔箭头前往飞船",
+      "en": "ALARM · FOLLOW THE ARROWS TO THE SHIP",
+      "ru": "ТРЕВОГА · К МОДУЛЮ ПО СТРЕЛКАМ"
     },
     {
       "key": "life.suit.player",

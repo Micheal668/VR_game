@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace LunarEscape
 {
-    public enum FeedbackSound { Click, Deny, Grab, Release, Knock, Pack, RepairLoop, Chime, Clunk, ThrusterLoop, EngineLoop, Hiss }
+    public enum FeedbackSound { Click, Deny, Grab, Release, Knock, Pack, RepairLoop, Chime, Clunk, ThrusterLoop, EngineLoop, Hiss, RadioOpen, RadioClose, Decompression }
 
     // 交互音效在运行时用数学方式合成，与警报音做法一致：不依赖外部录音素材，也不需要导入音频文件。
     // 每种声音只生成一次并缓存；固定随机种子保证每次运行听到的声音一致，便于调参对比。
@@ -57,7 +57,7 @@ namespace LunarEscape
             var random = new System.Random(17 + (int)sound);
             float Noise() => (float)(random.NextDouble() * 2.0 - 1.0);
             const float Tau = Mathf.PI * 2f;
-            float low = 0f, low2 = 0f;
+            float low = 0f, low2 = 0f, phase = 0f;
             float[] data = sound switch
             {
                 // 短促的硬质开关声：高频“嗒”加一点低频机身。
@@ -123,6 +123,39 @@ namespace LunarEscape
                     float hiss = Noise();
                     low += 0.2f * (hiss - low);
                     return (hiss - low) * Mathf.Min(1f, t / 0.02f) * Mathf.Exp(-t / 0.25f) * 0.4f;
+                }),
+                // 无线电开讲：一声“咔沙”静电，接 2525 Hz 提示音（参考 NASA 地面通话的 Quindar 音）。
+                FeedbackSound.RadioOpen => Render(0.32f, 0f, t =>
+                {
+                    float hiss = Noise();
+                    low += 0.35f * (hiss - low);
+                    float crackle = t < 0.07f ? (hiss - low) * 0.35f * (1f - t / 0.07f) : 0f;
+                    float beep = t >= 0.08f && t < 0.3f ? Mathf.Sin(Tau * 2525f * t) * 0.16f * Mathf.Min(1f, (t - 0.08f) / 0.005f) * Mathf.Min(1f, (0.3f - t) / 0.005f) : 0f;
+                    return crackle + beep;
+                }),
+                // 无线电收讲：2475 Hz 提示音，尾部一小段静电。
+                FeedbackSound.RadioClose => Render(0.34f, 0f, t =>
+                {
+                    float hiss = Noise();
+                    low += 0.35f * (hiss - low);
+                    float beep = t < 0.22f ? Mathf.Sin(Tau * 2475f * t) * 0.16f * Mathf.Min(1f, t / 0.005f) * Mathf.Min(1f, (0.22f - t) / 0.005f) : 0f;
+                    float crackle = t >= 0.23f ? (hiss - low) * 0.3f * (1f - (t - 0.23f) / 0.11f) : 0f;
+                    return beep + crackle;
+                }),
+                // 舱门泄压：先是一声闷爆，随后宽频气流轰鸣迅速衰减，
+                // 叠加从高到低滑落的啸叫（舱压下降、气流变慢），最后归于真空的寂静。
+                FeedbackSound.Decompression => Render(3.4f, 0f, t =>
+                {
+                    float hiss = Noise();
+                    low += 0.06f * (hiss - low);
+                    low2 += 0.4f * (hiss - low2);
+                    float bang = Mathf.Sin(Tau * 48f * t) * Mathf.Exp(-t / 0.18f) * 0.9f + hiss * Mathf.Exp(-t / 0.012f) * 0.6f;
+                    float envelope = Mathf.Min(1f, t / 0.04f) * Mathf.Exp(-t / 0.85f);
+                    float roar = (low * 3.2f + (low2 - low) * 0.9f) * envelope * 0.55f;
+                    float pitch = Mathf.Lerp(1500f, 380f, Mathf.Clamp01(t / 2.4f));
+                    phase += Tau * pitch / Rate;
+                    float whistle = Mathf.Sin(phase + Mathf.Sin(Tau * 7f * t) * 0.6f) * 0.12f * Mathf.Min(1f, t / 0.15f) * Mathf.Exp(-t / 1.1f);
+                    return Mathf.Clamp(bang + roar + whistle, -1f, 1f);
                 }),
                 _ => throw new ArgumentOutOfRangeException(nameof(sound))
             };

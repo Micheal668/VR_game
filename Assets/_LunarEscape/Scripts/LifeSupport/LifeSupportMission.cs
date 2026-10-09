@@ -24,6 +24,7 @@ namespace LunarEscape
         public CharacterController Player => session != null ? session.Exit.PlayerBody : null;
         public Transform SuitRack => suitRack;
         public Transform DoorControl => doorControl;
+        public BoxCollider HabitatVolume => habitatVolume;
         public RepairContact DoorRepairContact => doorRepairContact;
         public TimedRepairTask DoorRepairTask => doorRepairContact != null ? doorRepairContact.GetComponent<TimedRepairTask>() : null;
         public AirlockRepair AirlockRepair => airlockRepair;

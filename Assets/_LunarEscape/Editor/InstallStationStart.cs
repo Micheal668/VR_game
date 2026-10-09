@@ -14,7 +14,8 @@ namespace LunarEscape.Editor
     //   · 出生点移到工作台与开始屏之间，面朝开始屏；
     //   · 圆盘按压可向任意方向平移（以视线为前方），移速提高约 25%；
     //   · 本场景单独的任务时长（240 s 维修 / 120 s 撤离），基地空气与电量更充足，航天服满电满氧；
-    //   · 开局整站断电：开始屏旁的照明总闸需要拉下才恢复照明；
+    //   · 开局整站断电：开始屏旁的照明总闸需要拉下才恢复照明；断电时灯带、天空盒反射和环境光一并压暗，
+    //     只剩照在总闸上的窄束红色应急灯和各块屏幕；
     //   · 恢复照明、完成气闸抢修、救出指挥官各奖励时间。
     // 须在 Install Life Support and Cockpit 与 Install Airlock Repair 之后执行；可重复执行。
     public static class InstallStationStart
@@ -56,6 +57,7 @@ namespace LunarEscape.Editor
             ConfigureLocomotion();
             var breaker = BuildBreaker(ground, session.Mission);
             session.GetComponent<LifeSupportEnvironment>().ConfigureBreaker(breaker);
+            ConfigureBlackout(session.GetComponent<LifeSupportEnvironment>(), ground, life.HabitatVolume);
             EditorUtility.SetDirty(session.GetComponent<LifeSupportEnvironment>());
             BuildBonus(session, life, breaker);
             EditorSceneManager.MarkSceneDirty(SceneManager.GetActiveScene());
@@ -148,15 +150,42 @@ namespace LunarEscape.Editor
             var text = label.GetComponent<TextMeshPro>();
             text.enableAutoSizing = true; text.fontSizeMin = 0.12f; text.fontSizeMax = 0.3f; text.color = new Color(1f, 0.85f, 0.55f);
             // 名称以 Alarm 开头：生命保障的照明收集会排除它，断电时它仍然亮着。
+            // 窄光束从上前方只照亮总闸本身：开局整舱漆黑，只看得见红光里的拉杆和开始屏。
             var emergency = new GameObject("Alarm Emergency Light").AddComponent<Light>();
             emergency.transform.SetParent(mount, false);
-            emergency.transform.localPosition = new Vector3(0f, 0.75f, 0.4f);
-            emergency.type = LightType.Point; emergency.range = 4.5f; emergency.intensity = 0.9f;
-            emergency.color = new Color(1f, 0.18f, 0.12f); emergency.shadows = LightShadows.None;
+            emergency.transform.localPosition = new Vector3(0f, 0.58f, 0.44f);
+            emergency.transform.localRotation = Quaternion.LookRotation(new Vector3(0f, 0.05f, 0.04f) - emergency.transform.localPosition, Vector3.up);
+            emergency.type = LightType.Spot; emergency.range = 1.6f; emergency.spotAngle = 48f; emergency.innerSpotAngle = 26f;
+            emergency.intensity = 2.2f; emergency.color = new Color(1f, 0.16f, 0.1f); emergency.shadows = LightShadows.None;
+            // 灯头装在标签后方的细杆上，伸到总闸前上方：黑暗中能看出红光从哪里来。
+            Box(mount, "Emergency Lamp Post", new Vector3(0f, 0.485f, -0.03f), new Vector3(0.025f, 0.25f, 0.025f), "Station Graphite");
+            Box(mount, "Emergency Lamp Arm", new Vector3(0f, 0.6f, 0.205f), new Vector3(0.025f, 0.025f, 0.47f), "Station Graphite");
+            Box(mount, "Emergency Lamp Housing", new Vector3(0f, 0.6f, 0.44f), new Vector3(0.08f, 0.035f, 0.06f), "Cockpit Red");
             var breaker = root.gameObject.AddComponent<HabitatBreaker>();
             breaker.Configure(mission, lever, lamp, emergency);
             EditorUtility.SetDirty(breaker);
             return breaker;
+        }
+
+        // 断电时一起变暗的自发光材质及其残留亮度：顶棚灯带全灭，绿色应急标识保留一点夜光。
+        private static readonly (string material, float level)[] BlackoutGlow = { ("LB_LightDiffuser", 0f), ("LB_EmergencyGreen", 0.25f) };
+
+        private static void ConfigureBlackout(LifeSupportEnvironment environment, Transform ground, BoxCollider habitat)
+        {
+            var bounds = habitat.bounds;
+            bounds.Expand(0.5f);
+            var renderers = new System.Collections.Generic.List<Renderer>();
+            var levels = new System.Collections.Generic.List<float>();
+            foreach (var renderer in ground.GetComponentsInChildren<MeshRenderer>(true))
+            {
+                if (!bounds.Intersects(renderer.bounds)) continue;
+                var match = BlackoutGlow.Where(g => renderer.sharedMaterials.Any(m => m != null && m.name == g.material)).ToArray();
+                if (match.Length == 0) continue;
+                renderers.Add(renderer);
+                levels.Add(match.Min(g => g.level));
+            }
+            environment.ConfigureBlackout(renderers.ToArray(), levels.ToArray());
+            Debug.Log("STATION_START_BLACKOUT " + string.Join(", ", renderers.Select(r => r.name)));
         }
 
         private static void BuildBonus(StationMissionSession session, LifeSupportMission life, HabitatBreaker breaker)
