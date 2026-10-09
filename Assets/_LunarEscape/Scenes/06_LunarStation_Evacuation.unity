@@ -625,6 +625,7 @@ MonoBehaviour:
   beginButton: {fileID: 766674591}
   retryButton: {fileID: 267053049}
   repairDetails: {fileID: 565207862}
+  instructionPrefix: mission.
 --- !u!114 &61436290
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1520,6 +1521,7 @@ GameObject:
   - component: {fileID: 139937915}
   - component: {fileID: 139937917}
   - component: {fileID: 139937919}
+  - component: {fileID: 139937920}
   m_Layer: 0
   m_Name: Oxygen Repair Station
   m_TagString: Untagged
@@ -1591,6 +1593,24 @@ MonoBehaviour:
   progressText: {fileID: 88742285}
   progressFill: {fileID: 811535470}
   indicator: {fileID: 676691593}
+  statusPrefix: repair.
+--- !u!114 &139937920
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 139937914}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35cfcff7218690b4ea845800753f7910, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: LunarEscape.Runtime::LunarEscape.RepairFeedback
+  loopVolume: 0.45
+  chimeVolume: 0.7
+  workingAmplitude: 0.18
+  progressBoost: 0.22
+  completeAmplitude: 0.8
 --- !u!1 &151648696
 GameObject:
   m_ObjectHideFlags: 0
@@ -2687,6 +2707,7 @@ GameObject:
   - component: {fileID: 267053051}
   - component: {fileID: 267053050}
   - component: {fileID: 267053049}
+  - component: {fileID: 267053053}
   m_Layer: 0
   m_Name: Retry Mission
   m_TagString: Untagged
@@ -2808,6 +2829,22 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -255}
   m_SizeDelta: {x: 430, y: 70}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &267053053
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 267053048}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7541443d6a16c2f42ab24025a5b6f2d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: LunarEscape.Runtime::LunarEscape.ButtonPressFeedback
+  pressAmplitude: 0.35
+  pressSeconds: 0.04
+  denyAmplitude: 0.6
+  volume: 0.5
 --- !u!1 &286141545
 GameObject:
   m_ObjectHideFlags: 0
@@ -3622,6 +3659,28 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 374247562}
   m_CullTransparentMesh: 1
+--- !u!114 &392404423 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4238984354899526239, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
+  m_PrefabInstance: {fileID: 429189228}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b734f2bd29eeddd4d85afb0c266228c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &392404424 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5967689310316253315, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
+  m_PrefabInstance: {fileID: 429189228}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b734f2bd29eeddd4d85afb0c266228c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &399654495
 GameObject:
   m_ObjectHideFlags: 0
@@ -4018,6 +4077,7 @@ GameObject:
   - component: {fileID: 464801582}
   - component: {fileID: 464801581}
   - component: {fileID: 464801580}
+  - component: {fileID: 464801583}
   m_Layer: 0
   m_Name: Mission Panel Language 2
   m_TagString: Untagged
@@ -4139,6 +4199,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 464801578}
   m_CullTransparentMesh: 1
+--- !u!114 &464801583
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 464801578}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7541443d6a16c2f42ab24025a5b6f2d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: LunarEscape.Runtime::LunarEscape.ButtonPressFeedback
+  pressAmplitude: 0.35
+  pressSeconds: 0.04
+  denyAmplitude: 0.6
+  volume: 0.5
 --- !u!1 &475341756
 GameObject:
   m_ObjectHideFlags: 0
@@ -4928,6 +5004,7 @@ GameObject:
   - component: {fileID: 569403774}
   - component: {fileID: 569403773}
   - component: {fileID: 569403772}
+  - component: {fileID: 569403775}
   m_Layer: 0
   m_Name: Exit Mission Panel Language 0
   m_TagString: Untagged
@@ -5049,6 +5126,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 569403770}
   m_CullTransparentMesh: 1
+--- !u!114 &569403775
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 569403770}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7541443d6a16c2f42ab24025a5b6f2d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: LunarEscape.Runtime::LunarEscape.ButtonPressFeedback
+  pressAmplitude: 0.35
+  pressSeconds: 0.04
+  denyAmplitude: 0.6
+  volume: 0.5
 --- !u!1 &572447409
 GameObject:
   m_ObjectHideFlags: 0
@@ -5559,6 +5652,7 @@ GameObject:
   - component: {fileID: 651169390}
   - component: {fileID: 651169389}
   - component: {fileID: 651169388}
+  - component: {fileID: 651169391}
   m_Layer: 0
   m_Name: Mission Panel Language 0
   m_TagString: Untagged
@@ -5680,6 +5774,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 651169386}
   m_CullTransparentMesh: 1
+--- !u!114 &651169391
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 651169386}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7541443d6a16c2f42ab24025a5b6f2d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: LunarEscape.Runtime::LunarEscape.ButtonPressFeedback
+  pressAmplitude: 0.35
+  pressSeconds: 0.04
+  denyAmplitude: 0.6
+  volume: 0.5
 --- !u!1 &676691592
 GameObject:
   m_ObjectHideFlags: 0
@@ -6248,6 +6358,7 @@ GameObject:
   - component: {fileID: 766674593}
   - component: {fileID: 766674592}
   - component: {fileID: 766674591}
+  - component: {fileID: 766674595}
   m_Layer: 0
   m_Name: Begin Mission
   m_TagString: Untagged
@@ -6369,6 +6480,22 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -255}
   m_SizeDelta: {x: 430, y: 70}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &766674595
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 766674590}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7541443d6a16c2f42ab24025a5b6f2d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: LunarEscape.Runtime::LunarEscape.ButtonPressFeedback
+  pressAmplitude: 0.35
+  pressSeconds: 0.04
+  denyAmplitude: 0.6
+  volume: 0.5
 --- !u!1 &811535468
 GameObject:
   m_ObjectHideFlags: 0
@@ -7554,6 +7681,7 @@ GameObject:
   - component: {fileID: 1016368885}
   - component: {fileID: 1016368884}
   - component: {fileID: 1016368883}
+  - component: {fileID: 1016368886}
   m_Layer: 0
   m_Name: Mission Panel Language 1
   m_TagString: Untagged
@@ -7675,6 +7803,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1016368881}
   m_CullTransparentMesh: 1
+--- !u!114 &1016368886
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1016368881}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7541443d6a16c2f42ab24025a5b6f2d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: LunarEscape.Runtime::LunarEscape.ButtonPressFeedback
+  pressAmplitude: 0.35
+  pressSeconds: 0.04
+  denyAmplitude: 0.6
+  volume: 0.5
 --- !u!1 &1053024862
 GameObject:
   m_ObjectHideFlags: 0
@@ -8255,6 +8399,7 @@ GameObject:
   - component: {fileID: 1159367548}
   - component: {fileID: 1159367547}
   - component: {fileID: 1159367546}
+  - component: {fileID: 1159367549}
   m_Layer: 0
   m_Name: Exit Mission Panel Language 1
   m_TagString: Untagged
@@ -8376,6 +8521,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1159367544}
   m_CullTransparentMesh: 1
+--- !u!114 &1159367549
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1159367544}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7541443d6a16c2f42ab24025a5b6f2d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: LunarEscape.Runtime::LunarEscape.ButtonPressFeedback
+  pressAmplitude: 0.35
+  pressSeconds: 0.04
+  denyAmplitude: 0.6
+  volume: 0.5
 --- !u!1 &1196229622
 GameObject:
   m_ObjectHideFlags: 0
@@ -8388,6 +8549,7 @@ GameObject:
   - component: {fileID: 1196229625}
   - component: {fileID: 1196229624}
   - component: {fileID: 1196229623}
+  - component: {fileID: 1196229627}
   m_Layer: 0
   m_Name: Retry At Exit
   m_TagString: Untagged
@@ -8509,6 +8671,22 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -224}
   m_SizeDelta: {x: 430, y: 70}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1196229627
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1196229622}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7541443d6a16c2f42ab24025a5b6f2d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: LunarEscape.Runtime::LunarEscape.ButtonPressFeedback
+  pressAmplitude: 0.35
+  pressSeconds: 0.04
+  denyAmplitude: 0.6
+  volume: 0.5
 --- !u!1001 &1197712867
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9634,6 +9812,7 @@ MonoBehaviour:
     m_IsQuickAction: 0
   bodyTransformer: {fileID: 429189231}
   view: {fileID: 429189230}
+  walkInControllerMode: 1
 --- !u!1 &1201583621
 GameObject:
   m_ObjectHideFlags: 0
@@ -13381,6 +13560,7 @@ MonoBehaviour:
   beginButton: {fileID: 0}
   retryButton: {fileID: 1196229623}
   repairDetails: {fileID: 0}
+  instructionPrefix: mission.
 --- !u!114 &1794421011
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13484,6 +13664,7 @@ GameObject:
   - component: {fileID: 1802439261}
   - component: {fileID: 1802439263}
   - component: {fileID: 1802439262}
+  - component: {fileID: 1802439264}
   m_Layer: 0
   m_Name: Mission Flow
   m_TagString: Untagged
@@ -13509,6 +13690,8 @@ MonoBehaviour:
   player: {fileID: 429189232}
   spawnPoint: {fileID: 554055591}
   tool: {fileID: 8205125785928443287}
+  requireExitConfirmation: 0
+  ascent: {fileID: 0}
 --- !u!4 &1802439259
 Transform:
   m_ObjectHideFlags: 0
@@ -13543,6 +13726,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: LunarEscape.Runtime::LunarEscape.StationMission
   config: {fileID: 11400000, guid: 155ca757adb804c2290f913e9467494a, type: 2}
   repairTask: {fileID: 139937915}
+  lifeSupport: {fileID: 0}
 --- !u!114 &1802439261
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13564,6 +13748,7 @@ MonoBehaviour:
   exitIndicator: {fileID: 1404271992}
   exitLabel: {fileID: 347292410}
   alarmAudio: {fileID: 228774896}
+  lifeSupport: {fileID: 0}
 --- !u!114 &1802439262
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13592,11 +13777,31 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: LunarEscape.Runtime::LunarEscape.MissionFailurePresenter
   mission: {fileID: 1802439260}
+  flight: {fileID: 0}
+  reason: {fileID: 0}
   playerCamera: {fileID: 429189229}
   root: {fileID: 1939590686}
   restartButton: {fileID: 1968872938}
   repairSummary: {fileID: 1000049027}
   viewingDistance: 1.8
+--- !u!114 &1802439264
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1802439257}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d44c8cc9be06b14aa017a815631c623, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: LunarEscape.Runtime::LunarEscape.AlarmFeedback
+  session: {fileID: 1802439258}
+  hands:
+  - {fileID: 392404423}
+  - {fileID: 392404424}
+  alarmAmplitude: 0.7
+  failureAmplitude: 0.5
 --- !u!1 &1818595936
 GameObject:
   m_ObjectHideFlags: 0
@@ -14431,6 +14636,7 @@ GameObject:
   - component: {fileID: 1958573328}
   - component: {fileID: 1958573327}
   - component: {fileID: 1958573326}
+  - component: {fileID: 1958573329}
   m_Layer: 0
   m_Name: Exit Mission Panel Language 2
   m_TagString: Untagged
@@ -14552,6 +14758,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1958573324}
   m_CullTransparentMesh: 1
+--- !u!114 &1958573329
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1958573324}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7541443d6a16c2f42ab24025a5b6f2d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: LunarEscape.Runtime::LunarEscape.ButtonPressFeedback
+  pressAmplitude: 0.35
+  pressSeconds: 0.04
+  denyAmplitude: 0.6
+  volume: 0.5
 --- !u!1 &1968872936
 GameObject:
   m_ObjectHideFlags: 0
@@ -14564,6 +14786,7 @@ GameObject:
   - component: {fileID: 1968872940}
   - component: {fileID: 1968872939}
   - component: {fileID: 1968872938}
+  - component: {fileID: 1968872941}
   m_Layer: 0
   m_Name: Restart After Failure
   m_TagString: Untagged
@@ -14685,6 +14908,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1968872936}
   m_CullTransparentMesh: 1
+--- !u!114 &1968872941
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1968872936}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7541443d6a16c2f42ab24025a5b6f2d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: LunarEscape.Runtime::LunarEscape.ButtonPressFeedback
+  pressAmplitude: 0.35
+  pressSeconds: 0.04
+  denyAmplitude: 0.6
+  volume: 0.5
 --- !u!1 &2001096211
 GameObject:
   m_ObjectHideFlags: 0
@@ -15232,14 +15471,17 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7599356040425480313, guid: dbbd8d4dc290f415e9c8f45d6f7daa39, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8205125785928443289}
   m_SourcePrefab: {fileID: 100100000, guid: dbbd8d4dc290f415e9c8f45d6f7daa39, type: 3}
 --- !u!114 &8205125785928443286 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3702115571486334229, guid: dbbd8d4dc290f415e9c8f45d6f7daa39, type: 3}
   m_PrefabInstance: {fileID: 8205125785928443285}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 8205125785928443288}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 981f0c6c606b54509b177b1e773fe52b, type: 3}
@@ -15250,12 +15492,32 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7042738895048023591, guid: dbbd8d4dc290f415e9c8f45d6f7daa39, type: 3}
   m_PrefabInstance: {fileID: 8205125785928443285}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 8205125785928443288}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9ef2ec93776dc43ce8e5e407fb84d7b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: LunarEscape.Runtime::LunarEscape.ReturnFallenTool
+--- !u!1 &8205125785928443288 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7599356040425480313, guid: dbbd8d4dc290f415e9c8f45d6f7daa39, type: 3}
+  m_PrefabInstance: {fileID: 8205125785928443285}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &8205125785928443289
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8205125785928443288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ec527a8b9d453f4ab6d90885f723486, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: LunarEscape.Runtime::LunarEscape.GrabFeedback
+  volume: 0.6
+  knockSpeed: 0.25
+  heldImpactAmplitude: 0.5
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

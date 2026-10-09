@@ -12,6 +12,8 @@ namespace LunarEscape
         [SerializeField] private Transform suitRack, doorControl;
         [SerializeField] private BoxCollider habitatVolume;
         [SerializeField] private RepairContact doorRepairContact;
+        [Tooltip("气闸 A 抢修（三处故障 + 手动开门拉杆）。设置后取代“工具保持在门锁上”的维修。")]
+        [SerializeField] private AirlockRepair airlockRepair;
         private System.Random random;
         private uint version;
         private bool donHeld;
@@ -24,7 +26,9 @@ namespace LunarEscape
         public Transform DoorControl => doorControl;
         public RepairContact DoorRepairContact => doorRepairContact;
         public TimedRepairTask DoorRepairTask => doorRepairContact != null ? doorRepairContact.GetComponent<TimedRepairTask>() : null;
-        public bool DoorRepaired => DoorRepairTask != null && DoorRepairTask.State == RepairState.Complete;
+        public AirlockRepair AirlockRepair => airlockRepair;
+        public bool DoorRepaired => airlockRepair != null ? airlockRepair.IsReleased
+            : DoorRepairTask != null && DoorRepairTask.State == RepairState.Complete;
         public bool CanRepairDoor => IsGroundActive && !DoorOpen && !DoorRepaired && doorRepairContact != null && Near(doorRepairContact.RepairPoint, 1.6f);
         private bool WorkingOnDoor => CanRepairDoor && doorRepairContact.HasValidContact();
         public bool IsConfigured => config != null && session != null && inventory != null && habitatVolume != null;
@@ -81,6 +85,14 @@ namespace LunarEscape
             // 接触组件仅检测工具；进度统一由基地任务时钟推进。
             contact.enabled = false;
             DoorRepairTask.Configure(config.DoorRepairSeconds);
+            Changed?.Invoke();
+        }
+        // 以气闸抢修取代门锁工具维修：不再使用门锁接触与其计时任务。
+        public void ConfigureAirlockRepair(AirlockRepair repair)
+        {
+            if (repair == null) throw new ArgumentNullException(nameof(repair));
+            airlockRepair = repair;
+            doorRepairContact = null;
             Changed?.Invoke();
         }
         public void SetRandomSeed(int seed) => random = new System.Random(seed);

@@ -15,6 +15,7 @@ namespace LunarEscape
         public Transform Tip => tip != null ? tip : transform;
         public string ToolType => toolType;
         public bool IsHeld => grab != null && grab.isSelected;
+        public XRGrabInteractable Grab => grab;
 
         private void Awake() => grab = GetComponent<XRGrabInteractable>();
 

@@ -1940,9 +1940,9 @@
     },
     {
       "key": "life.hatch.repair_required",
-      "zh": "门锁损坏 · {0}%\n用工具接触下方维修点",
-      "en": "LOCK FAULT · {0}%\nHOLD TOOL AT SOCKET BELOW",
-      "ru": "ЗАМОК СЛОМАН · {0}%\nИНСТРУМЕНТ К ГНЕЗДУ ВНИЗУ"
+      "zh": "气闸卡死\n见上方诊断屏",
+      "en": "AIRLOCK JAMMED\nSEE DIAGNOSTICS ABOVE",
+      "ru": "ШЛЮЗ ЗАБЛОКИРОВАН\nСМ. ТАБЛО ВЫШЕ"
     },
     {
       "key": "life.hatch.locked",
@@ -1985,6 +1985,144 @@
       "zh": "先维修并开启基地舱门",
       "en": "Repair and open the base airlock first.",
       "ru": "Сначала почините и откройте шлюз базы."
+    },
+    {
+      "key": "airlock.panel.title",
+      "zh": "A 号气闸 · 诊断",
+      "en": "AIRLOCK A · DIAGNOSTICS",
+      "ru": "ШЛЮЗ А · ДИАГНОСТИКА"
+    },
+    {
+      "key": "airlock.row.power.bad",
+      "zh": "驱动电源：断开 · F3 保险丝烧毁",
+      "en": "DRIVE POWER: OFF · fuse F3 blown",
+      "ru": "ПИТАНИЕ ПРИВОДА: НЕТ · сгорел F3"
+    },
+    {
+      "key": "airlock.row.power.open",
+      "zh": "驱动电源：断开 · 需要备用 F3",
+      "en": "DRIVE POWER: OFF · spare F3 needed",
+      "ru": "ПИТАНИЕ ПРИВОДА: НЕТ · нужен запасной F3"
+    },
+    {
+      "key": "airlock.row.power.ok",
+      "zh": "驱动电源：正常",
+      "en": "DRIVE POWER: NOMINAL",
+      "ru": "ПИТАНИЕ ПРИВОДА: НОРМА"
+    },
+    {
+      "key": "airlock.row.pressure.bad",
+      "zh": "压差：{0} kPa · 打开平衡阀",
+      "en": "PRESSURE DELTA: {0} kPa · open the valve",
+      "ru": "ПЕРЕПАД ДАВЛЕНИЯ: {0} кПа · вентиль"
+    },
+    {
+      "key": "airlock.row.pressure.over",
+      "zh": "超压，正在泄压！把阀门往回拧",
+      "en": "OVERPRESSURE, venting! Turn the valve back",
+      "ru": "ПЕРЕДАВЛЕНИЕ, сброс! Верните вентиль"
+    },
+    {
+      "key": "airlock.row.pressure.ok",
+      "zh": "压力：已平衡",
+      "en": "PRESSURE: EQUALIZED",
+      "ru": "ДАВЛЕНИЕ: ВЫРОВНЕНО"
+    },
+    {
+      "key": "airlock.row.latch.bad",
+      "zh": "锁销：已松开 {0}/{1} · 需要扳手",
+      "en": "LATCH PINS: {0} of {1} free · use the wrench",
+      "ru": "ЗАПОРНЫЕ ШТИФТЫ: {0} из {1} · нужен ключ"
+    },
+    {
+      "key": "airlock.row.latch.ok",
+      "zh": "锁销：全部松开",
+      "en": "LATCH PINS: FREE",
+      "ru": "ЗАПОРНЫЕ ШТИФТЫ: СВОБОДНЫ"
+    },
+    {
+      "key": "airlock.row.lever.locked",
+      "zh": "手动开门：闭锁中",
+      "en": "MANUAL RELEASE: INHIBITED",
+      "ru": "РУЧНОЕ ОТКРЫТИЕ: БЛОКИРОВАНО"
+    },
+    {
+      "key": "airlock.row.lever.ready",
+      "zh": "手动开门：向下拉住拉杆",
+      "en": "MANUAL RELEASE: pull the lever and hold",
+      "ru": "РУЧНОЕ ОТКРЫТИЕ: тяните рычаг и держите"
+    },
+    {
+      "key": "airlock.row.lever.cycling",
+      "zh": "气闸循环：{0}% · 保持",
+      "en": "AIRLOCK CYCLE: {0}% · hold",
+      "ru": "ЦИКЛ ШЛЮЗА: {0}% · держите"
+    },
+    {
+      "key": "airlock.row.lever.open",
+      "zh": "门锁已解除 · 用压力屏开门",
+      "en": "LOCKS RELEASED · open from the console",
+      "ru": "ЗАМКИ СНЯТЫ · откройте люк на пульте"
+    },
+    {
+      "key": "airlock.box.label",
+      "zh": "A 号气闸配电盒\n驱动 · F3",
+      "en": "AIRLOCK A PANEL\nDRIVE · F3",
+      "ru": "ЩИТОК ШЛЮЗА А\nПРИВОД · F3"
+    },
+    {
+      "key": "airlock.spare.label",
+      "zh": "备件\n保险丝 F3",
+      "en": "SPARES\nfuse F3",
+      "ru": "ЗАПЧАСТИ\nпредохранитель F3"
+    },
+    {
+      "key": "airlock.valve.label",
+      "zh": "压力\n平衡阀",
+      "en": "PRESSURE\nEQUALIZER",
+      "ru": "ВЫРАВНИВАНИЕ\nДАВЛЕНИЯ"
+    },
+    {
+      "key": "airlock.lever.label",
+      "zh": "手动开门\n向下拉",
+      "en": "MANUAL RELEASE\npull down",
+      "ru": "РУЧНОЕ ОТКРЫТИЕ\nтянуть вниз"
+    },
+    {
+      "key": "airlock.row.suit.off",
+      "zh": "航天服：未穿！没穿航天服开门会致命",
+      "en": "SUIT: NOT WORN! Opening without it is fatal",
+      "ru": "СКАФАНДР: НЕ НАДЕТ! Без него открывать нельзя"
+    },
+    {
+      "key": "airlock.row.suit.on",
+      "zh": "航天服：已穿好",
+      "en": "SUIT: SEALED",
+      "ru": "СКАФАНДР: НАДЕТ"
+    },
+    {
+      "key": "airlock.row.lever.nosuit",
+      "zh": "手动开门：可解除门锁 · 开门前先穿航天服",
+      "en": "MANUAL RELEASE: ready · suit up before opening",
+      "ru": "РУЧНОЕ ОТКРЫТИЕ: готово · сначала скафандр"
+    },
+    {
+      "key": "airlock.status.faults",
+      "zh": "A 号气闸：剩余 {0} 处故障",
+      "en": "Airlock A: {0} fault(s) remaining",
+      "ru": "Шлюз А: осталось неисправностей — {0}"
+    },
+    {
+      "key": "airlock.status.ready",
+      "zh": "故障已排除：拉下门旁拉杆并保持",
+      "en": "Faults cleared: pull the lever by the door and hold",
+      "ru": "Неисправности устранены: тяните рычаг у двери и держите"
+    },
+    {
+      "key": "airlock.status.released",
+      "zh": "A 号气闸：循环完成",
+      "en": "Airlock A: cycle complete",
+      "ru": "Шлюз А: цикл завершён"
     }
   ]
 }

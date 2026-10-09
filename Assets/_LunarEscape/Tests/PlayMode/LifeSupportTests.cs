@@ -396,42 +396,36 @@ namespace LunarEscape.Tests
         }
         private void Axis(float value,float deadzone,DockCommand positive,DockCommand negative)
         {if(value>deadzone)docking.SetCommand(positive,true);else if(value<-deadzone)docking.SetCommand(negative,true);}
-        [UnityTest] public IEnumerator HatchRequiresHeldToolRepairEvenWhenSuitedAndRetryRelocksIt()
+        // 门锁维修已换成气闸 A 抢修（三处故障 + 拉杆），真实手部操作见 AirlockRepairTests；
+        // 这里只验证它与生命保障规则的衔接：未放行不能开门、穿航天服也不能绕过、重开重新上锁。
+        [UnityTest] public IEnumerator HatchRequiresAirlockRepairEvenWhenSuitedAndRetryRelocksIt()
         {
-            var panel=session.GetComponent<HabitatLifePanel>();
-            var tool=HoldDoorTool();session.Advance(20);Assert.That(life.DoorRepairTask.Progress,Is.Zero,"Briefing cannot repair");
-            Release(tool.GetComponent<XRGrabInteractable>());session.BeginMission();
+            var panel=session.GetComponent<HabitatLifePanel>();var airlock=life.AirlockRepair;
+            Assert.That(airlock,Is.Not.Null,"请先执行 Lunar Escape → Install Airlock Repair (Life Support Scene)");
+            Assert.That(life.DoorRepairContact,Is.Null,"旧的门锁工具维修已移除");
+            session.BeginMission();
             Assert.That(life.TryOpenDoor(),Is.False);Assert.That(panel.HatchButton.interactable,Is.False);
             panel.HatchButton.onClick.Invoke();Assert.That(life.DoorOpen,Is.False);
-            session.Advance(1);Assert.That(life.DoorRepairTask.Progress,Is.Zero,"An unheld tool cannot repair");
             Don();MoveBody(life.DoorControl.position+Vector3.left*.8f);
             Assert.That(life.TryOpenDoor(),Is.False,"Wearing a suit cannot bypass repair");
             session.Mission.Tick(session.Mission.RepairTask.RemainingSeconds,true,false);
             Assert.That(session.Mission.RepairRestored,Is.True);Assert.That(life.TryOpenDoor(),Is.False,"Oxygen repair is a separate task");
-            tool=HoldDoorTool();session.Advance(2);Assert.That(life.DoorRepairTask.Progress,Is.EqualTo(.4f).Within(.001f));
-            tool.transform.position+=Vector3.left;session.Advance(1);Assert.That(life.DoorRepairTask.Progress,Is.EqualTo(.4f).Within(.001f));
-            tool.transform.position-=Vector3.left;MoveBody(new Vector3(-2,0,-2));session.Advance(1);
-            Assert.That(life.DoorRepairTask.Progress,Is.EqualTo(.4f).Within(.001f));Release(tool.GetComponent<XRGrabInteractable>());
-            yield return Languages(layout.AirlockConsole,"life-airlock-repair");
-            tool=HoldDoorTool();session.Advance(2.99f);Assert.That(life.TryOpenDoor(),Is.False);
-            session.Advance(.02f);Release(tool.GetComponent<XRGrabInteractable>());
-            Assert.That(life.DoorRepaired,Is.True);Assert.That(life.DoorOpen,Is.False);Assert.That(life.BaseOxygen,Is.GreaterThan(0));
+            airlock.SkipRepair();yield return null;
+            Assert.That(life.DoorRepaired,Is.True);Assert.That(life.DoorOpen,Is.False,"放行只解除门锁，不会自己开门");Assert.That(life.BaseOxygen,Is.GreaterThan(0));
             Assert.That(panel.HatchButton.interactable,Is.True);yield return Languages(layout.AirlockConsole);
             yield return Click(panel.HatchButton);Assert.That(life.DoorOpen,Is.True);Assert.That(life.BaseOxygen,Is.Zero);
             session.Advance(6.1f);Assert.That(session.Mission.IsTerminal,Is.False,"A supplied suit protects after opening");
-            session.RetryMission();Assert.That(life.DoorRepaired,Is.False);Assert.That(life.DoorRepairTask.Progress,Is.Zero);
+            session.RetryMission();yield return null;Assert.That(life.DoorRepaired,Is.False);Assert.That(airlock.IsReleased,Is.False);
             session.BeginMission();MoveBody(life.DoorControl.position+Vector3.left*.8f);Assert.That(life.TryOpenDoor(),Is.False);
-            MoveBody(new Vector3(-2,0,-2));
-            yield return Capture("life-airlock-latch",new Vector3(1.8f,1.5f,.24f),new Vector3(3.4f,1.35f,.24f),60);
         }
-        [UnityTest] public IEnumerator DeathStopsDoorRepairAndWinsAtItsCompletionBoundary()
+        [UnityTest] public IEnumerator DeathStopsAirlockRepair()
         {
             Configure("{\"baseOxygenSeconds\":1,\"baseOxygenRange\":{\"x\":100,\"y\":100},\"suffocationSeconds\":4}");
-            session.BeginMission();var tool=HoldDoorTool();session.Advance(5.1f);
+            session.BeginMission();session.Advance(5.1f);
             Assert.That(session.Mission.FailureReason,Is.EqualTo(StationMissionFailure.Suffocation));
+            Assert.That(life.AirlockRepair.Active,Is.False,"死亡后不能继续抢修");
             Assert.That(life.DoorRepaired,Is.False);Assert.That(life.TryOpenDoor(),Is.False);
-            float progress=life.DoorRepairTask.Progress;session.Advance(10);yield return null;yield return null;
-            Assert.That(life.DoorRepairTask.Progress,Is.EqualTo(progress));Release(tool.GetComponent<XRGrabInteractable>());
+            yield return null;
         }
         private void Configure(string json)
         {
@@ -439,18 +433,11 @@ namespace LunarEscape.Tests
             var habitat=layout.HabitatConsole.transform.parent.Find("Pressurized Habitat Volume").GetComponent<BoxCollider>();
             life.Configure(settings,session,cargo,life.SuitRack,life.DoorControl,habitat);session.RetryMission();
         }
-        private RepairTool HoldDoorTool()
-        {
-            var tool=Object.FindObjectsByType<RepairTool>(FindObjectsSortMode.None).First(t=>t.ToolType=="maintenance");
-            MoveBody(life.DoorRepairContact.RepairPoint.position+Vector3.left*.8f);
-            Select(tool.GetComponent<XRGrabInteractable>(),tool.transform.position);
-            var delta=life.DoorRepairContact.RepairPoint.position-tool.Tip.position;
-            tool.transform.position+=delta;tool.GetComponent<Rigidbody>().position=tool.transform.position;hand.transform.position+=delta;
-            Physics.SyncTransforms();Assert.That(life.DoorRepairContact.HasValidContact(),Is.True);return tool;
-        }
+        // 门锁维修的时间消耗保持原测试口径；修理本身由气闸抢修的捷径完成（真实操作见 AirlockRepairTests）。
         private void RepairDoor()
         {
-            var tool=HoldDoorTool();session.Advance(life.Config.DoorRepairSeconds);Release(tool.GetComponent<XRGrabInteractable>());
+            MoveBody(life.DoorControl.position+Vector3.left*.8f);
+            session.Advance(life.Config.DoorRepairSeconds);life.AirlockRepair.SkipRepair();
             Assert.That(life.DoorRepaired,Is.True);Assert.That(life.DoorOpen,Is.False);
         }
         private void Don()
