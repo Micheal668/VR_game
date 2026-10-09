@@ -80,7 +80,12 @@ namespace LunarEscape.Tests
                 Set(device, Vector2.down, true);
                 Assert.That(action.ReadValue<Vector2>().y, Is.LessThan(-.9f), "按住下半区应后退");
                 Set(device, new Vector2(1, .1f), true);
-                Assert.That(action.ReadValue<Vector2>(), Is.EqualTo(Vector2.zero), "左右边缘和中心抖动不能行走");
+                Assert.That(action.ReadValue<Vector2>().x, Is.GreaterThan(.9f), "按住右侧边缘应向右平移");
+                Set(device, new Vector2(-.7f, .7f), true);
+                Assert.That(action.ReadValue<Vector2>().x, Is.LessThan(-.6f), "斜向按压应同时前进和左移");
+                Assert.That(action.ReadValue<Vector2>().y, Is.GreaterThan(.6f));
+                Set(device, new Vector2(.1f, .1f), true);
+                Assert.That(action.ReadValue<Vector2>(), Is.EqualTo(Vector2.zero), "中心抖动不能行走");
                 Set(device, Vector2.up, false);
                 Assert.That(action.ReadValue<Vector2>(), Is.EqualTo(Vector2.zero), "松开后即使仍触摸也应停止");
                 Set(device, Vector2.up, true, false);

@@ -65,8 +65,10 @@ namespace LunarEscape.Tests
             for(int i=0;i<24;i++)
             {
                 session.RetryMission();values.Add(life.BaseOxygen);day.Add(life.IsDaylight);
-                Assert.That(life.BaseOxygen,Is.InRange(30,55));Assert.That(life.BasePower,Is.InRange(35,65));
-                Assert.That(life.SuitOxygen,Is.InRange(20,50));Assert.That(life.SuitPower,Is.InRange(20,50));
+                // 范围取自生命保障配置（主场景现为更充足的基地储备、满电满氧的航天服）。
+                var c=life.Config;
+                Assert.That(life.BaseOxygen,Is.InRange(c.BaseOxygenRange.x,c.BaseOxygenRange.y));Assert.That(life.BasePower,Is.InRange(c.BasePowerRange.x,c.BasePowerRange.y));
+                Assert.That(life.SuitOxygen,Is.InRange(c.SuitOxygenRange.x,c.SuitOxygenRange.y));Assert.That(life.SuitPower,Is.InRange(c.SuitPowerRange.x,c.SuitPowerRange.y));
                 Assert.That(life.SuitWorn||life.DoorOpen||hud.Hud.activeSelf,Is.False);
                 Assert.That(wardrobe.CasualRenderers.All(r=>r.enabled),Is.True);Assert.That(wardrobe.SuitedRenderers.Any(r=>r.enabled),Is.False);
                 Assert.That(wardrobe.HangingSuit.activeSelf,Is.True);Assert.That(session.GetComponent<CrewPanelPresenter>().GroundPanel.activeSelf,Is.False);
@@ -116,6 +118,8 @@ namespace LunarEscape.Tests
         }
         [UnityTest] public IEnumerator RealOxygenActivationAndPackedBatteryAreAtomicAndRetrySafe()
         {
+            // 主场景航天服开局满电满氧，满的无法补充；这里固定为半空以验证补给效果。
+            Configure("{\"suitOxygenRange\":{\"x\":30,\"y\":30},\"suitPowerRange\":{\"x\":30,\"y\":30}}");
             Don();var oxygen=cargo.Items.First(i=>i.Kind==CargoKind.Oxygen);float before=life.SuitOxygen;
             Assert.That(life.TryUseSupply(oxygen),Is.False);Assert.That(cargo.TryHold(oxygen),Is.True);
             Assert.That(life.TryUseSupply(oxygen),Is.False,"Ledger Held without XR contact must not consume");cargo.DropHeld(oxygen);

@@ -196,6 +196,17 @@ namespace LunarEscape
             }
         }
 
+        // 奖励时间：完成恢复照明、气闸抢修、救出队友等关键行动时延长当前倒计时。
+        // 只在维修与撤离阶段有效，不能让已结束或尚未开始的任务复活。
+        public bool AddBonusTime(float seconds)
+        {
+            if (seconds <= 0f || !float.IsFinite(seconds)) return false;
+            if (Phase != StationMissionPhase.Repair && Phase != StationMissionPhase.Evacuation) return false;
+            RemainingSeconds += seconds;
+            Changed?.Invoke();
+            return true;
+        }
+
         private void EnterEvacuation()
         {
             RemainingSeconds = EvacuationBudgetSeconds;

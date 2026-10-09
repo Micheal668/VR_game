@@ -19,6 +19,8 @@ namespace LunarEscape.Editor
     public static class ConfigureViveControls
     {
         public const string InputPath = "Assets/_LunarEscape/Input/Lunar Vive Controls.inputactions";
+        // 圆盘向任意方向按压都能平移（以视线为前方）；中心死区防止误触。
+        public const string MoveProcessors = "stickDeadzone(min=0.25,max=1)";
         private const string SampleInput = "Assets/Samples/XR Interaction Toolkit/3.6.0/Starter Assets/XRI Default Input Actions.inputactions";
 
         [MenuItem("Lunar Escape/Configure Vive Press To Walk")]
@@ -38,7 +40,7 @@ namespace LunarEscape.Editor
                 // 按压和有效追踪都成立才读取圆盘；触摸后再按下也应立即起步。
                 while (action.bindings.Count > 0) action.ChangeBinding(0).Erase();
                 action.AddCompositeBinding("TwoModifiers(modifiersOrder=2)",
-                        processors: "scaleVector2(x=0,y=1),stickDeadzone(min=0.25,max=1)")
+                        processors: MoveProcessors)
                     .With("Modifier1", "<ViveController>{" + side + "}/trackpadClicked")
                     .With("Modifier2", "<ViveController>{" + side + "}/isTracked")
                     .With("Binding", "<ViveController>{" + side + "}/trackpad");
@@ -75,7 +77,7 @@ namespace LunarEscape.Editor
             foreach (var move in UnityEngine.Object.FindObjectsByType<ContinuousMoveProvider>(FindObjectsInactive.Include, FindObjectsSortMode.None))
             {
                 move.gameObject.SetActive(true); move.enabled = true;
-                move.moveSpeed = 1.4f; move.enableStrafe = false; move.enableFly = false;
+                move.moveSpeed = InstallStationStart.WalkSpeed; move.enableStrafe = true; move.enableFly = false;
                 // 释放圆盘即停止水平移动，月面腾空时也不残留输入惯性。
                 move.inAirControlModifier = 1;
                 Save(move); Save(move.gameObject);

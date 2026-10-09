@@ -191,6 +191,15 @@ namespace LunarEscape
             if (attempt == version && DoorRepairTask != null) DoorRepairTask.Tick(repairingDoor, seconds);
             if (attempt == version) Changed?.Invoke();
         }
+        // 奖励时间折算成空气：舱门关着时补基地空气，开门后补航天服氧气；都不超过 100%。
+        public bool AddAirSeconds(float seconds)
+        {
+            if (!IsGroundActive || seconds <= 0 || !float.IsFinite(seconds)) return false;
+            if (!DoorOpen) BaseOxygen = Mathf.Min(100, BaseOxygen + seconds * config.BaseOxygenRate);
+            else if (SuitWorn) SuitOxygen = Mathf.Min(100, SuitOxygen + seconds * config.SuitOxygenRate);
+            else return false;
+            Changed?.Invoke(); return true;
+        }
         public bool CanUseSupply(CargoItem item)
         {
             if (!IsGroundActive || !SuitWorn || item == null || item.Inventory != inventory) return false;

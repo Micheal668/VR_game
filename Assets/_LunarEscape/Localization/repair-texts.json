@@ -1700,9 +1700,9 @@
     },
     {
       "key": "life.feedback.ready",
-      "zh": "检查氧气与电量，先穿宇航服。",
-      "en": "Check reserves and put on your suit.",
-      "ru": "Проверьте запасы и наденьте скафандр."
+      "zh": "先拉下照明总闸，检查储备，穿上航天服。",
+      "en": "Pull the lighting breaker, check reserves, suit up.",
+      "ru": "Включите свет рубильником, проверьте запасы, наденьте скафандр."
     },
     {
       "key": "life.feedback.no_suit",
@@ -2123,6 +2123,12 @@
       "zh": "A 号气闸：循环完成",
       "en": "Airlock A: cycle complete",
       "ru": "Шлюз А: цикл завершён"
+    },
+    {
+      "key": "life.breaker.label",
+      "zh": "应急照明总闸\n向下拉",
+      "en": "LIGHTING BREAKER\npull down",
+      "ru": "РУБИЛЬНИК СВЕТА\nтянуть вниз"
     }
   ]
 }
