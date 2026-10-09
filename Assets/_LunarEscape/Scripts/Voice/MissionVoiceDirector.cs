@@ -5,6 +5,7 @@ namespace LunarEscape
 {
     // 语音提示的“导演”：逐帧读取任务状态，在关键节点让地面指挥（ЦУП）口头告诉玩家下一步做什么，
     // 代替屏幕上的长段说明；指挥官对玩家的每个维修动作吐槽一句。长时间没有进展时重复当前提示。
+    // 默认（stationHints 关闭）基地里地面指挥只说开场和开门后的出发指令，逐步反应交给指挥官。
     // 只读状态、只调用 MissionVoice，不改变任何任务规则。
     public sealed class MissionVoiceDirector : MonoBehaviour
     {
@@ -20,6 +21,8 @@ namespace LunarEscape
         [SerializeField, Min(0f)] private float helloDelay = 2.5f;
         [Tooltip("没有任何语音这么久，就重复当前步骤的提示；再过同样时长换指挥官闲聊一句。")]
         [SerializeField, Min(5f)] private float reminderSeconds = 28f;
+        [Tooltip("基地内地面指挥是否逐步口头提示。关闭时基地里只保留开场呼叫与开门后的出发指令（以及失败呼叫），逐步反应只由指挥官吐槽；飞船上的地面指挥台词不受影响。")]
+        [SerializeField] private bool stationHints;
         [Tooltip("撤离剩余时间低于该值时催促一次。")]
         [SerializeField, Min(0f)] private float hurrySeconds = 30f;
 
@@ -37,6 +40,14 @@ namespace LunarEscape
         private bool reminderNext = true;
 
         public MissionVoice Voice => voice;
+        public bool StationHints { get => stationHints; set => stationHints = value; }
+
+        // 关闭逐步提示时仍保留的地面指挥台词：基地第一句、最后一句、失败呼叫，以及飞船上的全部台词。
+        private static readonly HashSet<string> KeptMissionControl = new()
+        { "cup_hello", "cup_vented", "cup_failed", "cup_aboard", "cup_liftoff", "cup_orbit", "cup_rendezvous", "cup_docked" };
+
+        private bool Speak(string id, VoicePriority priority = VoicePriority.Hint, System.Func<bool> stillValid = null)
+            => (stationHints || !id.StartsWith("cup_") || KeptMissionControl.Contains(id)) && voice.Say(id, priority, stillValid);
 
         public void Configure(MissionVoice player, StationMission task, LifeSupportMission support, HabitatBreaker mainBreaker,
             AirlockRepair repair, CargoInventory cargo, RepairTool[] tools, AscentMission ascent)
@@ -115,7 +126,7 @@ namespace LunarEscape
                     break;
                 case StationMissionPhase.Failed:
                     voice.Clear();
-                    voice.Say("cup_failed", VoicePriority.Urgent);
+                    Speak("cup_failed", VoicePriority.Urgent);
                     break;
             }
         }
@@ -133,7 +144,7 @@ namespace LunarEscape
             if (Time.time >= helloAt && Once("hello"))
             {
                 // 首次载入完整呼叫；重新开始只简短呼叫。
-                if (said.Contains("cup_hello")) Say("cup_hello_repeat");
+                if (said.Contains("cup_hello") && stationHints) Say("cup_hello_repeat");
                 else { Say("cup_hello"); SayOnce("cmd_intro", VoicePriority.Quip); }
             }
             // 任务开始前就去拉总闸：被联锁拒绝，指挥官调侃一句。
@@ -161,7 +172,7 @@ namespace LunarEscape
             // 撤离阶段剩余时间跌破阈值：紧急催促。
             float remaining = mission.Phase == StationMissionPhase.Evacuation ? mission.RemainingSeconds : float.MaxValue;
             if (remaining <= hurrySeconds && lastRemaining > hurrySeconds && Once("hurry"))
-            { voice.Say("cup_hurry", VoicePriority.Urgent); voice.Say("cmd_hurry", VoicePriority.Quip); }
+            { Speak("cup_hurry", VoicePriority.Urgent); Speak("cmd_hurry", VoicePriority.Quip); }
             lastRemaining = remaining;
 
             // 航天服氧气不足 30 秒：提醒接上备用氧气瓶（每次跌破只提醒一次）。
@@ -267,7 +278,7 @@ namespace LunarEscape
                 case AscentPhase.OrbitalInsertion: SayOnce("cup_orbit"); break;
                 case AscentPhase.Rendezvous: case AscentPhase.Docking: SayOnce("cup_rendezvous"); break;
                 case AscentPhase.Docked: SayOnce("cup_docked"); SayOnce("cmd_docked", VoicePriority.Quip); break;
-                case AscentPhase.Failed: voice.Clear(); voice.Say("cup_failed", VoicePriority.Urgent); break;
+                case AscentPhase.Failed: voice.Clear(); Speak("cup_failed", VoicePriority.Urgent); break;
             }
         }
 
@@ -278,25 +289,25 @@ namespace LunarEscape
             // 闲聊只在开门前：撤离途中指挥官没心情聊天。
             if (mission.Phase != StationMissionPhase.Briefing && !life.DoorOpen && !reminderNext && idleIndex < 3)
             {
-                voice.Say("cmd_idle" + (++idleIndex), VoicePriority.Quip);
+                Speak("cmd_idle" + (++idleIndex), VoicePriority.Quip);
                 reminderNext = true;
                 return;
             }
             reminderNext = false;
             string id = Objective(true);
-            if (id == null || !voice.Say(id, VoicePriority.Hint, ObjectiveIs(Objective()))) reminderNext = true;
+            if (id == null || !Speak(id, VoicePriority.Hint, ObjectiveIs(Objective()))) reminderNext = true;
         }
 
         private void SayObjective()
         {
             string id = Objective();
-            if (id != null) voice.Say(id, VoicePriority.Hint, ObjectiveIs(id));
+            if (id != null) Speak(id, VoicePriority.Hint, ObjectiveIs(id));
         }
 
         private void SayAgainObjective(float cooldown)
         {
             string id = Objective(true);
-            if (id != null && Cooled(id, cooldown)) voice.Say(id, VoicePriority.Hint, ObjectiveIs(Objective()));
+            if (id != null && Cooled(id, cooldown)) Speak(id, VoicePriority.Hint, ObjectiveIs(Objective()));
         }
 
         // 提示排队期间玩家可能已经完成了这一步：轮到播放时步骤已变就不再说。
@@ -305,7 +316,7 @@ namespace LunarEscape
         private bool Say(string id, VoicePriority priority = VoicePriority.Hint, System.Func<bool> stillValid = null)
         {
             lastSaid[id] = Time.time;
-            return voice.Say(id, priority, stillValid);
+            return Speak(id, priority, stillValid);
         }
 
         // 每轮任务只说一次（重新开始后重置）。

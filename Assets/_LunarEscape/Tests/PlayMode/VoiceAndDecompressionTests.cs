@@ -31,6 +31,9 @@ namespace LunarEscape.Tests
             Assert.That(voice, Is.Not.Null, "请先执行 Lunar Escape → Install Voice Hints and Decompression (Life Support Scene)");
             Assert.That(decompression, Is.Not.Null);
             driver = new AirlockTestDriver(life.AirlockRepair); steps = new LifeSupportSteps(session);
+            // 默认基地里地面指挥只说首尾两句；下面多数用例验证完整的逐步提示，所以打开它。
+            Assert.That(director.StationHints, Is.False, "默认关闭基地逐步提示");
+            director.StationHints = true;
             while (Time.time < 1.05f) yield return null;
         }
 
@@ -75,6 +78,22 @@ namespace LunarEscape.Tests
             yield return Said("cup_suit_done", 20f);
             Assert.That(director.Objective(), Is.EqualTo("cup_fuse"), "穿好宇航服后的下一步是配电盒");
             yield return Said("cup_fuse", 30f);
+        }
+
+        [UnityTest] public IEnumerator ByDefaultMissionControlOnlyOpensAndSendsCrewOutWhileCommanderComments()
+        {
+            director.StationHints = false;
+            yield return Said("cup_hello", 6f);
+            session.BeginMission(); breaker.SwitchOn();
+            yield return Said("cmd_lights", 20f);
+            steps.Don();
+            yield return Said("cmd_suit", 20f);
+            life.AirlockRepair.SkipRepair();
+            steps.MoveBody(life.DoorControl.position + Vector3.left * .8f);
+            Assert.That(life.TryOpenDoor(), Is.True);
+            yield return Said("cup_vented", 15f);
+            var station = voice.History.Where(id => id.StartsWith("cup_")).ToArray();
+            Assert.That(station, Is.EquivalentTo(new[] { "cup_hello", "cup_vented" }), "基地里地面指挥只说首尾两句：" + string.Join(", ", station));
         }
 
         [UnityTest] public IEnumerator CommanderCommentsOnEachRepairStep()
