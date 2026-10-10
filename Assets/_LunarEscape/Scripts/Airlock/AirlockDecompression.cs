@@ -141,7 +141,7 @@ namespace LunarEscape
             var player = life.Player != null ? life.Player.transform : null;
             foreach (var body in FindObjectsByType<Rigidbody>(FindObjectsSortMode.None))
             {
-                if (body.isKinematic || !bounds.Contains(body.worldCenterOfMass)) continue;
+                if (body.isKinematic || !life.ContainsHabitat(body.worldCenterOfMass)) continue;
                 if (player != null && body.transform.IsChildOf(player)) continue;
                 bodies.Add(body);
             }

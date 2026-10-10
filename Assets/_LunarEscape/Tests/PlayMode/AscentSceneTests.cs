@@ -283,7 +283,7 @@ namespace LunarEscape.Tests
             camera.fieldOfView=65; camera.transform.SetPositionAndRotation(position,Quaternion.LookRotation(target-position));
             var texture=new RenderTexture(1600,1100,24,RenderTextureFormat.ARGB32); var pixels=new Texture2D(1600,1100,TextureFormat.RGB24,false); var previous=RenderTexture.active;
             try { texture.Create(); camera.targetTexture=texture; RenderPipeline.SubmitRenderRequest(camera,new RenderPipeline.StandardRequest { destination=texture }); RenderTexture.active=texture;
-                pixels.ReadPixels(new Rect(0,0,1600,1100),0,0); pixels.Apply(); string path=Path.GetFullPath(Path.Combine(Application.dataPath,"../../.development/ascent-"+name+".png")); File.WriteAllBytes(path,pixels.EncodeToPNG()); TestContext.Progress.WriteLine(path); }
+                pixels.ReadPixels(new Rect(0,0,1600,1100),0,0); pixels.Apply(); string path=Path.GetFullPath(Path.Combine(Application.dataPath,"../../.development/ascent-"+name+".png")); PreviewEvidence.Write(path,pixels.EncodeToPNG()); TestContext.Progress.WriteLine(path); }
             finally { RenderTexture.active=previous; camera.targetTexture=null; texture.Release(); Object.Destroy(pixels); Object.Destroy(texture); Object.Destroy(owner); }
         }
     }

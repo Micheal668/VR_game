@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="16" result="Passed" total="16" passed="16" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-10 11:20:27Z" end-time="2026-10-10 11:20:36Z" duration="9.0361832">
+  <test-suite type="TestSuite" id="1203" name="Lunar Escape VR" fullname="Lunar Escape VR" runstate="Runnable" testcasecount="169" result="Passed" start-time="2026-10-10 11:20:27Z" end-time="2026-10-10 11:20:36Z" duration="9.036183" total="16" passed="16" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="PlayMode" />
+    </properties>
+    <test-suite type="Assembly" id="1400" name="LunarEscape.PlayModeTests.dll" fullname="C:/Coding/Projects/VR_game/Library/ScriptAssemblies/LunarEscape.PlayModeTests.dll" runstate="Runnable" testcasecount="169" result="Passed" start-time="2026-10-10 11:20:27Z" end-time="2026-10-10 11:20:36Z" duration="9.029814" total="16" passed="16" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="43160" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="PlayMode" />
+        <property name="EditorOnly" value="False" />
+      </properties>
+      <test-suite type="TestSuite" id="1401" name="LunarEscape" fullname="LunarEscape" runstate="Runnable" testcasecount="169" result="Passed" start-time="2026-10-10 11:20:27Z" end-time="2026-10-10 11:20:36Z" duration="9.027870" total="16" passed="16" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-suite type="TestSuite" id="1402" name="Tests" fullname="LunarEscape.Tests" runstate="Runnable" testcasecount="169" result="Passed" start-time="2026-10-10 11:20:27Z" end-time="2026-10-10 11:20:36Z" duration="9.026049" total="16" passed="16" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-suite type="TestFixture" id="1204" name="AirlockRepairTests" fullname="LunarEscape.Tests.AirlockRepairTests" classname="LunarEscape.Tests.AirlockRepairTests" runstate="Runnable" testcasecount="6" result="Passed" start-time="2026-10-10 11:20:27Z" end-time="2026-10-10 11:20:30Z" duration="3.388886" total="6" passed="6" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1208" name="LeverRefusesWhileFaultsRemain" fullname="LunarEscape.Tests.AirlockRepairTests.LeverRefusesWhileFaultsRemain" methodname="LeverRefusesWhileFaultsRemain" classname="LunarEscape.Tests.AirlockRepairTests" runstate="Runnable" seed="549723888" result="Passed" start-time="2026-10-10 11:20:27Z" end-time="2026-10-10 11:20:28Z" duration="1.538404" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1206" name="NothingCanBeRepairedBeforeTheMissionStarts" fullname="LunarEscape.Tests.AirlockRepairTests.NothingCanBeRepairedBeforeTheMissionStarts" methodname="NothingCanBeRepairedBeforeTheMissionStarts" classname="LunarEscape.Tests.AirlockRepairTests" runstate="Runnable" seed="662119647" result="Passed" start-time="2026-10-10 11:20:28Z" end-time="2026-10-10 11:20:28Z" duration="0.324809" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1209" name="OverTurningTheValveVentsUntilTurnedBack" fullname="LunarEscape.Tests.AirlockRepairTests.OverTurningTheValveVentsUntilTurnedBack" methodname="OverTurningTheValveVentsUntilTurnedBack" classname="LunarEscape.Tests.AirlockRepairTests" runstate="Runnable" seed="1895051731" result="Passed" start-time="2026-10-10 11:20:28Z" end-time="2026-10-10 11:20:29Z" duration="0.379516" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1210" name="RetryRestoresEveryFault" fullname="LunarEscape.Tests.AirlockRepairTests.RetryRestoresEveryFault" methodname="RetryRestoresEveryFault" classname="LunarEscape.Tests.AirlockRepairTests" runstate="Runnable" seed="1598468747" result="Passed" start-time="2026-10-10 11:20:29Z" end-time="2026-10-10 11:20:29Z" duration="0.380123" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[Retain Transform Parent is set to true and had an old parent GameObject. However, the old parent "Airlock A Repair" is deactivated so we are choosing not to re-parent upon dropping.
+]]></output>
+            </test-case>
+            <test-case id="1205" name="SceneUsesAirlockRepairInsteadOfToolLatch" fullname="LunarEscape.Tests.AirlockRepairTests.SceneUsesAirlockRepairInsteadOfToolLatch" methodname="SceneUsesAirlockRepairInsteadOfToolLatch" classname="LunarEscape.Tests.AirlockRepairTests" runstate="Runnable" seed="340966859" result="Passed" start-time="2026-10-10 11:20:29Z" end-time="2026-10-10 11:20:29Z" duration="0.240080" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1207" name="ThreeRepairsAndLeverUnlockHatchThenSuitedCrewOpensIt" fullname="LunarEscape.Tests.AirlockRepairTests.ThreeRepairsAndLeverUnlockHatchThenSuitedCrewOpensIt" methodname="ThreeRepairsAndLeverUnlockHatchThenSuitedCrewOpensIt" classname="LunarEscape.Tests.AirlockRepairTests" runstate="Runnable" seed="1817427938" result="Passed" start-time="2026-10-10 11:20:29Z" end-time="2026-10-10 11:20:30Z" duration="0.515935" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1358" name="StationExpansionTests" fullname="LunarEscape.Tests.StationExpansionTests" classname="LunarEscape.Tests.StationExpansionTests" runstate="Runnable" testcasecount="10" result="Passed" start-time="2026-10-10 11:20:30Z" end-time="2026-10-10 11:20:36Z" duration="5.630097" total="10" passed="10" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1368" name="BaseDoorRemainsVisibleAndSolidUntilOpenedAndControlIsBesideBedroom" fullname="LunarEscape.Tests.StationExpansionTests.BaseDoorRemainsVisibleAndSolidUntilOpenedAndControlIsBesideBedroom" methodname="BaseDoorRemainsVisibleAndSolidUntilOpenedAndControlIsBesideBedroom" classname="LunarEscape.Tests.StationExpansionTests" runstate="Runnable" seed="186941813" result="Passed" start-time="2026-10-10 11:20:30Z" end-time="2026-10-10 11:20:31Z" duration="0.861261" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[Retain Transform Parent is set to true and had an old parent GameObject. However, the old parent "Airlock A Repair" is deactivated so we are choosing not to re-parent upon dropping.
+]]></output>
+            </test-case>
+            <test-case id="1362" name="BedroomDoorBlocksWalkingAndAssistedBoltsAcceptHeldToolContact" fullname="LunarEscape.Tests.StationExpansionTests.BedroomDoorBlocksWalkingAndAssistedBoltsAcceptHeldToolContact" methodname="BedroomDoorBlocksWalkingAndAssistedBoltsAcceptHeldToolContact" classname="LunarEscape.Tests.StationExpansionTests" runstate="Runnable" seed="1416578180" result="Passed" start-time="2026-10-10 11:20:31Z" end-time="2026-10-10 11:20:31Z" duration="0.385258" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1364" name="DoorBoltsChooseThreeUniquePositionsFromEightAndRetryClearsRepair" fullname="LunarEscape.Tests.StationExpansionTests.DoorBoltsChooseThreeUniquePositionsFromEightAndRetryClearsRepair" methodname="DoorBoltsChooseThreeUniquePositionsFromEightAndRetryClearsRepair" classname="LunarEscape.Tests.StationExpansionTests" runstate="Runnable" seed="998299247" result="Passed" start-time="2026-10-10 11:20:31Z" end-time="2026-10-10 11:20:32Z" duration="0.405364" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1360" name="IndependentCrewRescueDressingAndFullGroundRoute" fullname="LunarEscape.Tests.StationExpansionTests.IndependentCrewRescueDressingAndFullGroundRoute" methodname="IndependentCrewRescueDressingAndFullGroundRoute" classname="LunarEscape.Tests.StationExpansionTests" runstate="Runnable" seed="1081464207" result="Passed" start-time="2026-10-10 11:20:32Z" end-time="2026-10-10 11:20:32Z" duration="0.498335" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[Retain Transform Parent is set to true and had an old parent GameObject. However, the old parent "Airlock A Repair" is deactivated so we are choosing not to re-parent upon dropping.
+]]></output>
+            </test-case>
+            <test-case id="1367" name="LabModulesFallOntoDeskAndRetryRestoresAllThreeAfterSocketOrHandUse" fullname="LunarEscape.Tests.StationExpansionTests.LabModulesFallOntoDeskAndRetryRestoresAllThreeAfterSocketOrHandUse" methodname="LabModulesFallOntoDeskAndRetryRestoresAllThreeAfterSocketOrHandUse" classname="LunarEscape.Tests.StationExpansionTests" runstate="Runnable" seed="956273207" result="Passed" start-time="2026-10-10 11:20:32Z" end-time="2026-10-10 11:20:33Z" duration="0.878161" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1359" name="OpeningSequenceAndSharedPowerCircuitUseRealSockets" fullname="LunarEscape.Tests.StationExpansionTests.OpeningSequenceAndSharedPowerCircuitUseRealSockets" methodname="OpeningSequenceAndSharedPowerCircuitUseRealSockets" classname="LunarEscape.Tests.StationExpansionTests" runstate="Runnable" seed="1091327722" result="Passed" start-time="2026-10-10 11:20:33Z" end-time="2026-10-10 11:20:33Z" duration="0.355558" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1361" name="OxygenRepairReallySlowsDrainAndValveOverturnReallyLeaks" fullname="LunarEscape.Tests.StationExpansionTests.OxygenRepairReallySlowsDrainAndValveOverturnReallyLeaks" methodname="OxygenRepairReallySlowsDrainAndValveOverturnReallyLeaks" classname="LunarEscape.Tests.StationExpansionTests" runstate="Runnable" seed="1421018930" result="Passed" start-time="2026-10-10 11:20:33Z" end-time="2026-10-10 11:20:34Z" duration="0.366671" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1363" name="RetriesRandomizeValveAndBasePowerAlsoSuppliesEmergencyLights" fullname="LunarEscape.Tests.StationExpansionTests.RetriesRandomizeValveAndBasePowerAlsoSuppliesEmergencyLights" methodname="RetriesRandomizeValveAndBasePowerAlsoSuppliesEmergencyLights" classname="LunarEscape.Tests.StationExpansionTests" runstate="Runnable" seed="1507728581" result="Passed" start-time="2026-10-10 11:20:34Z" end-time="2026-10-10 11:20:34Z" duration="0.426548" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1366" name="SuppliesRecoveryRoomsAndVisualEvidence" fullname="LunarEscape.Tests.StationExpansionTests.SuppliesRecoveryRoomsAndVisualEvidence" methodname="SuppliesRecoveryRoomsAndVisualEvidence" classname="LunarEscape.Tests.StationExpansionTests" runstate="Runnable" seed="1405635166" result="Passed" start-time="2026-10-10 11:20:34Z" end-time="2026-10-10 11:20:35Z" duration="0.983293" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[Retain Transform Parent is set to true and had an old parent GameObject. However, the old parent "Airlock A Repair" is deactivated so we are choosing not to re-parent upon dropping.
+]]></output>
+            </test-case>
+            <test-case id="1365" name="UnsuitedOpeningShowsBreathAndFailsWithinFiveSeconds" fullname="LunarEscape.Tests.StationExpansionTests.UnsuitedOpeningShowsBreathAndFailsWithinFiveSeconds" methodname="UnsuitedOpeningShowsBreathAndFailsWithinFiveSeconds" classname="LunarEscape.Tests.StationExpansionTests" runstate="Runnable" seed="136781454" result="Passed" start-time="2026-10-10 11:20:35Z" end-time="2026-10-10 11:20:36Z" duration="0.440575" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[Saving results to: C:/Users/MichealC/AppData/LocalLow/Lunar Escape Project/Lunar Escape VR\TestResults.xml
+]]></output>
+            </test-case>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

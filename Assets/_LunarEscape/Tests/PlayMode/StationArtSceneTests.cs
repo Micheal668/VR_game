@@ -429,7 +429,7 @@ namespace LunarEscape.Tests
                 pixels.Apply();
                 var folder = Path.GetFullPath(Path.Combine(Application.dataPath, "../Docs/Previews"));
                 Directory.CreateDirectory(folder);
-                File.WriteAllBytes(Path.Combine(folder, "station-" + name + ".png"), pixels.EncodeToPNG());
+                PreviewEvidence.Write(Path.Combine(folder, "station-" + name + ".png"), pixels.EncodeToPNG());
             }
             finally
             {

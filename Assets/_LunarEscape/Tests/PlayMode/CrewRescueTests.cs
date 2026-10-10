@@ -473,7 +473,7 @@ namespace LunarEscape.Tests
                 RenderPipeline.SubmitRenderRequest(camera, new RenderPipeline.StandardRequest { destination = texture });
                 RenderTexture.active = texture; pixels.ReadPixels(new Rect(0, 0, 1600, 1100), 0, 0); pixels.Apply();
                 string folder = Path.GetFullPath(Path.Combine(Application.dataPath, "../Docs/Previews")); Directory.CreateDirectory(folder);
-                File.WriteAllBytes(Path.Combine(folder, name + ".png"), pixels.EncodeToPNG());
+                PreviewEvidence.Write(Path.Combine(folder, name + ".png"), pixels.EncodeToPNG());
             }
             finally
             { RenderTexture.active = previous; camera.targetTexture = null; texture.Release(); Object.Destroy(pixels); Object.Destroy(texture); Object.Destroy(obj); }

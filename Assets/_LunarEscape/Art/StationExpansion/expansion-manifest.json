@@ -1,0 +1,1154 @@
+{
+  "materials": [
+    {
+      "name": "EX_Shell",
+      "color": [
+        0.72,
+        0.78,
+        0.8,
+        1
+      ],
+      "metallic": 0.1,
+      "roughness": 0.55,
+      "emission": 0
+    },
+    {
+      "name": "EX_White",
+      "color": [
+        0.87,
+        0.9,
+        0.9,
+        1
+      ],
+      "metallic": 0.1,
+      "roughness": 0.55,
+      "emission": 0
+    },
+    {
+      "name": "EX_Blue",
+      "color": [
+        0.06,
+        0.22,
+        0.34,
+        1
+      ],
+      "metallic": 0.1,
+      "roughness": 0.55,
+      "emission": 0
+    },
+    {
+      "name": "EX_Trim",
+      "color": [
+        0.035,
+        0.065,
+        0.09,
+        1
+      ],
+      "metallic": 0.45,
+      "roughness": 0.48,
+      "emission": 0
+    },
+    {
+      "name": "EX_Floor",
+      "color": [
+        0.17,
+        0.23,
+        0.26,
+        1
+      ],
+      "metallic": 0.1,
+      "roughness": 0.72,
+      "emission": 0
+    },
+    {
+      "name": "EX_Copper",
+      "color": [
+        0.9,
+        0.4,
+        0.06,
+        1
+      ],
+      "metallic": 0.25,
+      "roughness": 0.4,
+      "emission": 0
+    },
+    {
+      "name": "EX_Screen",
+      "color": [
+        0.008,
+        0.026,
+        0.04,
+        1
+      ],
+      "metallic": 0.15,
+      "roughness": 0.3,
+      "emission": 0
+    },
+    {
+      "name": "EX_Light",
+      "color": [
+        0.65,
+        0.9,
+        1,
+        1
+      ],
+      "metallic": 0,
+      "roughness": 0.35,
+      "emission": 2
+    },
+    {
+      "name": "EX_Red",
+      "color": [
+        0.65,
+        0.018,
+        0.008,
+        1
+      ],
+      "metallic": 0,
+      "roughness": 0.45,
+      "emission": 0.25
+    },
+    {
+      "name": "EX_Fabric",
+      "color": [
+        0.12,
+        0.26,
+        0.32,
+        1
+      ],
+      "metallic": 0,
+      "roughness": 0.85,
+      "emission": 0
+    },
+    {
+      "name": "EX_Pillow",
+      "color": [
+        0.65,
+        0.72,
+        0.73,
+        1
+      ],
+      "metallic": 0,
+      "roughness": 0.9,
+      "emission": 0
+    },
+    {
+      "name": "EX_Solar",
+      "color": [
+        0.008,
+        0.045,
+        0.14,
+        1
+      ],
+      "metallic": 0.35,
+      "roughness": 0.25,
+      "emission": 0
+    },
+    {
+      "name": "EX_Green",
+      "color": [
+        0.03,
+        0.5,
+        0.25,
+        1
+      ],
+      "metallic": 0,
+      "roughness": 0.4,
+      "emission": 0.2
+    }
+  ],
+  "colliders": [
+    {
+      "name": "Main lobby pressure deck",
+      "position": [
+        0.0,
+        -0.13,
+        0.0
+      ],
+      "size": [
+        8,
+        0.26,
+        8
+      ],
+      "floor": true
+    },
+    {
+      "name": "Main lobby roof",
+      "position": [
+        0.0,
+        3.44,
+        0.0
+      ],
+      "size": [
+        8,
+        0.22,
+        8
+      ],
+      "floor": false
+    },
+    {
+      "name": "Lobby south",
+      "position": [
+        0.0,
+        1.65,
+        -4
+      ],
+      "size": [
+        8,
+        3.3,
+        0.2
+      ],
+      "floor": false
+    },
+    {
+      "name": "Lobby north",
+      "position": [
+        0.0,
+        1.65,
+        4
+      ],
+      "size": [
+        8,
+        3.3,
+        0.2
+      ],
+      "floor": false
+    },
+    {
+      "name": "Lobby west south",
+      "position": [
+        -4,
+        1.65,
+        -1.65
+      ],
+      "size": [
+        0.2,
+        3.3,
+        4.7
+      ],
+      "floor": false
+    },
+    {
+      "name": "Lobby west north",
+      "position": [
+        -4,
+        1.65,
+        3.35
+      ],
+      "size": [
+        0.2,
+        3.3,
+        1.2999999999999998
+      ],
+      "floor": false
+    },
+    {
+      "name": "Portal lintel",
+      "position": [
+        -4,
+        2.99,
+        1.7
+      ],
+      "size": [
+        0.24,
+        0.64,
+        2
+      ],
+      "floor": false
+    },
+    {
+      "name": "Lobby east south",
+      "position": [
+        4,
+        1.65,
+        -1.6
+      ],
+      "size": [
+        0.2,
+        3.3,
+        4.8
+      ],
+      "floor": false
+    },
+    {
+      "name": "Lobby east north",
+      "position": [
+        4,
+        1.65,
+        3.3
+      ],
+      "size": [
+        0.2,
+        3.3,
+        1.4
+      ],
+      "floor": false
+    },
+    {
+      "name": "Portal lintel",
+      "position": [
+        4,
+        2.99,
+        1.7
+      ],
+      "size": [
+        0.24,
+        0.64,
+        1.8
+      ],
+      "floor": false
+    },
+    {
+      "name": "Wall maintenance desk",
+      "position": [
+        -1.1,
+        0.92,
+        -3.32
+      ],
+      "size": [
+        1.65,
+        0.12,
+        0.68
+      ],
+      "floor": false
+    },
+    {
+      "name": "Maintenance desk leg",
+      "position": [
+        -1.78,
+        0.44,
+        -3.32
+      ],
+      "size": [
+        0.1,
+        0.88,
+        0.55
+      ],
+      "floor": false
+    },
+    {
+      "name": "Maintenance desk leg",
+      "position": [
+        -0.42,
+        0.44,
+        -3.32
+      ],
+      "size": [
+        0.1,
+        0.88,
+        0.55
+      ],
+      "floor": false
+    },
+    {
+      "name": "Exit airlock pressure deck",
+      "position": [
+        6.05,
+        -0.13,
+        1.7
+      ],
+      "size": [
+        4.1,
+        0.26,
+        2.1999999999999997
+      ],
+      "floor": true
+    },
+    {
+      "name": "Exit airlock roof",
+      "position": [
+        6.05,
+        3.44,
+        1.7
+      ],
+      "size": [
+        4.1,
+        0.22,
+        2.1999999999999997
+      ],
+      "floor": false
+    },
+    {
+      "name": "Exit airlock south",
+      "position": [
+        6.05,
+        1.65,
+        0.6
+      ],
+      "size": [
+        4.1,
+        3.3,
+        0.2
+      ],
+      "floor": false
+    },
+    {
+      "name": "Exit airlock north",
+      "position": [
+        6.05,
+        1.65,
+        2.8
+      ],
+      "size": [
+        4.1,
+        3.3,
+        0.2
+      ],
+      "floor": false
+    },
+    {
+      "name": "Rear corridor pressure deck",
+      "position": [
+        -7.55,
+        -0.13,
+        1.7
+      ],
+      "size": [
+        7.1,
+        0.26,
+        2.4
+      ],
+      "floor": true
+    },
+    {
+      "name": "Rear corridor roof",
+      "position": [
+        -7.55,
+        3.44,
+        1.7
+      ],
+      "size": [
+        7.1,
+        0.22,
+        2.4
+      ],
+      "floor": false
+    },
+    {
+      "name": "Corridor lab left",
+      "position": [
+        -9.725,
+        1.65,
+        0.5
+      ],
+      "size": [
+        2.75,
+        3.3,
+        0.2
+      ],
+      "floor": false
+    },
+    {
+      "name": "Corridor lab right",
+      "position": [
+        -5.325,
+        1.65,
+        0.5
+      ],
+      "size": [
+        2.6500000000000004,
+        3.3,
+        0.2
+      ],
+      "floor": false
+    },
+    {
+      "name": "Portal lintel",
+      "position": [
+        -7.5,
+        2.99,
+        0.5
+      ],
+      "size": [
+        1.7,
+        0.64,
+        0.24
+      ],
+      "floor": false
+    },
+    {
+      "name": "Corridor bedroom left",
+      "position": [
+        -9.725,
+        1.65,
+        2.9
+      ],
+      "size": [
+        2.75,
+        3.3,
+        0.2
+      ],
+      "floor": false
+    },
+    {
+      "name": "Corridor bedroom right",
+      "position": [
+        -5.325,
+        1.65,
+        2.9
+      ],
+      "size": [
+        2.6500000000000004,
+        3.3,
+        0.2
+      ],
+      "floor": false
+    },
+    {
+      "name": "Portal lintel",
+      "position": [
+        -7.5,
+        2.99,
+        2.9
+      ],
+      "size": [
+        1.7,
+        0.64,
+        0.24
+      ],
+      "floor": false
+    },
+    {
+      "name": "Crew quarters pressure deck",
+      "position": [
+        -7.800000000000001,
+        -0.13,
+        5.25
+      ],
+      "size": [
+        6.000000000000001,
+        0.26,
+        4.699999999999999
+      ],
+      "floor": true
+    },
+    {
+      "name": "Crew quarters roof",
+      "position": [
+        -7.800000000000001,
+        3.44,
+        5.25
+      ],
+      "size": [
+        6.000000000000001,
+        0.22,
+        4.699999999999999
+      ],
+      "floor": false
+    },
+    {
+      "name": "Bedroom west",
+      "position": [
+        -10.8,
+        1.65,
+        5.25
+      ],
+      "size": [
+        0.2,
+        3.3,
+        4.699999999999999
+      ],
+      "floor": false
+    },
+    {
+      "name": "Bedroom east",
+      "position": [
+        -4.8,
+        1.65,
+        5.25
+      ],
+      "size": [
+        0.2,
+        3.3,
+        4.699999999999999
+      ],
+      "floor": false
+    },
+    {
+      "name": "Bedroom headwall",
+      "position": [
+        -7.800000000000001,
+        1.65,
+        7.6
+      ],
+      "size": [
+        6.000000000000001,
+        3.3,
+        0.2
+      ],
+      "floor": false
+    },
+    {
+      "name": "Bed base 0",
+      "position": [
+        -10.03,
+        0.29,
+        6.08
+      ],
+      "size": [
+        1.3,
+        0.52,
+        2.4
+      ],
+      "floor": false
+    },
+    {
+      "name": "Headboard 0",
+      "position": [
+        -10.03,
+        0.84,
+        7.41
+      ],
+      "size": [
+        1.37,
+        1.3,
+        0.1
+      ],
+      "floor": false
+    },
+    {
+      "name": "Bedside cabinet 0",
+      "position": [
+        -8.93,
+        0.43,
+        6.88
+      ],
+      "size": [
+        0.52,
+        0.86,
+        0.7
+      ],
+      "floor": false
+    },
+    {
+      "name": "Bed base 1",
+      "position": [
+        -5.57,
+        0.29,
+        6.08
+      ],
+      "size": [
+        1.3,
+        0.52,
+        2.4
+      ],
+      "floor": false
+    },
+    {
+      "name": "Headboard 1",
+      "position": [
+        -5.57,
+        0.84,
+        7.41
+      ],
+      "size": [
+        1.37,
+        1.3,
+        0.1
+      ],
+      "floor": false
+    },
+    {
+      "name": "Bedside cabinet 1",
+      "position": [
+        -6.67,
+        0.43,
+        6.88
+      ],
+      "size": [
+        0.52,
+        0.86,
+        0.7
+      ],
+      "floor": false
+    },
+    {
+      "name": "Quarters low storage",
+      "position": [
+        -10.52,
+        0.48,
+        3.75
+      ],
+      "size": [
+        0.46,
+        0.96,
+        1.35
+      ],
+      "floor": false
+    },
+    {
+      "name": "Research laboratory pressure deck",
+      "position": [
+        -7.800000000000001,
+        -0.13,
+        -2.0
+      ],
+      "size": [
+        6.000000000000001,
+        0.26,
+        5.0
+      ],
+      "floor": true
+    },
+    {
+      "name": "Research laboratory roof",
+      "position": [
+        -7.800000000000001,
+        3.44,
+        -2.0
+      ],
+      "size": [
+        6.000000000000001,
+        0.22,
+        5.0
+      ],
+      "floor": false
+    },
+    {
+      "name": "Lab west",
+      "position": [
+        -10.8,
+        1.65,
+        -2.0
+      ],
+      "size": [
+        0.2,
+        3.3,
+        5.0
+      ],
+      "floor": false
+    },
+    {
+      "name": "Lab east",
+      "position": [
+        -4.8,
+        1.65,
+        -2.0
+      ],
+      "size": [
+        0.2,
+        3.3,
+        5.0
+      ],
+      "floor": false
+    },
+    {
+      "name": "Lab south",
+      "position": [
+        -7.800000000000001,
+        1.65,
+        -4.5
+      ],
+      "size": [
+        6.000000000000001,
+        3.3,
+        0.2
+      ],
+      "floor": false
+    },
+    {
+      "name": "Science bench",
+      "position": [
+        -8,
+        0.89,
+        -3.92
+      ],
+      "size": [
+        5.15,
+        0.12,
+        0.95
+      ],
+      "floor": false
+    },
+    {
+      "name": "Bench drawer cabinet",
+      "position": [
+        -10,
+        0.42,
+        -3.95
+      ],
+      "size": [
+        1.55,
+        0.84,
+        0.78
+      ],
+      "floor": false
+    },
+    {
+      "name": "Bench drawer cabinet",
+      "position": [
+        -8.1,
+        0.42,
+        -3.95
+      ],
+      "size": [
+        1.55,
+        0.84,
+        0.78
+      ],
+      "floor": false
+    },
+    {
+      "name": "Bench drawer cabinet",
+      "position": [
+        -6.15,
+        0.42,
+        -3.95
+      ],
+      "size": [
+        1.55,
+        0.84,
+        0.78
+      ],
+      "floor": false
+    },
+    {
+      "name": "Lab terminal plinth",
+      "position": [
+        -5.4,
+        0.6,
+        -1.35
+      ],
+      "size": [
+        0.7,
+        1.2,
+        0.7
+      ],
+      "floor": false
+    },
+    {
+      "name": "Lab terminal worktop",
+      "position": [
+        -5.7,
+        1.16,
+        -1.5
+      ],
+      "size": [
+        1.55,
+        0.12,
+        1.15
+      ],
+      "floor": false
+    },
+    {
+      "name": "Sample storage shelf",
+      "position": [
+        -10.4,
+        1.1,
+        -1.1
+      ],
+      "size": [
+        0.6,
+        0.13,
+        2.2
+      ],
+      "floor": false
+    },
+    {
+      "name": "Sample sorting table",
+      "position": [
+        -7.9,
+        0.93,
+        -1.55
+      ],
+      "size": [
+        2.2,
+        0.12,
+        1.4
+      ],
+      "floor": false
+    },
+    {
+      "name": "Sample sorting pedestal",
+      "position": [
+        -7.9,
+        0.42,
+        -1.55
+      ],
+      "size": [
+        0.9,
+        0.84,
+        0.65
+      ],
+      "floor": false
+    },
+    {
+      "name": "Life support engineering pressure deck",
+      "position": [
+        -13.55,
+        -0.13,
+        1.7000000000000002
+      ],
+      "size": [
+        4.9,
+        0.26,
+        5.9
+      ],
+      "floor": true
+    },
+    {
+      "name": "Life support engineering roof",
+      "position": [
+        -13.55,
+        3.44,
+        1.7000000000000002
+      ],
+      "size": [
+        4.9,
+        0.22,
+        5.9
+      ],
+      "floor": false
+    },
+    {
+      "name": "Engineering south",
+      "position": [
+        -13.55,
+        1.65,
+        -1.25
+      ],
+      "size": [
+        4.9,
+        3.3,
+        0.2
+      ],
+      "floor": false
+    },
+    {
+      "name": "Engineering north",
+      "position": [
+        -13.55,
+        1.65,
+        4.65
+      ],
+      "size": [
+        4.9,
+        3.3,
+        0.2
+      ],
+      "floor": false
+    },
+    {
+      "name": "Engineering east south",
+      "position": [
+        -11.1,
+        1.65,
+        -0.275
+      ],
+      "size": [
+        0.2,
+        3.3,
+        1.95
+      ],
+      "floor": false
+    },
+    {
+      "name": "Engineering east north",
+      "position": [
+        -11.1,
+        1.65,
+        3.6750000000000003
+      ],
+      "size": [
+        0.2,
+        3.3,
+        1.9500000000000002
+      ],
+      "floor": false
+    },
+    {
+      "name": "Portal lintel",
+      "position": [
+        -11.1,
+        2.99,
+        1.7
+      ],
+      "size": [
+        0.24,
+        0.64,
+        2
+      ],
+      "floor": false
+    },
+    {
+      "name": "Engineering window south pier",
+      "position": [
+        -16,
+        1.65,
+        -0.65
+      ],
+      "size": [
+        0.2,
+        3.3,
+        1.2
+      ],
+      "floor": false
+    },
+    {
+      "name": "Engineering window north pier",
+      "position": [
+        -16,
+        1.65,
+        4.075
+      ],
+      "size": [
+        0.2,
+        3.3,
+        1.1500000000000004
+      ],
+      "floor": false
+    },
+    {
+      "name": "Engineering window sill",
+      "position": [
+        -16,
+        0.51,
+        1.725
+      ],
+      "size": [
+        0.2,
+        1.02,
+        3.55
+      ],
+      "floor": false
+    },
+    {
+      "name": "Engineering window lintel",
+      "position": [
+        -16,
+        3.1,
+        1.725
+      ],
+      "size": [
+        0.2,
+        0.4,
+        3.55
+      ],
+      "floor": false
+    },
+    {
+      "name": "Oxygen generator cabinet",
+      "position": [
+        -13.1,
+        1.13,
+        -0.7
+      ],
+      "size": [
+        2.35,
+        2.26,
+        0.83
+      ],
+      "floor": false
+    },
+    {
+      "name": "Power distribution backing",
+      "position": [
+        -13.4,
+        1.51,
+        4.38
+      ],
+      "size": [
+        2.7,
+        1.76,
+        0.2
+      ],
+      "floor": false
+    },
+    {
+      "name": "Power service lower console",
+      "position": [
+        -13.4,
+        0.78,
+        4.13
+      ],
+      "size": [
+        2.7,
+        0.15,
+        0.65
+      ],
+      "floor": false
+    }
+  ],
+  "rooms": [
+    {
+      "name": "Main lobby",
+      "position": [
+        0.0,
+        1.65,
+        0.0
+      ],
+      "size": [
+        8,
+        3.3,
+        8
+      ]
+    },
+    {
+      "name": "Exit airlock",
+      "position": [
+        6.05,
+        1.65,
+        1.7
+      ],
+      "size": [
+        4.1,
+        3.3,
+        2.1999999999999997
+      ]
+    },
+    {
+      "name": "Rear corridor",
+      "position": [
+        -7.55,
+        1.65,
+        1.7
+      ],
+      "size": [
+        7.1,
+        3.3,
+        2.4
+      ]
+    },
+    {
+      "name": "Crew quarters",
+      "position": [
+        -7.800000000000001,
+        1.65,
+        5.25
+      ],
+      "size": [
+        6.000000000000001,
+        3.3,
+        4.699999999999999
+      ]
+    },
+    {
+      "name": "Research laboratory",
+      "position": [
+        -7.800000000000001,
+        1.65,
+        -2.0
+      ],
+      "size": [
+        6.000000000000001,
+        3.3,
+        5.0
+      ]
+    },
+    {
+      "name": "Life support engineering",
+      "position": [
+        -13.55,
+        1.65,
+        1.7000000000000002
+      ],
+      "size": [
+        4.9,
+        3.3,
+        5.9
+      ]
+    }
+  ],
+  "meshCount": 50,
+  "editableObjects": 638
+}

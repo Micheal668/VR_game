@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="2" result="Passed" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-10 11:11:30Z" end-time="2026-10-10 11:11:32Z" duration="2.6700981">
+  <test-suite type="TestSuite" id="1202" name="Lunar Escape VR" fullname="Lunar Escape VR" runstate="Runnable" testcasecount="168" result="Passed" start-time="2026-10-10 11:11:30Z" end-time="2026-10-10 11:11:32Z" duration="2.670098" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="PlayMode" />
+    </properties>
+    <test-suite type="Assembly" id="1398" name="LunarEscape.PlayModeTests.dll" fullname="C:/Coding/Projects/VR_game/Library/ScriptAssemblies/LunarEscape.PlayModeTests.dll" runstate="Runnable" testcasecount="168" result="Passed" start-time="2026-10-10 11:11:30Z" end-time="2026-10-10 11:11:32Z" duration="2.663519" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="43812" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="PlayMode" />
+        <property name="EditorOnly" value="False" />
+      </properties>
+      <test-suite type="TestSuite" id="1399" name="LunarEscape" fullname="LunarEscape" runstate="Runnable" testcasecount="168" result="Passed" start-time="2026-10-10 11:11:30Z" end-time="2026-10-10 11:11:32Z" duration="2.661393" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-suite type="TestSuite" id="1400" name="Tests" fullname="LunarEscape.Tests" runstate="Runnable" testcasecount="168" result="Passed" start-time="2026-10-10 11:11:30Z" end-time="2026-10-10 11:11:32Z" duration="2.656332" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-suite type="TestFixture" id="1357" name="StationExpansionTests" fullname="LunarEscape.Tests.StationExpansionTests" classname="LunarEscape.Tests.StationExpansionTests" runstate="Runnable" testcasecount="9" result="Passed" start-time="2026-10-10 11:11:30Z" end-time="2026-10-10 11:11:32Z" duration="2.651458" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1366" name="BaseDoorRemainsVisibleAndSolidUntilOpenedAndControlIsBesideBedroom" fullname="LunarEscape.Tests.StationExpansionTests.BaseDoorRemainsVisibleAndSolidUntilOpenedAndControlIsBesideBedroom" methodname="BaseDoorRemainsVisibleAndSolidUntilOpenedAndControlIsBesideBedroom" classname="LunarEscape.Tests.StationExpansionTests" runstate="Runnable" seed="180283348" result="Passed" start-time="2026-10-10 11:11:30Z" end-time="2026-10-10 11:11:32Z" duration="2.097056" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1359" name="IndependentCrewRescueDressingAndFullGroundRoute" fullname="LunarEscape.Tests.StationExpansionTests.IndependentCrewRescueDressingAndFullGroundRoute" methodname="IndependentCrewRescueDressingAndFullGroundRoute" classname="LunarEscape.Tests.StationExpansionTests" runstate="Runnable" seed="461551780" result="Passed" start-time="2026-10-10 11:11:32Z" end-time="2026-10-10 11:11:32Z" duration="0.543531" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[Saving results to: C:/Users/MichealC/AppData/LocalLow/Lunar Escape Project/Lunar Escape VR\TestResults.xml
+]]></output>
+            </test-case>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

@@ -13,6 +13,13 @@ namespace LunarEscape
         [Tooltip("绿区：手轮累计转角范围（度）。默认约两圈。")]
         [SerializeField] private Vector2 greenZone = new(630f, 810f);
         [SerializeField] private CockpitLamp lamp;
+        [SerializeField] private bool randomizeEachAttempt;
+        [SerializeField] private TMPro.TMP_Text turnHint;
+        private System.Random random;
+        public int TurnDirection { get; private set; } = 1;
+        public float ProgressAngle => valve == null ? 0 : valve.Angle * TurnDirection;
+        public bool Randomized => randomizeEachAttempt;
+        public float OxygenLeakPerSecond => CanWork && OverPressure ? 2.5f : 0f;
         private Quaternion needleRest;
         private bool captured;
         private AudioSource hiss;
@@ -21,11 +28,15 @@ namespace LunarEscape
 
         public ValveWheel Valve => valve;
         public Vector2 GreenZone => greenZone;
-        public override bool IsFixed => valve != null && valve.Angle >= greenZone.x && valve.Angle <= greenZone.y;
-        public bool OverPressure => valve != null && valve.Angle > greenZone.y;
+        public override bool IsFixed => valve != null && ProgressAngle >= greenZone.x && ProgressAngle <= greenZone.y;
+        public bool OverPressure => valve != null && (ProgressAngle > greenZone.y || randomizeEachAttempt && ProgressAngle < -greenZone.y);
 
         // 显示用的压差（千帕）：全关时 18 kPa，进入绿区后接近 0。
-        public float DifferentialKPa => valve == null ? 18f : Mathf.Max(0f, 18f * (1f - valve.Angle / greenZone.x));
+        public float DifferentialKPa => valve == null ? 18f : Mathf.Max(0f, 18f * (1f - ProgressAngle / greenZone.x));
+
+        public void ConfigureRandomization(TMPro.TMP_Text hint)
+        { randomizeEachAttempt = true; turnHint = hint; }
+        public void SetRandomSeed(int seed) => random = new System.Random(seed);
 
         public void Configure(ValveWheel wheel, Transform gaugeNeedle, CockpitLamp indicator)
         {
@@ -37,6 +48,7 @@ namespace LunarEscape
         {
             Capture();
             hiss = FeedbackSounds.CreateLoop(valve.transform, "Pressure Relief Hiss", FeedbackSound.ThrusterLoop, 1f);
+            if (randomizeEachAttempt) ResetFault();
         }
 
         private void Capture()
@@ -53,7 +65,11 @@ namespace LunarEscape
         {
             valve.Enabled = CanWork;
             if (needle != null)
-                needle.localRotation = needleRest * Quaternion.AngleAxis(-needleSweep * Mathf.Clamp01(valve.Angle / valve.MaxAngle), Vector3.forward);
+                // Keep the physical green band meaningful for every randomized target.
+                needle.localRotation = needleRest * Quaternion.AngleAxis(-needleSweep * Mathf.Clamp01(GaugeAngle() / valve.MaxAngle), Vector3.forward);
+            if (turnHint != null)
+                turnHint.text = (TurnDirection > 0 ? "CCW" : "CW") + "  " + Mathf.RoundToInt(Mathf.Max(0, ProgressAngle)) + "° / "
+                    + Mathf.RoundToInt(greenZone.x) + "–" + Mathf.RoundToInt(greenZone.y) + "°";
             bool over = OverPressure;
             // 泄压阀在超压时持续嘶嘶作响，往回拧到绿区后停止。
             hiss.volume = Mathf.MoveTowards(hiss.volume, over ? 0.35f : 0f, Time.deltaTime * 2f);
@@ -68,9 +84,25 @@ namespace LunarEscape
 
         public override void ResetFault()
         {
-            valve.ResetAngle();
+            if (randomizeEachAttempt)
+            {
+                random ??= new System.Random();
+                TurnDirection = random.Next(2) == 0 ? -1 : 1;
+                float center = random.Next(4, 11) * 45f;
+                greenZone = new Vector2(center - 55f, center + 55f);
+                valve.ConfigureAttempt(true, (float)random.NextDouble() * 360f);
+            }
+            else valve.ResetAngle();
             wasFixed = wasOver = false;
             RaiseChanged();
+        }
+
+        private float GaugeAngle()
+        {
+            if (!randomizeEachAttempt) return ProgressAngle;
+            if (ProgressAngle <= greenZone.x) return Mathf.Max(0, ProgressAngle) / greenZone.x * 630f;
+            if (ProgressAngle <= greenZone.y) return Mathf.Lerp(630f, 810f, Mathf.InverseLerp(greenZone.x, greenZone.y, ProgressAngle));
+            return Mathf.Lerp(810f, 1080f, Mathf.InverseLerp(greenZone.y, valve.MaxAngle, ProgressAngle));
         }
     }
 }

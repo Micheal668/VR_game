@@ -111,7 +111,7 @@ namespace LunarEscape
                     {
                         float step = Mathf.Min(frameSeconds, RemainingSeconds);
                         // 修好时就结束维修阶段，剩余帧时间留给后面的阶段。
-                        if (canRepair) step = Mathf.Min(step, repairTask.RemainingSeconds);
+                        if (canRepair && repairTask.State != RepairState.Complete) step = Mathf.Min(step, repairTask.RemainingSeconds);
                         if (lifeSupport != null) step = lifeSupport.LimitStep(step);
                         RepairState previousRepairState = repairTask.State;
                         RemainingSeconds = Mathf.Max(0f, RemainingSeconds - step);
@@ -122,7 +122,19 @@ namespace LunarEscape
                         if (version != attemptVersion) return;
 
                         // 在维修截止点恰好完成，仍然获得修复奖励。
-                        if (repairTask.State == RepairState.Complete)
+                        if (repairTask.State == RepairState.Complete && lifeSupport != null && lifeSupport.ExpandedStation)
+                        {
+                            RepairRestored = true;
+                            EvacuationBudgetSeconds = config.BaseEvacuationSeconds + config.RepairBonusSeconds;
+                            if (RemainingSeconds <= 0f) EnterEvacuation();
+                            else
+                            {
+                                Changed?.Invoke();
+                                if (frameSeconds > 0f && step > 0f) break;
+                                return;
+                            }
+                        }
+                        else if (repairTask.State == RepairState.Complete)
                         {
                             RepairRestored = true;
                             EvacuationBudgetSeconds = config.BaseEvacuationSeconds + config.RepairBonusSeconds;

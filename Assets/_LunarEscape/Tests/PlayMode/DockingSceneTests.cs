@@ -218,7 +218,7 @@ namespace LunarEscape.Tests
                 RenderPipeline.SubmitRenderRequest(camera,new RenderPipeline.StandardRequest{destination=rt});
                 RenderTexture.active=rt;pixels.ReadPixels(new Rect(0,0,1600,1100),0,0);pixels.Apply();
                 var folder=Path.GetFullPath(Path.Combine(Application.dataPath,"../Docs/Previews"));Directory.CreateDirectory(folder);
-                File.WriteAllBytes(Path.Combine(folder,"earth-"+name+".png"),pixels.EncodeToPNG());
+                PreviewEvidence.Write(Path.Combine(folder,"earth-"+name+".png"),pixels.EncodeToPNG());
                 if(skyOnly)Assert.That(pixels.GetPixels32().Count(p=>p.b>100&&p.r>80),Is.GreaterThan(1000),"地球天空应实际渲染蓝白色云层。");
             }
             finally{RenderTexture.active=previous;camera.targetTexture=null;rt.Release();Object.Destroy(pixels);Object.Destroy(rt);Object.Destroy(obj);}
@@ -394,7 +394,7 @@ namespace LunarEscape.Tests
             var obj=new GameObject("Docking verification camera");var camera=obj.AddComponent<Camera>();camera.CopyFrom(Camera.main);camera.enabled=false;camera.fieldOfView=70;camera.transform.SetPositionAndRotation(eye,Quaternion.LookRotation(target-eye));
             var rt=new RenderTexture(1600,1100,24);var pixels=new Texture2D(1600,1100,TextureFormat.RGB24,false);var previous=RenderTexture.active;
             var folder=Path.GetFullPath(Path.Combine(Application.dataPath,"../Logs/Previews"));Directory.CreateDirectory(folder);
-            try{rt.Create();camera.targetTexture=rt;RenderPipeline.SubmitRenderRequest(camera,new RenderPipeline.StandardRequest{destination=rt});RenderTexture.active=rt;pixels.ReadPixels(new Rect(0,0,1600,1100),0,0);pixels.Apply();File.WriteAllBytes(Path.Combine(folder,"docking-"+name+".png"),pixels.EncodeToPNG());}
+            try{rt.Create();camera.targetTexture=rt;RenderPipeline.SubmitRenderRequest(camera,new RenderPipeline.StandardRequest{destination=rt});RenderTexture.active=rt;pixels.ReadPixels(new Rect(0,0,1600,1100),0,0);pixels.Apply();PreviewEvidence.Write(Path.Combine(folder,"docking-"+name+".png"),pixels.EncodeToPNG());}
             finally{RenderTexture.active=previous;camera.targetTexture=null;rt.Release();Object.Destroy(pixels);Object.Destroy(rt);Object.Destroy(obj);}
         }
     }

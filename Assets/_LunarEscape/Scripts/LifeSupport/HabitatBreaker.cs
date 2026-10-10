@@ -17,6 +17,8 @@ namespace LunarEscape
         private AudioSource source;
         private float onTime = -1f;
         private bool deniedThisPull;
+        [SerializeField] private StationPatchPuzzle circuitPuzzle;
+        public void ConfigureCircuit(StationPatchPuzzle puzzle) => circuitPuzzle = puzzle;
 
         public ReleaseLever Lever => lever;
         public bool IsOn { get; private set; }
@@ -42,12 +44,20 @@ namespace LunarEscape
 
         private void Awake() => source = FeedbackSounds.CreateSource(lever != null ? lever.transform : transform, "Breaker Audio", 1f);
 
-        private void OnEnable() { if (mission != null) mission.PhaseChanged += OnPhaseChanged; }
+        private void OnEnable()
+        {
+            if (mission == null) return;
+            mission.PhaseChanged += OnPhaseChanged;
+            // The ground is inactive during flight and can miss the retry event.
+            // Reconcile before the first lighting update when it returns.
+            if (mission.Phase == StationMissionPhase.Briefing) ResetBreaker();
+        }
         private void OnDisable() { if (mission != null) mission.PhaseChanged -= OnPhaseChanged; }
 
         private void OnPhaseChanged(StationMissionPhase phase) { if (phase == StationMissionPhase.Briefing) ResetBreaker(); }
 
-        private bool CanSwitch => mission != null && (mission.Phase == StationMissionPhase.Repair || mission.Phase == StationMissionPhase.Evacuation);
+        private bool CanSwitch => mission != null && (mission.Phase == StationMissionPhase.Repair || mission.Phase == StationMissionPhase.Evacuation)
+            && (circuitPuzzle == null || circuitPuzzle.IsSolved && mission.LifeSupport != null && mission.LifeSupport.BasePower > 0);
 
         private void Update()
         {
@@ -64,13 +74,14 @@ namespace LunarEscape
             }
             if (!lever.isSelected) deniedThisPull = false;
             if (lamp != null) lamp.State = IsOn ? LampState.Done : CanSwitch ? LampState.Next : LampState.Busy;
-            if (emergencyLight != null) emergencyLight.enabled = !IsOn || Brightness < 0.5f;
+            if (emergencyLight != null) emergencyLight.enabled = (!IsOn || Brightness < 0.5f)
+                && (mission.LifeSupport == null || mission.LifeSupport.BasePower > 0);
         }
 
         // 也供开发菜单与测试使用：直接合闸。
         public void SwitchOn()
         {
-            if (IsOn) return;
+            if (IsOn || circuitPuzzle != null && !CanSwitch) return;
             IsOn = true;
             onTime = Time.time;
             lever.LockedDown = true;

@@ -3,6 +3,7 @@
 #   powershell -ExecutionPolicy Bypass -File Tools/generate_voice_lines.ps1
 # 结果写入 Assets/_LunarEscape/Audio/Voice/<id>.wav（16 kHz 单声道）。无线电音色（带通、底噪、提示音）在游戏中实时添加。
 # 本文件需保存为带 BOM 的 UTF-8，Windows PowerShell 5.1 才能正确读取中文注释。
+param([string]$OnlyPrefix = '')
 $ErrorActionPreference = 'Stop'
 $root = Split-Path -Parent $PSScriptRoot
 $table = Join-Path $PSScriptRoot 'voice_lines.tsv'
@@ -59,6 +60,7 @@ $count = 0
 foreach ($line in Get-Content -Encoding UTF8 $table) {
     if ($line.Trim() -eq '' -or $line.StartsWith('#')) { continue }
     $id, $who, $text = $line -split "`t", 3
+    if ($OnlyPrefix -ne '' -and -not $id.StartsWith($OnlyPrefix)) { continue }
     $speaker = $speakers[$who]
     if ($null -eq $speaker) { throw "未知说话人 '$who'（$id）" }
     $synth.Voice = $speaker.Voice

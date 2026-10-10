@@ -14,6 +14,12 @@ namespace LunarEscape
         [SerializeField] private RepairContact doorRepairContact;
         [Tooltip("气闸 A 抢修（三处故障 + 手动开门拉杆）。设置后取代“工具保持在门锁上”的维修。")]
         [SerializeField] private AirlockRepair airlockRepair;
+        [SerializeField] private BoxCollider[] additionalHabitatVolumes = Array.Empty<BoxCollider>();
+        [SerializeField] private bool expandedStation;
+        public bool ExpandedStation => expandedStation;
+        public event Action<float> GroundTimeAdvanced;
+        public void ConfigureExpansion(BoxCollider[] rooms)
+        { expandedStation = true; additionalHabitatVolumes = rooms; }
         private System.Random random;
         private uint version;
         private bool donHeld;
@@ -52,12 +58,29 @@ namespace LunarEscape
         public bool IsGroundActive => IsConfigured && isActiveAndEnabled && Station.Phase != StationMissionPhase.Briefing && !Station.IsTerminal;
         public bool HudPowered => SuitWorn && SuitPower > 0 && Station != null && !Station.IsTerminal;
         public float ExternalTemperature => config == null ? 22 : IsDaylight ? config.DaylightTemperature : config.NightTemperature;
-        public bool IsInsideHabitat => IsConfigured && Player != null && habitatVolume.bounds.Contains(Player.transform.TransformPoint(Player.center));
+        public bool IsInsideHabitat => IsConfigured && Player != null && ContainsHabitat(Player.transform.TransformPoint(Player.center));
+        public bool ContainsHabitat(Vector3 point)
+        {
+            if (habitatVolume != null && habitatVolume.bounds.Contains(point)) return true;
+            foreach (var room in additionalHabitatVolumes) if (room != null && room.bounds.Contains(point)) return true;
+            return false;
+        }
         public bool HasBaseAir => !DoorOpen && BaseOxygen > 0 && IsInsideHabitat;
         public bool CanBreathe => SuitWorn ? SuitOxygen > 0 : HasBaseAir;
         public bool ThermalProtection => SuitWorn && SuitPower > 0 || !DoorOpen && BasePower > 0 && IsInsideHabitat;
         public float SuitOxygenRate => config == null ? 0 : config.SuitOxygenRate * (SuitPower > 0 ? 1 : config.UnpoweredOxygenMultiplier);
-        public float BaseOxygenRate => config == null || DoorOpen ? 0 : config.BaseOxygenRate * (BasePower > 0 ? 1 : 1.6f);
+        public float ValveLeakRate
+        {
+            get
+            {
+                float rate = 0;
+                if (airlockRepair != null) foreach (var fault in airlockRepair.Faults)
+                    if (fault is ValveFault valve) rate += valve.OxygenLeakPerSecond;
+                return rate;
+            }
+        }
+        public float BaseOxygenRate => config == null ? 0 : DoorOpen ? (expandedStation ? 100f : 0f)
+            : config.BaseOxygenRate * (BasePower > 0 ? 1 : 1.6f) * (Station.RepairRestored ? .5f : 1f) + ValveLeakRate;
         public float SuitOxygenSeconds => SuitOxygenRate > 0 ? SuitOxygen / SuitOxygenRate : 0;
         public float SuitPowerSeconds => config != null ? SuitPower / config.SuitPowerRate : 0;
         public float BaseOxygenSeconds => BaseOxygenRate > 0 ? BaseOxygen / BaseOxygenRate : 0;
@@ -109,6 +132,9 @@ namespace LunarEscape
             DonProgressSeconds = HypoxiaSeconds = ElapsedSeconds = 0; SuppliesUsed = 0;
             BaseTemperature = 22; BodyTemperature = 37; FeedbackKey = "life.feedback.ready";
             if (doorRepairContact != null) { doorRepairContact.enabled = false; DoorRepairTask.Configure(config.DoorRepairSeconds); }
+            // A retry during the opening is already in Briefing, so no phase-change
+            // event is emitted. Reset physical faults on every actual new attempt.
+            if (AttemptNumber > 1 && airlockRepair != null) airlockRepair.ResetAirlock();
             Changed?.Invoke();
         }
         public void ConfigureDonContact(Func<bool> probe) => donContact = probe;
@@ -122,7 +148,7 @@ namespace LunarEscape
         {
             if (!CanOpenDoor) return false;
             uint attempt = version;
-            DoorOpen = true; BaseOxygen = 0; FeedbackKey = SuitWorn ? "life.feedback.vented" : "life.feedback.no_suit";
+            DoorOpen = true; if (!expandedStation) BaseOxygen = 0; FeedbackKey = SuitWorn ? "life.feedback.vented" : "life.feedback.no_suit";
             Station.BeginLifeSupportEvacuation(this);
             if (attempt != version || !DoorOpen) return false;
             Changed?.Invoke(); return attempt == version && DoorOpen;
@@ -137,7 +163,7 @@ namespace LunarEscape
             void Limit(float seconds) { if (seconds > .000001f) result = Mathf.Min(result, seconds); }
             if (donHeld && CanDon && (donContact == null || donContact())) Limit(config.DonSeconds - DonProgressSeconds);
             if (WorkingOnDoor) Limit(DoorRepairTask.RemainingSeconds);
-            if (!DoorOpen && BaseOxygen > 0) Limit(BaseOxygen / BaseOxygenRate);
+            if (BaseOxygen > 0 && BaseOxygenRate > 0) Limit(BaseOxygen / BaseOxygenRate);
             if (BasePower > 0) Limit(BasePower / config.BasePowerRate);
             if (SuitWorn)
             {
@@ -190,6 +216,7 @@ namespace LunarEscape
                 { SuitWorn = true; donHeld = false; DonProgressSeconds = config.DonSeconds; HypoxiaSeconds = 0; FeedbackKey = "life.feedback.suited"; }
             }
             if (attempt == version && DoorRepairTask != null) DoorRepairTask.Tick(repairingDoor, seconds);
+            if (attempt == version) GroundTimeAdvanced?.Invoke(seconds);
             if (attempt == version) Changed?.Invoke();
         }
         // 奖励时间折算成空气：舱门关着时补基地空气，开门后补航天服氧气；都不超过 100%。
@@ -200,6 +227,13 @@ namespace LunarEscape
             else if (SuitWorn) SuitOxygen = Mathf.Min(100, SuitOxygen + seconds * config.SuitOxygenRate);
             else return false;
             Changed?.Invoke(); return true;
+        }
+        public bool DrainBasePower(float percentagePoints)
+        {
+            if (!IsGroundActive || !float.IsFinite(percentagePoints) || percentagePoints <= 0) return false;
+            BasePower = Mathf.Max(0, BasePower - percentagePoints);
+            Changed?.Invoke();
+            return true;
         }
         public bool CanUseSupply(CargoItem item)
         {

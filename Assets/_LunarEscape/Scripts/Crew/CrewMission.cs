@@ -73,7 +73,8 @@ namespace LunarEscape
         // 跟随只使用本步救援完成之后的剩余秒数；监听者必须在此回调内完成实际位置更新。
         public event Action<float> FollowingTimeAdvanced;
 
-        public bool CanRescue => GroundActionsAllowed && CommanderState == CrewState.Trapped && CommanderHealth > 0
+        public bool CanRescue => !(station.LifeSupport != null && station.LifeSupport.ExpandedStation)
+            && GroundActionsAllowed && CommanderState == CrewState.Trapped && CommanderHealth > 0
             && commander.gameObject.activeInHierarchy && rescueAnchor.gameObject.activeInHierarchy
             && NearPlayer(rescueAnchor.position, commander.position.y, config.InteractionDistance)
             && NearPlayer(commander.position, commander.position.y, config.InteractionDistance);
@@ -261,6 +262,7 @@ namespace LunarEscape
 
         private void BeginAlarm()
         {
+            if (station.LifeSupport != null && station.LifeSupport.ExpandedStation) return;
             uint current = version;
             CommanderHealth = station.RepairRestored ? config.RepairedHealth : config.UnrepairedHealth;
             CommanderInjuryPerSecond = station.RepairRestored ? config.RepairedInjuryPerSecond : config.UnrepairedInjuryPerSecond;
@@ -273,6 +275,7 @@ namespace LunarEscape
         private void FollowThroughAirlock()
         {
             var life = boundLifeSupport;
+            if (life != null && life.ExpandedStation) return;
             if (life == null || !life.DoorOpen || !life.SuitWorn || !GroundActionsAllowed || CommanderHealth <= 0
                 || CommanderState != CrewState.Ready && CommanderState != CrewState.Trapped) return;
             uint current = version;
@@ -281,6 +284,36 @@ namespace LunarEscape
             if (current != version) return;
             PublishRescueCompleted(current);
             if (current == version) Changed?.Invoke();
+        }
+
+        internal void TrapInBedroom()
+        {
+            if (station.LifeSupport == null || !station.LifeSupport.ExpandedStation || station.IsTerminal) return;
+            CommanderState = CrewState.Trapped;
+            CommanderHealth = 100; CommanderInjuryPerSecond = 0;
+            CommanderRescued = false; rescueHeld = false;
+            PublishCommanderState(version); Changed?.Invoke();
+        }
+
+        internal void ReleaseFromBedroom()
+        {
+            if (CommanderState != CrewState.Trapped || station.IsTerminal) return;
+            CommanderRescued = true; CommanderState = CrewState.Ready;
+            PublishCommanderState(version); PublishRescueCompleted(version); Changed?.Invoke();
+        }
+
+        internal void FinishIndependentDressing()
+        {
+            if (!CommanderRescued || CommanderHealth <= 0 || station.IsTerminal) return;
+            CommanderState = CrewState.Following;
+            PublishCommanderState(version); Changed?.Invoke();
+        }
+
+        internal void SuffocateUnsuitedCommander()
+        {
+            if (CommanderHealth <= 0 || CommanderBoarded || station.IsTerminal) return;
+            CommanderHealth = 0; CommanderState = CrewState.Dead;
+            PublishCommanderState(version); Changed?.Invoke();
         }
 
         private void ResolveBoarding()

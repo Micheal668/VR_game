@@ -35,6 +35,7 @@ namespace LunarEscape.Tests
             Assert.That(director.StationHints, Is.False, "默认关闭基地逐步提示");
             director.StationHints = true;
             while (Time.time < 1.05f) yield return null;
+            yield return ExpansionTestSteps.Wake(session);
         }
 
         [TearDown] public void Restore() { Time.captureDeltaTime = previousDelta; driver?.Dispose(); steps?.Dispose(); }
@@ -50,55 +51,46 @@ namespace LunarEscape.Tests
             Assert.That(emergency.range, Is.LessThanOrEqualTo(2f));
             var environment = session.GetComponent<LifeSupportEnvironment>();
             Assert.That(environment.GlowRenderers, Is.Not.Empty, "顶棚灯带等自发光灯具纳入断电控制");
-            Assert.That(MaxGlow(environment, "LB_LightDiffuser"), Is.LessThan(0.05f), "顶棚灯带断电后不再发光");
+            Assert.That(MaxGlow(environment, "EX_Light"), Is.LessThan(0.05f), "顶棚灯带断电后不再发光");
 
             session.BeginMission();
-            breaker.SwitchOn();
+            yield return ExpansionTestSteps.Power(session);
             for (float t = 0; t < 2f; t += Time.deltaTime) yield return null;
             Assert.That(RenderSettings.reflectionIntensity, Is.EqualTo(1f).Within(0.001f), "合闸后恢复原有反射");
-            Assert.That(MaxGlow(environment, "LB_LightDiffuser"), Is.GreaterThan(0.5f), "合闸后灯带重新发光");
+            Assert.That(MaxGlow(environment, "EX_Light"), Is.GreaterThan(0.5f), "合闸后灯带重新发光");
             Assert.That(emergency.enabled, Is.False, "照明恢复后应急灯熄灭");
         }
 
-        [UnityTest] public IEnumerator MissionControlGuidesEachStageByVoice()
+        [UnityTest] public IEnumerator MissionControlGuidesExpandedRescueByVoice()
         {
-            Assert.That(voice.Lines.Count(l => l.speaker == VoiceSpeaker.MissionControl), Is.GreaterThanOrEqualTo(20));
-            Assert.That(voice.Lines.Count(l => l.speaker == VoiceSpeaker.Commander), Is.GreaterThanOrEqualTo(20));
-            Assert.That(voice.Lines.All(l => l.clip != null && l.clip.length > 0.5f), "每条语音都有音频");
-
-            Assert.That(director.Objective(), Is.EqualTo("cup_hello"));
-            yield return Said("cup_hello", 6f);
-            session.BeginMission();
-            yield return Said("cup_breaker", 20f);
-            breaker.SwitchOn();
-            yield return Said("cmd_lights", 20f);
-            yield return Said("cup_suit", 20f);
-            steps.Don();
-            yield return Said("cmd_suit", 20f);
-            yield return Said("cup_suit_done", 20f);
-            Assert.That(director.Objective(), Is.EqualTo("cup_fuse"), "穿好宇航服后的下一步是配电盒");
-            yield return Said("cup_fuse", 30f);
+            Assert.That(voice.Lines.All(l => l.clip != null && l.clip.length > .5f), Is.True);
+            yield return Said("cup_exp_wake", 6f);
+            steps.MoveBody(new Vector3(-7.5f,0,1.7f)); session.Advance(2.01f);
+            yield return Said("cup_exp_power", 30f);
+            yield return ExpansionTestSteps.Power(session);
+            yield return Said("cup_exp_lab", 30f);
+            yield return ExpansionTestSteps.Solve(session.GetComponent<StationExpansionMission>().Laboratory);
+            yield return Said("cup_exp_control", 30f);
+            Assert.That(voice.History, Does.Not.Contain("cup_hello"));
+            Assert.That(voice.History, Does.Not.Contain("cmd_suit"));
         }
 
-        [UnityTest] public IEnumerator ByDefaultMissionControlOnlyOpensAndSendsCrewOutWhileCommanderComments()
+        [UnityTest] public IEnumerator DefaultVoiceExplainsIndependentSuitsAndSendsPlayerOut()
         {
             director.StationHints = false;
-            yield return Said("cup_hello", 6f);
-            session.BeginMission(); breaker.SwitchOn();
-            yield return Said("cmd_lights", 20f);
+            yield return Said("cup_exp_wake", 6f);
             steps.Don();
-            yield return Said("cmd_suit", 20f);
-            life.AirlockRepair.SkipRepair();
-            steps.MoveBody(life.DoorControl.position + Vector3.left * .8f);
-            Assert.That(life.TryOpenDoor(), Is.True);
-            yield return Said("cup_vented", 15f);
-            var station = voice.History.Where(id => id.StartsWith("cup_")).ToArray();
-            Assert.That(station, Is.EquivalentTo(new[] { "cup_hello", "cup_vented" }), "基地里地面指挥只说首尾两句：" + string.Join(", ", station));
+            yield return Said("cup_exp_player_suit", 30f);
+            Assert.That(session.GetComponent<StationExpansionMission>().CommanderSuited,Is.False);
+            Assert.That(voice.History.Any(id=>id.StartsWith("cmd_")),Is.False,"Sleeping or trapped crew do not make repair comments.");
+            life.AirlockRepair.SkipRepair(); steps.MoveBody(life.DoorControl.position + Vector3.left*.8f);
+            Assert.That(life.TryOpenDoor(),Is.True);
+            yield return Said("cup_vented",30f);
         }
 
         [UnityTest] public IEnumerator CommanderCommentsOnEachRepairStep()
         {
-            session.BeginMission(); breaker.SwitchOn(); steps.Don();
+            yield return ExpansionTestSteps.Rescue(session); steps.Don();
             yield return Quiet();
             yield return driver.ReplaceFuse();
             Assert.That(driver.Fuse.IsFixed);
@@ -106,7 +98,7 @@ namespace LunarEscape.Tests
             yield return Said("cup_fuse_done", 20f);
             Assert.That(voice.History, Does.Contain("cmd_burnt"), "拔出烧坏的保险丝时指挥官吐槽");
             yield return Quiet();
-            yield return driver.TurnValve(720f);
+            yield return driver.TurnValve((driver.Valve.GreenZone.x+driver.Valve.GreenZone.y)*.5f*driver.Valve.TurnDirection);
             Assert.That(driver.Valve.IsFixed);
             yield return Said("cmd_valve_done", 20f);
             yield return Said("cup_valve_done", 20f);
@@ -126,7 +118,7 @@ namespace LunarEscape.Tests
 
         [UnityTest] public IEnumerator UnsuitedPlayerAtTheReleasedHatchIsWarnedUrgently()
         {
-            session.BeginMission(); breaker.SwitchOn();
+            session.BeginMission(); yield return ExpansionTestSteps.Power(session);
             yield return Quiet();
             life.AirlockRepair.SkipRepair();
             steps.MoveBody(life.DoorControl.position + Vector3.left * .8f);
@@ -134,20 +126,19 @@ namespace LunarEscape.Tests
             yield return Said("cup_no_suit", 3f);
         }
 
-        [UnityTest] public IEnumerator RetryStopsOldLinesAndCallsAgain()
+        [UnityTest] public IEnumerator RetryStopsOldLinesAndRepeatsWakeAfterAlarm()
         {
-            yield return Said("cup_hello", 6f);
-            session.BeginMission();
-            yield return Said("cup_breaker", 20f);
-            session.RetryMission();
-            yield return null;
-            Assert.That(voice.IsSpeaking, Is.False, "重新开始时停止上一轮的话");
-            yield return Said("cup_hello_repeat", 6f);
+            yield return Said("cup_exp_wake", 6f);
+            session.RetryMission(); yield return null;
+            Assert.That(voice.IsSpeaking,Is.False);
+            yield return ExpansionTestSteps.Wake(session);
+            yield return Said("cup_exp_wake", 6f);
+            Assert.That(voice.History,Does.Not.Contain("cup_hello_repeat"));
         }
 
         [UnityTest] public IEnumerator OpeningTheHatchBlowsDustItemsAndPlayerTowardTheDoor()
         {
-            session.BeginMission(); breaker.SwitchOn(); steps.Don();
+            session.BeginMission(); yield return ExpansionTestSteps.Power(session); steps.Don();
             life.AirlockRepair.SkipRepair();
             var outlet = decompression.Outlet.position;
             var inward = Vector3.ProjectOnPlane(life.HabitatVolume.bounds.center - outlet, Vector3.up).normalized;
@@ -165,7 +156,7 @@ namespace LunarEscape.Tests
             steps.MoveBody(life.DoorControl.position + Vector3.left * .8f);
             Assert.That(life.TryOpenDoor(), Is.True);
             // 开门后玩家站在舱室中部，离门洞较远，才能看到被拽动。
-            steps.MoveBody(outlet + inward * 3f);
+            steps.MoveBody(new Vector3(outlet.x-2f,0,2.3f));
             var start = session.Exit.PlayerBody.transform.position;
             yield return null; yield return null;
             Assert.That(decompression.Bursting, "开门触发泄压");

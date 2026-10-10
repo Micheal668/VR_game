@@ -287,7 +287,7 @@ namespace LunarEscape.Editor
             }
         }
 
-        private static Matrix4x4 AnchorFrame(Transform source)
+        internal static Matrix4x4 AnchorFrame(Transform source)
         {
             var origin = Anchor(source, "Origin").position;
             var x = Anchor(source, "AxisX").position - origin;
@@ -309,7 +309,7 @@ namespace LunarEscape.Editor
             return matrix;
         }
 
-        private static Mesh BakeMesh(Mesh source, Matrix4x4 matrix, string name)
+        internal static Mesh BakeMesh(Mesh source, Matrix4x4 matrix, string name)
         {
             var mesh = Object.Instantiate(source);
             mesh.name = name;
@@ -356,7 +356,7 @@ namespace LunarEscape.Editor
             return mesh;
         }
 
-        private static Mesh SaveMesh(Mesh mesh, string path)
+        internal static Mesh SaveMesh(Mesh mesh, string path)
         {
             var existing = AssetDatabase.LoadAssetAtPath<Mesh>(path);
             if (existing == null)

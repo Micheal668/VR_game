@@ -68,8 +68,10 @@ namespace LunarEscape
             telemetry.SetKey("life.dock.telemetry", docking.Distance.ToString("0.0"), docking.ClosingSpeed.ToString("+0.00;-0.00;0.00"), docking.LateralError.ToString("0.00"), docking.AlignmentError.ToString("0.0"));
             alignment.SetKey("life.dock.axes", docking.Position.x.ToString("+0.00;-0.00;0.00"), docking.Position.y.ToString("+0.00;-0.00;0.00"),
                 Mathf.DeltaAngle(0, attitude.x).ToString("+0.0;-0.0;0.0"), Mathf.DeltaAngle(0, attitude.y).ToString("+0.0;-0.0;0.0"), flight.MainFuel.ToString("0"), docking.RcsFuel.ToString("0"));
-            guidance.SetKey(approaching ? docking.State == DockingState.Capturing ? "life.dock.capturing" : docking.CanAssist ? "life.dock.capture_ready" : "life.dock.manual"
-                : flight.Phase == AscentPhase.OrbitalInsertion ? "life.flight.circularize" : "life.flight.checklist");
+            guidance.SetKey(approaching ? docking.GuidanceKey
+                : flight.Phase == AscentPhase.OrbitalInsertion ? "life.flight.circularize" : "life.flight.checklist", Mathf.RoundToInt(docking.CaptureProgress*100));
+            guidance.GetComponent<TMPro.TMP_Text>().color = docking.AssistanceActive || docking.State==DockingState.Capturing || docking.State==DockingState.Docked
+                ? new Color(.35f,1,.65f) : new Color(1,.82f,.35f);
             feedback.SetKey(flight.Operation != StartupOperation.None ? "flight.busy" : flight.FeedbackKey, Mathf.CeilToInt(flight.OperationRemaining));
             crewState.SetKey("life.cabin.crew", language.Format("crew.state." + crew.CommanderState), Mathf.CeilToInt(crew.CommanderHealth), ResourceReadout.Clock(flight.BaseRemaining));
             startup[0].interactable = flight.CanPowerOn; startup[1].interactable = flight.CanNavigate;

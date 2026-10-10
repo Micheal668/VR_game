@@ -38,6 +38,7 @@ namespace LunarEscape
         private int lastBolts, idleIndex;
         private float lastRemaining = float.MaxValue, lastSuitOxygen = float.MaxValue;
         private bool reminderNext = true;
+        private StationExpansionMission expansion;
 
         public MissionVoice Voice => voice;
         public bool StationHints { get => stationHints; set => stationHints = value; }
@@ -47,7 +48,16 @@ namespace LunarEscape
         { "cup_hello", "cup_vented", "cup_failed", "cup_aboard", "cup_liftoff", "cup_orbit", "cup_rendezvous", "cup_docked" };
 
         private bool Speak(string id, VoicePriority priority = VoicePriority.Hint, System.Func<bool> stillValid = null)
-            => (stationHints || !id.StartsWith("cup_") || KeptMissionControl.Contains(id)) && voice.Say(id, priority, stillValid);
+        {
+            if (expansion != null)
+            {
+                if (!expansion.IntroComplete) return false;
+                if (id == "cmd_suit") return false;
+                if (id == "cup_suit_done") id = "cup_exp_player_suit";
+                if (id.StartsWith("cmd_") && !expansion.CommanderSuited) return false;
+            }
+            return (stationHints || id.StartsWith("cup_exp_") || !id.StartsWith("cup_") || KeptMissionControl.Contains(id)) && voice.Say(id, priority, stillValid);
+        }
 
         public void Configure(MissionVoice player, StationMission task, LifeSupportMission support, HabitatBreaker mainBreaker,
             AirlockRepair repair, CargoInventory cargo, RepairTool[] tools, AscentMission ascent)
@@ -61,6 +71,7 @@ namespace LunarEscape
 
         private void ResolveFaults()
         {
+            expansion = life != null ? life.GetComponent<StationExpansionMission>() : null;
             if (airlock == null) return;
             foreach (var fault in airlock.Faults)
             {
@@ -86,6 +97,15 @@ namespace LunarEscape
             if (mission.Phase == StationMissionPhase.Briefing) return repeat ? "cup_hello_repeat" : "cup_hello";
             if (mission.IsTerminal) return null;
             if (life.DoorOpen) return "cup_route";
+            if (expansion != null)
+            {
+                if (!expansion.IntroComplete) return null;
+                if (!expansion.BedroomLocked) return "cup_exp_wake";
+                if (!breaker.IsOn) return "cup_exp_power";
+                if (!expansion.Laboratory.IsSolved) return "cup_exp_lab";
+                if (!expansion.DoorUnlocked) return "cup_exp_control";
+                if (!expansion.CommanderSuited) return "cup_exp_rescued";
+            }
             if (breaker != null && !breaker.IsOn) return repeat ? "cup_breaker_repeat" : "cup_breaker";
             if (!life.SuitWorn) return repeat ? "cup_suit_repeat" : "cup_suit";
             if (airlock != null && !airlock.IsReleased)
@@ -154,6 +174,14 @@ namespace LunarEscape
 
         private void Ground()
         {
+            if (expansion != null)
+            {
+                if (expansion.BedroomLocked) SayOnce("cup_exp_power");
+                if (breaker.IsOn) SayOnce("cup_exp_lab");
+                if (expansion.Laboratory.IsSolved) SayOnce("cup_exp_control");
+                if (expansion.DoorUnlocked) SayOnce("cup_exp_rescued");
+                if (expansion.CommanderSuited) SayOnce("cup_exp_ready");
+            }
             bool lights = breaker == null || breaker.IsOn;
             if (lights && !lastLights && breaker != null) { SayOnce("cmd_lights", VoicePriority.Quip); SayObjective(); }
             lastLights = lights;
@@ -214,7 +242,7 @@ namespace LunarEscape
                 if (wrench != null && wrench.IsHeld) SayOnce("cmd_wrench", VoicePriority.Quip);
             if (valve != null)
             {
-                if (valve.Valve != null && valve.Valve.Angle > 90f && !valve.IsFixed && !valve.OverPressure) SayOnce("cmd_valve_turn", VoicePriority.Quip);
+                if (valve.Valve != null && valve.ProgressAngle > 90f && !valve.IsFixed && !valve.OverPressure) SayOnce("cmd_valve_turn", VoicePriority.Quip);
                 if (valve.OverPressure && !lastValveOver)
                 { SayAgain("cup_valve_over", 8f, VoicePriority.Urgent, () => valve.OverPressure); SayOnce("cmd_valve_over", VoicePriority.Quip); }
                 if (valve.IsFixed && !lastValveFixed && Once("valve_fixed"))

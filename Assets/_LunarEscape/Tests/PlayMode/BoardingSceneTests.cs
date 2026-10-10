@@ -292,7 +292,7 @@ namespace LunarEscape.Tests
                 pixels.Apply();
                 string path = Path.GetFullPath(Path.Combine(Application.dataPath, "../../.development/cargo-preview-" + name + ".png"));
                 Directory.CreateDirectory(Path.GetDirectoryName(path));
-                File.WriteAllBytes(path, pixels.EncodeToPNG());
+                PreviewEvidence.Write(path, pixels.EncodeToPNG());
                 TestContext.Progress.WriteLine(path);
             }
             finally

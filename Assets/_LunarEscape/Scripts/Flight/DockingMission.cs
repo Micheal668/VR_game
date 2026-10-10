@@ -31,11 +31,29 @@ namespace LunarEscape
         public bool AssistanceEnabled {get;private set;}=true;
         public bool AssistanceActive {get;private set;}
         public bool Active=>State==DockingState.Approaching;
-        public bool CanAssist=>Active && AssistanceEnabled && Position.z<-.35f && -Position.z<=config.AssistDistance
+        public bool CanAssist=>Active && AssistanceEnabled && Position.z<(config.StagedAssistance ? 0 : -.35f) && -Position.z<=config.AssistDistance
             && LateralError<=config.AssistLateral && AlignmentError<=config.AssistAngle
             && RelativeSpeed<=config.AssistSpeed && AngularVelocity.magnitude<2 && RcsFuel>0;
         public bool CanBoost=>Active && Distance>12 && flight.MainFuel>0;
         public int ActiveCommandCount=>commands.Count;
+        public float CaptureProgress => State==DockingState.Docked ? 1 : State==DockingState.Capturing ? 1-captureRemaining/2 : 0;
+        private bool NeedsAlignment => LateralError>.23f || AlignmentError>4.5f || AngularVelocity.magnitude>1;
+        public string GuidanceKey
+        {
+            get
+            {
+                if(State==DockingState.Docked)return "life.dock.complete";
+                if(State==DockingState.Capturing)return "life.dock.capturing_progress";
+                if(!AssistanceEnabled)return "life.dock.assist_disabled";
+                if(Position.z>=0)return "life.dock.front";
+                if(-Position.z>config.AssistDistance)return "life.dock.range";
+                if(LateralError>config.AssistLateral)return "life.dock.offset";
+                if(AlignmentError>config.AssistAngle)return "life.dock.angle";
+                if(RelativeSpeed>config.AssistSpeed||AngularVelocity.magnitude>=2)return "life.dock.brake";
+                if(commands.Count>0)return "life.dock.release";
+                return NeedsAlignment ? "life.dock.aligning" : "life.dock.approaching";
+            }
+        }
         public bool IsCommandActive(DockCommand command)=>commands.Contains(command);
         public event Action Changed;
 
@@ -92,10 +110,20 @@ namespace LunarEscape
             else if(AssistanceActive)
             {
                 Vector3 desired=new(Mathf.Clamp(-Position.x*.35f,-.12f,.12f),Mathf.Clamp(-Position.y*.35f,-.12f,.12f),Mathf.Min(.16f,Mathf.Max(.045f,(-Position.z-.22f)*.12f)));
-                acceleration=Vector3.ClampMagnitude((desired-Velocity)*1.4f,.12f);
+                if(config.StagedAssistance)
+                {
+                    // First hold clear of the hatch and align. Only then close
+                    // the last metre slowly; a near miss can retreat and retry.
+                    float closing=NeedsAlignment ? Mathf.Clamp((-1.5f-Position.z)*.5f,-.3f,.25f)
+                        : Mathf.Clamp((-Position.z-.25f)*.22f,.065f,.45f);
+                    desired=new Vector3(Mathf.Clamp(-Position.x*.55f,-.4f,.4f),Mathf.Clamp(-Position.y*.55f,-.4f,.4f),closing);
+                }
+                acceleration=Vector3.ClampMagnitude((desired-Velocity)*(config.StagedAssistance ? 1.8f : 1.4f),config.StagedAssistance ? config.TranslationAcceleration : .12f);
                 Quaternion difference=Quaternion.Inverse(Attitude);difference.ToAngleAxis(out float angle,out Vector3 axis);
                 if(angle>180)angle-=360;
                 angularAcceleration=Vector3.ClampMagnitude(axis*angle*.5f-AngularVelocity*1.4f,2);
+                if(config.StagedAssistance)
+                    angularAcceleration=Vector3.ClampMagnitude(Vector3.ClampMagnitude(axis*angle*.55f,1.7f)-AngularVelocity,config.RotationAcceleration);
                 thrustUse=acceleration.magnitude/config.TranslationAcceleration+angularAcceleration.magnitude/config.RotationAcceleration*.5f;
             }
             // 辅助和制动都真实消耗 RCS；油量不足时只提供剩余燃料对应的推力。
@@ -127,10 +155,13 @@ namespace LunarEscape
             if(Position.z>=-.55f && LateralError<3)
             {
                 if(RelativeSpeed>config.CrashSpeed){Fail(AscentFailure.DockingCollision);return;}
-                bool capture=AssistanceEnabled && Position.z<0 && LateralError<=.18f && AlignmentError<=3 && RelativeSpeed<=.12f && AngularVelocity.magnitude<=1;
+                bool capture=(config.StagedAssistance || AssistanceEnabled) && Position.z<0
+                    && LateralError<=(config.StagedAssistance ? .35f : .18f)
+                    && AlignmentError<=(config.StagedAssistance ? 6 : 3)
+                    && RelativeSpeed<=(config.StagedAssistance ? .18f : .12f) && AngularVelocity.magnitude<=1;
                 if(capture)
                 {State=DockingState.Capturing;captureRemaining=2;Velocity=AngularVelocity=Vector3.zero;commands.Clear();AssistanceActive=false;flight.BeginDockingCapture(this);}
-                else if(Position.z>=-.25f)Fail(AscentFailure.DockingMisaligned);
+                else if(Position.z>=(config.StagedAssistance && AssistanceActive ? -.05f : -.25f))Fail(AscentFailure.DockingMisaligned);
             }
         }
         private void Fail(AscentFailure reason){StopForFailure();flight.FailDocking(this,reason);}
