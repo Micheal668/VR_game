@@ -223,7 +223,7 @@ namespace LunarEscape
             if (!CanChange()) return Reject(CargoRejection.WrongPhase);
             if (!Owns(item)) return Reject(CargoRejection.InvalidItem);
             if (item.State != CargoState.Held) return Reject(CargoRejection.NotHeld);
-            if (packZone == null || !packZone.Contains(item)) return Reject(CargoRejection.InvalidItem);
+            if (packZone == null || !packZone.CanStow(item)) return Reject(CargoRejection.InvalidItem);
             item.SetState(CargoState.Packed);
             item.HideForStorage();
             return Accept();
@@ -233,7 +233,7 @@ namespace LunarEscape
         {
             if (!CanChange() || !Owns(item) || item.State != CargoState.Held) return;
             // 因停用、拒绝或场景切换导致的取消不能被误判为主动收进腰包。
-            if (!canceled && packZone != null && packZone.Contains(item)) TryPack(item);
+            if (!canceled && packZone != null && packZone.CanStow(item)) TryPack(item);
             else
             {
                 DropHeld(item);
@@ -255,7 +255,7 @@ namespace LunarEscape
                 if (item == null || item.State != CargoState.World || item.Grab.isSelected
                     || !item.isActiveAndEnabled || !releasedNearPack.TryGetValue(item, out float until) || Time.time > until)
                 { releasedNearPack.Remove(item); continue; }
-                if (packZone == null || !packZone.Contains(item)) continue;
+                if (packZone == null || !packZone.CanStow(item)) continue;
                 releasedNearPack.Remove(item);
                 // 下落期间玩家可能已拿起另一类物资，入包时仍重新验证同一份额度。
                 if (!CanAcquire(item, out var reason)) { ReportRejection(reason); continue; }

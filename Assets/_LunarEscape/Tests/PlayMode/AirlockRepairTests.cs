@@ -37,7 +37,8 @@ namespace LunarEscape.Tests
             Assert.That(airlock.Faults.Length, Is.EqualTo(3));
             Assert.That(driver.Fuse.Socket.hasSelection || driver.Fuse.Socket.startingSelectedInteractable != null, "开局烧坏的保险丝插在座里");
             Assert.That(driver.Latches.Bolts.Length, Is.EqualTo(3));
-            Assert.That(driver.Latches.Bolts.Select(b => b.transform.position.y).Min(), Is.LessThan(0.6f), "最低一颗螺栓需要蹲下");
+            Assert.That(driver.Latches.BoltPositions.Length, Is.EqualTo(8));
+            Assert.That(driver.Latches.BoltPositions.Select(p => p.position.y).Min(), Is.LessThan(0.6f), "候选位置包含需要蹲下的底部锁扣；本轮随机选择不保证包含底部");
         }
 
         [UnityTest] public IEnumerator NothingCanBeRepairedBeforeTheMissionStarts()
@@ -49,10 +50,10 @@ namespace LunarEscape.Tests
 
         [UnityTest] public IEnumerator ThreeRepairsAndLeverUnlockHatchThenSuitedCrewOpensIt()
         {
-            session.BeginMission();
+            yield return ExpansionTestSteps.Wake(session);
             yield return driver.ReplaceFuse();
             Assert.That(driver.Fuse.IsFixed, "备用保险丝插入后驱动通电");
-            yield return driver.TurnValve(720f);
+            yield return driver.TurnValve((driver.Valve.GreenZone.x+driver.Valve.GreenZone.y)*.5f*driver.Valve.TurnDirection);
             Assert.That(driver.Valve.IsFixed, "转两圈后压差进入绿区: " + driver.Valve.Valve.Angle);
             yield return driver.UnboltAll(Object.FindAnyObjectByType<RepairTool>());
             Assert.That(driver.Latches.IsFixed);
@@ -72,7 +73,7 @@ namespace LunarEscape.Tests
 
         [UnityTest] public IEnumerator LeverRefusesWhileFaultsRemain()
         {
-            session.BeginMission();
+            yield return ExpansionTestSteps.Wake(session);
             bool denied = false;
             airlock.Denied += () => denied = true;
             yield return driver.PullLever(2f);
@@ -83,19 +84,19 @@ namespace LunarEscape.Tests
 
         [UnityTest] public IEnumerator OverTurningTheValveVentsUntilTurnedBack()
         {
-            session.BeginMission();
-            yield return driver.TurnValve(900f);
+            yield return ExpansionTestSteps.Wake(session);
+            yield return driver.TurnValve((driver.Valve.GreenZone.y+90)*driver.Valve.TurnDirection);
             Assert.That(driver.Valve.OverPressure, "拧过头进入超压");
             Assert.That(driver.Valve.IsFixed, Is.False);
-            yield return driver.TurnValve(-180f);
+            yield return driver.TurnValve(-145*driver.Valve.TurnDirection);
             Assert.That(driver.Valve.IsFixed, "往回拧进入绿区: " + driver.Valve.Valve.Angle);
         }
 
         [UnityTest] public IEnumerator RetryRestoresEveryFault()
         {
-            session.BeginMission();
+            yield return ExpansionTestSteps.Wake(session);
             yield return driver.ReplaceFuse();
-            yield return driver.TurnValve(720f);
+            yield return driver.TurnValve((driver.Valve.GreenZone.x+driver.Valve.GreenZone.y)*.5f*driver.Valve.TurnDirection);
             Assert.That(airlock.FixedCount, Is.EqualTo(2));
             session.RetryMission();
             yield return AirlockTestDriver.Frames(3);

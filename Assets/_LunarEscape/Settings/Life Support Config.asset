@@ -12,17 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83cdbbd55d427b84ab5ac7e92b6ee516, type: 3}
   m_Name: Life Support Config
   m_EditorClassIdentifier: LunarEscape.Runtime::LunarEscape.LifeSupportConfig
-  baseOxygenRange: {x: 70, y: 90}
-  basePowerRange: {x: 70, y: 90}
+  baseOxygenRange: {x: 50, y: 80}
+  basePowerRange: {x: 50, y: 80}
   suitOxygenRange: {x: 100, y: 100}
   suitPowerRange: {x: 100, y: 100}
-  baseOxygenSeconds: 240
-  basePowerSeconds: 300
+  baseOxygenSeconds: 600
+  basePowerSeconds: 720
   suitOxygenSeconds: 240
   suitPowerSeconds: 300
   donSeconds: 4
   doorRepairSeconds: 5
-  suffocationSeconds: 6
+  suffocationSeconds: 5
   unpoweredOxygenMultiplier: 2.5
   daylightTemperature: 127
   nightTemperature: -173

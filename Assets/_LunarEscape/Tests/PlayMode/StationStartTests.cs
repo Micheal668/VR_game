@@ -34,15 +34,16 @@ namespace LunarEscape.Tests
             hand = new GameObject("Station start test hand").AddComponent<PilotTestHand>();
             hand.interactionLayers = -1;
             while (Time.time < 1.05f) yield return null;
+            yield return ExpansionTestSteps.Wake(session);
         }
 
         [TearDown] public void Restore() { Time.captureDeltaTime = previousDelta; if (hand != null) Object.Destroy(hand.gameObject); }
 
-        [Test] public void PlayerStartsInFrontOfTheStartConsoleFacingIt()
+        [Test] public void PlayerStartsInBedroomAisleFacingTheExit()
         {
             var spawn = session.SpawnPoint.position;
-            Assert.That(spawn.z, Is.InRange(1.8f, 2.6f), "出生在工作台与物资架之间");
-            Assert.That(Vector3.Dot(session.SpawnPoint.forward, Vector3.forward), Is.GreaterThan(0.95f), "面朝开始屏");
+            Assert.That(spawn.z, Is.InRange(5.1f, 5.8f), "出生在卧室床边过道");
+            Assert.That(Vector3.Dot(session.SpawnPoint.forward, Vector3.back), Is.GreaterThan(0.95f), "面朝卧室出口");
             var body = session.Exit.PlayerBody; var center = body.transform.TransformPoint(body.center);
             Assert.That(Vector2.Distance(new Vector2(center.x, center.z), new Vector2(spawn.x, spawn.z)), Is.LessThan(0.3f), "载入后玩家就在出生点");
             var overlaps = Physics.OverlapCapsule(new Vector3(spawn.x, 0.4f, spawn.z), new Vector3(spawn.x, 1.5f, spawn.z), 0.25f,
@@ -76,6 +77,7 @@ namespace LunarEscape.Tests
             Assert.That(breaker.IsOn, Is.False, "开始任务前总闸联锁");
 
             session.BeginMission();
+            yield return ExpansionTestSteps.Solve(session.GetComponent<StationExpansionMission>().Circuit);
             float remaining = mission.RemainingSeconds; float air = life.BaseOxygen;
             yield return PullBreaker();
             Assert.That(breaker.IsOn, "拉下总闸恢复照明");
@@ -105,7 +107,8 @@ namespace LunarEscape.Tests
         {
             Assert.That(life.SuitOxygen, Is.EqualTo(100f).Within(0.01f));
             Assert.That(life.SuitPower, Is.EqualTo(100f).Within(0.01f));
-            Assert.That(life.Config.BaseOxygenRange.x, Is.GreaterThanOrEqualTo(70f));
+            Assert.That(life.Config.BaseOxygenRange, Is.EqualTo(new Vector2(50,80)));
+            Assert.That(life.Config.BasePowerRange, Is.EqualTo(new Vector2(50,80)));
             Assert.That(mission.Config.RepairWindowSeconds, Is.GreaterThanOrEqualTo(200f));
         }
 

@@ -8,7 +8,41 @@ namespace LunarEscape
     {
         [SerializeField] private CargoInventory inventory;
         [SerializeField] private BoxCollider volume;
+        [SerializeField] private bool accessibleOpening;
         public BoxCollider Volume => volume;
+        public bool HasHeldItem => inventory != null && inventory.HeldCount > 0;
+        public CargoItem ReadyItem { get; private set; }
+        public void ConfigureAccessibleOpening() => accessibleOpening = true;
+
+        private void Update()
+        {
+            ReadyItem = null;
+            if (!accessibleOpening || inventory == null) return;
+            foreach (var item in inventory.Items)
+                if (item.State == CargoState.Held && item.Grab.isSelected && CanStow(item)) { ReadyItem = item; break; }
+        }
+
+        public bool CanStow(CargoItem item)
+        {
+            if (Contains(item)) return true;
+            if (!accessibleOpening || !isActiveAndEnabled || volume == null || !volume.enabled ||
+                !volume.gameObject.activeInHierarchy || item == null || !item.isActiveAndEnabled || item.Inventory != inventory || item.Grab == null) return false;
+            // Test the visible object's surface at the open top, rather than
+            // requiring a long bottle's centre to pass through the pouch rim.
+            var half = volume.size * .5f;
+            var local = volume.transform.InverseTransformPoint(item.transform.position) - volume.center;
+            if (local.y < -half.y) return false;
+            Vector3 probe = volume.transform.TransformPoint(volume.center + new Vector3(
+                Mathf.Clamp(local.x, -half.x, half.x), half.y, Mathf.Clamp(local.z, -half.z, half.z)));
+            foreach (var collider in item.Grab.colliders)
+            {
+                if (collider == null || !collider.enabled || collider.isTrigger) continue;
+                Vector3 nearest = volume.transform.InverseTransformPoint(collider.ClosestPoint(probe)) - volume.center;
+                if (Mathf.Abs(nearest.x) <= half.x + .07f && Mathf.Abs(nearest.z) <= half.z + .07f
+                    && nearest.y >= -half.y && nearest.y <= half.y + .14f) return true;
+            }
+            return false;
+        }
 
         public void Configure(CargoInventory owner, BoxCollider bounds)
         {

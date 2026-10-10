@@ -9,6 +9,10 @@ namespace LunarEscape
         [SerializeField] private Renderer[] suited, casual;
         [SerializeField] private GameObject hangingSuit;
         [SerializeField] private GameObject commanderHangingSuit;
+        [SerializeField] private StationExpansionMission expansion;
+        [SerializeField] private Transform commanderRoot;
+        public void ConfigureIndependentCrew(StationExpansionMission mission, Transform commander)
+        { expansion = mission; commanderRoot = commander; }
         public GameObject CommanderHangingSuit => commanderHangingSuit;
         public void ConfigureCommanderRack(GameObject model) { commanderHangingSuit=model; Refresh(); }
         public Renderer[] SuitedRenderers => suited;
@@ -22,13 +26,16 @@ namespace LunarEscape
         }
         private void OnEnable() { if (life != null) { life.Changed += Refresh; Refresh(); } }
         private void OnDisable() { if (life != null) life.Changed -= Refresh; }
+        private void LateUpdate() { if (expansion != null) Refresh(); }
         private void Refresh()
         {
             if (life == null) return;
-            foreach (var renderer in suited) if (renderer != null) renderer.enabled = life.SuitWorn;
-            foreach (var renderer in casual) if (renderer != null) renderer.enabled = !life.SuitWorn;
+            bool Dressed(Renderer r) => expansion != null && commanderRoot != null && r.transform.IsChildOf(commanderRoot)
+                ? expansion.CommanderSuited : life.SuitWorn;
+            foreach (var renderer in suited) if (renderer != null) renderer.enabled = Dressed(renderer);
+            foreach (var renderer in casual) if (renderer != null) renderer.enabled = !Dressed(renderer);
             if (hangingSuit != null) hangingSuit.SetActive(!life.SuitWorn);
-            if (commanderHangingSuit != null) commanderHangingSuit.SetActive(!life.SuitWorn);
+            if (commanderHangingSuit != null) commanderHangingSuit.SetActive(expansion != null ? !expansion.CommanderSuited : !life.SuitWorn);
         }
     }
 }

@@ -27,6 +27,7 @@ namespace LunarEscape
         private MaterialPropertyBlock glowBlock;
         private float lastBrightness = -1f;
         public Light Sun => sun;
+        public System.Collections.Generic.IReadOnlyList<Light> HabitatLights => habitatLights;
         public System.Collections.Generic.IReadOnlyList<Light> ShoulderLights => shoulderLights;
         public void Configure(LifeSupportMission source, AscentMission ascent, Light sunlight, Light[] lamps)
         {
@@ -73,7 +74,8 @@ namespace LunarEscape
             lastBrightness = brightness;
             float lit = life.BasePower > 0 ? brightness : 0f;
             bool indoors = breaker != null && flight != null && !flight.IsLocked && (!life.DoorOpen || life.IsInsideHabitat);
-            if (indoors) RenderSettings.ambientLight = Color.Lerp(blackoutAmbient, RenderSettings.ambientLight, lit);
+            if (indoors) RenderSettings.ambientLight = Color.Lerp(blackoutAmbient,
+                life.ExpandedStation ? new Color(.16f,.20f,.23f) : RenderSettings.ambientLight, lit);
             // 舱壳不完全遮挡日光，月昼时阳光会透进舱内；舱门关闭、照明未恢复时一并压暗（舱内看不到舱外）。
             if (indoors && !life.DoorOpen) sun.intensity *= lit;
             RenderSettings.reflectionIntensity = indoors ? Mathf.Lerp(blackoutReflection, 1f, lit) : 1f;
@@ -106,6 +108,7 @@ namespace LunarEscape
                 var renderer = glowRenderers[i];
                 if (renderer == null) continue;
                 float level = Mathf.Lerp(i < glowBlackoutLevels.Length ? glowBlackoutLevels[i] : 0f, 1f, lit);
+                if (Application.isPlaying && life != null && life.ExpandedStation && life.BasePower <= 0) level = 0;
                 for (int m = 0; m < glowColors[i].Length; m++)
                 {
                     if (glowColors[i][m].a <= 0f) continue;

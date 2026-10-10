@@ -51,8 +51,17 @@ namespace LunarEscape
                 Line(new(-7, i * 65), new(7, i * 65), 2, c * .6f);
             }
             if (!targetVisible) return;
-            Color tracking = docking != null && docking.CanAssist ? new(.35f,1,.65f,1) : new(1,.70f,.25f,1);
-            const float radius = 26;
+            bool assisting = docking != null && (docking.CanAssist || docking.State==DockingState.Capturing || docking.State==DockingState.Docked);
+            Color tracking = assisting ? new(.35f,1,.65f,1) : new(1,.70f,.25f,1);
+            const float radius = 40;
+            Line(Vector2.zero,target,2,tracking*.65f);
+            if(assisting)
+                for(int i=0;i<48;i++)
+                {
+                    float a=i*Mathf.PI/24,b=(i+1)*Mathf.PI/24;
+                    float ring=52+(docking.State==DockingState.Capturing ? 8*docking.CaptureProgress : 3*Mathf.Sin(Time.time*4));
+                    Line(target+new Vector2(Mathf.Cos(a),Mathf.Sin(a))*ring,target+new Vector2(Mathf.Cos(b),Mathf.Sin(b))*ring,4,tracking);
+                }
             var a0 = target + Vector2.up * radius; var a1 = target + Vector2.right * radius;
             var a2 = target + Vector2.down * radius; var a3 = target + Vector2.left * radius;
             Line(a0,a1,3,tracking); Line(a1,a2,3,tracking); Line(a2,a3,3,tracking); Line(a3,a0,3,tracking);

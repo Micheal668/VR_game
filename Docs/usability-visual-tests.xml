@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="2" result="Passed" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-10 11:47:17Z" end-time="2026-10-10 11:47:20Z" duration="2.4946091">
+  <test-suite type="TestSuite" id="1209" name="Lunar Escape VR" fullname="Lunar Escape VR" runstate="Runnable" testcasecount="174" result="Passed" start-time="2026-10-10 11:47:17Z" end-time="2026-10-10 11:47:20Z" duration="2.494609" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="PlayMode" />
+    </properties>
+    <test-suite type="Assembly" id="1412" name="LunarEscape.PlayModeTests.dll" fullname="C:/Coding/Projects/VR_game/Library/ScriptAssemblies/LunarEscape.PlayModeTests.dll" runstate="Runnable" testcasecount="174" result="Passed" start-time="2026-10-10 11:47:17Z" end-time="2026-10-10 11:47:20Z" duration="2.487964" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="36612" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="PlayMode" />
+        <property name="EditorOnly" value="False" />
+      </properties>
+      <test-suite type="TestSuite" id="1413" name="LunarEscape" fullname="LunarEscape" runstate="Runnable" testcasecount="174" result="Passed" start-time="2026-10-10 11:47:17Z" end-time="2026-10-10 11:47:20Z" duration="2.482872" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-suite type="TestSuite" id="1414" name="Tests" fullname="LunarEscape.Tests" runstate="Runnable" testcasecount="174" result="Passed" start-time="2026-10-10 11:47:17Z" end-time="2026-10-10 11:47:20Z" duration="2.480808" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-suite type="TestFixture" id="1394" name="StationUsabilityTests" fullname="LunarEscape.Tests.StationUsabilityTests" classname="LunarEscape.Tests.StationUsabilityTests" runstate="Runnable" testcasecount="5" result="Passed" start-time="2026-10-10 11:47:17Z" end-time="2026-10-10 11:47:20Z" duration="2.476326" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1395" name="BothWrenchEndsReleaseBoltsWithoutPenetratingDoor" fullname="LunarEscape.Tests.StationUsabilityTests.BothWrenchEndsReleaseBoltsWithoutPenetratingDoor" methodname="BothWrenchEndsReleaseBoltsWithoutPenetratingDoor" classname="LunarEscape.Tests.StationUsabilityTests" runstate="Runnable" seed="1320724021" result="Passed" start-time="2026-10-10 11:47:17Z" end-time="2026-10-10 11:47:19Z" duration="1.916852" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1396" name="BottleSurfaceAtMouthShowsReadyAndPacksOnReleaseWithoutChasingHead" fullname="LunarEscape.Tests.StationUsabilityTests.BottleSurfaceAtMouthShowsReadyAndPacksOnReleaseWithoutChasingHead" methodname="BottleSurfaceAtMouthShowsReadyAndPacksOnReleaseWithoutChasingHead" classname="LunarEscape.Tests.StationUsabilityTests" runstate="Runnable" seed="566916753" result="Passed" start-time="2026-10-10 11:47:19Z" end-time="2026-10-10 11:47:20Z" duration="0.543395" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[Retain Transform Parent is set to true and had an old parent GameObject. However, the old parent "Airlock A Repair" is deactivated so we are choosing not to re-parent upon dropping.
+Retain Transform Parent is set to true and had an old parent GameObject. However, the old parent "Backup Circuit Panel" is deactivated so we are choosing not to re-parent upon dropping.
+Retain Transform Parent is set to true and had an old parent GameObject. However, the old parent "Backup Circuit Panel" is deactivated so we are choosing not to re-parent upon dropping.
+Retain Transform Parent is set to true and had an old parent GameObject. However, the old parent "Backup Circuit Panel" is deactivated so we are choosing not to re-parent upon dropping.
+Saving results to: C:/Users/MichealC/AppData/LocalLow/Lunar Escape Project/Lunar Escape VR\TestResults.xml
+]]></output>
+            </test-case>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

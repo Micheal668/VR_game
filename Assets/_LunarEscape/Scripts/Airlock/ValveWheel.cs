@@ -14,6 +14,8 @@ namespace LunarEscape
         private float lastTick;
         private Quaternion restRotation;
         private bool captured;
+        private bool bidirectional;
+        private float initialOrientation;
 
         // 累计转角（度），0 为初始全关。
         public float Angle { get; private set; }
@@ -47,6 +49,14 @@ namespace LunarEscape
             ShowAngle();
         }
 
+        public void ConfigureAttempt(bool bothDirections, float orientation)
+        {
+            bidirectional = bothDirections;
+            initialOrientation = orientation;
+            tracking = false;
+            ResetAngle();
+        }
+
         protected override void OnGrabbed()
         {
             tracking = TryHandAngle(out lastHandAngle);
@@ -60,7 +70,7 @@ namespace LunarEscape
             float delta = Mathf.DeltaAngle(lastHandAngle, handAngle);
             lastHandAngle = handAngle;
             if (!Enabled) return;
-            float next = Mathf.Clamp(Angle + delta, 0f, maxAngle);
+            float next = Mathf.Clamp(Angle + delta, bidirectional ? -maxAngle : 0f, maxAngle);
             if (Mathf.Approximately(next, Angle) && Mathf.Abs(delta) > 0.5f)
             {
                 // 到头了：拧不动，给一下沉闷的顶住感。
@@ -90,7 +100,7 @@ namespace LunarEscape
         private void ShowAngle()
         {
             // 顺着手转的方向显示：局部 X→Y 为正角，对应绕 +Z 旋转。
-            if (wheel != null) wheel.localRotation = restRotation * Quaternion.AngleAxis(Angle, Vector3.forward);
+            if (wheel != null) wheel.localRotation = restRotation * Quaternion.AngleAxis(initialOrientation + Angle, Vector3.forward);
         }
     }
 }

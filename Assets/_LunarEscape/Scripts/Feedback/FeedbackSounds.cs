@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace LunarEscape
 {
-    public enum FeedbackSound { Click, Deny, Grab, Release, Knock, Pack, RepairLoop, Chime, Clunk, ThrusterLoop, EngineLoop, Hiss, RadioOpen, RadioClose, Decompression }
+    public enum FeedbackSound { Click, Deny, Grab, Release, Knock, Pack, RepairLoop, Chime, Clunk, ThrusterLoop, EngineLoop, Hiss, RadioOpen, RadioClose, Decompression, HurriedBreath, StationAlarm }
 
     // 交互音效在运行时用数学方式合成，与警报音做法一致：不依赖外部录音素材，也不需要导入音频文件。
     // 每种声音只生成一次并缓存；固定随机种子保证每次运行听到的声音一致，便于调参对比。
@@ -60,6 +60,21 @@ namespace LunarEscape
             float low = 0f, low2 = 0f, phase = 0f;
             float[] data = sound switch
             {
+                FeedbackSound.StationAlarm => Render(4.2f, 0f, t =>
+                {
+                    float cycle = t % .8f;
+                    float envelope = Mathf.SmoothStep(0, 1, cycle / .04f) * Mathf.Clamp01((.62f - cycle) / .1f);
+                    return Mathf.Sin(Tau * (cycle < .3f ? 660 : 880) * t) * envelope * .28f;
+                }),
+                FeedbackSound.HurriedBreath => Render(1.15f, 0f, t =>
+                {
+                    low += .12f * (Noise() - low);
+                    low2 += .025f * (low - low2);
+                    float inhale = Mathf.Pow(Mathf.Max(0, Mathf.Sin(Mathf.PI * t / .48f)), 1.4f);
+                    if (t > .48f) inhale = 0;
+                    float exhale = t < .57f ? 0 : Mathf.Pow(Mathf.Max(0, Mathf.Sin(Mathf.PI * (t - .57f) / .5f)), 1.2f);
+                    return (low - low2) * (inhale * 2f + exhale * 1.45f) + low2 * exhale * .5f;
+                }),
                 // 短促的硬质开关声：高频“嗒”加一点低频机身。
                 FeedbackSound.Click => Render(0.06f, 0f, t =>
                     Mathf.Sin(Tau * 1800f * t) * Mathf.Exp(-t / 0.006f) * 0.45f +

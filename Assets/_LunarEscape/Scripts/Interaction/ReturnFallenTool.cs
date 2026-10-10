@@ -17,6 +17,7 @@ namespace LunarEscape
         private bool restoreThrow;
         private bool originalThrowOnDetach;
         private int resetFrame;
+        public void ConfigureFloorRecovery(float minimumY) => minimumHeight = minimumY;
 
         private void Awake()
         {
@@ -61,6 +62,10 @@ namespace LunarEscape
             }
             body.position = initialPosition;
             body.rotation = initialRotation;
+            transform.SetPositionAndRotation(initialPosition, initialRotation);
+            // Socket/hand detach can still apply XRI's cached target in a later
+            // update phase. Reset both owners of the pose, not just the body.
+            grab.SetTargetPose(new Pose(initialPosition, initialRotation));
         }
 
         private void LateUpdate()

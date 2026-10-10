@@ -51,7 +51,7 @@ namespace LunarEscape.Tests
             hand=obj.AddComponent<XRRayInteractor>();hand.interactionManager=manager;
             hand.selectInput.inputSourceMode=XRInputButtonReader.InputSourceMode.ManualValue;
             hand.activateInput.inputSourceMode=XRInputButtonReader.InputSourceMode.ManualValue;
-            yield return null;
+            yield return ExpansionTestSteps.Wake(session);
         }
         [TearDown] public void Restore()
         {
@@ -80,26 +80,26 @@ namespace LunarEscape.Tests
             yield return Capture("life-base-overview",new Vector3(-1.7f,1.7f,-3.3f),new Vector3(1.4f,1.5f,1.5f));
             yield return Capture("life-suit-rack",new Vector3(1.1f,1.5f,-2),new Vector3(3.6f,1.3f,-1.6f));
         }
-        [UnityTest] public IEnumerator UnsuitedHatchVentsImmediatelyAndSuffocatesAtSixSeconds()
+        [UnityTest] public IEnumerator UnsuitedHatchDrainsRapidlyAndSuffocatesAtFiveSeconds()
         {
             session.BeginMission();RepairDoor();MoveBody(life.DoorControl.position+Vector3.left*.8f);
-            Assert.That(life.TryOpenDoor(),Is.True);Assert.That(life.BaseOxygen,Is.Zero);
-            session.Advance(5.99f);Assert.That(session.Mission.IsTerminal,Is.False);Assert.That(Mathf.Abs(life.BaseTemperature-22),Is.GreaterThan(40));
+            Assert.That(life.TryOpenDoor(),Is.True);Assert.That(life.BaseOxygen,Is.GreaterThan(0));
+            session.Advance(life.Config.SuffocationSeconds-.01f);Assert.That(session.Mission.IsTerminal,Is.False);Assert.That(Mathf.Abs(life.BaseTemperature-22),Is.GreaterThan(40));
             session.Advance(.02f);Assert.That(session.Mission.FailureReason,Is.EqualTo(StationMissionFailure.Suffocation));
-            Assert.That(life.ElapsedSeconds,Is.EqualTo(life.Config.DoorRepairSeconds+6).Within(.001f));
+            Assert.That(life.ElapsedSeconds,Is.EqualTo(life.Config.DoorRepairSeconds+life.Config.SuffocationSeconds).Within(.001f));
             float elapsed=life.ElapsedSeconds;session.Advance(100);Assert.That(life.ElapsedSeconds,Is.EqualTo(elapsed));
             yield return Languages(session.GetComponent<MissionScorePresenter>().Panel,"life-suffocation");
             session.RetryMission();Assert.That(life.DoorOpen,Is.False);Assert.That(life.BaseOxygen,Is.GreaterThan(0));
         }
         [UnityTest] public IEnumerator EmptySealedHabitatKillsAfterGracePeriodWithCoarseAndFineSteps()
         {
-            Configure("{\"baseOxygenSeconds\":10,\"baseOxygenRange\":{\"x\":30,\"y\":30}}");
-            session.BeginMission();session.Advance(8.99f);Assert.That(life.BaseOxygen,Is.Zero);Assert.That(session.Mission.IsTerminal,Is.False);
+            yield return Configure("{\"baseOxygenSeconds\":10,\"baseOxygenRange\":{\"x\":30,\"y\":30}}");
+            session.BeginMission();session.Advance(7.99f);Assert.That(life.BaseOxygen,Is.Zero);Assert.That(session.Mission.IsTerminal,Is.False);
             session.Advance(.02f);Assert.That(session.Mission.FailureReason,Is.EqualTo(StationMissionFailure.Suffocation));float coarse=life.ElapsedSeconds;
-            session.RetryMission();session.BeginMission();for(int i=0;i<100&&!session.Mission.IsTerminal;i++)session.Advance(.1f);
-            Assert.That(life.ElapsedSeconds,Is.EqualTo(coarse).Within(.002f));Assert.That(coarse,Is.EqualTo(9).Within(.002f));yield return null;
+            session.RetryMission();yield return ExpansionTestSteps.Wake(session);session.BeginMission();for(int i=0;i<100&&!session.Mission.IsTerminal;i++)session.Advance(.1f);
+            Assert.That(life.ElapsedSeconds,Is.EqualTo(coarse).Within(.002f));Assert.That(coarse,Is.EqualTo(8).Within(.002f));yield return null;
         }
-        [UnityTest] public IEnumerator RealSuitGripRequiresContactAndFourSecondsAndSynchronizesBothCrew()
+        [UnityTest] public IEnumerator RealSuitGripRequiresFourSecondsAndLeavesCommanderIndependent()
         {
             session.BeginMission();life.SetDonHeld(true);session.Advance(2);Assert.That(life.DonProgressSeconds,Is.Zero);
             MoveBody(life.SuitRack.position+Vector3.left*.75f);
@@ -110,16 +110,18 @@ namespace LunarEscape.Tests
             MoveBody(life.SuitRack.position+Vector3.left*.75f);Select(layout.SuitHandle.Physical,layout.SuitHandle.transform.position);
             session.Advance(1.99f);Assert.That(life.SuitWorn,Is.False);session.Advance(.01f);Release(layout.SuitHandle.Physical);
             Assert.That(life.SuitWorn,Is.True);var wardrobe=session.GetComponent<CrewWardrobe>();
-            Assert.That(wardrobe.SuitedRenderers.All(r=>r.enabled),Is.True);Assert.That(wardrobe.CasualRenderers.Any(r=>r.enabled),Is.False);
+            var commander=session.GetComponent<CrewMission>().Commander;
+            Assert.That(wardrobe.SuitedRenderers.Where(r=>!r.transform.IsChildOf(commander)).All(r=>r.enabled),Is.True);
+            Assert.That(wardrobe.CasualRenderers.Where(r=>r.transform.IsChildOf(commander)).All(r=>r.enabled),Is.True);
             Assert.That(wardrobe.HangingSuit.activeSelf,Is.False);Assert.That(session.GetComponent<SuitHudPresenter>().Hud.activeSelf,Is.True);
-            Assert.That(wardrobe.CommanderHangingSuit.activeSelf,Is.False);
+            Assert.That(wardrobe.CommanderHangingSuit.activeSelf,Is.True);
             yield return null;yield return Languages(session.GetComponent<SuitHudPresenter>().Hud);
             yield return Capture("life-suit-hud",session.Player.Camera.transform.position,session.Player.Camera.transform.position+session.Player.Camera.transform.forward);
         }
         [UnityTest] public IEnumerator RealOxygenActivationAndPackedBatteryAreAtomicAndRetrySafe()
         {
             // 主场景航天服开局满电满氧，满的无法补充；这里固定为半空以验证补给效果。
-            Configure("{\"suitOxygenRange\":{\"x\":30,\"y\":30},\"suitPowerRange\":{\"x\":30,\"y\":30}}");
+            yield return Configure("{\"suitOxygenRange\":{\"x\":30,\"y\":30},\"suitPowerRange\":{\"x\":30,\"y\":30}}");
             Don();var oxygen=cargo.Items.First(i=>i.Kind==CargoKind.Oxygen);float before=life.SuitOxygen;
             Assert.That(life.TryUseSupply(oxygen),Is.False);Assert.That(cargo.TryHold(oxygen),Is.True);
             Assert.That(life.TryUseSupply(oxygen),Is.False,"Ledger Held without XR contact must not consume");cargo.DropHeld(oxygen);
@@ -131,14 +133,14 @@ namespace LunarEscape.Tests
             var battery=Pack(CargoKind.Battery);float power=life.SuitPower;Assert.That(life.TryUseSupply(battery),Is.True);
             Assert.That(life.SuitPower,Is.EqualTo(Mathf.Min(100,power+60)).Within(.001f));Assert.That(cargo.GetCount(CargoKind.Battery),Is.Zero);
             session.RetryMission();Assert.That(life.SuppliesUsed,Is.Zero);Assert.That(oxygen.State,Is.EqualTo(CargoState.World));
-            Don();var again=Pack(CargoKind.Oxygen);bool reset=false;
+            yield return ExpansionTestSteps.Wake(session);Don();var again=Pack(CargoKind.Oxygen);bool reset=false;
             void RetryDuringConsume(){if(!reset&&again.State==CargoState.Consumed){reset=true;session.RetryMission();}}
             cargo.Changed+=RetryDuringConsume;Assert.That(life.TryUseSupply(again),Is.False);cargo.Changed-=RetryDuringConsume;
             Assert.That(reset,Is.True);Assert.That(again.State,Is.EqualTo(CargoState.World));Assert.That(life.SuppliesUsed,Is.Zero);Assert.That(life.SuitWorn,Is.False);
         }
         [UnityTest] public IEnumerator PowerLossBlacksOutHudAcceleratesOxygenAndWristBatteryRestoresIt()
         {
-            Configure("{\"suitPowerSeconds\":20,\"suitPowerRange\":{\"x\":20,\"y\":20},\"suitOxygenSeconds\":10000}");
+            yield return Configure("{\"suitPowerSeconds\":20,\"suitPowerRange\":{\"x\":20,\"y\":20},\"suitOxygenSeconds\":10000}");
             Don();Pack(CargoKind.Battery);session.Advance(4);var hud=session.GetComponent<SuitHudPresenter>();
             Assert.That(life.SuitPower,Is.Zero);Assert.That(hud.Hud.activeSelf,Is.False);Assert.That(hud.RouteLine.enabled,Is.False);
             Assert.That(hud.RouteGuide.Visible,Is.False);
@@ -151,11 +153,11 @@ namespace LunarEscape.Tests
         }
         [UnityTest] public IEnumerator UnpoweredSuitDiesFromHeatByDayAndColdByNight()
         {
-            Configure("{\"suitPowerSeconds\":20,\"suitPowerRange\":{\"x\":20,\"y\":20},\"suitOxygenSeconds\":10000}");
+            yield return Configure("{\"suitPowerSeconds\":20,\"suitPowerRange\":{\"x\":20,\"y\":20},\"suitOxygenSeconds\":10000}");
             foreach(bool daylight in new[]{true,false})
             {
                 life.SetRandomSeed(123);for(int attempt=0;attempt<50;attempt++){session.RetryMission();if(life.IsDaylight==daylight)break;}
-                Assert.That(life.IsDaylight,Is.EqualTo(daylight));Don();session.Advance(4);
+                Assert.That(life.IsDaylight,Is.EqualTo(daylight));yield return ExpansionTestSteps.Wake(session);Don();session.Advance(4);
                 RepairDoor();MoveBody(life.DoorControl.position+Vector3.left*.8f);life.OpenDoor();session.Advance(9.08f);Assert.That(session.Mission.IsTerminal,Is.False);
                 session.Advance(.03f);Assert.That(session.Mission.FailureReason,Is.EqualTo(daylight?StationMissionFailure.Hyperthermia:StationMissionFailure.Hypothermia));
                 Assert.That(life.SuitOxygen,Is.GreaterThan(0));yield return null;
@@ -163,19 +165,18 @@ namespace LunarEscape.Tests
         }
         [UnityTest] public IEnumerator EmptySuitOxygenKillsEvenWithPowerAndDoesNotUseSealedHabitatAir()
         {
-            Configure("{\"suitOxygenSeconds\":20,\"suitOxygenRange\":{\"x\":20,\"y\":20}}");
+            yield return Configure("{\"suitOxygenSeconds\":20,\"suitOxygenRange\":{\"x\":20,\"y\":20}}");
             Don();session.Advance(4);Assert.That(life.SuitOxygen,Is.Zero);Assert.That(life.BaseOxygen,Is.GreaterThan(0));
-            session.Advance(5.99f);Assert.That(session.Mission.IsTerminal,Is.False);session.Advance(.02f);
+            session.Advance(life.Config.SuffocationSeconds-.01f);Assert.That(session.Mission.IsTerminal,Is.False);session.Advance(.02f);
             Assert.That(session.Mission.FailureReason,Is.EqualTo(StationMissionFailure.Suffocation));yield return null;
         }
         [UnityTest] public IEnumerator MinimumReservesWithSuppliesCanRescueWalkBoardAndOperateIntegratedCockpit()
         {
-            Configure("{\"baseOxygenRange\":{\"x\":30,\"y\":30},\"basePowerRange\":{\"x\":35,\"y\":35},\"suitOxygenRange\":{\"x\":20,\"y\":20},\"suitPowerRange\":{\"x\":20,\"y\":20}}");
+            yield return Configure("{\"baseOxygenRange\":{\"x\":30,\"y\":30},\"basePowerRange\":{\"x\":35,\"y\":35},\"suitOxygenRange\":{\"x\":20,\"y\":20},\"suitPowerRange\":{\"x\":20,\"y\":20}}");
             Don();Pack(CargoKind.Oxygen);Pack(CargoKind.Battery);life.UseOxygen();life.UseBattery();
             session.Mission.Tick(session.Mission.RepairTask.RemainingSeconds,true,false);session.Advance(session.Mission.Config.StabilizedSeconds);
             var crew=session.GetComponent<CrewMission>();var ground=session.GetComponent<GroundCrewController>();
-            MoveBody(crew.Commander.position+Vector3.right*.9f);Select(ground.RescueHandle.GetComponent<XRSimpleInteractable>(),ground.RescueHandle.transform.position);
-            session.Advance(crew.Config.RescueSeconds);Release(ground.RescueHandle.GetComponent<XRSimpleInteractable>());
+            yield return ExpansionTestSteps.Rescue(session);
             Assert.That(crew.CommanderRescued,Is.True);RepairDoor();MoveBody(life.DoorControl.position+Vector3.left*.8f);Assert.That(life.TryOpenDoor(),Is.True);
             // The commander can already approach the hatch during lock repair; continue forward from the spawn waypoint.
             float routeDistance=0;
@@ -228,7 +229,14 @@ namespace LunarEscape.Tests
             }
             Assert.That(flight.Phase,Is.EqualTo(AscentPhase.Docked),flight.Failure.ToString());
             Assert.That(session.GetComponent<MissionScore>().HasResult,Is.True);
-            session.RetryMission();yield return null;Assert.That(life.SuitWorn,Is.False);Assert.That(feed.Optics.enabled,Is.False);
+            var breaker=Object.FindAnyObjectByType<HabitatBreaker>(FindObjectsInactive.Include);
+            Assert.That(breaker.IsOn,Is.True);Assert.That(breaker.gameObject.activeInHierarchy,Is.False);
+            session.RetryMission();yield return null;yield return null;
+            Assert.That(life.SuitWorn,Is.False);Assert.That(feed.Optics.enabled,Is.False);
+            Assert.That(breaker.IsOn,Is.False,"A flight retry must reset the inactive ground breaker.");
+            Assert.That(session.GetComponent<LifeSupportEnvironment>().HabitatLights.All(l=>l==null||l.intensity==0),Is.True);
+            yield return ExpansionTestSteps.Wake(session);
+            Assert.That(breaker.Brightness,Is.Zero);Assert.That(breaker.Lever.LockedDown,Is.False);
         }
         [UnityTest] public IEnumerator DayNightLampsBeaconPulsesAndThreeLanguageWallPanelsRemainReadable()
         {
@@ -305,7 +313,9 @@ namespace LunarEscape.Tests
             Assert.That(session.Mission.Phase,Is.EqualTo(StationMissionPhase.Repair));
             yield return Languages(layout.HabitatConsole);
             var crew=session.GetComponent<CrewMission>();var ground=session.GetComponent<GroundCrewController>();
-            Assert.That(crew.CommanderState,Is.EqualTo(CrewState.Ready));
+            yield return ExpansionTestSteps.Rescue(session);
+            MoveBody(life.DoorControl.position+Vector3.left*.8f);
+            Assert.That(crew.CommanderState,Is.EqualTo(CrewState.Following));
             Assert.That(life.TryOpenDoor(),Is.True);
             Assert.That(session.Mission.Phase,Is.EqualTo(StationMissionPhase.Evacuation));
             Assert.That(crew.CommanderState,Is.EqualTo(CrewState.Following));
@@ -329,7 +339,7 @@ namespace LunarEscape.Tests
             yield return Click(hatch.AccessibleButton);session.Advance(0);flight.Tick(.951f);
             Assert.That(flight.Phase,Is.EqualTo(AscentPhase.Startup));Assert.That(crew.CommanderBoarded,Is.True);
             Assert.That(session.GetComponent<LifeSupportEnvironment>().ShoulderLights.All(l=>!l.enabled),Is.True);
-            session.RetryMission();Assert.That(crew.CommanderRescued,Is.False);Assert.That(ground.RouteProgress,Is.Zero);
+            session.RetryMission();yield return null;Assert.That(crew.CommanderRescued,Is.False);Assert.That(ground.RouteProgress,Is.Zero);
             yield return null;
         }
         [UnityTest] public IEnumerator ShipSideButtonAcceptsRealMouseClickFromBoardingApproach()
@@ -363,7 +373,7 @@ namespace LunarEscape.Tests
         }
         [UnityTest] public IEnumerator ShoulderLampsStayAtBothShouldersAndFaceForwardWhenLookingDown()
         {
-            Configure("{\"suitPowerSeconds\":20,\"suitPowerRange\":{\"x\":20,\"y\":20},\"suitOxygenSeconds\":10000}");
+            yield return Configure("{\"suitPowerSeconds\":20,\"suitPowerRange\":{\"x\":20,\"y\":20},\"suitOxygenSeconds\":10000}");
             var environment=session.GetComponent<LifeSupportEnvironment>();var lamps=environment.ShoulderLights;
             Assert.That(lamps.Count,Is.EqualTo(2));Assert.That(lamps.All(l=>!l.enabled),Is.True);
             Assert.That(session.Player.Camera.transform.Find("Suit Helmet Lamp"),Is.Null);
@@ -384,7 +394,7 @@ namespace LunarEscape.Tests
             eye.rotation=Quaternion.Euler(0,90,0);yield return null;
             yield return Capture("life-shoulder-lamps",eye.position+Vector3.right*2.3f+Vector3.back*.8f,eye.position+Vector3.down*.2f,55,true,true);
             life.SetRandomSeed(82);for(int i=0;i<30;i++){session.RetryMission();if(!life.IsDaylight)break;}
-            Assert.That(life.IsDaylight,Is.False);Don();MoveBody(new Vector3(16,0,1.7f));
+            Assert.That(life.IsDaylight,Is.False);yield return ExpansionTestSteps.Wake(session);Don();MoveBody(new Vector3(16,0,1.7f));
             eye.rotation=Quaternion.Euler(8,90,0);yield return null;
             Color32[] litPixels=null,darkPixels=null;
             yield return Capture("life-shoulder-beams-night",eye.position,eye.position+eye.forward*8,65,true,false,p=>litPixels=p);
@@ -417,25 +427,26 @@ namespace LunarEscape.Tests
             airlock.SkipRepair();yield return null;
             Assert.That(life.DoorRepaired,Is.True);Assert.That(life.DoorOpen,Is.False,"放行只解除门锁，不会自己开门");Assert.That(life.BaseOxygen,Is.GreaterThan(0));
             Assert.That(panel.HatchButton.interactable,Is.True);yield return Languages(layout.AirlockConsole);
-            yield return Click(panel.HatchButton);Assert.That(life.DoorOpen,Is.True);Assert.That(life.BaseOxygen,Is.Zero);
+            yield return Click(panel.HatchButton);Assert.That(life.DoorOpen,Is.True);session.Advance(1);Assert.That(life.BaseOxygen,Is.Zero);
             session.Advance(6.1f);Assert.That(session.Mission.IsTerminal,Is.False,"A supplied suit protects after opening");
             session.RetryMission();yield return null;Assert.That(life.DoorRepaired,Is.False);Assert.That(airlock.IsReleased,Is.False);
             session.BeginMission();MoveBody(life.DoorControl.position+Vector3.left*.8f);Assert.That(life.TryOpenDoor(),Is.False);
         }
         [UnityTest] public IEnumerator DeathStopsAirlockRepair()
         {
-            Configure("{\"baseOxygenSeconds\":1,\"baseOxygenRange\":{\"x\":100,\"y\":100},\"suffocationSeconds\":4}");
+            yield return Configure("{\"baseOxygenSeconds\":1,\"baseOxygenRange\":{\"x\":100,\"y\":100},\"suffocationSeconds\":4}");
             session.BeginMission();session.Advance(5.1f);
             Assert.That(session.Mission.FailureReason,Is.EqualTo(StationMissionFailure.Suffocation));
             Assert.That(life.AirlockRepair.Active,Is.False,"死亡后不能继续抢修");
             Assert.That(life.DoorRepaired,Is.False);Assert.That(life.TryOpenDoor(),Is.False);
             yield return null;
         }
-        private void Configure(string json)
+        private IEnumerator Configure(string json)
         {
             var settings=Object.Instantiate(life.Config);temporary.Add(settings);JsonUtility.FromJsonOverwrite(json,settings);
             var habitat=layout.HabitatConsole.transform.parent.Find("Pressurized Habitat Volume").GetComponent<BoxCollider>();
             life.Configure(settings,session,cargo,life.SuitRack,life.DoorControl,habitat);session.RetryMission();
+            yield return ExpansionTestSteps.Wake(session);
         }
         // 门锁维修的时间消耗保持原测试口径；修理本身由气闸抢修的捷径完成（真实操作见 AirlockRepairTests）。
         private void RepairDoor()
@@ -526,7 +537,7 @@ namespace LunarEscape.Tests
                 RenderPipeline.SubmitRenderRequest(camera,new RenderPipeline.StandardRequest{destination=texture});
                 RenderTexture.active=texture;pixels.ReadPixels(new Rect(0,0,1800,1200),0,0);pixels.Apply();
                 captured?.Invoke(pixels.GetPixels32());
-                string folder=Path.GetFullPath(Path.Combine(Application.dataPath,"../Docs/Previews"));Directory.CreateDirectory(folder);File.WriteAllBytes(Path.Combine(folder,name+".png"),pixels.EncodeToPNG());
+                string folder=Path.GetFullPath(Path.Combine(Application.dataPath,"../Docs/Previews"));Directory.CreateDirectory(folder);PreviewEvidence.Write(Path.Combine(folder,name+".png"),pixels.EncodeToPNG());
             }
             finally{RenderTexture.active=previous;camera.targetTexture=null;texture.Release();Object.Destroy(texture);Object.Destroy(pixels);Object.Destroy(obj);}
         }

@@ -20,6 +20,10 @@ namespace LunarEscape
         [SerializeField,Min(.1f)] private float assistAngle=8;
         [SerializeField,Min(.01f)] private float assistSpeed=.35f;
         [SerializeField,Min(.01f)] private float crashSpeed=.5f;
+        [SerializeField] private bool stagedAssistance;
+        public bool StagedAssistance => stagedAssistance;
+        public void ConfigureApproachableAssistance()
+        { stagedAssistance=true; assistDistance=12; assistLateral=2.5f; assistAngle=25; assistSpeed=.8f; }
         public Vector3 StartPosition=>startPosition;
         public Vector3 StartVelocity=>startVelocity;
         public Quaternion StartAttitude=>Quaternion.Euler(startEuler);

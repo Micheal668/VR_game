@@ -29,6 +29,7 @@ namespace LunarEscape.Tests
             cargo = session.GetComponent<CargoInventory>(); hatch = UnityEngine.Object.FindAnyObjectByType<HatchBoardingController>();
             feedback = flight.GetComponent<FlightFeedback>();
             while (Time.time < 1.05f) yield return null;
+            yield return ExpansionTestSteps.Wake(session);
         }
 
         [TearDown] public void Restore() => Time.captureDeltaTime = previousDelta;

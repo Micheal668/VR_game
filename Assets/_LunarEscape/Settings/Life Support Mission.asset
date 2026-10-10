@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a78ecffea79c94d2a9d701b968690e14, type: 3}
   m_Name: Life Support Mission
   m_EditorClassIdentifier: LunarEscape.Runtime::LunarEscape.StationMissionConfig
-  repairWindowSeconds: 240
+  repairWindowSeconds: 420
   stabilizedSeconds: 4
   baseEvacuationSeconds: 120
   repairBonusSeconds: 30

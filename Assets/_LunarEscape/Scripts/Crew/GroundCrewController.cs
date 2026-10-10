@@ -43,7 +43,7 @@ namespace LunarEscape
         {
             if (crew == null) return;
             BuildRoute(); Subscribe();
-            if (crew.Station.Phase == StationMissionPhase.Briefing) ResetPresentation();
+            if (crew.Station.Phase == StationMissionPhase.Briefing && !Expanded) ResetPresentation();
             Refresh();
         }
         private void OnDisable() { Unsubscribe(); heldHandles.Clear(); crew?.SetRescueHeld(false); }
@@ -105,9 +105,11 @@ namespace LunarEscape
         }
         private void StationChanged()
         {
-            if (crew.Station.Phase == StationMissionPhase.Briefing) ResetPresentation();
+            if (crew.Station.Phase == StationMissionPhase.Briefing && !Expanded) ResetPresentation();
             Refresh();
         }
+        private bool Expanded => crew != null && crew.Station.LifeSupport != null && crew.Station.LifeSupport.ExpandedStation;
+        public void ResetRoute() => ResetPresentation();
         private void ResetPresentation()
         {
             distanceAlongRoute = 0; heldHandles.Clear();
@@ -144,7 +146,7 @@ namespace LunarEscape
             if (crew == null || commander == null) return;
             bool groundVisible = crew.Station.Phase != StationMissionPhase.Completed && !crew.IsOutcomeResolved && crew.CommanderState != CrewState.Dead;
             commander.gameObject.SetActive(groundVisible);
-            if (restraint != null) restraint.SetActive(groundVisible && crew.CommanderState == CrewState.Trapped);
+            if (restraint != null) restraint.SetActive(!Expanded && groundVisible && crew.CommanderState == CrewState.Trapped);
             if (flightCommander != null) flightCommander.SetActive(crew.CommanderBoarded && crew.CommanderState != CrewState.Dead);
             if (crew.CommanderState != CrewState.Trapped) heldHandles.Clear();
         }

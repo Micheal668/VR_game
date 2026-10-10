@@ -92,6 +92,8 @@ namespace LunarEscape
         public void BeginMission()
         {
             ValidateReferences();
+            var expansion = GetComponent<StationExpansionMission>();
+            if (expansion != null && expansion.isActiveAndEnabled && !expansion.IntroComplete) return;
             mission.Begin();
         }
 

@@ -22,6 +22,8 @@ namespace LunarEscape
         private Vector3 headRest;
         private Quaternion headRestRotation;
         private bool captured;
+        private float contactSeconds;
+        [SerializeField] private bool assistedContact;
 
         // 带符号的累计转角；任一方向达到阈值即可（新手不知道“左松右紧”也能完成）。
         public float Turned { get; private set; }
@@ -29,8 +31,11 @@ namespace LunarEscape
         public bool Engaged => engagedTool != null;
         public bool Enabled { get; set; }
         public float ReleaseDegrees => releaseDegrees;
+        public Vector3 ContactPoint => head != null ? head.position + transform.forward * .05f : transform.position;
 
         public event System.Action<LatchBolt> Changed;
+        public void ConfigureAssistance()
+        { assistedContact = true; reach = .16f; releaseDegrees = 65f; }
 
         public void Configure(RepairTool[] wrenches, Transform boltHead, Renderer indicator)
         {
@@ -59,10 +64,11 @@ namespace LunarEscape
             var tool = FindTool();
             // 扳手几乎顺着螺栓轴（握成“戳”的姿势）时无法判断转向，视为没有套上。
             float angle = 0f;
-            if (tool != null && !TryToolAngle(tool, out angle)) tool = null;
+            if (tool != null && !TryToolAngle(tool, out angle) && !assistedContact) tool = null;
             if (tool != engagedTool)
             {
                 engagedTool = tool;
+                contactSeconds = 0;
                 if (tool == null) return;
                 // 套上螺栓：一声金属轻碰，让玩家知道对准了。
                 lastToolAngle = angle;
@@ -71,6 +77,7 @@ namespace LunarEscape
                 return;
             }
             if (tool == null) return;
+            contactSeconds += Time.deltaTime;
 
             float delta = Mathf.DeltaAngle(lastToolAngle, angle);
             lastToolAngle = angle;
@@ -87,7 +94,8 @@ namespace LunarEscape
                 FeedbackSounds.Play(source, FeedbackSound.Click, 0.7f);
                 HandHaptics.Pulse(HandHaptics.FromGrab(tool.Grab), 0.45f, 0.03f);
             }
-            if (Mathf.Abs(Turned) >= releaseDegrees)
+            // A short deliberate tool contact also works when wrist rotation is awkward in VR.
+            if (Mathf.Abs(Turned) >= releaseDegrees || assistedContact && contactSeconds >= 1.2f)
             {
                 Released = true;
                 FeedbackSounds.Play(source, FeedbackSound.Clunk, 0.6f);
@@ -98,15 +106,26 @@ namespace LunarEscape
             ShowState();
         }
 
-        private void Disengage() => engagedTool = null;
+        private void Disengage() { engagedTool = null; contactSeconds = 0; }
 
         private RepairTool FindTool()
         {
             float reachSquared = reach * reach;
             foreach (var tool in tools)
-                if (tool != null && tool.isActiveAndEnabled && tool.IsHeld && (tool.Tip.position - transform.position).sqrMagnitude <= reachSquared)
+                if (tool != null && tool.isActiveAndEnabled && tool.IsHeld &&
+                    (Touches(tool.Tip.position, reachSquared) || assistedContact && tool.SecondaryTip != null && Touches(tool.SecondaryTip.position, reachSquared)))
                     return tool;
             return null;
+        }
+
+        private bool Touches(Vector3 point, float radiusSquared)
+        {
+            if (!assistedContact) return (point - transform.position).sqrMagnitude <= radiusSquared;
+            // Work from the exposed face. The working end can remain outside the
+            // solid hatch; reaching through the door or touching the shaft cannot engage it.
+            Vector3 delta = point - ContactPoint;
+            return Vector3.Dot(point - transform.position, transform.forward) >= -.015f
+                && delta.sqrMagnitude <= .12f * .12f;
         }
 
         // 扳手长轴（工具局部 Z）投影到螺栓端面后的方向角。
@@ -123,6 +142,7 @@ namespace LunarEscape
             lastTick = 0f;
             Released = false;
             engagedTool = null;
+            contactSeconds = 0;
             ShowState();
         }
 
