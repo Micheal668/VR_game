@@ -43,9 +43,9 @@ namespace LunarEscape
         public MissionVoice Voice => voice;
         public bool StationHints { get => stationHints; set => stationHints = value; }
 
-        // 关闭逐步提示时仍保留的地面指挥台词：基地第一句、最后一句、失败呼叫，以及飞船上的全部台词。
+        // 关闭逐步提示时仍保留的地面指挥台词：基地第一句（扩建流程为醒来呼叫）、最后一句、失败呼叫，以及飞船上的全部台词。
         private static readonly HashSet<string> KeptMissionControl = new()
-        { "cup_hello", "cup_vented", "cup_failed", "cup_aboard", "cup_liftoff", "cup_orbit", "cup_rendezvous", "cup_docked" };
+        { "cup_hello", "cup_exp_wake", "cup_vented", "cup_failed", "cup_aboard", "cup_liftoff", "cup_orbit", "cup_rendezvous", "cup_docked" };
 
         private bool Speak(string id, VoicePriority priority = VoicePriority.Hint, System.Func<bool> stillValid = null)
         {
@@ -53,10 +53,9 @@ namespace LunarEscape
             {
                 if (!expansion.IntroComplete) return false;
                 if (id == "cmd_suit") return false;
-                if (id == "cup_suit_done") id = "cup_exp_player_suit";
                 if (id.StartsWith("cmd_") && !expansion.CommanderSuited) return false;
             }
-            return (stationHints || id.StartsWith("cup_exp_") || !id.StartsWith("cup_") || KeptMissionControl.Contains(id)) && voice.Say(id, priority, stillValid);
+            return (stationHints || !id.StartsWith("cup_") || KeptMissionControl.Contains(id)) && voice.Say(id, priority, stillValid);
         }
 
         public void Configure(MissionVoice player, StationMission task, LifeSupportMission support, HabitatBreaker mainBreaker,
@@ -101,10 +100,8 @@ namespace LunarEscape
             {
                 if (!expansion.IntroComplete) return null;
                 if (!expansion.BedroomLocked) return "cup_exp_wake";
-                if (!breaker.IsOn) return "cup_exp_power";
-                if (!expansion.Laboratory.IsSolved) return "cup_exp_lab";
-                if (!expansion.DoorUnlocked) return "cup_exp_control";
-                if (!expansion.CommanderSuited) return "cup_exp_rescued";
+                // 扩建流程中地面指挥只在醒来时呼叫一次，之后的步骤不再口头提示。
+                if (!breaker.IsOn || !expansion.Laboratory.IsSolved || !expansion.DoorUnlocked || !expansion.CommanderSuited) return null;
             }
             if (breaker != null && !breaker.IsOn) return repeat ? "cup_breaker_repeat" : "cup_breaker";
             if (!life.SuitWorn) return repeat ? "cup_suit_repeat" : "cup_suit";
@@ -174,14 +171,6 @@ namespace LunarEscape
 
         private void Ground()
         {
-            if (expansion != null)
-            {
-                if (expansion.BedroomLocked) SayOnce("cup_exp_power");
-                if (breaker.IsOn) SayOnce("cup_exp_lab");
-                if (expansion.Laboratory.IsSolved) SayOnce("cup_exp_control");
-                if (expansion.DoorUnlocked) SayOnce("cup_exp_rescued");
-                if (expansion.CommanderSuited) SayOnce("cup_exp_ready");
-            }
             bool lights = breaker == null || breaker.IsOn;
             if (lights && !lastLights && breaker != null) { SayOnce("cmd_lights", VoicePriority.Quip); SayObjective(); }
             lastLights = lights;

@@ -66,11 +66,10 @@ namespace LunarEscape.Tests
             Assert.That(voice.Lines.All(l => l.clip != null && l.clip.length > .5f), Is.True);
             yield return Said("cup_exp_wake", 6f);
             steps.MoveBody(new Vector3(-7.5f,0,1.7f)); session.Advance(2.01f);
-            yield return Said("cup_exp_power", 30f);
             yield return ExpansionTestSteps.Power(session);
-            yield return Said("cup_exp_lab", 30f);
             yield return ExpansionTestSteps.Solve(session.GetComponent<StationExpansionMission>().Laboratory);
-            yield return Said("cup_exp_control", 30f);
+            for (float t = 0; t < 10f; t += Time.deltaTime) yield return null;
+            Assert.That(voice.History.Where(id => id.StartsWith("cup_")), Is.EquivalentTo(new[] { "cup_exp_wake" }), "基地里地面指挥只在醒来时呼叫");
             Assert.That(voice.History, Does.Not.Contain("cup_hello"));
             Assert.That(voice.History, Does.Not.Contain("cmd_suit"));
         }
@@ -80,12 +79,13 @@ namespace LunarEscape.Tests
             director.StationHints = false;
             yield return Said("cup_exp_wake", 6f);
             steps.Don();
-            yield return Said("cup_exp_player_suit", 30f);
+            for (float t = 0; t < 10f; t += Time.deltaTime) yield return null;
             Assert.That(session.GetComponent<StationExpansionMission>().CommanderSuited,Is.False);
             Assert.That(voice.History.Any(id=>id.StartsWith("cmd_")),Is.False,"Sleeping or trapped crew do not make repair comments.");
             life.AirlockRepair.SkipRepair(); steps.MoveBody(life.DoorControl.position + Vector3.left*.8f);
             Assert.That(life.TryOpenDoor(),Is.True);
             yield return Said("cup_vented",30f);
+            Assert.That(voice.History.Where(id => id.StartsWith("cup_")), Is.EquivalentTo(new[] { "cup_exp_wake", "cup_vented" }), "基地里地面指挥只说首尾两句");
         }
 
         [UnityTest] public IEnumerator CommanderCommentsOnEachRepairStep()
