@@ -192,6 +192,7 @@ namespace LunarEscape
                 yield return fade.Fade(1f, 2.5f);
                 yield return fade.Title("day.title.2", "day.title.sub.2", 2.5f);
             }
+            if (language != null) LocalizationService.CarriedLanguage = language.CurrentLanguage;
             if (!string.IsNullOrEmpty(nextScene) && Application.CanStreamedLevelBeLoaded(nextScene)) SceneManager.LoadScene(nextScene);
         }
 

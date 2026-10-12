@@ -100,6 +100,8 @@ namespace LunarEscape
             if (!IsHeld) return 0f;
             float raw = overrideTrigger >= 0f ? overrideTrigger
                 : grab.firstInteractorSelecting is XRBaseInputInteractor hand ? hand.activateInput.ReadValue() : 0f;
+            // 键鼠模拟器的扳机只有“按下/松开”，用桌面扳机力度（- / = 键调节）换算成半按。
+            if (DesktopTriggerLevel.Active != null) raw *= DesktopTriggerLevel.Active.Level;
             return raw <= deadZone ? 0f : Mathf.Clamp01((raw - deadZone) / (1f - deadZone));
         }
 

@@ -34,7 +34,14 @@ namespace LunarEscape
         public GameLanguage CurrentLanguage => currentLanguage;
         public event Action LanguageChanged;
 
-        private void Awake() => Load();
+        // 第一天里选的语言带进第二天：入睡前写入，下一个场景的语言服务醒来时取用一次。
+        public static GameLanguage? CarriedLanguage { get; set; }
+
+        private void Awake()
+        {
+            if (CarriedLanguage.HasValue) { currentLanguage = CarriedLanguage.Value; CarriedLanguage = null; }
+            Load();
+        }
 
         public void Configure(TextAsset source, GameLanguage initialLanguage = GameLanguage.Chinese)
         {

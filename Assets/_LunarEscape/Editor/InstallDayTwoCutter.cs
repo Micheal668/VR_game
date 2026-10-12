@@ -52,6 +52,8 @@ namespace LunarEscape.Editor
             var director = session.GetComponentInChildren<MissionVoiceDirector>(true);
             if (director != null) { director.ConfigureBlockade(blockade); EditorUtility.SetDirty(director); }
             BuildDayTitle(session);
+            RussianByDefault();
+            AddDesktopTrigger();
             EditorSceneManager.MarkSceneDirty(SceneManager.GetActiveScene());
         }
 
@@ -144,6 +146,24 @@ namespace LunarEscape.Editor
             var cut = line.gameObject.AddComponent<CutLine>();
             cut.Configure(new Vector3(0f, -height * 0.5f, 0f), new Vector3(0f, height * 0.5f, 0f), parts);
             return cut;
+        }
+
+        // 俄语是主语言：场景默认俄语（玩家仍可在屏幕上切换中文与英文）。
+        public static void RussianByDefault()
+        {
+            foreach (var language in UnityEngine.Object.FindObjectsByType<LocalizationService>(FindObjectsInactive.Include))
+            {
+                var serialized = new SerializedObject(language);
+                serialized.FindProperty("currentLanguage").enumValueIndex = (int)GameLanguage.Russian;
+                serialized.ApplyModifiedPropertiesWithoutUndo();
+            }
+        }
+
+        // 键鼠模拟器上挂扳机力度调节（- / = 键），在电脑上也能试半按扳机。
+        public static void AddDesktopTrigger()
+        {
+            foreach (var simulator in UnityEngine.Object.FindObjectsByType<CollisionAwareSimulator>(FindObjectsInactive.Include))
+                if (simulator.GetComponent<DesktopTriggerLevel>() == null) simulator.gameObject.AddComponent<DesktopTriggerLevel>();
         }
 
         // 第二天的标题：叠在剧情“睁眼”黑幕之上（黑幕本身由 StationExpansionMission 控制）。

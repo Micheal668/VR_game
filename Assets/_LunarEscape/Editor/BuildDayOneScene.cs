@@ -110,6 +110,8 @@ namespace LunarEscape.Editor
                 teleport.gameObject.SetActive(false);
 
             Daylight(sun);
+            InstallDayTwoCutter.RussianByDefault();
+            InstallDayTwoCutter.AddDesktopTrigger();
             var bedroomDoor = ground.GetComponentsInChildren<Transform>(true).FirstOrDefault(t => t.name == "Bedroom Sliding Door");
             if (bedroomDoor != null) bedroomDoor.position += Vector3.up * 2.65f;
             PlaceCommander(commander);
@@ -163,7 +165,7 @@ namespace LunarEscape.Editor
         {
             typeof(LocalizationService), typeof(LocalizedText), typeof(CockpitLamp), typeof(CrewSuitRig), typeof(TrackedCrewSuit), typeof(CrewWalkMotion),
             typeof(EarthSkyView), typeof(LanderNavigationBeacon), typeof(CollisionAwareSimulator), typeof(MissionTeleportationProvider),
-            typeof(ButtonPressFeedback), typeof(GrabFeedback), typeof(ReturnFallenTool), typeof(SpaceAudio), typeof(ScreenFade)
+            typeof(ButtonPressFeedback), typeof(GrabFeedback), typeof(ReturnFallenTool), typeof(SpaceAudio), typeof(ScreenFade), typeof(DesktopTriggerLevel)
         };
 
         private static void SweepMissionComponents()
@@ -220,6 +222,9 @@ namespace LunarEscape.Editor
             locker.Configure(grip, hanging, playerSuit.GetComponentsInChildren<Renderer>(true).Where(r => !r.transform.IsChildOf(lamps)).ToArray(),
                 playerUniform.GetComponentsInChildren<Renderer>(true), lamps != null ? lamps.gameObject : null, readout);
             foreach (var light in lamps != null ? lamps.GetComponentsInChildren<Light>(true) : new Light[0]) light.enabled = true;
+            // 握把要按住侧键约 2.5 秒；旁边再放一块屏幕按钮，射线或鼠标点一下即可穿上。
+            var gripPoint = locker.Handle.transform.position;
+            Panel(flow, "Suit Don Button", new Vector3(3.55f, gripPoint.y + 0.42f, gripPoint.z), Quaternion.Euler(0f, 90f, 0f), "day1.suit.don", locker.Don, new Vector2(520, 150));
             return locker;
         }
 
@@ -269,9 +274,9 @@ namespace LunarEscape.Editor
             return light;
         }
 
-        private static void Panel(Transform parent, string name, Vector3 position, Quaternion rotation, string key, UnityEngine.Events.UnityAction action)
+        private static void Panel(Transform parent, string name, Vector3 position, Quaternion rotation, string key, UnityEngine.Events.UnityAction action, Vector2? size = null)
         {
-            var panel = ui.Panel(name, position, new Vector2(520, 170), 0.0007f, rotation);
+            var panel = ui.Panel(name, position, size ?? new Vector2(520, 170), 0.0007f, rotation);
             panel.SetParent(parent, true);
             var button = ui.Button(panel, name + " Button", key, Vector2.zero, new Vector2(480, 130), 44);
             UnityEventTools.AddPersistentListener(button.onClick, action);
@@ -444,7 +449,15 @@ namespace LunarEscape.Editor
         {
             var board = ui.Panel("Day One Task Board", new Vector3(0f, 2.15f, 3.66f), new Vector2(2300, 1250), 0.0011f, Quaternion.identity);
             board.SetParent(flow, true);
-            var lobby = BoardText(board, new Vector2(2180, 1150), 96);
+            var lobby = BoardText(board, new Vector2(2180, 960), 96);
+            lobby.rectTransform.anchoredPosition = new Vector2(0f, 80f);
+            // 与场景 11 一样可在屏幕上切换语言（默认俄语）。
+            for (int i = 0; i < 3; i++)
+            {
+                var button = ui.Button(board, "Language " + i, new[] { "language.zh", "language.en", "language.ru" }[i], new Vector2((i - 1) * 520, -520), new Vector2(460, 120), 56);
+                UnityEventTools.AddIntPersistentListener(button.onClick, language.SetLanguageIndex, i);
+                button.gameObject.AddComponent<ButtonPressFeedback>();
+            }
             var left = origin.GetComponentsInChildren<Transform>(true).First(t => t.name == "Left Controller");
             var wrist = ui.Panel("Day One Wrist Tasks", Vector3.zero, new Vector2(560, 330), 0.00028f, Quaternion.identity);
             wrist.SetParent(left, false);
