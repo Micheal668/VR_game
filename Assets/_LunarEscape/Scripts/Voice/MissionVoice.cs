@@ -88,6 +88,8 @@ namespace LunarEscape
             }
             else commander = FeedbackSounds.CreateSource(head != null ? head : transform, "Commander Voice", 0f);
             commander.volume = commanderVolume;
+            // 穿着航天服时彼此靠无线电通话：语音不受舱外闷音处理影响。
+            radio.bypassListenerEffects = commander.bypassListenerEffects = true;
             commander.maxDistance = 18f;
             commander.minDistance = 1.2f;
             idleSince = Time.time;

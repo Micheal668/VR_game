@@ -4,7 +4,8 @@ using UnityEngine;
 
 namespace LunarEscape
 {
-    public enum FeedbackSound { Click, Deny, Grab, Release, Knock, Pack, RepairLoop, Chime, Clunk, ThrusterLoop, EngineLoop, Hiss, RadioOpen, RadioClose, Decompression, HurriedBreath, StationAlarm }
+    public enum FeedbackSound { Click, Deny, Grab, Release, Knock, Pack, RepairLoop, Chime, Clunk, ThrusterLoop, EngineLoop, Hiss, RadioOpen, RadioClose, Decompression, HurriedBreath, StationAlarm,
+        LaserLoop, DrillLoop, GrindLoop, CalmBreath, VentLoop, HumLoop, LabLoop, Beep }
 
     // 交互音效在运行时用数学方式合成，与警报音做法一致：不依赖外部录音素材，也不需要导入音频文件。
     // 每种声音只生成一次并缓存；固定随机种子保证每次运行听到的声音一致，便于调参对比。
@@ -172,6 +173,57 @@ namespace LunarEscape
                     float whistle = Mathf.Sin(phase + Mathf.Sin(Tau * 7f * t) * 0.6f) * 0.12f * Mathf.Min(1f, t / 0.15f) * Mathf.Exp(-t / 1.1f);
                     return Mathf.Clamp(bang + roar + whistle, -1f, 1f);
                 }),
+                // 激光切割：电源工频嗡声 + 高频啸叫，30 Hz 调制；1 秒内均为整数周期，循环无断点。
+                FeedbackSound.LaserLoop => Render(1f, 0.05f, t =>
+                    Mathf.Sin(Tau * 120f * t) * 0.22f + Mathf.Sin(Tau * 240f * t) * 0.1f
+                    + Mathf.Sign(Mathf.Sin(Tau * 480f * t)) * 0.04f
+                    + Mathf.Sin(Tau * 2400f * t) * (0.5f + 0.5f * Mathf.Sin(Tau * 30f * t)) * 0.05f),
+                // 取芯钻电机：150 Hz 锯齿波加一点低沉噪声。
+                FeedbackSound.DrillLoop => Render(1f, 0.05f, t =>
+                {
+                    low += 0.08f * (Noise() - low);
+                    return (2f * Mathf.Repeat(t * 150f, 1f) - 1f) * 0.16f + Mathf.Sin(Tau * 300f * t) * 0.08f + low * 0.5f;
+                }),
+                // 钻头碾磨岩石：低通噪声加随机的碎裂脉冲，23 Hz 粗糙调制。
+                FeedbackSound.GrindLoop => Render(1f, 0.1f, t =>
+                {
+                    float hiss = Noise();
+                    low += 0.3f * (hiss - low);
+                    float crack = random.NextDouble() < 0.0015 ? hiss * 0.9f : 0f;
+                    return low * (0.6f + 0.4f * Mathf.Sin(Tau * 23f * t)) * 0.55f + crack;
+                }),
+                // 宇航服内平稳的呼吸：吸气、停顿、呼气，4 秒一轮。
+                FeedbackSound.CalmBreath => Render(4f, 0.15f, t =>
+                {
+                    low += 0.12f * (Noise() - low);
+                    low2 += 0.02f * (low - low2);
+                    float inhale = t < 1.4f ? Mathf.Sin(Mathf.PI * t / 1.4f) : 0f;
+                    float exhale = t > 1.9f && t < 3.7f ? Mathf.Sin(Mathf.PI * (t - 1.9f) / 1.8f) : 0f;
+                    return (low - low2) * (inhale * 1.1f + exhale * 0.9f) * 0.5f;
+                }),
+                // 舱内通风：两级低通的气流声，夹一点 50 Hz 电机声。
+                FeedbackSound.VentLoop => Render(2f, 0.2f, t =>
+                {
+                    low += 0.05f * (Noise() - low);
+                    low2 += 0.1f * (low - low2);
+                    return low2 * 2.2f + Mathf.Sin(Tau * 50f * t) * 0.03f;
+                }),
+                // 配电设备：100 Hz 工频及其谐波。
+                FeedbackSound.HumLoop => Render(1f, 0.05f, t =>
+                {
+                    low += 0.02f * (Noise() - low);
+                    return Mathf.Sin(Tau * 100f * t) * 0.12f + Mathf.Sin(Tau * 200f * t) * 0.05f + Mathf.Sin(Tau * 300f * t) * 0.025f + low * 0.2f;
+                }),
+                // 实验室仪器：轻微的风扇声和两声很轻的仪器提示音。
+                FeedbackSound.LabLoop => Render(2f, 0.2f, t =>
+                {
+                    low += 0.04f * (Noise() - low);
+                    float beep = Note(t, 0.4f, 1760f) * 0.25f + Note(t, 1.3f, 1320f) * 0.2f;
+                    return low * 1.2f + Mathf.Sin(Tau * 60f * t) * 0.02f + beep;
+                }),
+                // 屏幕按键提示音。
+                FeedbackSound.Beep => Render(0.16f, 0f, t =>
+                    Mathf.Sin(Tau * 1200f * t) * Mathf.Min(1f, t / 0.005f) * Mathf.Min(1f, (0.16f - t) / 0.03f) * 0.25f),
                 _ => throw new ArgumentOutOfRangeException(nameof(sound))
             };
             var clip = AudioClip.Create("Feedback " + sound, data.Length, 1, Rate, false);

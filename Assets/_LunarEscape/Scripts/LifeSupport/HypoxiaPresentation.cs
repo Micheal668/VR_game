@@ -15,6 +15,8 @@ namespace LunarEscape
         {
             breathing = FeedbackSounds.CreateLoop(transform, "Rapid Breathing", FeedbackSound.HurriedBreath, 0);
             breathing.volume = .85f;
+            // 自己的喘息声不经过舱外闷音处理。
+            breathing.bypassListenerEffects = true;
         }
         private void Update()
         {

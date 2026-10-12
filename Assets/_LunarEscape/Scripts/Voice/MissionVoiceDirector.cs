@@ -26,6 +26,8 @@ namespace LunarEscape
         [Tooltip("撤离剩余时间低于该值时催促一次。")]
         [SerializeField, Min(0f)] private float hurrySeconds = 30f;
 
+        [Tooltip("第二天堵住出口的钢梁（可为空）。")]
+        [SerializeField] private BeamBlockade blockade;
         private FuseFault fuse;
         private ValveFault valve;
         private LatchFault latch;
@@ -85,9 +87,42 @@ namespace LunarEscape
             if (airlock != null) airlock.Denied += OnLeverDenied;
             if (mission != null) { lastPhase = mission.Phase; if (lastPhase == StationMissionPhase.Briefing) ResetAttempt(helloDelay); }
             if (flight != null) lastFlightPhase = flight.Phase;
+            if (blockade != null)
+            {
+                blockade.BeamDropped += OnBeamDropped;
+                if (blockade.Cutter != null) blockade.Cutter.OverheatedEvent += OnCutterHot;
+            }
         }
 
-        private void OnDisable() { if (airlock != null) airlock.Denied -= OnLeverDenied; }
+        private void OnDisable()
+        {
+            if (airlock != null) airlock.Denied -= OnLeverDenied;
+            if (blockade != null)
+            {
+                blockade.BeamDropped -= OnBeamDropped;
+                if (blockade.Cutter != null) blockade.Cutter.OverheatedEvent -= OnCutterHot;
+            }
+        }
+
+        public void ConfigureBlockade(BeamBlockade beams) => blockade = beams;
+
+        // 第二天：出口被钢梁堵住。走近时指挥官喊一声，拿起切割器时提醒要领，每切落一根鼓劲一句。
+        private void Blockade()
+        {
+            if (blockade == null || blockade.Cleared || life == null || !life.DoorOpen || life.Player == null) return;
+            var player = life.Player.transform.position;
+            if (Vector3.Distance(new Vector3(player.x, 0f, player.z), new Vector3(blockade.transform.position.x, 0f, blockade.transform.position.z)) < 4.5f)
+                SayOnce("cmd_d2_beams", VoicePriority.Hint);
+            if (blockade.Cutter != null && blockade.Cutter.IsHeld) SayOnce("cmd_d2_cut", VoicePriority.Quip);
+        }
+
+        private void OnBeamDropped(BeamBlockade beams, CutBeam _)
+        {
+            if (beams.Cleared) SayOnce("cmd_d2_clear", VoicePriority.Hint);
+            else Say("cmd_d2_beam_down", VoicePriority.Quip);
+        }
+
+        private void OnCutterHot(LaserCutter _) => SayAgain("cmd_d2_cutter_hot", 10f, VoicePriority.Quip);
 
         // 当前最该做的一步对应的提示。顺序与地面指挥的口头流程一致：照明 → 宇航服 → 气闸三处故障 → 拉杆 → 开门。
         public string Objective(bool repeat = false)
@@ -185,6 +220,7 @@ namespace LunarEscape
             Supplies();
             if (airlock != null && !life.DoorOpen) Airlock();
             Door();
+            Blockade();
 
             // 撤离阶段剩余时间跌破阈值：紧急催促。
             float remaining = mission.Phase == StationMissionPhase.Evacuation ? mission.RemainingSeconds : float.MaxValue;
