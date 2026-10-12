@@ -4,6 +4,7 @@ Unity 6000.6.1f1 (ровно эта версия), URP, XR Interaction Toolkit 3
 Команда смешанная: README и Docs на китайском, общение с пользователем — по-русски. Код: комментарии на **китайском** (правило README), стиль как в соседних файлах.
 
 ## Главное
+- **Игра начинается со сцены 12 `12_LunarStation_DayOne.unity` («День 1», обычная смена, без таймера), сон в кровати → сцена 11 («День 2», авария).** Сцена 12 — копия 11 с вырезанной аварийной логикой (`BuildDayOneScene`), руками её не править: всё делается в сцене 11 и установщиках, потом пересборка 12.
 - **Основная сцена — `Assets/_LunarEscape/Scenes/11_LunarStation_LifeSupport.unity`** (жизнеобеспечение, скафандр, кислород, шлюз, полёт, стыковка). Сцены 04–10 — старые учебные этапы, их не ломать.
 - Сцены **собираются Editor-скриптами** (`Assets/_LunarEscape/Editor/Build*.cs`, `Install*.cs`), а не руками. Новые объекты добавляй установщиком (идемпотентным: удалить старое → построить заново), а не правкой YAML сцены.
 - Порядок меню **Lunar Escape** для сцены 11 после её пересборки:
@@ -12,6 +13,8 @@ Unity 6000.6.1f1 (ровно эта версия), URP, XR Interaction Toolkit 3
   3. `Install Airlock Repair (Life Support Scene)` — ремонт шлюза
   4. `Install Station Start: Lights, Spawn, Movement (Life Support Scene)`
   5. `Install Voice Hints and Decompression (Life Support Scene)` — голос ЦУПа/командира и разгерметизация
+  6. `Install Both Days (Voice, Cutter, Polish, Audio, Day One Scene)` — одной командой: голос (5) → балки и резак второго дня → «полировка» (детали, свет, походка командира) → звук сцены (гул отсеков, глушение в вакууме, музыка) → **копирование сцены 11 в сцену 12 «День 1»**. После любой пересборки сцены 11 запускать заново.
+  - Отдельно для всех сцен: `Install Grab Comfort: Items Snap To Hand (All Scenes)` — дальний захват притягивает предмет в руку (у Near-Far было `Far` → «левитация»).
 - Логика миссии: `StationMission` (фазы и таймер) + `LifeSupportMission` (воздух, питание, температура, скафандр, `DoorRepaired`/`DoorOpen`). Открытие двери без скафандра = смерть.
 - Шлюз (`Scripts/Airlock`): 3 поломки (предохранитель на левой стене + запасной на задней, вентиль справа от двери, 3 болта на двери ключом) + рычаг удержания → `AirlockRepair.IsReleased` → `LifeSupportMission.DoorRepaired`. Дверь открывает кнопка на экране шлюза друга.
 - Физические органы управления — `Scripts/Cockpit/CockpitControl` (база на `XRBaseInteractable`), `CockpitSwitch`, `CockpitLamp`, `ReleaseLever`, `ValveWheel`.
@@ -20,6 +23,10 @@ Unity 6000.6.1f1 (ровно эта версия), URP, XR Interaction Toolkit 3
 - Разгерметизация: `AirlockDecompression` — на фронте `DoorOpen` рёв, пыль/туман к двери, незакреплённые `Rigidbody` тянет к проёму, вибрация, игрока тянет ~0.4 м (`pullPlayer`).
 - Темнота до рубильника: `LifeSupportEnvironment.ConfigureBlackout` гасит светящиеся материалы (`LB_LightDiffuser`, `LB_EmergencyGreen`), отражения скайбокса (главная причина «светло без ламп»), амбиент и солнце (днём просвечивает сквозь стены).
 - Свет: `HabitatBreaker` (рубильник) → `LifeSupportEnvironment`. Бонусы времени: `MissionTimeBonus`.
+- Инструменты на курок (`Scripts/Tools`): база `TriggerTool` — аналоговый курок (`activateInput.ReadValue()`, мёртвая зона), перегрев, вибрация/звук по силе нажатия, «липкий» захват (на время удержания рука переключается в `Sticky`: взял — отпустил боковую — держишь; ещё нажатие — бросил). `NitrogenBlower` + `DustyPanel` (сжатый азот, пыль — runtime-текстура), `CoreDrill` + `DrillSite` + `CoreSample` + `SampleRack` (бур с «зелёной зоной» оборотов по слоям), `LaserCutter` + `CutLine` + `CutBeam` + `BeamBlockade` (балки у выхода шлюза во второй день). Модели инструментов — `Editor/LunarToolBuilder`. В тестах держать инструмент: `ToolHand` в `TwoDaysTests` (ручное значение курка), `SetTriggerOverride` — для отладки.
+- День 1: `Scripts/DayOne` — `DayOneMission` (задачи, табло в зале + на левом запястье, реплики, сон → загрузка сцены 11), `DayOneAirlock` (внутр. дверь = старая Evacuation Door, внешняя у x≈8; цикл ~3 с; без скафандра наружу нельзя), `SuitLocker`. Титры «ДЕНЬ N» — `ScreenFade` на холсте `Station Eye Effects` у камеры.
+- Звук: `SpaceAudio` (НЧ-фильтр на слушателе в вакууме + дыхание в скафандре; голос/музыка/инструменты ставят `bypassListenerEffects`), `StationAmbience` (гул по отсекам, тише без питания), `MusicDirector` + `MusicSynth` (музыка синтезом в фоновом потоке, приглушается под речь).
+
 - Расстановку на стенах реалистичной станции мерить лучом по видимой геометрии (см. `InstallAirlockRepair.MeasureWalls`) и проверять рендером — стены и мебель не там, где старые заготовки.
 
 ## Проверка без окна (Unity должен быть закрыт)
@@ -27,7 +34,7 @@ Unity 6000.6.1f1 (ровно эта версия), URP, XR Interaction Toolkit 3
 "C:/Programs/Unity/6000.6.1f1/Editor/Unity.exe" -batchmode -projectPath "C:/Projects/VR/VR_game" -executeMethod <Namespace.Class.Method> -quit -logFile <log>
 "C:/Programs/Unity/6000.6.1f1/Editor/Unity.exe" -batchmode -projectPath "C:/Projects/VR/VR_game" -runTests -testPlatform PlayMode [-testFilter "LunarEscape.Tests.X|..."] -testResults <xml> -logFile <log>
 ```
-Полный PlayMode-набор ~2 мин (≈157 тестов). Ошибки компиляции — `error CS` в логе. Для визуальной проверки — временный Editor-скрипт, рендерящий камерой в PNG (удалять после).
+Полный PlayMode-набор ~3 мин (≈184 теста). Ошибки компиляции — `error CS` в логе. Для визуальной проверки — временный Editor-скрипт, рендерящий камерой в PNG (удалять после).
 Тесты пишут скриншоты в `Docs/Previews` — их и шум Unity в `ProjectSettings/` **не коммитить**; `Assets/InitTestScene*.unity` удалять.
 В worktree (`.claude/worktrees/...`) `-projectPath` указывать на сам worktree (своя `Library`, первый импорт ~10 мин); `AscentSceneTests.ThreeLanguagePanel…` там падает — пишет в `../../.development`, которой нет.
 

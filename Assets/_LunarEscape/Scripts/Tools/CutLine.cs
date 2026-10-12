@@ -74,7 +74,7 @@ namespace LunarEscape
                 if (segments[i] == null) continue;
                 float h = heat != null ? heat[i] : 0f, g = glow != null ? glow[i] : 0f;
                 var baseColor = h >= 1f ? Groove : Color.Lerp(Marked, new Color(1f, 0.55f, 0.1f), h);
-                var emission = new Color(1f, 0.45f, 0.08f) * (g * (1.5f + 2.5f * h)) + (h >= 1f ? Color.black : Marked * 0.6f);
+                var emission = new Color(1f, 0.45f, 0.08f) * (g * (1.5f + 2.5f * h)) + (h >= 1f ? Color.black : Marked * 2.2f);
                 segments[i].GetPropertyBlock(block);
                 block.SetColor("_BaseColor", baseColor);
                 block.SetColor("_EmissionColor", emission);

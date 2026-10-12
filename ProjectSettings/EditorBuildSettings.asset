@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/_LunarEscape/Scenes/12_LunarStation_DayOne.unity
+    guid: 4ce561948c8e5d7419a13699ed926d46
+  - enabled: 1
     path: Assets/_LunarEscape/Scenes/11_LunarStation_LifeSupport.unity
     guid: 3f4562832389c404b9d328d0110e51bf
   - enabled: 1

@@ -166,6 +166,8 @@ namespace LunarEscape
         {
             if (Current != Stage.Working || !WorkDone) return;
             Current = Stage.Evening;
+            // 收工：白天还没说完的提示已经没有意义，只留正在说的一句。
+            if (voice != null) voice.Clear(true);
             Say("cup_d1_night");
             Say("cmd_d1_sleep");
             Refresh();

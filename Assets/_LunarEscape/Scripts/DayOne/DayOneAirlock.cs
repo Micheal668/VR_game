@@ -39,7 +39,7 @@ namespace LunarEscape
 
         private void Awake()
         {
-            innerClosed = innerDoor.localPosition; outerClosed = outerDoor.localPosition;
+            innerClosed = innerDoor.position; outerClosed = outerDoor.position;
             pump = FeedbackSounds.CreateLoop(transform, "Airlock Pump", FeedbackSound.ThrusterLoop, 1f);
             oneShot = FeedbackSounds.CreateSource(transform, "Airlock Audio", 1f);
             pump.bypassListenerEffects = oneShot.bypassListenerEffects = true;
@@ -109,8 +109,8 @@ namespace LunarEscape
 
         private void Apply()
         {
-            innerDoor.localPosition = innerClosed + Vector3.up * doorLift * Mathf.SmoothStep(0f, 1f, inner);
-            outerDoor.localPosition = outerClosed + Vector3.up * doorLift * Mathf.SmoothStep(0f, 1f, outer);
+            innerDoor.position = innerClosed + Vector3.up * doorLift * Mathf.SmoothStep(0f, 1f, inner);
+            outerDoor.position = outerClosed + Vector3.up * doorLift * Mathf.SmoothStep(0f, 1f, outer);
             // 绿灯：有气；红灯闪烁：抽气或充气中；琥珀：真空。
             var color = stage == 2 ? (Mathf.Repeat(Time.time * 2f, 1f) < 0.5f ? new Color(1f, 0.15f, 0.1f) : new Color(0.3f, 0.05f, 0.03f))
                 : Pressurized ? new Color(0.25f, 1f, 0.45f) : new Color(1f, 0.6f, 0.15f);

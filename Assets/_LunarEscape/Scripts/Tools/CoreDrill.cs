@@ -62,7 +62,7 @@ namespace LunarEscape
             }
             grind.volume = Mathf.MoveTowards(grind.volume, InContact && power > 0f ? 0.25f + 0.35f * power : 0f, deltaTime * 6f);
             spin += power * 1400f * deltaTime;
-            if (bit != null) bit.localRotation = Quaternion.Euler(0f, 0f, spin);
+            if (bit != null) bit.localRotation = Quaternion.Euler(0f, spin, 0f);
             ShowZone(power);
             return power;
         }

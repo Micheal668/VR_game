@@ -2249,6 +2249,120 @@
       "zh": "辅助已接管 · 正在缓慢靠近",
       "en": "ASSIST ACTIVE · SLOW APPROACH",
       "ru": "ПОМОЩЬ АКТИВНА · МЕДЛЕННОЕ СБЛИЖЕНИЕ"
+    },
+    {
+      "key": "day.title.1",
+      "zh": "第一天",
+      "en": "DAY 1",
+      "ru": "ДЕНЬ 1"
+    },
+    {
+      "key": "day.title.sub.1",
+      "zh": "“月神-3”月面基地 · 例行班次",
+      "en": "SELENA-3 BASE · ROUTINE SHIFT",
+      "ru": "БАЗА «СЕЛЕНА-3» · ОБЫЧНАЯ СМЕНА"
+    },
+    {
+      "key": "day.title.2",
+      "zh": "第二天",
+      "en": "DAY 2",
+      "ru": "ДЕНЬ 2"
+    },
+    {
+      "key": "day.title.sub.2",
+      "zh": "凌晨 03:00 · 警报",
+      "en": "03:00 · ALARM",
+      "ru": "03:00 · ТРЕВОГА"
+    },
+    {
+      "key": "day1.board.title",
+      "zh": "第一天 · 班次任务",
+      "en": "DAY 1 · SHIFT TASKS",
+      "ru": "ДЕНЬ 1 · ЗАДАЧИ СМЕНЫ"
+    },
+    {
+      "key": "day1.task.suit",
+      "zh": "穿上航天服（大厅墙边）",
+      "en": "Put on the suit (lobby wall)",
+      "ru": "Надеть скафандр (стена зала)"
+    },
+    {
+      "key": "day1.task.panels",
+      "zh": "吹净太阳能板 {0}/{1}",
+      "en": "Clean solar panels {0}/{1}",
+      "ru": "Почистить панели {0}/{1}"
+    },
+    {
+      "key": "day1.task.cores",
+      "zh": "钻取岩芯 {0}/{1}",
+      "en": "Drill core samples {0}/{1}",
+      "ru": "Пробурить керны {0}/{1}"
+    },
+    {
+      "key": "day1.task.store",
+      "zh": "岩芯送到实验室 {0}/{1}",
+      "en": "Cores to the lab {0}/{1}",
+      "ru": "Керны в лабораторию {0}/{1}"
+    },
+    {
+      "key": "day1.task.sleep",
+      "zh": "回卧室：握住床入睡",
+      "en": "Sleep: grab your bed",
+      "ru": "Спать: возьмитесь за кровать"
+    },
+    {
+      "key": "day1.task.sleep_later",
+      "zh": "收工后睡觉",
+      "en": "Sleep after the shift",
+      "ru": "Сон — после смены"
+    },
+    {
+      "key": "day1.airlock.exit",
+      "zh": "出舱",
+      "en": "GO OUTSIDE",
+      "ru": "ВЫЙТИ НАРУЖУ"
+    },
+    {
+      "key": "day1.airlock.enter",
+      "zh": "进站",
+      "en": "ENTER STATION",
+      "ru": "ВОЙТИ В СТАНЦИЮ"
+    },
+    {
+      "key": "day1.airlock.cycle",
+      "zh": "气闸循环",
+      "en": "CYCLE AIRLOCK",
+      "ru": "ЦИКЛ ШЛЮЗА"
+    },
+    {
+      "key": "day1.rack.tools",
+      "zh": "氮气枪 · 取芯钻",
+      "en": "N2 BLOWER · CORE DRILL",
+      "ru": "АЗОТ · БУР"
+    },
+    {
+      "key": "day1.rack.samples",
+      "zh": "岩芯样品架",
+      "en": "CORE SAMPLE RACK",
+      "ru": "СТОЙКА КЕРНОВ"
+    },
+    {
+      "key": "day1.bed.label",
+      "zh": "收工后握住床入睡",
+      "en": "After the shift: grab the bed to sleep",
+      "ru": "После смены: возьмитесь за кровать"
+    },
+    {
+      "key": "day1.solar.sign",
+      "zh": "太阳能阵列 B",
+      "en": "SOLAR ARRAY B",
+      "ru": "СОЛНЕЧНАЯ БАТАРЕЯ Б"
+    },
+    {
+      "key": "day2.cutter.label",
+      "zh": "激光切割器",
+      "en": "LASER CUTTER",
+      "ru": "ЛАЗЕРНЫЙ РЕЗАК"
     }
   ]
 }

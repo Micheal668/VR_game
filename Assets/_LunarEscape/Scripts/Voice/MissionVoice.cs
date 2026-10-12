@@ -112,6 +112,8 @@ namespace LunarEscape
             for (int i = 0; i < index; i++) ahead += Duration(queue[i].line);
             float patience = priority == VoicePriority.Quip ? quipStaleSeconds : priority == VoicePriority.Hint ? hintStaleSeconds : float.PositiveInfinity;
             queue.Insert(index, new Request { line = line, priority = priority, stillValid = stillValid, deadline = Time.time + ahead + patience });
+            // 插队的话让排在后面的话晚开始：顺延它们的过期时刻，免得因为插队而被误判过期。
+            for (int i = index + 1; i < queue.Count; i++) queue[i].deadline += Duration(line);
             if (interrupt) Interrupt();
             EnsureRunning();
             return true;
