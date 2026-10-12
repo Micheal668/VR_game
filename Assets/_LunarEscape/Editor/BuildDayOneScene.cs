@@ -254,13 +254,9 @@ namespace LunarEscape.Editor
             var airlock = new GameObject("Day One Airlock").AddComponent<DayOneAirlock>();
             airlock.transform.SetParent(flow, false);
             airlock.Configure(innerDoor, outer, chamber, lamps);
-            // 面板朝向：rotation 为观看者视线方向。
-            Panel(flow, "Airlock Panel Habitat Side", new Vector3(3.86f, 1.45f, south - 0.32f), Quaternion.Euler(0f, 90f, 0f), "day1.airlock.exit", airlock.RequestOutside);
-            Panel(flow, "Airlock Panel Habitat Side Return", new Vector3(3.86f, 1.15f, south - 0.32f), Quaternion.Euler(0f, 90f, 0f), "day1.airlock.enter", airlock.RequestInside);
+            // 只有气闸室里一个“气闸循环”按钮：在哪一侧开着门，按一下就换到另一侧。
+            // 出舱后外门一直开着，回来时走进气闸室再按一次即可（面板朝向：rotation 为观看者视线方向）。
             Panel(flow, "Airlock Panel Chamber", new Vector3(6.05f, 1.45f, south + 0.02f), Quaternion.Euler(0f, 180f, 0f), "day1.airlock.cycle", airlock.RequestOther);
-            var post = Frame(flow, "Airlock Outside Post", new Vector3(8.75f, 0f, south - 0.15f));
-            Prim(post, "Post", PrimitiveType.Cube, new Vector3(0f, 0.65f, 0f), new Vector3(0.12f, 1.3f, 0.12f), "EX_Trim", collider: true);
-            Panel(flow, "Airlock Panel Surface Side", new Vector3(8.68f, 1.45f, south - 0.15f), Quaternion.Euler(0f, -90f, 0f), "day1.airlock.enter", airlock.RequestInside);
             return airlock;
         }
 

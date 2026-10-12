@@ -4,9 +4,10 @@ using UnityEngine;
 
 namespace LunarEscape
 {
-    // 按剧情阶段切换背景音乐，两路声源交叉淡化：
-    //   第二天（场景 11）：醒来与抢修时紧张，开门撤离时急促（最后 30 秒加快），升空奏响一段凯歌，入轨与对接平静；
-    //   第一天（场景 12）：舱内平静，出舱后空旷；入睡时淡出。
+    // 基地舱内的背景音乐（像是站里在放），两路声源交叉淡化。只在玩家身处有空气的基地舱内时播放：
+    // 出舱、基地泄压、登上飞船后都没有音乐。
+    //   第二天（场景 11）：醒来与抢修时紧张，撤离阶段仍在舱内时急促（最后 30 秒加快）；
+    //   第一天（场景 12）：舱内平静；入睡时淡出。
     // 有人说话时音乐自动压低，不盖过地面指挥和指挥官。音乐不受舱外闷音处理影响。
     public sealed class MusicDirector : MonoBehaviour
     {
@@ -37,8 +38,7 @@ namespace LunarEscape
             a = Source("Music A"); b = Source("Music B"); sting = Source("Music Sting");
             sting.loop = false;
             // 后台线程预先合成本场景会用到的乐段。
-            foreach (var track in dayOne != null ? new[] { MusicTrack.Calm, MusicTrack.Outside }
-                         : new[] { MusicTrack.Tension, MusicTrack.Urgent, MusicTrack.Triumph, MusicTrack.Calm })
+            foreach (var track in dayOne != null ? new[] { MusicTrack.Calm } : new[] { MusicTrack.Tension, MusicTrack.Urgent })
                 Prepare(track);
             if (flight != null) lastFlightPhase = flight.Phase;
         }
@@ -74,13 +74,11 @@ namespace LunarEscape
         public MusicTrack Choose()
         {
             if (dayOne != null)
-                return dayOne.Current == DayOneMission.Stage.Sleeping ? MusicTrack.None : dayOne.PlayerOutside ? MusicTrack.Outside : MusicTrack.Calm;
-            if (mission == null) return MusicTrack.None;
-            if (mission.Phase == StationMissionPhase.Failed || flight != null && flight.Phase == AscentPhase.Failed) return MusicTrack.None;
-            if (flight != null && flight.IsLocked)
-                return flight.Phase == AscentPhase.Startup || flight.Phase == AscentPhase.Ignition ? MusicTrack.Tension : MusicTrack.Calm;
-            if (life != null && life.DoorOpen || mission.Phase == StationMissionPhase.Evacuation) return MusicTrack.Urgent;
-            return MusicTrack.Tension;
+                return dayOne.Current == DayOneMission.Stage.Sleeping || !dayOne.PlayerHasAir || dayOne.PlayerOutside ? MusicTrack.None : MusicTrack.Calm;
+            if (mission == null || mission.Phase == StationMissionPhase.Failed) return MusicTrack.None;
+            if (flight != null && flight.IsLocked) return MusicTrack.None;
+            if (life == null || !life.HasBaseAir) return MusicTrack.None;
+            return mission.Phase == StationMissionPhase.Evacuation ? MusicTrack.Urgent : MusicTrack.Tension;
         }
 
         private void Update()
@@ -97,16 +95,6 @@ namespace LunarEscape
                     playing = Wanted;
                 }
             }
-            // 升空与对接成功时插入一段凯歌。
-            if (flight != null && flight.Phase != lastFlightPhase)
-            {
-                lastFlightPhase = flight.Phase;
-                if (flight.Phase == AscentPhase.Ascent || flight.Phase == AscentPhase.Docked)
-                {
-                    var triumph = Clip(MusicTrack.Triumph);
-                    if (triumph != null) sting.PlayOneShot(triumph, volume * 2.2f);
-                }
-            }
             float speaking = voice != null && voice.IsSpeaking ? duckedLevel : 1f;
             duck = Mathf.MoveTowards(duck, speaking, Time.deltaTime * 1.5f);
             float fade = Time.deltaTime / crossfadeSeconds;
@@ -114,8 +102,7 @@ namespace LunarEscape
             b.volume = Mathf.MoveTowards(b.volume, 0f, fade * volume);
             if (b.volume <= 0f && b.isPlaying) b.Stop();
             // 撤离最后 30 秒节奏加快。
-            a.pitch = playing == MusicTrack.Urgent && mission != null && mission.Phase == StationMissionPhase.Evacuation && mission.RemainingSeconds < 30f ? 1.08f
-                : playing == MusicTrack.Calm && flight != null && flight.IsLocked ? 0.92f : 1f;
+            a.pitch = playing == MusicTrack.Urgent && mission != null && mission.Phase == StationMissionPhase.Evacuation && mission.RemainingSeconds < 30f ? 1.08f : 1f;
         }
 
         private void OnDestroy()

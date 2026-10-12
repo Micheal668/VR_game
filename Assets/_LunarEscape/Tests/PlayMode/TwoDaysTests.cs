@@ -104,7 +104,7 @@ namespace LunarEscape.Tests
             Assert.That(Object.FindAnyObjectByType<SpaceAudio>().InVacuum, "真空中外界声音变闷");
             Move(new Vector3(12f, 0f, 1.7f));
             yield return null;
-            Assert.That(Object.FindAnyObjectByType<MusicDirector>().Choose(), Is.EqualTo(MusicTrack.Outside), "舱外换成空旷的音乐");
+            Assert.That(Object.FindAnyObjectByType<MusicDirector>().Choose(), Is.EqualTo(MusicTrack.None), "舱外没有音乐（音乐只在基地舱内播放）");
 
             Move(airlock.Chamber.center);
             airlock.RequestInside();
