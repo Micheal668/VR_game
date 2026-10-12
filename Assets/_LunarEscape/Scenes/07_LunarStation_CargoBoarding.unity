@@ -152,6 +152,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: LunarEscape.Runtime::LunarEscape.CargoPackZone
   inventory: {fileID: 1802439264}
   volume: {fileID: 198572}
+  accessibleOpening: 0
 --- !u!65 &198572
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8299,6 +8300,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1883230248363655243, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
+      propertyPath: m_FarAttachMode
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2626757739553014894, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -8313,6 +8318,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5617778599117486727, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
       propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8877177980677234388, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
+      propertyPath: m_FarAttachMode
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents:

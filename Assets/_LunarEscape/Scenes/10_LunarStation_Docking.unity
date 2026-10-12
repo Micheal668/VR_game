@@ -152,6 +152,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: LunarEscape.Runtime::LunarEscape.CargoPackZone
   inventory: {fileID: 1802439264}
   volume: {fileID: 198572}
+  accessibleOpening: 0
 --- !u!65 &198572
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -35144,6 +35145,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1883230248363655243, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
+      propertyPath: m_FarAttachMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1883230248363655243, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
       propertyPath: m_UIScrollInput.m_InputActionReference
       value: 
       objectReference: {fileID: -6756787485274679044, guid: bd5e28a1ae41a094f96eb45e6e0a6759, type: 3}
@@ -35407,6 +35412,10 @@ PrefabInstance:
       propertyPath: m_RightHandTurnInput.m_InputActionReference
       value: 
       objectReference: {fileID: -8525429354371678379, guid: bd5e28a1ae41a094f96eb45e6e0a6759, type: 3}
+    - target: {fileID: 8877177980677234388, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
+      propertyPath: m_FarAttachMode
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8877177980677234388, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
       propertyPath: m_UIScrollInput.m_InputActionReference
       value: 
@@ -173661,6 +173670,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: LunarEscape.Runtime::LunarEscape.RepairTool
   tip: {fileID: 5105085154782632941}
+  secondaryTip: {fileID: 0}
   toolType: maintenance
 --- !u!33 &4856952076530019864
 MeshFilter:
