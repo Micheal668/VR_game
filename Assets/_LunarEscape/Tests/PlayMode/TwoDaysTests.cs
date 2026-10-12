@@ -160,9 +160,13 @@ namespace LunarEscape.Tests
             yield return null;
             // 扳机原始值 → 去掉死区后的转速：raw = 0.08 + rpm × 0.92。
             float Raw(float rpm) => 0.08f + rpm * 0.92f;
+            // 键鼠模拟器的情形：手腕拧得很歪、手也够不到地面（钻头离地约 30 cm、偏离中心 30 cm）。
+            hand.Hand.transform.SetPositionAndRotation(site.Surface + new Vector3(0.3f, 1.3f, 0f), Quaternion.Euler(60f, 40f, 35f));
+            yield return null; yield return null;
+            Assert.That(Vector3.Angle(drill.transform.up, Vector3.up), Is.LessThan(1f), "钻始终竖直，不随手腕歪斜");
+            Assert.That(drill.Seated, Is.SameAs(site), "靠近定位环自动落进导向套");
             for (float t = 0; t < 25f && !site.Completed; t += Time.deltaTime)
             {
-                hand.Aim(drill, new Vector3(site.Surface.x, site.Bottom - 0.01f, site.Surface.z), Vector3.down, Vector3.forward);
                 hand.Trigger(Raw((site.Band.x + site.Band.y) * 0.5f));
                 yield return null;
             }

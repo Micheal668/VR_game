@@ -178,19 +178,27 @@ namespace LunarEscape
                     Mathf.Sin(Tau * 120f * t) * 0.22f + Mathf.Sin(Tau * 240f * t) * 0.1f
                     + Mathf.Sign(Mathf.Sin(Tau * 480f * t)) * 0.04f
                     + Mathf.Sin(Tau * 2400f * t) * (0.5f + 0.5f * Mathf.Sin(Tau * 30f * t)) * 0.05f),
-                // 取芯钻电机：150 Hz 锯齿波加一点低沉噪声。
+                // 取芯钻电机：60 Hz 低沉锯齿波加二次谐波，经过饱和削波；叠加每秒 24 次的冲击锤击与低频轰鸣，
+                // 听起来是沉重的冲击钻而不是尖细的电机声。1 秒内都是整数周期，循环无断点。
                 FeedbackSound.DrillLoop => Render(1f, 0.05f, t =>
                 {
-                    low += 0.08f * (Noise() - low);
-                    return (2f * Mathf.Repeat(t * 150f, 1f) - 1f) * 0.16f + Mathf.Sin(Tau * 300f * t) * 0.08f + low * 0.5f;
+                    low += 0.03f * (Noise() - low);
+                    low2 += 0.2f * (Noise() - low2);
+                    float motor = (2f * Mathf.Repeat(t * 60f, 1f) - 1f) * 0.6f + (2f * Mathf.Repeat(t * 120f, 1f) - 1f) * 0.25f + Mathf.Sin(Tau * 30f * t) * 0.3f;
+                    float local = Mathf.Repeat(t * 24f, 1f) / 24f;
+                    float hammer = (Mathf.Sin(Tau * 85f * local) * 0.8f + low2 * 0.6f) * Mathf.Exp(-local / 0.008f);
+                    return (float)Math.Tanh(1.6f * (motor * 0.45f + hammer * 0.9f + low * 3f)) * 0.55f;
                 }),
-                // 钻头碾磨岩石：低通噪声加随机的碎裂脉冲，23 Hz 粗糙调制。
+                // 钻头啃岩石：低沉的碎石摩擦声，夹着一阵阵不规则的崩裂（衰减的噪声短脉冲），整体轻微过载。
                 FeedbackSound.GrindLoop => Render(1f, 0.1f, t =>
                 {
                     float hiss = Noise();
-                    low += 0.3f * (hiss - low);
-                    float crack = random.NextDouble() < 0.0015 ? hiss * 0.9f : 0f;
-                    return low * (0.6f + 0.4f * Mathf.Sin(Tau * 23f * t)) * 0.55f + crack;
+                    low += 0.12f * (hiss - low);
+                    low2 += 0.02f * (hiss - low2);
+                    if (random.NextDouble() < 0.0006) phase = 1f;
+                    phase *= 0.9985f;
+                    float crack = (hiss - low) * phase * 0.9f;
+                    return (float)Math.Tanh(2f * (low * 1.1f + low2 * 2.5f + crack)) * 0.5f;
                 }),
                 // 宇航服内平稳的呼吸：吸气、停顿、呼气，4 秒一轮。
                 FeedbackSound.CalmBreath => Render(4f, 0.15f, t =>
