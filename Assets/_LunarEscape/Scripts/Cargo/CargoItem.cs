@@ -13,6 +13,7 @@ namespace LunarEscape
     {
         [SerializeField] private CargoInventory inventory;
         [SerializeField] private CargoKind kind;
+        [SerializeField] private bool preparationOnly;
         private XRGrabInteractable grab;
         private Rigidbody body;
         private bool initialized;
@@ -32,6 +33,8 @@ namespace LunarEscape
 
         public CargoInventory Inventory => inventory;
         public CargoKind Kind => kind;
+        public float UsableFraction => TryGetComponent<PreparedCargo>(out var prepared) ? prepared.UsableFraction : 1f;
+        public bool ReadyToTake => !TryGetComponent<PreparedCargo>(out var prepared) || prepared.CanTake;
         public CargoState State { get; private set; } = CargoState.World;
         public bool IsCarried => State == CargoState.Held || State == CargoState.Packed || State == CargoState.Loaded;
         public XRGrabInteractable Grab { get { EnsureInitialized(); return grab; } }
@@ -47,8 +50,14 @@ namespace LunarEscape
             if (State != CargoState.World && (inventory != owner || kind != cargoKind))
                 throw new InvalidOperationException("已携带物资不能在途中换清单或改类型。");
             inventory = owner;
+            preparationOnly = false;
             kind = cargoKind;
             EnsureInitialized();
+        }
+
+        public void ConfigurePreparation()
+        {
+            inventory = null; preparationOnly = true; State = CargoState.World;
         }
 
         private void OnEnable()
@@ -73,6 +82,9 @@ namespace LunarEscape
 
         public bool Process(IXRSelectInteractor interactor, IXRSelectInteractable interactable)
         {
+            if (interactable != (IXRSelectInteractable)Grab || !ReadyToTake) return false;
+            if (IsChargingSocket(interactor)) return true;
+            if (preparationOnly) return true;
             if (inventory == null || interactable != (IXRSelectInteractable)Grab) return false;
             bool allowed = inventory.CanAcquire(this, out CargoRejection reason);
             // 仅在真的按下抓取时给出反馈，经过或悬停不会覆盖上一条操作结果。
@@ -84,15 +96,22 @@ namespace LunarEscape
         private void OnSelected(SelectEnterEventArgs args)
         {
             if (changingPhysicalState) return;
+            if (!ReadyToTake) { CancelSelection(); return; }
+            if (IsChargingSocket(args.interactorObject)) { State = CargoState.World; return; }
+            if (preparationOnly) { State = CargoState.Held; return; }
             // 显式 SelectEnter 可以绕过过滤器，因此真实事件必须再次通过额度检查。
             if (inventory == null || !inventory.TryHold(this)) CancelSelection();
         }
 
         private void OnReleased(SelectExitEventArgs args)
         {
+            if (!changingPhysicalState && preparationOnly && !grab.isSelected) { State = CargoState.World; return; }
             if (changingPhysicalState || grab.isSelected || inventory == null) return;
             inventory.Released(this, args.isCanceled);
         }
+
+        private bool IsChargingSocket(IXRSelectInteractor interactor) => interactor is XRSocketInteractor socket
+            && socket.TryGetComponent<SupplyChargingDock>(out var dock) && dock.Accepts(this);
 
         internal void SetState(CargoState state) => State = state;
 

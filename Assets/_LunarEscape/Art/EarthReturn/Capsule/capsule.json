@@ -1,0 +1,631 @@
+{
+  "source": "Models/ReturnCapsule/ThreeSeatReturnCapsule.blend",
+  "materials": [
+    {
+      "name": "Ceramic",
+      "color": [
+        0.7599999904632568,
+        0.7900000214576721,
+        0.800000011920929,
+        1.0
+      ],
+      "metallic": 0.0,
+      "roughness": 0.4000000059604645
+    },
+    {
+      "name": "Cushion",
+      "color": [
+        0.02500000037252903,
+        0.03099999949336052,
+        0.039000000804662704,
+        1.0
+      ],
+      "metallic": 0.0,
+      "roughness": 0.7200000286102295
+    },
+    {
+      "name": "Titanium",
+      "color": [
+        0.2800000011920929,
+        0.3199999928474426,
+        0.3499999940395355,
+        1.0
+      ],
+      "metallic": 0.75,
+      "roughness": 0.23000000417232513
+    },
+    {
+      "name": "Seals",
+      "color": [
+        0.012000000104308128,
+        0.017000000923871994,
+        0.023000000044703484,
+        1.0
+      ],
+      "metallic": 0.0,
+      "roughness": 0.800000011920929
+    },
+    {
+      "name": "Light",
+      "color": [
+        0.75,
+        0.8700000047683716,
+        0.949999988079071,
+        1.0
+      ],
+      "metallic": 0.0,
+      "roughness": 0.4000000059604645
+    },
+    {
+      "name": "Harness",
+      "color": [
+        0.11999999731779099,
+        0.14000000059604645,
+        0.1599999964237213,
+        1.0
+      ],
+      "metallic": 0.0,
+      "roughness": 0.8500000238418579
+    },
+    {
+      "name": "Warning",
+      "color": [
+        0.8999999761581421,
+        0.23999999463558197,
+        0.02500000037252903,
+        1.0
+      ],
+      "metallic": 0.0,
+      "roughness": 0.4000000059604645
+    },
+    {
+      "name": "Pressure glass",
+      "color": [
+        0.11999999731779099,
+        0.23000000417232513,
+        0.2800000011920929,
+        1.0
+      ],
+      "metallic": 0.05000000074505806,
+      "roughness": 0.07999999821186066
+    }
+  ],
+  "meshes": [
+    {
+      "name": "Bell pressure shell",
+      "material": "Ceramic"
+    },
+    {
+      "name": "Window 0 Ceramic",
+      "material": "Ceramic"
+    },
+    {
+      "name": "Window 0 Seals",
+      "material": "Seals"
+    },
+    {
+      "name": "Window 0 Titanium",
+      "material": "Titanium"
+    },
+    {
+      "name": "Window 0 pressure glass",
+      "material": "Pressure glass"
+    },
+    {
+      "name": "Window captive bolt",
+      "material": "Titanium"
+    },
+    {
+      "name": "Window captive bolt.001",
+      "material": "Titanium"
+    },
+    {
+      "name": "Window captive bolt.002",
+      "material": "Titanium"
+    },
+    {
+      "name": "Window captive bolt.003",
+      "material": "Titanium"
+    },
+    {
+      "name": "Window captive bolt.004",
+      "material": "Titanium"
+    },
+    {
+      "name": "Window captive bolt.005",
+      "material": "Titanium"
+    },
+    {
+      "name": "Window captive bolt.006",
+      "material": "Titanium"
+    },
+    {
+      "name": "Window captive bolt.007",
+      "material": "Titanium"
+    },
+    {
+      "name": "Window 1 Ceramic",
+      "material": "Ceramic"
+    },
+    {
+      "name": "Window 1 Seals",
+      "material": "Seals"
+    },
+    {
+      "name": "Window 1 Titanium",
+      "material": "Titanium"
+    },
+    {
+      "name": "Window 1 pressure glass",
+      "material": "Pressure glass"
+    },
+    {
+      "name": "Window captive bolt.008",
+      "material": "Titanium"
+    },
+    {
+      "name": "Window captive bolt.009",
+      "material": "Titanium"
+    },
+    {
+      "name": "Window captive bolt.010",
+      "material": "Titanium"
+    },
+    {
+      "name": "Window captive bolt.011",
+      "material": "Titanium"
+    },
+    {
+      "name": "Window captive bolt.012",
+      "material": "Titanium"
+    },
+    {
+      "name": "Window captive bolt.013",
+      "material": "Titanium"
+    },
+    {
+      "name": "Window captive bolt.014",
+      "material": "Titanium"
+    },
+    {
+      "name": "Window captive bolt.015",
+      "material": "Titanium"
+    },
+    {
+      "name": "Window 2 Ceramic",
+      "material": "Ceramic"
+    },
+    {
+      "name": "Window 2 Seals",
+      "material": "Seals"
+    },
+    {
+      "name": "Window 2 Titanium",
+      "material": "Titanium"
+    },
+    {
+      "name": "Window 2 pressure glass",
+      "material": "Pressure glass"
+    },
+    {
+      "name": "Window captive bolt.016",
+      "material": "Titanium"
+    },
+    {
+      "name": "Window captive bolt.017",
+      "material": "Titanium"
+    },
+    {
+      "name": "Window captive bolt.018",
+      "material": "Titanium"
+    },
+    {
+      "name": "Window captive bolt.019",
+      "material": "Titanium"
+    },
+    {
+      "name": "Window captive bolt.020",
+      "material": "Titanium"
+    },
+    {
+      "name": "Window captive bolt.021",
+      "material": "Titanium"
+    },
+    {
+      "name": "Window captive bolt.022",
+      "material": "Titanium"
+    },
+    {
+      "name": "Window captive bolt.023",
+      "material": "Titanium"
+    },
+    {
+      "name": "Window 3 Ceramic",
+      "material": "Ceramic"
+    },
+    {
+      "name": "Window 3 Seals",
+      "material": "Seals"
+    },
+    {
+      "name": "Window 3 Titanium",
+      "material": "Titanium"
+    },
+    {
+      "name": "Window 3 pressure glass",
+      "material": "Pressure glass"
+    },
+    {
+      "name": "Window captive bolt.024",
+      "material": "Titanium"
+    },
+    {
+      "name": "Window captive bolt.025",
+      "material": "Titanium"
+    },
+    {
+      "name": "Window captive bolt.026",
+      "material": "Titanium"
+    },
+    {
+      "name": "Window captive bolt.027",
+      "material": "Titanium"
+    },
+    {
+      "name": "Window captive bolt.028",
+      "material": "Titanium"
+    },
+    {
+      "name": "Window captive bolt.029",
+      "material": "Titanium"
+    },
+    {
+      "name": "Window captive bolt.030",
+      "material": "Titanium"
+    },
+    {
+      "name": "Window captive bolt.031",
+      "material": "Titanium"
+    },
+    {
+      "name": "Thermal shield",
+      "material": "Seals"
+    },
+    {
+      "name": "Upper docking tunnel",
+      "material": "Titanium"
+    },
+    {
+      "name": "Docking capture ring",
+      "material": "Ceramic"
+    },
+    {
+      "name": "Docked pressure vestibule ceiling",
+      "material": "Ceramic"
+    },
+    {
+      "name": "Top transfer hatch",
+      "material": "Ceramic"
+    },
+    {
+      "name": "Hatch handrail",
+      "material": "Titanium"
+    },
+    {
+      "name": "Hatch handrail.001",
+      "material": "Titanium"
+    },
+    {
+      "name": "Seat 1 bucket back",
+      "material": "Cushion"
+    },
+    {
+      "name": "Seat 1 headrest",
+      "material": "Cushion"
+    },
+    {
+      "name": "Seat 1 seat pan",
+      "material": "Cushion"
+    },
+    {
+      "name": "Seat 1 leg support",
+      "material": "Cushion"
+    },
+    {
+      "name": "Seat 1 frame",
+      "material": "Titanium"
+    },
+    {
+      "name": "Seat 1 armrest",
+      "material": "Cushion"
+    },
+    {
+      "name": "Seat 1 leg",
+      "material": "Titanium"
+    },
+    {
+      "name": "Seat 1 frame.001",
+      "material": "Titanium"
+    },
+    {
+      "name": "Seat 1 armrest.001",
+      "material": "Cushion"
+    },
+    {
+      "name": "Seat 1 leg.001",
+      "material": "Titanium"
+    },
+    {
+      "name": "Seat 1 buckle",
+      "material": "Titanium"
+    },
+    {
+      "name": "Seat 1 foot plate",
+      "material": "Seals"
+    },
+    {
+      "name": "Seat 2 bucket back",
+      "material": "Cushion"
+    },
+    {
+      "name": "Seat 2 headrest",
+      "material": "Cushion"
+    },
+    {
+      "name": "Seat 2 seat pan",
+      "material": "Cushion"
+    },
+    {
+      "name": "Seat 2 leg support",
+      "material": "Cushion"
+    },
+    {
+      "name": "Seat 2 frame",
+      "material": "Titanium"
+    },
+    {
+      "name": "Seat 2 armrest",
+      "material": "Cushion"
+    },
+    {
+      "name": "Seat 2 leg",
+      "material": "Titanium"
+    },
+    {
+      "name": "Seat 2 harness",
+      "material": "Harness"
+    },
+    {
+      "name": "Seat 2 frame.001",
+      "material": "Titanium"
+    },
+    {
+      "name": "Seat 2 armrest.001",
+      "material": "Cushion"
+    },
+    {
+      "name": "Seat 2 leg.001",
+      "material": "Titanium"
+    },
+    {
+      "name": "Seat 2 harness.001",
+      "material": "Harness"
+    },
+    {
+      "name": "Seat 2 buckle",
+      "material": "Titanium"
+    },
+    {
+      "name": "Seat 2 foot plate",
+      "material": "Seals"
+    },
+    {
+      "name": "Seat 3 bucket back",
+      "material": "Cushion"
+    },
+    {
+      "name": "Seat 3 headrest",
+      "material": "Cushion"
+    },
+    {
+      "name": "Seat 3 seat pan",
+      "material": "Cushion"
+    },
+    {
+      "name": "Seat 3 leg support",
+      "material": "Cushion"
+    },
+    {
+      "name": "Seat 3 frame",
+      "material": "Titanium"
+    },
+    {
+      "name": "Seat 3 armrest",
+      "material": "Cushion"
+    },
+    {
+      "name": "Seat 3 leg",
+      "material": "Titanium"
+    },
+    {
+      "name": "Seat 3 frame.001",
+      "material": "Titanium"
+    },
+    {
+      "name": "Seat 3 armrest.001",
+      "material": "Cushion"
+    },
+    {
+      "name": "Seat 3 leg.001",
+      "material": "Titanium"
+    },
+    {
+      "name": "Seat 3 buckle",
+      "material": "Titanium"
+    },
+    {
+      "name": "Seat 3 foot plate",
+      "material": "Seals"
+    },
+    {
+      "name": "Central display housing",
+      "material": "Seals"
+    },
+    {
+      "name": "Exterior monitor housing",
+      "material": "Seals"
+    },
+    {
+      "name": "Exterior monitor arm",
+      "material": "Titanium"
+    },
+    {
+      "name": "Display support upper arm",
+      "material": "Titanium"
+    },
+    {
+      "name": "Display support hinge arm",
+      "material": "Titanium"
+    },
+    {
+      "name": "Side stowage",
+      "material": "Ceramic"
+    },
+    {
+      "name": "Floor seam",
+      "material": "Titanium"
+    },
+    {
+      "name": "Floor seam.001",
+      "material": "Titanium"
+    },
+    {
+      "name": "Floor seam.002",
+      "material": "Titanium"
+    },
+    {
+      "name": "Display support upper arm.001",
+      "material": "Titanium"
+    },
+    {
+      "name": "Display support hinge arm.001",
+      "material": "Titanium"
+    },
+    {
+      "name": "Side stowage.001",
+      "material": "Ceramic"
+    },
+    {
+      "name": "Floor seam.003",
+      "material": "Titanium"
+    },
+    {
+      "name": "Floor seam.004",
+      "material": "Titanium"
+    },
+    {
+      "name": "Floor seam.005",
+      "material": "Titanium"
+    },
+    {
+      "name": "Upper panel seam",
+      "material": "Titanium"
+    },
+    {
+      "name": "Ceiling fastener",
+      "material": "Titanium"
+    },
+    {
+      "name": "Upper panel seam.001",
+      "material": "Titanium"
+    },
+    {
+      "name": "Ceiling fastener.001",
+      "material": "Titanium"
+    },
+    {
+      "name": "Upper panel seam.002",
+      "material": "Titanium"
+    },
+    {
+      "name": "Ceiling fastener.002",
+      "material": "Titanium"
+    },
+    {
+      "name": "Upper panel seam.003",
+      "material": "Titanium"
+    },
+    {
+      "name": "Ceiling fastener.003",
+      "material": "Titanium"
+    },
+    {
+      "name": "Upper panel seam.004",
+      "material": "Titanium"
+    },
+    {
+      "name": "Ceiling fastener.004",
+      "material": "Titanium"
+    },
+    {
+      "name": "Upper panel seam.005",
+      "material": "Titanium"
+    },
+    {
+      "name": "Ceiling fastener.005",
+      "material": "Titanium"
+    },
+    {
+      "name": "Upper panel seam.006",
+      "material": "Titanium"
+    },
+    {
+      "name": "Ceiling fastener.006",
+      "material": "Titanium"
+    },
+    {
+      "name": "Upper panel seam.007",
+      "material": "Titanium"
+    },
+    {
+      "name": "Ceiling fastener.007",
+      "material": "Titanium"
+    },
+    {
+      "name": "Upper panel seam.008",
+      "material": "Titanium"
+    },
+    {
+      "name": "Ceiling fastener.008",
+      "material": "Titanium"
+    },
+    {
+      "name": "Upper panel seam.009",
+      "material": "Titanium"
+    },
+    {
+      "name": "Ceiling fastener.009",
+      "material": "Titanium"
+    },
+    {
+      "name": "Upper panel seam.010",
+      "material": "Titanium"
+    },
+    {
+      "name": "Ceiling fastener.010",
+      "material": "Titanium"
+    },
+    {
+      "name": "Upper panel seam.011",
+      "material": "Titanium"
+    },
+    {
+      "name": "Ceiling fastener.011",
+      "material": "Titanium"
+    },
+    {
+      "name": "Indirect cabin light",
+      "material": "Light"
+    }
+  ]
+}

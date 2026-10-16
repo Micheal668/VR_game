@@ -44,7 +44,13 @@ namespace LunarEscape
         }
         private void ActivateSupply(ActivateEventArgs args)
         {
-            if (args.interactableObject is XRGrabInteractable grab && grab.TryGetComponent<CargoItem>(out var item)) life.TryUseSupply(item);
+            if (args.interactableObject is XRGrabInteractable grab && grab.TryGetComponent<CargoItem>(out var item))
+            {
+                // 瞄准放置目标时，扳机用于放置，不能同时把准备归还的物资消耗掉。
+                if (args.interactorObject is Component hand && hand.TryGetComponent<RemoteSocketPlacement>(out var placement)
+                    && placement.HasPlacementTarget(grab)) return;
+                life.TryUseSupply(item);
+            }
         }
     }
 }

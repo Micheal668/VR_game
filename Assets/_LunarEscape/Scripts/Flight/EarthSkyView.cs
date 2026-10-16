@@ -13,6 +13,11 @@ namespace LunarEscape
         [SerializeField] private Vector3 groundDirection = new(0, .32f, 1);
         [SerializeField, Range(1, 12)] private float angularDiameter = 6;
         private Material instance, previousSky;
+        [SerializeField] private EarthReturnMission returnMission;
+        [SerializeField] private EarthReturnPresenter returnView;
+        [SerializeField] private Texture2D returnEarthPhoto;
+        public void ConfigureReturn(EarthReturnMission task, EarthReturnPresenter view, Texture2D photo)
+        { returnMission = task; returnView = view; returnEarthPhoto = photo; }
         public Vector3 Direction { get; private set; }
         public float AngularDiameter => angularDiameter;
 
@@ -33,6 +38,10 @@ namespace LunarEscape
             if (instance == null) return;
             var rotation = flightScene != null && flightScene.FlightWorld.activeInHierarchy && flightOutsideWorld != null
                 ? flightOutsideWorld.rotation : Quaternion.identity;
+            bool returning = returnMission != null && returnMission.InReturnCabin && returnView != null;
+            if (returnEarthPhoto != null) instance.SetTexture("_ReturnEarthPhoto", returnEarthPhoto);
+            instance.SetFloat("_ReturnImage", returning && returnEarthPhoto != null ? 1 : 0);
+            instance.SetFloat("_HideEarth", returning ? 1 : 0);
             var forward = groundDirection.sqrMagnitude > .001f ? groundDirection.normalized : Vector3.forward;
             var right = Vector3.Cross(Vector3.up, forward);
             if (right.sqrMagnitude < .001f) right = Vector3.right;
@@ -46,7 +55,8 @@ namespace LunarEscape
             instance.SetVector("_SkyUp", rotation * Vector3.up);
             instance.SetVector("_SkyForward", rotation * Vector3.forward);
             // 照片选区宽 170 像素，地球直径约 148 像素；参数表达地球本身的视直径。
-            instance.SetFloat("_EarthHalfSize", Mathf.Tan(angularDiameter * .5f * Mathf.Deg2Rad) * 170f / 148f);
+            instance.SetFloat("_EarthHalfSize", Mathf.Tan((returning ? returnView.EarthDiameter : angularDiameter) * .5f * Mathf.Deg2Rad) * 170f / 148f);
+            instance.SetFloat("_AtmosphereBlend", returning ? returnView.Atmosphere : 0);
         }
         private void OnDisable()
         {

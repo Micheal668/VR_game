@@ -1,0 +1,15 @@
+俄罗斯舱外服与鲍曼大学校徽（2026-10-16）
+
+BMSTU-Crest.png 与 BMSTU-Crest.svg 为学校品牌资源包 RGB/PNG、RGB/SVG 中的
+Logo_Color_No-BG 原文件，只改文件名，没有重绘、裁剪或改变颜色。Unity 导入时最大 2048 像素。
+作者及权利归属：МГТУ им. Н. Э. Баумана（莫斯科鲍曼国立技术大学）。
+官方品牌页：https://bmstu.ru/about/brandbook
+官方校徽下载入口：https://api-cms-proxy.bmstu.ru/gw/dam/share/5JHZwL1MBUW7uWQv4IkyQmiEjn42FunO
+原压缩包：BMSTU_Герб/RGB/PNG/Logo_Color_No-BG.png；BMSTU_Герб/RGB/SVG/Logo_Color_No-BG.svg。
+
+宇航服外形参考：俄罗斯文化部 ARTEFACT / 齐奥尔科夫斯基航空航天博物馆的 Орлан-МКС。
+https://ar.culture.ru/ru/subject/skafandr-orlan
+本模型是适配游戏现有骨骼的俄式舱外服外观改造，非工程级复刻；参考照片没有作为贴图打包。
+沿用用户原有 CrewEscape 模型的骨骼与软服网格；新增胸甲、背包、控制盒、软管、灯罩和标识。
+俄罗斯国旗、俄文识别贴和控制盒铭牌为项目自制矢量资源。
+所有新网格、材质与贴图独立存放，原 CrewEscape 和旧教学场景资源保留。

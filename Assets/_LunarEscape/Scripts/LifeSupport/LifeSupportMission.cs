@@ -120,13 +120,23 @@ namespace LunarEscape
             Changed?.Invoke();
         }
         public void SetRandomSeed(int seed) => random = new System.Random(seed);
+        private bool hasPreparedSuit;
+        private float preparedOxygen, preparedPower;
+        public void RestorePreparedSuit(float oxygen, float power)
+        {
+            hasPreparedSuit = true;
+            preparedOxygen = Mathf.Clamp(float.IsFinite(oxygen) ? oxygen : 100, 0, 100);
+            preparedPower = Mathf.Clamp(float.IsFinite(power) ? power : 100, 0, 100);
+            SuitOxygen = preparedOxygen; SuitPower = preparedPower; Changed?.Invoke();
+        }
         internal void ResetForMission()
         {
             if (!IsConfigured) return;
             ++version; ++AttemptNumber; random ??= new System.Random(Guid.NewGuid().GetHashCode());
             float Pick(Vector2 range) => Mathf.Lerp(range.x, range.y, (float)random.NextDouble());
             BaseOxygen = Pick(config.BaseOxygenRange); BasePower = Pick(config.BasePowerRange);
-            SuitOxygen = Pick(config.SuitOxygenRange); SuitPower = Pick(config.SuitPowerRange);
+            SuitOxygen = hasPreparedSuit ? preparedOxygen : Pick(config.SuitOxygenRange);
+            SuitPower = hasPreparedSuit ? preparedPower : Pick(config.SuitPowerRange);
             IsDaylight = random.Next(2) == 0;
             SuitWorn = DoorOpen = donHeld = false;
             DonProgressSeconds = HypoxiaSeconds = ElapsedSeconds = 0; SuppliesUsed = 0;
@@ -237,7 +247,7 @@ namespace LunarEscape
         }
         public bool CanUseSupply(CargoItem item)
         {
-            if (!IsGroundActive || !SuitWorn || item == null || item.Inventory != inventory) return false;
+            if (!IsGroundActive || !SuitWorn || item == null || item.Inventory != inventory || item.UsableFraction <= 0) return false;
             bool carried = item.State == CargoState.Packed || item.State == CargoState.Held && item.Grab.isSelected;
             return carried && (item.Kind == CargoKind.Oxygen && SuitOxygen < 99.99f || item.Kind == CargoKind.Battery && SuitPower < 99.99f);
         }
@@ -250,10 +260,10 @@ namespace LunarEscape
         public bool TryUseSupply(CargoItem item)
         {
             if (!CanUseSupply(item)) return false;
-            uint attempt = version; CargoKind kind = item.Kind;
+            uint attempt = version; CargoKind kind = item.Kind; float fraction = item.UsableFraction;
             if (!inventory.TryConsumeForSuit(item, this) || attempt != version || !IsGroundActive) return false;
-            if (kind == CargoKind.Oxygen) { SuitOxygen = Mathf.Min(100, SuitOxygen + config.OxygenRefillPercent); HypoxiaSeconds = 0; }
-            else SuitPower = Mathf.Min(100, SuitPower + config.BatteryRefillPercent);
+            if (kind == CargoKind.Oxygen) { SuitOxygen = Mathf.Min(100, SuitOxygen + config.OxygenRefillPercent * fraction); HypoxiaSeconds = 0; }
+            else SuitPower = Mathf.Min(100, SuitPower + config.BatteryRefillPercent * fraction);
             ++SuppliesUsed; FeedbackKey = kind == CargoKind.Oxygen ? "life.feedback.oxygen" : "life.feedback.battery";
             Changed?.Invoke(); return true;
         }

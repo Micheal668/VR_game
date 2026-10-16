@@ -16,6 +16,8 @@ namespace LunarEscape.Editor
             InstallDayTwoCutter.Install();
             InstallStationPolish.Install();
             InstallStationAudio.Install();
+            InstallEarthReturnScene.Install();
+            InstallStationPreparation.InstallScene();
             BuildDayOneScene.Build();
             Debug.Log("TWO_DAYS_INSTALLED");
         }

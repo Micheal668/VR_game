@@ -18,12 +18,27 @@ namespace LunarEscape
         [SerializeField] private Transform[] waypoints;
         [SerializeField] private Button[] oxygenButtons, batteryButtons;
         private readonly List<Vector3> path = new();
+        [SerializeField] private DayOneMission day;
         public GameObject Hud => hud;
         public GameObject WristControls => wristControls;
         public LineRenderer RouteLine => routeLine;
         public RouteChevronGuide RouteGuide => routeLine!=null ? routeLine.GetComponent<RouteChevronGuide>() : null;
         public ResourceReadout Oxygen => oxygen;
         public ResourceReadout Power => power;
+        public void ConfigureDayOne(DayOneMission mission, GameObject tasks)
+        {
+            Unsubscribe(); life = null; flight = null; day = mission; wristControls = tasks;
+            foreach (var button in oxygenButtons) if (button != null) button.gameObject.SetActive(false);
+            foreach (var button in batteryButtons) if (button != null) button.gameObject.SetActive(false);
+            oxygenButtons = batteryButtons = System.Array.Empty<Button>();
+            // 第一天不用头盔上的应急补给按钮，把下方整行留给清晰的当前任务。
+            var task = warning.GetComponent<TMPro.TMP_Text>();
+            task.fontSize = 44; task.fontStyle = TMPro.FontStyles.Bold;
+            task.color = new Color(1f, .83f, .36f);
+            task.rectTransform.anchoredPosition = new Vector2(0, -126);
+            task.rectTransform.sizeDelta = new Vector2(1390, 78);
+            Refresh();
+        }
         public void Configure(LifeSupportMission source, AscentMission ascent, Camera camera, GameObject display, GameObject wrist,
             ResourceReadout o2, ResourceReadout battery, LocalizedText thermal, LocalizedText route, LocalizedText alert,
             RectTransform arrow, LineRenderer line, Transform[] points, Button[] useOxygen, Button[] useBattery)
@@ -44,6 +59,7 @@ namespace LunarEscape
         { if (life != null) { life.Changed -= Refresh; life.Station.Changed -= Refresh; life.Inventory.Changed -= Refresh; } if (flight != null) flight.Changed -= Refresh; }
         private void Refresh()
         {
+            if (day != null) { RefreshDayOne(); return; }
             if (life == null || hud == null) return;
             bool ground = !flight.IsLocked && !life.Station.IsTerminal;
             hud.SetActive(life.HudPowered && ground); wristControls.SetActive(life.SuitWorn && ground);
@@ -57,6 +73,7 @@ namespace LunarEscape
         }
         private void LateUpdate()
         {
+            if (day != null) { RefreshDayOne(); return; }
             if (life == null || !hud.activeSelf || waypoints == null || waypoints.Length < 2) return;
             Vector3 position = life.Player.transform.TransformPoint(life.Player.center); position.y = .065f;
             int next = 1; float minimum = float.PositiveInfinity;
@@ -80,6 +97,27 @@ namespace LunarEscape
             routeArrow.localRotation = Quaternion.Euler(0, 0, -angle);
             float remaining = 0; for (int i = 1; i < path.Count; i++) remaining += Vector3.Distance(path[i - 1], path[i]);
             routeText.SetKey(life.DoorOpen ? "life.hud.route_ship" : "life.hud.route_hatch", Mathf.CeilToInt(remaining));
+        }
+
+        private void RefreshDayOne()
+        {
+            if (hud == null || day.Suit == null) return;
+            bool visible = day.SuitWorn && day.Suit.Power > 0 && day.Current != DayOneMission.Stage.Sleeping;
+            hud.SetActive(visible);
+            if (wristControls != null) wristControls.SetActive(day.Current != DayOneMission.Stage.Sleeping);
+            if (routeLine != null) routeLine.enabled = false;
+            RouteGuide?.SetVisible(false);
+            if (!visible) return;
+            oxygen.Set(day.Suit.Oxygen, day.Suit.OxygenSeconds); power.Set(day.Suit.Power, day.Suit.PowerSeconds);
+            temperature.SetKey("day1.hud.shift");
+            warning.SetKey("day1.hud.task", day.CurrentTask);
+            var target = day.TaskTarget;
+            if (target == null || playerCamera == null) return;
+            var delta = target.position - playerCamera.transform.position;
+            routeText.SetKey("day1.hud.distance", Mathf.CeilToInt(Vector3.ProjectOnPlane(delta, Vector3.up).magnitude));
+            float angle = Vector3.SignedAngle(Vector3.ProjectOnPlane(playerCamera.transform.forward, Vector3.up),
+                Vector3.ProjectOnPlane(delta, Vector3.up), Vector3.up);
+            routeArrow.localRotation = Quaternion.Euler(0, 0, -angle);
         }
     }
 }

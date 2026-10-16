@@ -16,6 +16,7 @@ namespace LunarEscape
 
         public int Stored { get; private set; }
         public int Capacity => slots.Length;
+        public XRSocketInteractor[] Slots => slots;
         public bool canProcess => isActiveAndEnabled;
         public event Action<SampleRack> Changed;
 

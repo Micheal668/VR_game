@@ -106,18 +106,27 @@ namespace LunarEscape
             return count;
         }
 
+        public int GetUsableCount(CargoKind kind)
+        {
+            int count = 0;
+            foreach (var item in items) if (item != null && item.Kind == kind && item.IsCarried && item.UsableFraction > 0) count++;
+            return count;
+        }
+
         public void ConfigureFlightUse(AscentMission flight)
         {
             if (flight == null || flight.Inventory != this) throw new ArgumentException("飞行必须使用同一份物资。");
             flightUse = flight;
         }
-        internal bool TryConsumeLoaded(CargoKind kind, AscentMission requester)
+        internal bool TryConsumeLoaded(CargoKind kind, AscentMission requester, out float fraction)
         {
+            fraction = 0;
             if (requester == null || requester != flightUse || !requester.CanUseSupplies
                 || mission.Phase != StationMissionPhase.Completed) return false;
             foreach (var item in items)
             {
-                if (item == null || item.Kind != kind || item.State != CargoState.Loaded) continue;
+                if (item == null || item.Kind != kind || item.State != CargoState.Loaded || item.UsableFraction <= 0) continue;
+                fraction = item.UsableFraction;
                 item.SetState(CargoState.Consumed);
                 item.HideForStorage();
                 Changed?.Invoke();
@@ -187,7 +196,7 @@ namespace LunarEscape
         {
             rejection = CargoRejection.None;
             if (!CanChange()) rejection = CargoRejection.WrongPhase;
-            else if (!Owns(item) || (item.State != CargoState.World && item.State != CargoState.Held))
+            else if (!Owns(item) || !item.ReadyToTake || (item.State != CargoState.World && item.State != CargoState.Held))
                 rejection = CargoRejection.InvalidItem;
             // 另一只手接住同一件物品，或 XRI 每帧复查已有抓取，都不能重复占额度。
             else if (item.State == CargoState.Held) return true;

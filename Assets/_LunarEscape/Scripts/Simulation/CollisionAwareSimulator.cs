@@ -1,12 +1,15 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.XR;
 using UnityEngine.XR.Interaction.Toolkit.Inputs.Simulation;
 using UnityEngine.XR.Interaction.Toolkit.Locomotion;
 
 namespace LunarEscape
 {
     // 只适配编辑器模拟器：身体移动走玩家碰撞系统，官方组件继续处理转头和手柄。
-    // 顺序与官方模拟器一致，确保移动先排队，再由 XRBodyTransformer 在本帧执行。
-    [DefaultExecutionOrder(-29991)]
+    // 必须早于官方设备管理器（-29995），避免换场景时它先移除实体头显。
+    // 模拟移动仍在 XRBodyTransformer 前排队，在同一帧执行。
+    [DefaultExecutionOrder(-29996)]
     public sealed class CollisionAwareSimulator : XRInteractionSimulator
     {
         [SerializeField] private XRBodyTransformer bodyTransformer;
@@ -15,8 +18,69 @@ namespace LunarEscape
         private bool walkInControllerMode = true;
         private readonly XROriginMovement movement = new XROriginMovement { forceUnconstrained = false };
         private bool configurationErrorReported;
+        private bool simulationInitialized;
         // 结算时只停止模拟行走，头手追踪和 UI 输入仍由官方模拟器处理。
         public bool BodyMovementEnabled { get; set; } = true;
+
+        protected override void Awake()
+        {
+            PreserveHardwareHeadsets();
+            if (HasHardwareHeadset())
+            {
+                gameObject.SetActive(false);
+                return;
+            }
+            InitializeSimulation();
+        }
+
+        protected override void OnEnable()
+        {
+            PreserveHardwareHeadsets();
+            if (HasHardwareHeadset())
+            {
+                gameObject.SetActive(false);
+                return;
+            }
+            InitializeSimulation();
+            base.OnEnable();
+            InputSystem.onDeviceChange += OnHardwareDeviceChanged;
+        }
+
+        protected override void OnDisable()
+        {
+            InputSystem.onDeviceChange -= OnHardwareDeviceChanged;
+            if (simulationInitialized) base.OnDisable();
+        }
+
+        private void InitializeSimulation()
+        {
+            if (simulationInitialized) return;
+            base.Awake();
+            simulationInitialized = true;
+            // 官方 Awake 在缺少引用时会创建管理器，也需要关闭其排除实体头显的选项。
+            PreserveHardwareHeadsets();
+        }
+
+        private void PreserveHardwareHeadsets()
+        {
+            var manager = deviceLifecycleManager != null ? deviceLifecycleManager : GetComponent<SimulatedDeviceLifecycleManager>();
+            if (manager != null) manager.removeOtherHMDDevices = false;
+        }
+
+        private static bool HasHardwareHeadset()
+        {
+            foreach (var device in InputSystem.devices)
+                if (device is XRHMD && device is not XRSimulatedHMD) return true;
+            return false;
+        }
+
+        private void OnHardwareDeviceChanged(InputDevice device, InputDeviceChange change)
+        {
+            if (device is not XRHMD || device is XRSimulatedHMD) return;
+            if (change != InputDeviceChange.Added && change != InputDeviceChange.Reconnected && change != InputDeviceChange.Enabled) return;
+            // 头显可能晚于场景就绪。关闭整个模拟器及其虚拟设备，保留真实头手追踪。
+            gameObject.SetActive(false);
+        }
 
         public void Configure(XRBodyTransformer transformer, Transform camera)
         {

@@ -92,6 +92,14 @@ namespace LunarEscape
         // 测试与开发菜单：直接钻完。
         public void CompleteInstantly() { if (!Completed) Advance(targetDepth); }
 
+        // 换日时只恢复已钻孔的外观，不重新弹出或移动已送入实验室的岩芯。
+        internal void RestoreCompleted()
+        {
+            Depth = targetDepth; Completed = true; popTime = -1f;
+            if (beacon != null) beacon.State = LampState.Done;
+            UpdateHole();
+        }
+
         private void Update()
         {
             if (popTime < 0f || core == null) return;

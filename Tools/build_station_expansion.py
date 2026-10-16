@@ -3,7 +3,7 @@ Run C:/Tools/blender.exe -b -t 8 --python Tools/build_station_expansion.py
 """
 import bpy, math, json
 from pathlib import Path
-from mathutils import Vector
+from mathutils import Vector, Matrix
 
 ROOT=Path(__file__).resolve().parents[1]
 OUT=ROOT/'Assets/_LunarEscape/Art/StationExpansion'
@@ -133,12 +133,9 @@ box('Quarters low storage',(-10.52,.48,3.75),(.46,.96,1.35),'EX_Shell',.06,True)
 
 group='Laboratory';deck('Research laboratory',-10.8,-4.8,-4.5,.5)
 wall_x('Lab west',-10.8,-4.5,.5);wall_x('Lab east',-4.8,-4.5,.5);wall_z('Lab south',-4.5,-10.8,-4.8)
-box('Science bench',(-8,.89,-3.92),(5.15,.12,.95),'EX_White',.035,True)
-for x in [-10,-8.1,-6.15]:box('Bench drawer cabinet',(x,.42,-3.95),(1.55,.84,.78),'EX_Blue',.045,True)
-for x in [-10,-8.1,-6.15]:
-    for y in [.28,.61]:
-        box('Lab drawer',(x,y,-3.535),(1.43,.25,.025),'EX_Shell')
-        box('Lab drawer pull',(x,y+.035,-3.51),(.24,.022,.024),'EX_Trim')
+# 仪器固定到南墙支架，地面留出完整通道。
+box('Wall microscope shelf',(-10,.92,-4.0),(.72,.06,.74),'EX_White',.025,True)
+box('Microscope wall bracket',(-10,1.34,-4.36),(.72,.85,.08),'EX_Blue',.025)
 # Microscope: base, angled upright, stage, objective turret and eyepiece.
 box('Microscope base',(-10,.99,-3.9),(.48,.06,.36),'EX_Trim')
 rod('Microscope arm',(-10.12,1.04,-3.92),(-10.12,1.54,-4.02),.045,'EX_White')
@@ -147,18 +144,16 @@ rod('Microscope head',(-10.02,1.48,-3.82),(-10.02,1.69,-3.98),.055,'EX_White')
 rod('Microscope eyepiece',(-10.02,1.68,-3.98),(-10.02,1.79,-4.06),.036,'EX_Trim')
 for dx in [-.045,.045]:rod('Microscope objective',(-10.02+dx,1.5,-3.82),(-10.02+dx,1.33,-3.82),.018,'EX_Copper')
 # Instrument chamber with ribbed side blocks and front display.
-box('Sample analyzer',(-8.55,1.27,-3.95),(.70,.60,.60),'EX_Shell',.07)
-box('Analyzer window',(-8.55,1.31,-3.64),(.5,.35,.025),'EX_Screen')
-for x in [-8.86,-8.24]:
-    for i in range(5):box('Analyzer vent',(x,1.1+i*.07,-3.63),(.08,.019,.035),'EX_Trim',.004)
+box('Sample analyzer',(-9.5,1.78,-4.18),(.70,.60,.40),'EX_Shell',.07)
+box('Analyzer window',(-9.5,1.82,-3.97),(.5,.35,.025),'EX_Screen')
+for x in [-9.81,-9.19]:
+    for i in range(5):box('Analyzer vent',(x,1.61+i*.07,-3.96),(.08,.019,.035),'EX_Trim',.004)
 # Console faces north, reachable from the open lab floor.
-box('Lab terminal plinth',(-5.4,.60,-1.35),(.70,1.2,.7),'EX_Blue',.07,True)
-box('Lab terminal worktop',(-5.7,1.16,-1.5),(1.55,.12,1.15),'EX_White',.05,True)
-box('Lab display bezel',(-5.65,1.78,-1.98),(1.43,.97,.12),'EX_Trim')
-box('Lab display glass',(-5.65,1.78,-1.906),(1.26,.80,.02),'EX_Screen')
+box('Lab terminal plinth',(-5.35,.60,-1.55),(.70,1.2,1.75),'EX_Blue',.07,True)
+box('Lab terminal worktop',(-5.35,1.16,-1.55),(.85,.12,2.35),'EX_White',.05,True)
+box('Lab display bezel',(-4.98,1.80,-1.55),(.12,.97,1.65),'EX_Trim')
+box('Lab display glass',(-5.054,1.80,-1.55),(.02,.80,1.48),'EX_Screen')
 box('Sample storage shelf',(-10.4,1.1,-1.1),(.6,.13,2.2),'EX_White',.03,True)
-box('Sample sorting table',(-7.9,.93,-1.55),(2.2,.12,1.4),'EX_White',.04,True)
-box('Sample sorting pedestal',(-7.9,.42,-1.55),(.9,.84,.65),'EX_Blue',.05,True)
 
 group='Utilities';deck('Life support engineering',-16,-11.1,-1.25,4.65)
 wall_z('Engineering south',-1.25,-16,-11.1);wall_z('Engineering north',4.65,-16,-11.1)
@@ -187,13 +182,20 @@ for x in [-14.55,-12.25]:
 group='SolarArray'
 for z in [-1.5,4.5]:
     for x in [-20,-23.8]:
+        first=len(objects)
         box('Solar array backing',(x,1.1,z),(3.5,.14,4.5),'EX_Trim')
         for ix in range(7):
             for iz in range(9):
                 box('Photovoltaic cell',(x-1.5+ix*.5,1.182,z-2+iz*.5),(.47,.015,.47),'EX_Solar',.004)
-        for xx in [x-1.2,x+1.2]:
-            for zz in [z-1.6,z+1.6]:rod('Solar support',(xx,-.3,zz),(xx,1.05,zz),.05,'EX_White')
         for zz in [z-2.28,z+2.28]:box('Array frame',(x,1.20,zz),(3.64,.06,.06),'EX_White',.009)
+        # 每块大板绕自己的中心倾斜 30 度，支柱分别延伸到实际倾斜面。
+        tilt=Matrix.Rotation(math.radians(30),4,'X')
+        transform=Matrix.Translation(u((x,1.55,z))) @ tilt @ Matrix.Translation(-u((x,1.1,z)))
+        for _,o in objects[first:]:o.matrix_world=transform @ o.matrix_world
+        for xx in [x-1.2,x+1.2]:
+            for zz in [z-1.6,z+1.6]:
+                end=transform @ u((xx,1.05,zz))
+                rod('Solar support',(xx,-.3,zz),(end.x,end.z,-end.y),.05,'EX_White')
 
 manifest['colliders']=colliders
 # Save authoring objects, then make separately merged export copies by room/material.

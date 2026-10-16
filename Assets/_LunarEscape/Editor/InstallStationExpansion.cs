@@ -53,6 +53,7 @@ namespace LunarEscape.Editor
             BuildSupplies();
             BuildStory();
             ConfigureUsability();
+            InstallEarthReturnScene.ConfigureCurrent(session);
             RefreshVoiceClips();
             UpdateExteriorProxy();
             Physics.SyncTransforms();

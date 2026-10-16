@@ -20,6 +20,8 @@ namespace LunarEscape
         [SerializeField] private GameObject flightPanel;
         [SerializeField] private XROrigin player;
         [SerializeField] private GameObject summaryRoot;
+        [SerializeField] private GameObject returnControls;
+        public void ConfigureReturnControls(GameObject root) => returnControls = root;
         private readonly List<(Behaviour component, bool enabled)> behaviours = new();
         private readonly List<(Selectable control, bool interactable)> controls = new();
         private readonly List<(XRBaseInteractor interactor, int layers)> interactors = new();
@@ -113,7 +115,8 @@ namespace LunarEscape
         }
 
         private bool Allowed(Transform target) => target.IsChildOf(summaryRoot.transform)
-            || (flightPanel != null && target.IsChildOf(flightPanel.transform));
+            || (flightPanel != null && target.IsChildOf(flightPanel.transform))
+            || (returnControls != null && target.IsChildOf(returnControls.transform));
 
         public void Relocate(Vector3 position, Vector3 forward)
         {

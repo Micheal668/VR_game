@@ -230,8 +230,11 @@ namespace LunarEscape.Tests
         [UnityTest] public IEnumerator SuppliesRecoveryRoomsAndVisualEvidence()
         {
             var supplies=session.GetComponent<StationRandomSupplies>();
-            Assert.That(supplies.Groups.Length,Is.EqualTo(7));
-            foreach(var group in supplies.Groups)Assert.That(group.items.Count(i=>i.gameObject.activeSelf),Is.InRange(1,3),group.name);
+            Assert.That(supplies.Groups.Length,Is.EqualTo(6));
+            foreach(var group in supplies.Groups)
+                if(group.items[0].Kind==CargoKind.DataCore||group.items[0].Kind==CargoKind.LunarSample)
+                    Assert.That(group.items.Count(i=>i.gameObject.activeSelf),Is.Zero,"未做第一天研究不能生成 "+group.name);
+                else Assert.That(group.items.Count(i=>i.gameObject.activeSelf),Is.InRange(1,3),group.name);
             var tool=Object.FindAnyObjectByType<RepairTool>();
             Assert.That(tool.transform.position.z,Is.LessThan(-2.8f),"Wrench belongs on the lobby wall desk.");
             Assert.That(tool.transform.position.x,Is.InRange(-1.95f,-.3f));

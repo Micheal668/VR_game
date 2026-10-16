@@ -3,6 +3,9 @@ Shader "LunarEscape/Earth Sky"
     Properties
     {
         _EarthPhoto("Original Earth photograph", 2D) = "black" {}
+        _ReturnEarthPhoto("Return Earth photograph", 2D) = "black" {}
+        _ReturnImage("Use return image", Float) = 0
+        _HideEarth("Separate return globe", Float) = 0
         _StarPhoto("Star field photograph", 2D) = "black" {}
         _StarExposure("Star field brightness", Range(0, 2)) = .65
         _SkyRight("Sky right", Vector) = (1,0,0,0)
@@ -12,6 +15,7 @@ Shader "LunarEscape/Earth Sky"
         _EarthRight("Earth right", Vector) = (1,0,0,0)
         _EarthUp("Earth up", Vector) = (0,.952424,-.304776,0)
         _EarthHalfSize("Photograph half angular size", Float) = .0602
+        _AtmosphereBlend("Return atmosphere", Range(0,1)) = 0
     }
     SubShader
     {
@@ -25,11 +29,12 @@ Shader "LunarEscape/Earth Sky"
             #pragma multi_compile_instancing
             #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl"
             TEXTURE2D(_EarthPhoto); SAMPLER(sampler_EarthPhoto);
+            TEXTURE2D(_ReturnEarthPhoto); SAMPLER(sampler_ReturnEarthPhoto);
             TEXTURE2D(_StarPhoto); SAMPLER(sampler_StarPhoto);
             CBUFFER_START(UnityPerMaterial)
             float4 _EarthDirection, _EarthRight, _EarthUp;
             float4 _SkyRight, _SkyUp, _SkyForward;
-            float _EarthHalfSize, _StarExposure;
+            float _EarthHalfSize, _StarExposure, _AtmosphereBlend, _ReturnImage, _HideEarth;
             CBUFFER_END
             struct Attributes { float4 positionOS:POSITION; UNITY_VERTEX_INPUT_INSTANCE_ID };
             struct Varyings { float4 positionCS:SV_POSITION; float3 direction:TEXCOORD0; UNITY_VERTEX_OUTPUT_STEREO };
@@ -55,23 +60,32 @@ Shader "LunarEscape/Earth Sky"
                 stars *= smoothstep(0,.065,min(uv.y,1-uv.y));
                 return stars * _StarExposure;
             }
+            half3 Atmosphere(half3 colour, float3 ray)
+            {
+                half3 sky = lerp(half3(.65,.8,.86),half3(.07,.33,.65),saturate(ray.y*1.5));
+                float clouds = smoothstep(.32,.78,sin(ray.x*13+ray.z*7)+.3*sin(ray.x*29-ray.z*11));
+                sky = lerp(sky,half3(.88,.92,.93),clouds * .24 * exp(-pow((ray.y-.07)*18,2)));
+                return lerp(colour,sky,_AtmosphereBlend);
+            }
             half4 Frag(Varyings input):SV_Target
             {
                 UNITY_SETUP_STEREO_EYE_INDEX_POST_VERTEX(input);
                 float3 ray = normalize(input.direction);
                 half3 stars = Stars(ray);
+                if(_HideEarth>.5) return half4(Atmosphere(stars,ray),1);
                 float facing = dot(ray, _EarthDirection.xyz);
                 float2 uv = .5 + float2(dot(ray, _EarthRight.xyz), dot(ray, _EarthUp.xyz)) / (2 * _EarthHalfSize * max(facing, .0001));
-                if (facing <= 0 || any(uv < 0) || any(uv > 1)) return half4(stars,1);
+                if (facing <= 0 || any(uv < 0) || any(uv > 1)) return half4(Atmosphere(stars,ray),1);
                 // 直接采样用户原图中的地球区域；排除照片底部月面，不生成或改写照片。
                 float2 photoUV = float2((390 + uv.x * 170) / 899, (321 + uv.y * 170) / 621);
                 half3 colour = SAMPLE_TEXTURE2D(_EarthPhoto, sampler_EarthPhoto, photoUV).rgb;
+                if (_ReturnImage > .5) colour = SAMPLE_TEXTURE2D(_ReturnEarthPhoto,sampler_ReturnEarthPhoto,uv).rgb;
                 // 压掉扫描照片黑背景的噪点，避免天空出现矩形边框；保留蓝白云层。
                 float brightness = max(colour.r, max(colour.g, colour.b));
                 colour *= smoothstep(.008, .035, brightness);
                 // 地球整个圆盘（包括夜面）遮挡背景恒星，照片外侧不留下黑色矩形。
                 float disk = 1 - smoothstep(.44, .45, length(uv - .5));
-                return half4(lerp(stars,colour,disk), 1);
+                return half4(Atmosphere(lerp(stars,colour,disk),ray), 1);
             }
             ENDHLSL
         }

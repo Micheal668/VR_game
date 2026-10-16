@@ -148,7 +148,7 @@ namespace LunarEscape
         }
         public bool CanUse(CargoKind kind)
         {
-            if (!CanUseSupplies || inventory == null || inventory.GetCount(kind) == 0) return false;
+            if (!CanUseSupplies || inventory == null || inventory.GetUsableCount(kind) == 0) return false;
             return kind switch
             {
                 CargoKind.Oxygen => Oxygen < config.OxygenCapacity - 0.01f,
@@ -162,12 +162,12 @@ namespace LunarEscape
         {
             if (!CanUse(kind)) { if (CanUseSupplies) Feedback("flight.feedback.unavailable"); return false; }
             uint attempt = version;
-            if (!inventory.TryConsumeLoaded(kind, this) || attempt != version) return false;
+            if (!inventory.TryConsumeLoaded(kind, this, out float fraction) || attempt != version) return false;
             switch (kind)
             {
-                case CargoKind.Oxygen: Oxygen = Mathf.Min(config.OxygenCapacity, Oxygen + 90); break;
+                case CargoKind.Oxygen: Oxygen = Mathf.Min(config.OxygenCapacity, Oxygen + 90 * fraction); break;
                 case CargoKind.RepairKit: LeakPerSecond = 0; break;
-                case CargoKind.Battery: Power = Mathf.Min(100, Power + 45); break;
+                case CargoKind.Battery: Power = Mathf.Min(100, Power + 45 * fraction); break;
                 case CargoKind.MedicalKit: Health = Mathf.Min(100, Health + 40); InjuryPerSecond = 0; break;
             }
             ++SuppliesUsed; Feedback("flight.used." + kind); return true;

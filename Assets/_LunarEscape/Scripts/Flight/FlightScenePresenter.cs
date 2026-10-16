@@ -14,6 +14,8 @@ namespace LunarEscape
         [SerializeField] private Transform seat;
         private Material fadeMaterial;
         private bool seated;
+        private float returnFade;
+        public void SetReturnFade(float alpha) { returnFade = Mathf.Clamp01(alpha); RefreshFade(); }
         public bool IsSeated => seated;
         public float FadeAlpha { get; private set; }
         public GameObject GroundRoot => groundRoot;
@@ -41,6 +43,7 @@ namespace LunarEscape
             if (phase == AscentPhase.AwaitingBoarding)
             {
                 seated = false;
+                returnFade = 0;
                 groundRoot.SetActive(true); flightWorld.SetActive(false); panel.SetActive(false);
             }
             else if (phase == AscentPhase.Black && !seated)
@@ -63,6 +66,7 @@ namespace LunarEscape
                 AscentPhase.FadeIn => mission.PhaseRemaining / mission.Config.FadeInSeconds,
                 _ => 0
             };
+            FadeAlpha = Mathf.Max(FadeAlpha, returnFade);
             fade.enabled = FadeAlpha > 0;
             if (!Application.isPlaying) return;
             if (fadeMaterial == null) fadeMaterial = fade.material;

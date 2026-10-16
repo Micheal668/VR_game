@@ -20,6 +20,7 @@ namespace LunarEscape
         private Quaternion[] previousArmRotations;
         [SerializeField, Min(1)] private float armSmoothing = 18;
         [SerializeField, Range(0, 120)] private float wristRotationLimit = 80;
+        [SerializeField, Range(.04f, .2f)] private float bodyBehindEyes = .06f;
         private float heightScale = 1;
         private bool calibrated;
         public CrewSuitRig Suit => suit;
@@ -28,6 +29,8 @@ namespace LunarEscape
 
         public void Configure(XROrigin origin, Transform left, Transform right, CrewSuitRig model)
         { player = origin; leftController = left; rightController = right; suit = model; }
+        // 厚胸甲需要比软服更多的视点间距；只后移视觉身体，不移动头显、控制器或碰撞体。
+        public void ConfigureChestClearance(float distance) { bodyBehindEyes = Mathf.Clamp(distance, .04f, .2f); }
         private void Start()
         {
             if (suit == null || player == null) { enabled = false; return; }
@@ -49,7 +52,7 @@ namespace LunarEscape
             if(forward.sqrMagnitude<.01f)forward=Vector3.ProjectOnPlane(suit.transform.forward,up);
             var yaw=Quaternion.LookRotation(forward.normalized,up);
             var floor=player.Origin.transform.position;
-            var feet=head.position-up*Vector3.Dot(head.position-floor,up)-yaw*Vector3.forward*.06f;
+            var feet=head.position-up*Vector3.Dot(head.position-floor,up)-yaw*Vector3.forward*bodyBehindEyes;
             suit.transform.SetPositionAndRotation(feet,yaw);suit.transform.localScale=Vector3.one*heightScale;
             var bones=suit.Bones;
             for(int i=0;i<bones.Length;i++){bones[i].localRotation=restRotations[i];bones[i].localPosition=restPositions[i];}

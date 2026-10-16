@@ -8,16 +8,18 @@ namespace LunarEscape
         [Serializable] public sealed class Group { public string name; public CargoItem[] items; }
         [SerializeField] private LifeSupportMission life;
         [SerializeField] private Group[] groups = Array.Empty<Group>();
+        [SerializeField] private StationPreparation preparation;
         private int lastAttempt = -1;
         private System.Random random;
         public Group[] Groups => groups;
         public void Configure(LifeSupportMission source, Group[] sets) { life = source; groups = sets; }
         public void SetRandomSeed(int seed) => random = new System.Random(seed);
+        public void ConfigurePreparation(StationPreparation owner) => preparation = owner;
         private void Start() => RefreshAttempt();
         private void LateUpdate() => RefreshAttempt();
         private void RefreshAttempt()
         {
-            if (life == null || lastAttempt == life.AttemptNumber) return;
+            if (preparation != null || life == null || lastAttempt == life.AttemptNumber) return;
             lastAttempt = life.AttemptNumber; random ??= new System.Random();
             foreach (var group in groups)
             {

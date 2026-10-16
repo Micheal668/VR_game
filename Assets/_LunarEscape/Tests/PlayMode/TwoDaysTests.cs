@@ -69,8 +69,8 @@ namespace LunarEscape.Tests
             Assert.That(day.Rack.Capacity, Is.EqualTo(3));
             yield return null;
             var holsters = Object.FindObjectsByType<ToolHolster>(FindObjectsSortMode.None);
-            Assert.That(holsters.Length, Is.EqualTo(2));
-            Assert.That(holsters.All(h => h.HasTool), "开局两件工具挂在气闸工具架上");
+            Assert.That(holsters.Length, Is.EqualTo(3));
+            Assert.That(holsters.All(h => h.HasTool), "氮气枪、取芯钻与第二天使用的切割器共用两天的工具布局");
             Assert.That(RenderSettings.sun.intensity, Is.GreaterThan(1f), "月昼");
             Assert.That(Object.FindAnyObjectByType<SpaceAudio>(), Is.Not.Null);
             Assert.That(Object.FindAnyObjectByType<MusicDirector>().Choose(), Is.EqualTo(MusicTrack.Calm), "舱内平静的音乐");
@@ -134,14 +134,14 @@ namespace LunarEscape.Tests
 
             hand.Trigger(1f);
             float tank = blower.Tank;
-            // 沿板面来回扫：5×3 个点，每点吹一会儿。
+            // 后方大板按实际尺寸扫满整个表面，喷嘴保持在可触达的 1.4 米距离。
             for (int pass = 0; pass < 3 && !panel.IsClean; pass++)
-                for (int y = -1; y <= 1 && !panel.IsClean; y++)
+                for (int y = -3; y <= 3 && !panel.IsClean; y++)
                     for (int x = -2; x <= 2 && !panel.IsClean; x++)
                     {
-                        var point = layer.position + layer.right * (x * 0.3f) + layer.up * (y * 0.28f);
-                        hand.Aim(blower, point + normal * 0.45f, -normal, layer.up);
-                        for (float t = 0; t < 0.6f && !panel.IsClean; t += Time.deltaTime) yield return null;
+                        var point = layer.TransformPoint(new Vector3(x * .21f, y * .14f, 0));
+                        hand.Aim(blower, point + normal * 1.4f, -normal, layer.up);
+                        for (float t = 0; t < .45f && !panel.IsClean; t += Time.deltaTime) yield return null;
                     }
             Assert.That(panel.IsClean, "吹净：" + panel.Cleanliness);
             Assert.That(blower.Tank, Is.LessThan(tank), "消耗氮气");
@@ -210,6 +210,7 @@ namespace LunarEscape.Tests
             Assert.That(day.CoresStored, Is.EqualTo(3));
             Assert.That(day.Current, Is.EqualTo(DayOneMission.Stage.Evening), "全部完成，收工");
             yield return Said("cup_d1_night", 40f);
+            UsabilityTestSteps.ReturnSuit(day);
             Assert.That(day.Sleep(), "收工后可以睡觉");
             for (float t = 0; t < 12f && SceneManager.GetActiveScene().name != "11_LunarStation_LifeSupport"; t += Time.deltaTime) yield return null;
             Assert.That(SceneManager.GetActiveScene().name, Is.EqualTo("11_LunarStation_LifeSupport"), "醒来就是第二天的事故");

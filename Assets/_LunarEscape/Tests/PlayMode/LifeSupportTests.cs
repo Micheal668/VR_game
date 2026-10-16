@@ -39,7 +39,7 @@ namespace LunarEscape.Tests
             previousBackground=InputSystem.settings.backgroundBehavior;previousFocus=InputSystem.settings.editorInputBehaviorInPlayMode;
             InputSystem.settings.backgroundBehavior=InputSettings.BackgroundBehavior.IgnoreFocus;
             InputSystem.settings.editorInputBehaviorInPlayMode=InputSettings.EditorInputBehaviorInPlayMode.AllDeviceInputAlwaysGoesToGameView;
-            yield return SceneManager.LoadSceneAsync("11_LunarStation_LifeSupport");
+            yield return PreparationTestSteps.PreparedDayTwo();
             // Fixtures control the view explicitly, independent of the user's saved simulator toggle.
             foreach(var simulator in Object.FindObjectsByType<CollisionAwareSimulator>(FindObjectsSortMode.None))simulator.gameObject.SetActive(false);
             yield return null;
@@ -133,7 +133,7 @@ namespace LunarEscape.Tests
             var battery=Pack(CargoKind.Battery);float power=life.SuitPower;Assert.That(life.TryUseSupply(battery),Is.True);
             Assert.That(life.SuitPower,Is.EqualTo(Mathf.Min(100,power+60)).Within(.001f));Assert.That(cargo.GetCount(CargoKind.Battery),Is.Zero);
             session.RetryMission();Assert.That(life.SuppliesUsed,Is.Zero);Assert.That(oxygen.State,Is.EqualTo(CargoState.World));
-            yield return ExpansionTestSteps.Wake(session);Don();var again=Pack(CargoKind.Oxygen);bool reset=false;
+            yield return ExpansionTestSteps.Wake(session);UseConfiguredSuitReserves();Don();var again=Pack(CargoKind.Oxygen);bool reset=false;
             void RetryDuringConsume(){if(!reset&&again.State==CargoState.Consumed){reset=true;session.RetryMission();}}
             cargo.Changed+=RetryDuringConsume;Assert.That(life.TryUseSupply(again),Is.False);cargo.Changed-=RetryDuringConsume;
             Assert.That(reset,Is.True);Assert.That(again.State,Is.EqualTo(CargoState.World));Assert.That(life.SuppliesUsed,Is.Zero);Assert.That(life.SuitWorn,Is.False);
@@ -157,7 +157,7 @@ namespace LunarEscape.Tests
             foreach(bool daylight in new[]{true,false})
             {
                 life.SetRandomSeed(123);for(int attempt=0;attempt<50;attempt++){session.RetryMission();if(life.IsDaylight==daylight)break;}
-                Assert.That(life.IsDaylight,Is.EqualTo(daylight));yield return ExpansionTestSteps.Wake(session);Don();session.Advance(4);
+                Assert.That(life.IsDaylight,Is.EqualTo(daylight));yield return ExpansionTestSteps.Wake(session);UseConfiguredSuitReserves();Don();session.Advance(4);
                 RepairDoor();MoveBody(life.DoorControl.position+Vector3.left*.8f);life.OpenDoor();session.Advance(9.08f);Assert.That(session.Mission.IsTerminal,Is.False);
                 session.Advance(.03f);Assert.That(session.Mission.FailureReason,Is.EqualTo(daylight?StationMissionFailure.Hyperthermia:StationMissionFailure.Hypothermia));
                 Assert.That(life.SuitOxygen,Is.GreaterThan(0));yield return null;
@@ -279,7 +279,7 @@ namespace LunarEscape.Tests
             for(var parent=hud.WristControls.transform.parent;parent!=session.Player.transform;parent=parent.parent)parent.gameObject.SetActive(true);
             MoveBody(new Vector3(16,0,1.7f));eye.transform.rotation=Quaternion.LookRotation(Vector3.right);
             yield return null;yield return null;
-            var wrist=hud.WristControls.GetComponent<LookDownDisplay>();
+            var wrist=hud.WristControls.GetComponent<ReadableWristDisplay>();
             Assert.That(wrist.Visible,Is.False);Assert.That(hud.WristControls.GetComponent<Canvas>().enabled,Is.False);
             var pocket=Object.FindAnyObjectByType<CargoPocketPresenter>();Assert.That(pocket.GetComponent<Canvas>().enabled,Is.False);
             foreach(var text in hud.Hud.GetComponentsInChildren<TMP_Text>())
@@ -394,7 +394,7 @@ namespace LunarEscape.Tests
             eye.rotation=Quaternion.Euler(0,90,0);yield return null;
             yield return Capture("life-shoulder-lamps",eye.position+Vector3.right*2.3f+Vector3.back*.8f,eye.position+Vector3.down*.2f,55,true,true);
             life.SetRandomSeed(82);for(int i=0;i<30;i++){session.RetryMission();if(!life.IsDaylight)break;}
-            Assert.That(life.IsDaylight,Is.False);yield return ExpansionTestSteps.Wake(session);Don();MoveBody(new Vector3(16,0,1.7f));
+            Assert.That(life.IsDaylight,Is.False);yield return ExpansionTestSteps.Wake(session);UseConfiguredSuitReserves();Don();MoveBody(new Vector3(16,0,1.7f));
             eye.rotation=Quaternion.Euler(8,90,0);yield return null;
             Color32[] litPixels=null,darkPixels=null;
             yield return Capture("life-shoulder-beams-night",eye.position,eye.position+eye.forward*8,65,true,false,p=>litPixels=p);
@@ -447,7 +447,10 @@ namespace LunarEscape.Tests
             var habitat=layout.HabitatConsole.transform.parent.Find("Pressurized Habitat Volume").GetComponent<BoxCollider>();
             life.Configure(settings,session,cargo,life.SuitRack,life.DoorControl,habitat);session.RetryMission();
             yield return ExpansionTestSteps.Wake(session);
+            UseConfiguredSuitReserves();
         }
+        // 重试正确地恢复第一天快照；边界用例另外指定该次实验所需的低电、缺氧条件。
+        private void UseConfiguredSuitReserves() => life.RestorePreparedSuit(life.Config.SuitOxygenRange.x,life.Config.SuitPowerRange.x);
         // 门锁维修的时间消耗保持原测试口径；修理本身由气闸抢修的捷径完成（真实操作见 AirlockRepairTests）。
         private void RepairDoor()
         {

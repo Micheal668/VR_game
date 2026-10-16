@@ -6,7 +6,8 @@
     "Unity.XR.CoreUtils",
     "Unity.InputSystem",
     "Unity.TextMeshPro",
-    "Unity.ugui"
+    "Unity.ugui",
+    "Unity.RenderPipelines.Universal.Runtime"
   ],
   "autoReferenced": true
 }

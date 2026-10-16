@@ -13,6 +13,14 @@ namespace LunarEscape
         [SerializeField] private LocalizedText outcome, total, crewLine, scienceLine;
         [SerializeField] private LocalizedText[] scoreLines;
         [SerializeField] private Button retry;
+        [SerializeField] private EarthReturnMission earthReturn;
+        public void ConfigureReturn(EarthReturnMission journey)
+        {
+            if (earthReturn != null) earthReturn.Changed -= Refresh;
+            earthReturn = journey;
+            if (isActiveAndEnabled && earthReturn != null) earthReturn.Changed += Refresh;
+            Refresh();
+        }
         private bool showing;
         private bool listening;
         private Vector3 viewOffset;
@@ -27,18 +35,20 @@ namespace LunarEscape
             outcome = result; total = points; crewLine = members; scienceLine = science; scoreLines = lines; retry = restart;
             if (isActiveAndEnabled) Subscribe();
         }
-        private void OnEnable() => Subscribe();
+        private void OnEnable() { Subscribe(); if (earthReturn != null) earthReturn.Changed += Refresh; }
         private void Subscribe()
         { if (score != null && !listening) { listening = true; score.Changed += Refresh; localization.LanguageChanged += Refresh; Refresh(); } }
         private void Unsubscribe()
         { if (score != null && listening) { score.Changed -= Refresh; localization.LanguageChanged -= Refresh; } listening = false; }
         private void OnDisable()
-        { Unsubscribe(); if (panel != null) panel.SetActive(false); showing = false; }
+        { Unsubscribe(); if (earthReturn != null) earthReturn.Changed -= Refresh; if (panel != null) panel.SetActive(false); showing = false; }
         private void Refresh()
         {
             if (panel == null || score == null) return;
             var result = score.Result;
             if (result == null) { panel.SetActive(false); showing = false; return; }
+            if (result.Snapshot.Docked && earthReturn != null && !earthReturn.IsComplete && !earthReturn.IsFailed)
+            { panel.SetActive(false); showing = false; return; }
             if (!showing)
             {
                 var head = playerCamera.transform; viewOffset = head.forward * 1.9f;
@@ -47,7 +57,15 @@ namespace LunarEscape
             }
             showing = true; panel.SetActive(true);
             var snapshot = result.Snapshot;
-            outcome.SetKey(snapshot.Docked ? "score.outcome.docked" : snapshot.Outcome == MissionScoreOutcome.StationFailed
+            if(earthReturn != null && earthReturn.IsFailed)
+            {
+                outcome.SetKey(earthReturn.FailureKey);
+                total.SetKey("return.failure.total");crewLine.SetKey("return.failure.crew");scienceLine.SetKey("return.failure.science");
+                foreach(var line in scoreLines)line.gameObject.SetActive(false);
+                retry.interactable=true;return;
+            }
+            foreach(var line in scoreLines)line.gameObject.SetActive(true);
+            outcome.SetKey(snapshot.Docked ? earthReturn != null && earthReturn.IsComplete ? "return.complete" : "score.outcome.docked" : snapshot.Outcome == MissionScoreOutcome.StationFailed
                 ? snapshot.StationFailure == StationMissionFailure.None || snapshot.StationFailure == StationMissionFailure.EvacuationTimeout
                     ? "failure.reason" : "life.failure." + snapshot.StationFailure
                 : "flight.failure." + snapshot.Failure);

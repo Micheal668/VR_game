@@ -19,7 +19,7 @@ namespace LunarEscape
         private bool captured;
 
         public bool Good => good;
-        public XRGrabInteractable Grab => grab;
+        public XRGrabInteractable Grab => grab != null ? grab : grab = GetComponent<XRGrabInteractable>();
         public bool canProcess => isActiveAndEnabled;
 
         public void Configure(bool working, FuseFault owner) { good = working; fault = owner; }
@@ -46,7 +46,7 @@ namespace LunarEscape
         {
             // 已有的选择（插座正夹着、手正拿着）不受影响；只拦截“盖子没开就伸手去拔”。
             if (interactor.IsSelecting(interactable) || fault == null || interactor is XRSocketInteractor) return true;
-            return !fault.IsSeated(this) || fault.CoverOpen;
+            return !fault.IsSeated(this) || fault.CanRemoveInstalled;
         }
 
         internal void RestoreStart()

@@ -1,0 +1,28 @@
+地球返航素材来源（2026-10-10）
+
+NASA Blue Marble East.jpg
+来源：NASA / Goddard Space Flight Center，Blue Marble 东半球图像。
+直接下载：https://eoimages.gsfc.nasa.gov/images/imagerecords/57000/57723/globe_east_2048.jpg
+原专题：https://visibleearth.nasa.gov/images/57723/the-blue-marble
+下载尺寸：2048 × 2048；文件536295字节。
+SHA256：3B47B77B49CCD18ECF0AA58610A2047CC68A2E06A1DE2E224295A1346AA2DC95
+处理：文件未修改；早期返航天空投影参考，当前返航已改用下列经纬球面贴图。
+使用说明：https://www.nasa.gov/nasa-brand-center/images-and-media/
+NASA素材来源不表示NASA参与、审核或认可本游戏。
+
+NASA Earth Equirectangular.jpg
+来源：NASA Earth Observatory，Blue Marble: Next Generation，2004年1月全球底图。
+直接下载：https://assets.science.nasa.gov/content/dam/science/esd/eo/images/bmng/bmng-base/january/world.200401.3x5400x2700.jpg
+来源页：https://science.nasa.gov/earth/earth-observatory/blue-marble-next-generation/base-map/
+原始尺寸：5400 × 2700；Unity导入上限4096，水平重复、垂直夹紧。
+SHA256：99F5FAAD74EFE985FBF1714C8BE7296CA9999759A1215B65F99B7F1DF278DDE5
+文件未修改；球面Shader叠加本项目生成的云层、日夜照明和蓝色边缘散射。
+
+三人钟形返回舱：本项目在Blender中重新制作，参照用户提供的龙飞船内外照片进行布局设计；不是SpaceX工程模型。
+源文件：Models/ReturnCapsule/ThreeSeatReturnCapsule.blend
+生成与导出：Tools/build_return_capsule.py；Unity导入：ImportReturnCapsule.cs。
+服务推进舱：复用项目现有ImportRealisticOrbiter导入的轨道器网格及材质，BuildReturnAssembly只提取服务推进段，不再保留旧锥形指令舱；原轨道器资产保持不变。服务舱连接环由本项目生成，顶部对接通道与捕获环沿用自制的白色返回舱模型。
+降落伞与海面：本项目Editor脚本生成的简化展示资源；EarthReturnParachutes驱动舱外抽伞、充气与绳索，ReturnOcean提供海面波纹和溅落水迹。
+月球材质复用项目已有的Orbital Moon纹理；分离上升器复用ApolloExterior的上升级结构、舱壁和硬件，排除下降级、支腿、舷梯；
+乘员复用已有CrewEscape航天服。原始素材来源沿用Docs目录中的模型来源说明。
+音效复用本项目FeedbackSounds合成音，无新增外部录音。

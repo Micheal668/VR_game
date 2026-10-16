@@ -34,6 +34,10 @@ namespace LunarEscape
 
         private readonly HashSet<string> said = new();
         private LocalizationService language;
+        [SerializeField] private StationPreparation preparation;
+        [SerializeField] private TMP_Text wristBoard;
+        public void ConfigureWrist(TMP_Text text) => wristBoard = text;
+        public void ConfigurePreparation(StationPreparation source) => preparation = source;
         private bool wasOutside;
         private int idleIndex;
 
@@ -44,7 +48,25 @@ namespace LunarEscape
         public int PanelCount => panels.Length;
         public int CoreCount => sites.Length;
         public bool SuitWorn => suit != null && suit.SuitWorn;
-        public bool WorkDone => SuitWorn && PanelsClean == panels.Length && CoresStored >= sites.Length;
+        public bool WorkDone => suit != null && suit.HasWorn && PanelsClean == panels.Length && CoresStored >= sites.Length;
+        public CharacterController Player => player;
+        private bool NeedsSuit => !SuitWorn && (!suit.HasWorn || PanelsClean < panels.Length || CoresDrilled < sites.Length);
+        public string CurrentTask => NeedsSuit ? T("day1.task.suit")
+            : PanelsClean < panels.Length ? T("day1.task.panels", PanelsClean, panels.Length)
+            : CoresDrilled < sites.Length ? T("day1.task.cores", CoresDrilled, sites.Length)
+            : CoresStored < sites.Length ? T("day1.task.store", CoresStored, sites.Length)
+            : SuitWorn ? T("day1.task.return_suit") : T("day1.task.sleep");
+        public Transform TaskTarget
+        {
+            get
+            {
+                if (NeedsSuit) return suit.Handle.transform;
+                foreach (var panel in panels) if (!panel.IsClean) return panel.transform;
+                foreach (var site in sites) if (!site.Completed) return site.transform;
+                if (CoresStored < sites.Length) return rack.transform;
+                return SuitWorn ? suit.Handle.transform : bed.transform;
+            }
+        }
         public bool PlayerOutside => player != null && !InsideHabitat(player.transform.TransformPoint(player.center));
         // 玩家所在处有空气：基地舱内，或者气闸室已复压。
         public bool PlayerHasAir
@@ -86,7 +108,7 @@ namespace LunarEscape
 
         private void OnEnable()
         {
-            if (suit != null) suit.Donned += OnSuit;
+            if (suit != null) { suit.Donned += OnSuit; suit.Changed += Refresh; }
             if (airlock != null) { airlock.Denied += OnAirlockDenied; airlock.SuitCheck = () => SuitWorn; }
             foreach (var p in panels) if (p != null) p.Cleaned += OnPanel;
             foreach (var s in sites) if (s != null) s.Drilled += OnCore;
@@ -99,7 +121,7 @@ namespace LunarEscape
 
         private void OnDisable()
         {
-            if (suit != null) suit.Donned -= OnSuit;
+            if (suit != null) { suit.Donned -= OnSuit; suit.Changed -= Refresh; }
             if (airlock != null) airlock.Denied -= OnAirlockDenied;
             foreach (var p in panels) if (p != null) p.Cleaned -= OnPanel;
             foreach (var s in sites) if (s != null) s.Drilled -= OnCore;
@@ -179,6 +201,7 @@ namespace LunarEscape
         public bool Sleep()
         {
             if (Current != Stage.Evening) { if (Current == Stage.Working) SayAgain("cmd_d1_not_yet"); return false; }
+            if (SuitWorn) { SayAgain("cmd_d1_sleep"); Refresh(); return false; }
             Current = Stage.Sleeping;
             StartCoroutine(GoToSleep());
             return true;
@@ -193,7 +216,11 @@ namespace LunarEscape
                 yield return fade.Title("day.title.2", "day.title.sub.2", 2.5f);
             }
             if (language != null) LocalizationService.CarriedLanguage = language.CurrentLanguage;
-            if (!string.IsNullOrEmpty(nextScene) && Application.CanStreamedLevelBeLoaded(nextScene)) SceneManager.LoadScene(nextScene);
+            if (!string.IsNullOrEmpty(nextScene) && Application.CanStreamedLevelBeLoaded(nextScene))
+            {
+                preparation?.CarryToNextDay();
+                SceneManager.LoadScene(nextScene);
+            }
         }
 
         private void Say(string id, VoicePriority priority = VoicePriority.Hint)
@@ -209,18 +236,29 @@ namespace LunarEscape
             voice.Say(id, VoicePriority.Hint);
         }
 
-        // 任务清单：大厅屏幕与左手腕小屏共用同一份文字；完成的项变绿。
+        // 大厅列出完整清单，腕屏只显示当前任务与服装资源，避免把长清单缩成小字。
         public void Refresh()
         {
             if (taskBoards == null || taskBoards.Length == 0) return;
             var text = new StringBuilder();
             text.AppendLine("<b>" + T("day1.board.title") + "</b>");
-            Line(text, SuitWorn, T("day1.task.suit"));
+            Line(text, suit.HasWorn, T("day1.task.suit"));
             Line(text, PanelsClean == panels.Length, T("day1.task.panels", PanelsClean, panels.Length));
             Line(text, CoresDrilled == sites.Length, T("day1.task.cores", CoresDrilled, sites.Length));
             Line(text, CoresStored >= sites.Length, T("day1.task.store", CoresStored, sites.Length));
-            Line(text, Current == Stage.Sleeping, T(WorkDone ? "day1.task.sleep" : "day1.task.sleep_later"));
-            foreach (var board in taskBoards) if (board != null) board.text = text.ToString();
+            if (preparation != null)
+            {
+                Line(text, preparation.ChargedCount(CargoKind.Oxygen) == preparation.AvailableCount(CargoKind.Oxygen), T("prep.task.oxygen", preparation.ChargedCount(CargoKind.Oxygen), preparation.AvailableCount(CargoKind.Oxygen)));
+                Line(text, preparation.ChargedCount(CargoKind.Battery) == preparation.AvailableCount(CargoKind.Battery), T("prep.task.battery", preparation.ChargedCount(CargoKind.Battery), preparation.AvailableCount(CargoKind.Battery)));
+                int researched = preparation.Research != null ? preparation.Research.Completed : 0;
+                Line(text, researched == sites.Length, T("prep.task.research", researched, sites.Length));
+            }
+            Line(text, suit.HasWorn && !SuitWorn, T("day1.task.return_suit"));
+            Line(text, Current == Stage.Sleeping, T(WorkDone && !SuitWorn ? "day1.task.sleep" : "day1.task.sleep_later"));
+            foreach (var board in taskBoards) if (board != null) board.text = board == wristBoard
+                ? "<b>" + T("day1.board.title") + "</b>\n" + CurrentTask + "\n"
+                    + T("day1.wrist.resources", Mathf.CeilToInt(suit.Oxygen), Mathf.CeilToInt(suit.Power))
+                : text.ToString();
         }
 
         private static void Line(StringBuilder text, bool done, string label)

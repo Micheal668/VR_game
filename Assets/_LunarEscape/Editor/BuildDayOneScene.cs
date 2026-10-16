@@ -31,9 +31,13 @@ namespace LunarEscape.Editor
         public static void Build()
         {
             if (!Application.isBatchMode && !EditorSceneManager.SaveCurrentModifiedScenesIfUserWantsTo()) return;
+            InstallStationPreparation.EnsureInstalled();
             BuildRepairScene.RefreshFont();
-            if (File.Exists(ScenePath)) AssetDatabase.DeleteAsset(ScenePath);
-            if (!AssetDatabase.CopyAsset(BuildLifeSupportScene.ScenePath, ScenePath)) throw new InvalidOperationException("复制场景 11 失败。");
+            // 保存副本保留场景 12 的资源身份，重复安装不会使引用它的资源失效。
+            var source = EditorSceneManager.OpenScene(BuildLifeSupportScene.ScenePath);
+            BuildRussianSuit.ApplyToCurrentScene();
+            EditorSceneManager.SaveScene(source);
+            if (!EditorSceneManager.SaveScene(source, ScenePath, true)) throw new InvalidOperationException("复制场景 11 失败。");
             var scene = EditorSceneManager.OpenScene(ScenePath);
             Apply();
             EditorSceneManager.SaveScene(scene);
@@ -72,6 +76,7 @@ namespace LunarEscape.Editor
             var body = session.Exit.PlayerBody;
             var camera = origin.Camera;
             var ground = session.GetComponent<FlightScenePresenter>().GroundRoot.transform;
+            var preparation = UnityEngine.Object.FindAnyObjectByType<StationPreparation>(FindObjectsInactive.Include);
             var door = session.GetComponent<MissionEnvironment>().Door.transform;
             language = UnityEngine.Object.FindAnyObjectByType<LocalizationService>(FindObjectsInactive.Include);
             ui = new LocalizedPanelBuilder(StationFont, language);
@@ -86,25 +91,42 @@ namespace LunarEscape.Editor
             var playerSuit = origin.transform.Find("Player - Crew Escape Suit");
             var playerUniform = origin.transform.Find("Player - Station Uniform");
             var rack = ground.Find("Life Support Hardware/Wall Suit Rack");
+            // 服装 HUD 的资源仪表保留，在拆事故会话前复制为第一天的显示控制器。
+            var personalDisplay = new GameObject("Day One Suit Display").AddComponent<SuitHudPresenter>();
+            EditorUtility.CopySerialized(session.GetComponent<SuitHudPresenter>(), personalDisplay);
 
             UnityEngine.Object.DestroyImmediate(session.gameObject);
-            foreach (var root in SceneManager.GetActiveScene().GetRootGameObjects().Where(r => r.name == "Flight Cabin World").ToArray())
+            foreach (var root in SceneManager.GetActiveScene().GetRootGameObjects().Where(r => r.name == "Flight Cabin World" || r.name == "Earth Return Experience").ToArray())
                 UnityEngine.Object.DestroyImmediate(root);
-            RemoveNamed(ground, "Maintenance Tool", "Oxygen Repair Station", "Repair Point Label", "Repair Tool Label", "Exit Door Status", "Mission Panel",
-                "Player Cargo Pouch", "Evacuation Supply Rack", "Supply Manifest", "Accessible Boarding Control", "Boarding Control Post",
-                "Boarding Zone Label", "Boarding Zone Edge", "Commander Boarding Status", "Commander Rescue Area", "Airlock A Repair",
-                "Habitat Lighting Breaker", "Airlock Decompression", "Exit Beam Blockade", "Laser Cutter Bracket", "Laser Cutter", "Ladder Boarding Approach",
-                "Ladder Approach Sign", "Backup Circuit Panel", "Laboratory Module Terminal", "Bedroom Central Control", "Bedroom Control Backplate",
-                "Commander Sleeping Pose", "Alarm Expansion Emergency Light", "Oxygen Generator Repair Readout", "Shared Base Power Readout",
-                "Habitat Environmental Console", "Habitat Supply Console", "Suit Service Console", "Airlock Latch Bolts");
+            // 只移除事故表现和临时提示。家具、制氧机、工具、物资及维修面板在两天中都存在。
+            RemoveNamed(ground, "Repair Point Label", "Repair Tool Label", "Exit Door Status", "Mission Panel",
+                "Player Cargo Pouch", "Supply Manifest", "Boarding Zone Label", "Boarding Zone Edge", "Commander Boarding Status",
+                "Commander Rescue Area", "Airlock Decompression", "Exit Beam Blockade", "Commander Sleeping Pose", "Alarm Expansion Emergency Light");
             // 第二天的气闸压力屏（含外壳）与登舱按钮：第一天不维修舱门、也不登船。
             foreach (var t in ground.GetComponentsInChildren<Transform>(true).Where(t => t.name.StartsWith("Crew Dressing Route") || t.name.StartsWith("Dressed Crew")
-                         || t.name.StartsWith("Airlock Pressure Console") || t.name == "Hatch Control").ToArray())
+                         ).ToArray())
                 if (t != null) UnityEngine.Object.DestroyImmediate(t.gameObject);
-            RemoveNamed(camera.transform, "Life Support Helmet HUD");
             foreach (var hand in origin.GetComponentsInChildren<Transform>(true).Where(t => t.name == "Life Support Wrist Controls").ToArray())
                 UnityEngine.Object.DestroyImmediate(hand.gameObject);
+            // 事故用插槽和控制器失效时不能留下无类型过滤的插槽，避免吸走工作物资。
+            foreach (var socket in ground.GetComponentsInChildren<XRSocketInteractor>(true))
+                if (socket.GetComponent<SupplyChargingDock>() == null && socket.GetComponent<ToolHolster>() == null
+                    && socket.GetComponentInParent<SampleRack>() == null && socket.name != "F3 Fuse Socket") socket.enabled = false;
+            foreach (var fuse in ground.GetComponentsInChildren<FuseFault>(true))
+            {
+                fuse.ConfigureDayOne(); fuse.Socket.enabled = true;
+                fuse.Burnt.transform.Find("Fuse Body").GetComponent<Renderer>().sharedMaterial = Mat("Panel White");
+                fuse.Burnt.transform.Find("Scorch Mark").GetComponent<Renderer>().sharedMaterial = Mat("Guide Teal");
+                var start = new SerializedObject(fuse.Socket);
+                start.FindProperty("m_StartingSelectedInteractable").objectReferenceValue = fuse.Burnt.Grab;
+                start.ApplyModifiedPropertiesWithoutUndo();
+            }
+            foreach (var puzzle in ground.GetComponentsInChildren<StationPatchPuzzle>(true))
+                foreach (var grab in puzzle.GetComponentsInChildren<XRGrabInteractable>(true))
+                { grab.enabled = false; if (grab.TryGetComponent<Rigidbody>(out var rb)) rb.isKinematic = true; }
+            foreach (var button in ground.GetComponentsInChildren<Button>(true)) button.onClick = new Button.ButtonClickedEvent();
             SweepMissionComponents();
+            NormalOperationPanels(ground);
             // 气闸通道里旧的传送面会让人绕过两道门，第一天关掉。
             foreach (var teleport in ground.GetComponentsInChildren<TeleportationArea>(true).Where(t => t.name == "Corridor Teleport Surface"))
                 teleport.gameObject.SetActive(false);
@@ -121,18 +143,21 @@ namespace LunarEscape.Editor
             var suit = BuildSuitLocker(flow, rack, playerSuit, playerUniform);
             var (south, north) = MeasurePassage();
             var airlock = BuildAirlock(flow, door, south, north);
-            var (blower, drill) = BuildToolRack(flow, north);
-            var outside = Frame(ground, "Day One Surface Work", Vector3.zero);
-            var panels = BuildSolarField(outside);
-            var sites = BuildDrillSites(outside);
-            var samples = BuildSampleRack(flow);
+            var blower = preparation.Blower; var drill = preparation.Drill;
+            var panels = preparation.Panels; var sites = preparation.Sites;
+            var samples = preparation.Research.Rack;
             var bed = BuildBed(flow);
-            var boards = BuildTaskBoards(flow, origin.transform);
+            var boards = BuildTaskBoards();
             var fade = BuildFade(camera.transform);
             var voice = BuildVoice(flow, camera.transform, commander);
             rooms.Add(airlock.Chamber); // 只用于判断“在基地里”；气闸室是否有气由 DayOneAirlock 决定
             var day = flow.gameObject.AddComponent<DayOneMission>();
             day.Configure(body, rooms.ToArray(), suit, airlock, panels, sites, samples, blower, drill, bed, voice, fade, boards);
+            preparation.ConfigureDayOne(day);
+            day.ConfigurePreparation(preparation);
+            day.ConfigureWrist(null); suit.ConfigureDay(day);
+            personalDisplay.transform.SetParent(flow, false);
+            personalDisplay.ConfigureDayOne(day, null);
             InstallStationAudio.Apply(camera, ground, flow, null, null, null, null, voice, day, suit);
             EditorSceneManager.MarkSceneDirty(SceneManager.GetActiveScene());
         }
@@ -165,8 +190,51 @@ namespace LunarEscape.Editor
         {
             typeof(LocalizationService), typeof(LocalizedText), typeof(CockpitLamp), typeof(CrewSuitRig), typeof(TrackedCrewSuit), typeof(CrewWalkMotion),
             typeof(EarthSkyView), typeof(LanderNavigationBeacon), typeof(CollisionAwareSimulator), typeof(MissionTeleportationProvider),
-            typeof(ButtonPressFeedback), typeof(GrabFeedback), typeof(ReturnFallenTool), typeof(SpaceAudio), typeof(ScreenFade), typeof(DesktopTriggerLevel)
+            typeof(ButtonPressFeedback), typeof(GrabFeedback), typeof(ReturnFallenTool), typeof(SpaceAudio), typeof(ScreenFade), typeof(DesktopTriggerLevel),
+            typeof(StationPreparation), typeof(PreparedCargo), typeof(SupplyChargingDock), typeof(LunarResearchStation), typeof(CargoItem),
+            typeof(SuitHudPresenter), typeof(HelmetHudOverlay), typeof(ResourceReadout), typeof(RouteChevronGuide), typeof(ReadableWristDisplay),
+            typeof(RemoteSocketPlacement), typeof(FuseFault), typeof(AirlockFuse), typeof(CockpitSwitch),
+            typeof(NitrogenBlower), typeof(CoreDrill), typeof(LaserCutter), typeof(ToolHolster), typeof(DustyPanel), typeof(DrillSite), typeof(CoreSample), typeof(SampleRack)
         };
+
+        private static void NormalOperationPanels(Transform ground)
+        {
+            foreach (var name in new[] { "Bedroom Central Control", "Habitat Supply Console", "Suit Service Console", "Airlock Pressure Console" })
+            {
+                var panel = ground.GetComponentsInChildren<RectTransform>(true).FirstOrDefault(t => t.name == name);
+                if (panel == null) continue;
+                foreach (Transform child in panel.Cast<Transform>().ToArray()) UnityEngine.Object.DestroyImmediate(child.gameObject);
+                ui.Label(panel, "Normal Shift Status", "prep.station.normal", Vector2.zero, panel.sizeDelta * .88f, 40, new Color(.6f, 1f, .85f));
+            }
+            foreach (var name in new[] { "Oxygen Generator Repair Readout", "Shared Base Power Readout" })
+            {
+                var label = ground.GetComponentsInChildren<TMP_Text>(true).FirstOrDefault(t => t.name == name);
+                if (label == null) continue;
+                var binding = label.GetComponent<LocalizedText>() ?? label.gameObject.AddComponent<LocalizedText>();
+                binding.Configure(language, "prep.station.normal");
+            }
+        }
+
+        // 同一份工作区先安装到场景 11，复制第一天时直接复用，避免额外的桌面、工具架或样品台。
+        public static (DustyPanel[] panels, DrillSite[] sites, SampleRack rack, NitrogenBlower blower, CoreDrill drill) BuildSharedWork(Transform parent, Transform innerDoor)
+        {
+            language = UnityEngine.Object.FindAnyObjectByType<LocalizationService>(FindObjectsInactive.Include);
+            ui = new LocalizedPanelBuilder(StationFont, language);
+            var (south, north) = MeasurePassage();
+            var (blower, drill) = BuildToolRack(parent, north);
+            var panels = BuildSolarField(parent); var sites = BuildDrillSites(parent); var rack = BuildSampleRack(parent);
+            var airlock = BuildAirlock(parent, innerDoor, south, north);
+            var outer = parent.Find("Station Outer Hatch");
+            outer.position += Vector3.up * 2.7f;
+            var panel = parent.Find("Airlock Panel Chamber");
+            foreach (var button in panel.GetComponentsInChildren<Button>(true))
+            {
+                button.onClick = new Button.ButtonClickedEvent(); button.interactable = false;
+                button.GetComponentInChildren<LocalizedText>().SetKey("prep.airlock.open");
+            }
+            UnityEngine.Object.DestroyImmediate(airlock.gameObject);
+            return (panels, sites, rack, blower, drill);
+        }
 
         private static void SweepMissionComponents()
         {
@@ -224,7 +292,7 @@ namespace LunarEscape.Editor
             foreach (var light in lamps != null ? lamps.GetComponentsInChildren<Light>(true) : new Light[0]) light.enabled = true;
             // 握把要按住侧键约 2.5 秒；旁边再放一块屏幕按钮，射线或鼠标点一下即可穿上。
             var gripPoint = locker.Handle.transform.position;
-            Panel(flow, "Suit Don Button", new Vector3(3.55f, gripPoint.y + 0.42f, gripPoint.z), Quaternion.Euler(0f, 90f, 0f), "day1.suit.don", locker.Don, new Vector2(520, 150));
+            Panel(flow, "Suit Don Button", new Vector3(3.55f, gripPoint.y + 0.42f, gripPoint.z), Quaternion.Euler(0f, 90f, 0f), "day1.suit.toggle", locker.Toggle, new Vector2(520, 150));
             return locker;
         }
 
@@ -239,7 +307,11 @@ namespace LunarEscape.Editor
         private static DayOneAirlock BuildAirlock(Transform flow, Transform innerDoor, float south, float north)
         {
             float width = north - south, middle = (south + north) * 0.5f;
-            var outer = new GameObject("Day One Outer Hatch").transform;
+            var outer = UnityEngine.Object.FindObjectsByType<Transform>(FindObjectsInactive.Include, FindObjectsSortMode.None).FirstOrDefault(t => t.name == "Station Outer Hatch");
+            bool create = outer == null;
+            if (create)
+            {
+            outer = new GameObject("Station Outer Hatch").transform;
             outer.SetParent(flow, false);
             outer.position = new Vector3(8.02f, 1.6f, middle);
             var collider = outer.gameObject.AddComponent<BoxCollider>();
@@ -249,14 +321,23 @@ namespace LunarEscape.Editor
             Prim(outer, "Hatch Window", PrimitiveType.Cube, new Vector3(-0.065f, 0.35f, 0f), new Vector3(0.012f, 0.45f, 0.7f), "EX_Window");
             Prim(outer, "Hatch Window Outside", PrimitiveType.Cube, new Vector3(0.065f, 0.35f, 0f), new Vector3(0.012f, 0.45f, 0.7f), "EX_Window");
             Prim(outer, "Hatch Handle", PrimitiveType.Cube, new Vector3(-0.075f, -0.2f, width * 0.32f), new Vector3(0.03f, 0.3f, 0.04f), "Safety Amber");
-            var lamps = new[] { ChamberLight(flow, new Vector3(5.2f, 2.9f, middle)), ChamberLight(flow, new Vector3(7.2f, 2.9f, middle)) };
+            ChamberLight(flow, new Vector3(5.2f, 2.9f, middle)); ChamberLight(flow, new Vector3(7.2f, 2.9f, middle));
+            }
+            outer.position = new Vector3(8.02f, 1.6f, middle);
+            var lamps = UnityEngine.Object.FindObjectsByType<Light>(FindObjectsInactive.Include, FindObjectsSortMode.None).Where(l => l.name == "Airlock Status Light").ToArray();
             var chamber = new Bounds(new Vector3(6.05f, 1.65f, middle), new Vector3(3.9f, 3.3f, width));
             var airlock = new GameObject("Day One Airlock").AddComponent<DayOneAirlock>();
             airlock.transform.SetParent(flow, false);
             airlock.Configure(innerDoor, outer, chamber, lamps);
             // 只有气闸室里一个“气闸循环”按钮：在哪一侧开着门，按一下就换到另一侧。
             // 出舱后外门一直开着，回来时走进气闸室再按一次即可（面板朝向：rotation 为观看者视线方向）。
-            Panel(flow, "Airlock Panel Chamber", new Vector3(6.05f, 1.45f, south + 0.02f), Quaternion.Euler(0f, 180f, 0f), "day1.airlock.cycle", airlock.RequestOther);
+            if (create) Panel(flow, "Airlock Panel Chamber", new Vector3(6.05f, 1.45f, south + 0.02f), Quaternion.Euler(0f, 180f, 0f), "day1.airlock.cycle", airlock.RequestOther);
+            else
+            {
+                var button = UnityEngine.Object.FindObjectsByType<Button>(FindObjectsInactive.Include, FindObjectsSortMode.None).First(b => b.name == "Airlock Panel Chamber Button");
+                button.interactable = true; button.GetComponentInChildren<LocalizedText>().SetKey("day1.airlock.cycle");
+                button.onClick = new Button.ButtonClickedEvent(); UnityEventTools.AddPersistentListener(button.onClick, airlock.RequestOther);
+            }
             return airlock;
         }
 
@@ -300,43 +381,33 @@ namespace LunarEscape.Editor
         private static float Ground(float x, float z)
             => Physics.Raycast(new Vector3(x, 30f, z), Vector3.down, out var hit, 60f, Physics.DefaultRaycastLayers, QueryTriggerInteraction.Ignore) ? hit.point.y : 0f;
 
-        // —— 太阳能板：四块齐腰高、朝通往飞船的路倾斜 35°，玩家站在路边就能吹 ——
+        // 后方大阵列：板面相对地面 30°，尘层和碰撞面与美术网格共用同一姿态。
         private static DustyPanel[] BuildSolarField(Transform parent)
         {
-            var field = Frame(parent, "Solar Array B", Vector3.zero);
+            var field = Frame(parent, "Rear Solar Cleaning", Vector3.zero);
             var panels = new List<DustyPanel>();
-            float[] xs = { 11.6f, 13.5f, 15.4f, 17.3f };
-            for (int i = 0; i < xs.Length; i++)
-            {
-                float x = xs[i], z = -2.4f, g = Ground(x, z);
-                var root = Frame(field, "Solar Panel " + (i + 1), new Vector3(x, g, z));
-                Prim(root, "Panel Footing", PrimitiveType.Cube, new Vector3(0f, 0.03f, 0f), new Vector3(1.1f, 0.06f, 0.5f), "EX_Trim");
-                foreach (float lx in new[] { -0.5f, 0.5f })
-                    Prim(root, "Panel Leg", PrimitiveType.Cube, new Vector3(lx, 0.42f, 0f), new Vector3(0.06f, 0.8f, 0.06f), "EX_White");
-                var surface = Frame(root, "Panel Surface", new Vector3(0f, 1.0f, 0f), Quaternion.Euler(-55f, 0f, 0f));
-                Prim(surface, "Solar Cells", PrimitiveType.Cube, Vector3.zero, new Vector3(1.5f, 0.9f, 0.04f), "EX_Solar");
-                for (int c = -2; c <= 2; c++) Prim(surface, "Cell Line", PrimitiveType.Cube, new Vector3(c * 0.3f, 0f, 0.021f), new Vector3(0.006f, 0.88f, 0.002f), "EX_Trim");
-                Prim(surface, "Cell Line", PrimitiveType.Cube, new Vector3(0f, 0f, 0.021f), new Vector3(1.48f, 0.006f, 0.002f), "EX_Trim");
-                Prim(surface, "Panel Frame", PrimitiveType.Cube, new Vector3(0f, -0.46f, 0f), new Vector3(1.54f, 0.03f, 0.06f), "EX_White");
-                var dust = Prim(surface, "Dust Layer", PrimitiveType.Quad, new Vector3(0f, 0f, 0.026f), new Vector3(1.49f, 0.89f, 1f), "EX_White", Quaternion.Euler(0f, 180f, 0f));
-                dust.GetComponent<Renderer>().sharedMaterial = PanelDustMaterial();
-                dust.GetComponent<Renderer>().shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
-                var hitbox = surface.gameObject.AddComponent<BoxCollider>();
-                hitbox.size = new Vector3(1.5f, 0.9f, 0.06f);
-                var lamp = Lamp(root, "Panel Status Lamp", new Vector3(0.62f, 0.62f, 0.05f), 0.04f);
-                var panel = root.gameObject.AddComponent<DustyPanel>();
-                panel.Configure(dust.GetComponent<Renderer>(), lamp, 11 + i * 7);
-                panels.Add(panel);
-            }
-            var sign = Frame(field, "Solar Sign", new Vector3(10.4f, Ground(10.4f, -1.4f), -1.4f), Quaternion.Euler(0f, -60f, 0f));
-            Prim(sign, "Sign Post", PrimitiveType.Cube, new Vector3(0f, 0.6f, 0f), new Vector3(0.05f, 1.2f, 0.05f), "EX_Trim");
-            Prim(sign, "Sign Plate", PrimitiveType.Cube, new Vector3(0f, 1.25f, 0f), new Vector3(0.7f, 0.22f, 0.02f), "EX_Blue");
-            var text = ui.WorldLabel("Sign Text", "day1.solar.sign", Vector3.zero, new Vector2(0.66f, 0.2f), 0.6f, Quaternion.identity);
-            text.transform.SetParent(sign, false);
-            text.transform.SetLocalPositionAndRotation(new Vector3(0f, 1.25f, 0.012f), Quaternion.Euler(0f, 180f, 0f));
-            // 从基地到阵列的电缆。
-            float y0 = Ground(8.6f, -2.4f);
-            Prim(field, "Array Cable", PrimitiveType.Cylinder, new Vector3(9.9f, y0 + 0.03f, -2.4f), new Vector3(0.05f, 1.35f, 0.05f), "EX_Trim", Quaternion.Euler(0f, 0f, 90f));
+            foreach (float z in new[] { -1.5f, 4.5f })
+                foreach (float x in new[] { -20f, -23.8f })
+                {
+                    int i = panels.Count;
+                    var root = Frame(field, "Solar Panel " + (i + 1), new Vector3(x, 1.55f, z));
+                    var rotation = Quaternion.Euler(-60, 0, 0);
+                    var normal = rotation * Vector3.forward;
+                    var surface = Frame(root, "Panel Surface", normal * .094f, rotation);
+                    var dust = Prim(surface, "Dust Layer", PrimitiveType.Quad, new Vector3(0, 0, .004f),
+                        new Vector3(3.46f, 4.46f, 1), "EX_White", Quaternion.Euler(0, 180, 0));
+                    dust.GetComponent<Renderer>().sharedMaterial = PanelDustMaterial();
+                    dust.GetComponent<Renderer>().shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
+                    var collider = surface.gameObject.AddComponent<BoxCollider>(); collider.size = new Vector3(3.5f, 4.5f, .06f);
+                    var lamp = Lamp(root, "Panel Status Lamp", new Vector3(1.84f, -.70f, 2.3f), .07f);
+                    var panel = root.gameObject.AddComponent<DustyPanel>(); panel.Configure(dust.GetComponent<Renderer>(), lamp, 11 + i * 7);
+                    panels.Add(panel);
+                }
+            var sign = Frame(field, "Solar Sign", new Vector3(-17.65f, Ground(-17.65f, -4.3f), -4.3f), Quaternion.Euler(0, 90, 0));
+            Prim(sign, "Sign Post", PrimitiveType.Cube, new Vector3(0, .6f, 0), new Vector3(.05f, 1.2f, .05f), "EX_Trim");
+            Prim(sign, "Sign Plate", PrimitiveType.Cube, new Vector3(0, 1.25f, 0), new Vector3(.75f, .25f, .02f), "EX_Blue");
+            var text = ui.WorldLabel("Sign Text", "day1.solar.sign", Vector3.zero, new Vector2(.70f, .22f), .5f, Quaternion.identity);
+            text.transform.SetParent(sign, false); text.transform.SetLocalPositionAndRotation(new Vector3(0, 1.25f, .012f), Quaternion.Euler(0, 180, 0));
             return panels.ToArray();
         }
 
@@ -399,13 +470,13 @@ namespace LunarEscape.Editor
         // —— 实验室分拣台上的岩芯样品架：三个竖直插槽 ——
         private static SampleRack BuildSampleRack(Transform flow)
         {
-            float top = Physics.Raycast(new Vector3(-7.9f, 2.4f, -1.55f), Vector3.down, out var hit, 3f, Physics.DefaultRaycastLayers, QueryTriggerInteraction.Ignore) ? hit.point.y : 0.95f;
-            var rack = Frame(flow, "Core Sample Rack", new Vector3(-7.9f, top, -1.55f));
+            var rack = Frame(flow, "Core Sample Rack", new Vector3(-7.8f, 1.08f, -4.02f));
             Prim(rack, "Rack Base", PrimitiveType.Cube, new Vector3(0f, 0.015f, 0f), new Vector3(0.55f, 0.03f, 0.16f), "EX_White");
             Prim(rack, "Rack Back", PrimitiveType.Cube, new Vector3(0f, 0.12f, -0.07f), new Vector3(0.55f, 0.22f, 0.015f), "EX_Blue");
             var label = ui.WorldLabel("Sample Rack Label", "day1.rack.samples", Vector3.zero, new Vector2(0.5f, 0.06f), 0.32f, Quaternion.identity);
             label.transform.SetParent(rack, false);
             label.transform.SetLocalPositionAndRotation(new Vector3(0f, 0.27f, -0.06f), Quaternion.Euler(0f, 180f, 0f));
+            label.gameObject.SetActive(false); // 分析仪主屏已经提供名称与插入说明，避免文字穿过样品。
             var sockets = new XRSocketInteractor[3];
             var lamps = new CockpitLamp[3];
             for (int i = 0; i < 3; i++)
@@ -440,29 +511,21 @@ namespace LunarEscape.Editor
             return interactable;
         }
 
-        // —— 任务清单：大厅北墙（原环境屏的位置）一块，左手腕一块 ——
-        private static TMP_Text[] BuildTaskBoards(Transform flow, Transform origin)
+        // —— 完整任务清单保留在大厅北墙；当前任务由头盔 HUD 显示 ——
+        private static TMP_Text[] BuildTaskBoards()
         {
-            var board = ui.Panel("Day One Task Board", new Vector3(0f, 2.15f, 3.66f), new Vector2(2300, 1250), 0.0011f, Quaternion.identity);
-            board.SetParent(flow, true);
-            var lobby = BoardText(board, new Vector2(2180, 960), 96);
-            lobby.rectTransform.anchoredPosition = new Vector2(0f, 80f);
+            var board = UnityEngine.Object.FindObjectsByType<RectTransform>(FindObjectsInactive.Include, FindObjectsSortMode.None).First(t => t.name == "Habitat Environmental Console");
+            foreach (Transform child in board.Cast<Transform>().ToArray()) UnityEngine.Object.DestroyImmediate(child.gameObject);
+            var lobby = BoardText(board, new Vector2(1680, 740), 48);
+            lobby.rectTransform.anchoredPosition = new Vector2(0f, 60f);
             // 与场景 11 一样可在屏幕上切换语言（默认俄语）。
             for (int i = 0; i < 3; i++)
             {
-                var button = ui.Button(board, "Language " + i, new[] { "language.zh", "language.en", "language.ru" }[i], new Vector2((i - 1) * 520, -520), new Vector2(460, 120), 56);
+                var button = ui.Button(board, "Language " + i, new[] { "language.zh", "language.en", "language.ru" }[i], new Vector2((i - 1) * 520, -398), new Vector2(460, 100), 44);
                 UnityEventTools.AddIntPersistentListener(button.onClick, language.SetLanguageIndex, i);
                 button.gameObject.AddComponent<ButtonPressFeedback>();
             }
-            var left = origin.GetComponentsInChildren<Transform>(true).First(t => t.name == "Left Controller");
-            var wrist = ui.Panel("Day One Wrist Tasks", Vector3.zero, new Vector2(560, 330), 0.00028f, Quaternion.identity);
-            wrist.SetParent(left, false);
-            wrist.localPosition = new Vector3(0f, 0.045f, -0.1f);
-            wrist.localRotation = Quaternion.Euler(65f, 0f, 0f);
-            wrist.localScale = Vector3.one * 0.00028f;
-            foreach (var raycaster in wrist.GetComponents<GraphicRaycaster>()) UnityEngine.Object.DestroyImmediate(raycaster);
-            var wristText = BoardText(wrist, new Vector2(540, 310), 34);
-            return new[] { lobby, wristText };
+            return new[] { lobby };
         }
 
         private static TMP_Text BoardText(Transform panel, Vector2 size, float fontSize)

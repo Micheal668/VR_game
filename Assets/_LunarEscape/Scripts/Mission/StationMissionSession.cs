@@ -16,6 +16,7 @@ namespace LunarEscape
         [SerializeField] private ReturnFallenTool tool;
         [SerializeField] private bool requireExitConfirmation;
         [SerializeField] private AscentMission ascent;
+        [SerializeField] private EarthReturnMission earthReturn;
         private bool exitConfirmed;
         private GravityProvider gravity;
         private MissionTeleportationProvider teleport;
@@ -82,10 +83,12 @@ namespace LunarEscape
             if (flight == null || flight.Station != mission) throw new ArgumentException("上升任务必须连接同一基地任务。");
             ascent = flight;
         }
+        public void ConfigureReturn(EarthReturnMission journey) => earthReturn = journey;
         private void Update()
         {
             // 地面与登舱后的阶段共用一条帧时钟，转场首帧不会重复扣时间。
-            if (ascent != null && ascent.IsLocked) ascent.Tick(Time.deltaTime);
+            if (earthReturn != null && ascent != null && ascent.Phase == AscentPhase.Docked) earthReturn.Tick(Time.deltaTime);
+            else if (ascent != null && ascent.IsLocked) ascent.Tick(Time.deltaTime);
             else Advance(Time.deltaTime);
         }
 
@@ -142,6 +145,9 @@ namespace LunarEscape
             exitConfirmed = false;
             Physics.SyncTransforms();
             // 世界先复位，再让阶段事件关闭撤离门、更新界面；语言由独立服务保留。
+            // 从返航重开时先恢复地面监听器，第二天的钢梁和工具才能收到原有的复位事件。
+            if (earthReturn != null && earthReturn.Phase != EarthReturnPhase.Inactive)
+                GetComponent<FlightScenePresenter>().GroundRoot.SetActive(true);
             mission.ResetMission();
         }
 

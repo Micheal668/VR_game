@@ -747,86 +747,44 @@
       "floor": false
     },
     {
-      "name": "Science bench",
-      "position": [
-        -8,
-        0.89,
-        -3.92
-      ],
-      "size": [
-        5.15,
-        0.12,
-        0.95
-      ],
-      "floor": false
-    },
-    {
-      "name": "Bench drawer cabinet",
+      "name": "Wall microscope shelf",
       "position": [
         -10,
-        0.42,
-        -3.95
+        0.92,
+        -4.0
       ],
       "size": [
-        1.55,
-        0.84,
-        0.78
-      ],
-      "floor": false
-    },
-    {
-      "name": "Bench drawer cabinet",
-      "position": [
-        -8.1,
-        0.42,
-        -3.95
-      ],
-      "size": [
-        1.55,
-        0.84,
-        0.78
-      ],
-      "floor": false
-    },
-    {
-      "name": "Bench drawer cabinet",
-      "position": [
-        -6.15,
-        0.42,
-        -3.95
-      ],
-      "size": [
-        1.55,
-        0.84,
-        0.78
+        0.72,
+        0.06,
+        0.74
       ],
       "floor": false
     },
     {
       "name": "Lab terminal plinth",
       "position": [
-        -5.4,
+        -5.35,
         0.6,
-        -1.35
+        -1.55
       ],
       "size": [
         0.7,
         1.2,
-        0.7
+        1.75
       ],
       "floor": false
     },
     {
       "name": "Lab terminal worktop",
       "position": [
-        -5.7,
+        -5.35,
         1.16,
-        -1.5
+        -1.55
       ],
       "size": [
-        1.55,
+        0.85,
         0.12,
-        1.15
+        2.35
       ],
       "floor": false
     },
@@ -841,34 +799,6 @@
         0.6,
         0.13,
         2.2
-      ],
-      "floor": false
-    },
-    {
-      "name": "Sample sorting table",
-      "position": [
-        -7.9,
-        0.93,
-        -1.55
-      ],
-      "size": [
-        2.2,
-        0.12,
-        1.4
-      ],
-      "floor": false
-    },
-    {
-      "name": "Sample sorting pedestal",
-      "position": [
-        -7.9,
-        0.42,
-        -1.55
-      ],
-      "size": [
-        0.9,
-        0.84,
-        0.65
       ],
       "floor": false
     },
@@ -1150,5 +1080,5 @@
     }
   ],
   "meshCount": 50,
-  "editableObjects": 638
+  "editableObjects": 622
 }

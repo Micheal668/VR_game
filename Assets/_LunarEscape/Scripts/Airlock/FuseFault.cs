@@ -19,6 +19,13 @@ namespace LunarEscape
         [Tooltip("备件架上的指示灯：断电未修好时闪烁，帮玩家找到备用保险丝。")]
         [SerializeField] private CockpitLamp spareLamp;
         private AudioSource source;
+        [SerializeField] private bool firstDay;
+        public bool FirstDay => firstDay;
+        public bool CanRemoveInstalled => !firstDay && CoverOpen;
+        public void ConfigureDayOne()
+        {
+            firstDay = true; ConfigureOwner(null); burnt.Configure(true, this);
+        }
 
         public bool CoverOpen => cover != null && cover.Latched;
         public override bool IsFixed => socket != null && socket.hasSelection
@@ -33,6 +40,7 @@ namespace LunarEscape
         { cover = lid; socket = holder; burnt = burntFuse; spare = spareFuse; lamp = indicator; }
 
         private void Awake() => source = FeedbackSounds.CreateSource(socket != null ? socket.transform : transform, "Fuse Audio", 1f);
+        private void Start() { if (firstDay) ResetFault(); }
 
         private void OnEnable()
         {
@@ -64,7 +72,7 @@ namespace LunarEscape
         // 开局与重开时由代码把烧坏的保险丝装回座里，因此选择过滤放行它；
         // 但悬停过滤拒绝它，插座不会把掉在旁边的烧坏保险丝自动吸回去、占住插座。
         public bool Process(IXRSelectInteractor interactor, IXRSelectInteractable interactable)
-            => interactor.IsSelecting(interactable) || IsBurnt(interactable) || IsFuse(interactable) && CoverOpen && CanWork;
+            => interactor.IsSelecting(interactable) || IsBurnt(interactable) || IsFuse(interactable) && CoverOpen && (firstDay || CanWork);
 
         public bool Process(IXRHoverInteractor interactor, IXRHoverInteractable interactable)
             => IsFuse(interactable) && !IsBurnt(interactable) && CoverOpen;
