@@ -1,5 +1,94 @@
 {
   "entries": [
+    {"key":"landing.panel.engineon","zh":"着陆发动机已点火","en":"Descent engine on","ru":"Двигатель включён"},
+    {"key":"landing.panel.engineoff","zh":"着陆发动机关闭","en":"Descent engine off","ru":"Двигатель выключен"},
+    {"key":"landing.panel.optics","zh":"着陆光学摄像机","en":"Landing camera","ru":"Посадочная камера"},
+    {"key":"landing.panel.navigation","zh":"飞行参数","en":"Flight data","ru":"Параметры полёта"},
+    {"key":"landing.panel.data","zh":"高度 {0:F0} m\n距目标 {1:F0} m\n升降 {2:+0.0;-0.0;0.0} m/s\n横移 {3:F1} m/s","en":"Altitude {0:F0} m\nRange {1:F0} m\nVertical {2:+0.0;-0.0;0.0} m/s\nDrift {3:F1} m/s","ru":"Высота {0:F0} м\nДо цели {1:F0} м\nВерт. {2:+0.0;-0.0;0.0} м/с\nСнос {3:F1} м/с"},
+    {"key":"landing.Docked","zh":"环月会合完成。你已在登月舱内，准备与轨道舱分离。","en":"Lunar rendezvous complete. You are in the lander. Undock from the orbital module.","ru":"Встреча на лунной орбите завершена. Вы в посадочном модуле. Выполните отстыковку."},
+    {"key":"landing.Separated","zh":"轨道舱已分离。点火，开始向基地下降。","en":"Orbital module clear. Ignite the engine to start the descent.","ru":"Модули разделены. Включите двигатель для схода к базе."},
+    {"key":"landing.DepartureBurn","zh":"发动机工作。准备接手基地上空的末段飞行。","en":"Departure burn in progress. Prepare for manual approach.","ru":"Идёт торможение. Приготовьтесь к ручной посадке у базы."},
+    {"key":"landing.Approach","zh":"着陆区已对准。保持水平，轻推下降，落地速度低于 2.3 m/s。","en":"Over the site. Level the lander and descend below 2.3 m/s for contact.","ru":"Вы над площадкой. Выровняйте аппарат и садитесь медленнее 2,3 м/с."},
+    {"key":"landing.Align","zh":"飞向灯标内的空地。向雷达上的金色点倾斜，直到它进入中心。","en":"Tilt toward the gold radar dot until it reaches the center. Aim for the lit clearing.","ru":"Наклоняйтесь к золотой точке на радаре, пока она не окажется в центре."},
+    {"key":"landing.Level","zh":"已进入着陆区。松开姿态控制，让着陆器回正并减小横移。","en":"Inside the landing zone. Center the attitude control to level and brake sideways drift.","ru":"Вы в зоне посадки. Отпустите управление наклоном, чтобы погасить снос."},
+    {"key":"landing.Brake","zh":"下降过快。增加推力，落地前把下降速度降到 2.3 m/s 以下。","en":"Descent too fast. Increase thrust and touch down below 2.3 m/s.","ru":"Слишком быстрое снижение. Добавьте тягу. Для касания нужно менее 2,3 м/с."},
+    {"key":"landing.EngineOff","zh":"发动机已关闭，正在自由下落。再次点火恢复控制。","en":"Engine off. You are falling. Reignite to regain control.","ru":"Двигатель выключен. Свободное падение. Снова включите тягу."},
+    {"key":"landing.Landed","zh":"安全着陆。乘员即将进入月球基地。","en":"Touchdown confirmed. The crew is entering the lunar base.","ru":"Мягкая посадка. Экипаж переходит на лунную базу."},
+    {"key":"landing.OutsideSite","zh":"落在着陆区外。重试时对准四周有灯标的空地。","en":"Outside the landing zone. Aim inside the beacons on the next approach.","ru":"Вне площадки. При новом заходе держитесь внутри огней."},
+    {"key":"landing.FastDescent","zh":"着地时下降过快。下次提前加推力减速。","en":"Hard landing. Add thrust earlier to reduce your descent rate.","ru":"Жёсткая посадка. В следующий раз добавьте тягу раньше."},
+    {"key":"landing.Sideways","zh":"着地时横移过快。下次在低空松开姿态控制减速。","en":"Too much sideways speed. Center the attitude control earlier.","ru":"Велик боковой снос. На следующем заходе раньше отпустите управление наклоном."},
+    {"key":"landing.Tilted","zh":"着地时倾角太大。接地前松开姿态控制，让支脚放平。","en":"Too much tilt. Level the landing legs before ground contact.","ru":"Велик наклон. Перед касанием выровняйте посадочные опоры."},
+    {"key":"landing.LeftArea","zh":"已飞离基地进近区域。重新从基地上空开始。","en":"You left the approach area. Restart from above the base.","ru":"Вы покинули район базы. Начните заход заново."},
+    {"key":"landing.Docked.status","zh":"轨道舱已对接   ·   着陆发动机关闭","en":"Orbital module docked   ·   Descent engine off","ru":"Орбитальный модуль пристыкован   ·   Двигатель выключен"},
+    {"key":"landing.Separated.status","zh":"轨道舱留轨   ·   着陆发动机待命","en":"Orbital module in orbit   ·   Descent engine ready","ru":"Орбитальный модуль остаётся на орбите   ·   Двигатель готов"},
+    {"key":"landing.DepartureBurn.status","zh":"离轨点火   ·   前往基地着陆区","en":"Engine firing   ·   Destination: base landing site","ru":"Двигатель включён   ·   Цель — площадка у базы"},
+    {"key":"landing.Retry.status","zh":"可从末段进近点重新尝试","en":"The terminal approach checkpoint is ready","ru":"Можно повторить с начала посадочного захода"},
+    {"key":"landing.Landed.status","zh":"起落架接地   ·   发动机已关闭","en":"Landing legs down   ·   Engine shut down","ru":"Опоры на грунте   ·   Двигатель выключен"},
+    {"key":"landing.instruments","zh":"高度 {0:F0} m   距目标 {1:F0} m   升降 {2:+0.0;-0.0;0.0} m/s   横移 {3:F1} m/s   推力 {4:F0}%","en":"Alt {0:F0} m   Range {1:F0} m   Vertical {2:+0.0;-0.0;0.0} m/s   Drift {3:F1} m/s   Thrust {4:F0}%","ru":"Выс. {0:F0} м   До цели {1:F0} м   Верт. {2:+0.0;-0.0;0.0} м/с   Снос {3:F1} м/с   Тяга {4:F0}%"},
+    {"key":"landing.undock.vr","zh":"左手侧握键分离   ·   右手侧握键切换视角","en":"Left grip undocks   ·   Right grip changes view","ru":"Левая боковая — отстыковка   ·   Правая боковая — вид"},
+    {"key":"landing.undock.keys","zh":"X 分离   ·   Tab 切换视角","en":"X to undock   ·   Tab to change view","ru":"X — отстыковка   ·   Tab — сменить вид"},
+    {"key":"landing.ignite.vr","zh":"右扳机点火   ·   左触控板或摇杆调姿态","en":"Right trigger to ignite   ·   Left pad or stick tilts","ru":"Правый курок — зажигание   ·   Левая панель или стик — наклон"},
+    {"key":"landing.ignite.keys","zh":"空格点火   ·   WASD 调姿态","en":"Space to ignite   ·   WASD to tilt","ru":"Пробел — зажигание   ·   WASD — наклон"},
+    {"key":"landing.pilot.vr","zh":"左盘倾斜   ·   右盘上下调推力、左右转向   ·   右扳机开关发动机   ·   右握换视角","en":"Left pad: tilt   ·   Right: up/down thrust, left/right yaw   ·   R trigger: engine   ·   R grip: view","ru":"Левая панель — наклон   ·   Правая — тяга и курс   ·   Правый курок — двигатель   ·   Правая боковая — вид"},
+    {"key":"landing.pilot.keys","zh":"WASD 倾斜   ·   上下键调推力、左右键转向   ·   空格开关发动机   ·   Tab 换视角","en":"WASD tilts   ·   Up/down thrust, left/right yaw   ·   Space engine   ·   Tab view","ru":"WASD — наклон   ·   Стрелки — тяга и курс   ·   Пробел — двигатель   ·   Tab — вид"},
+    {"key":"landing.retry.vr","zh":"左手侧握键重试着陆","en":"Press left grip to retry the landing","ru":"Левая боковая — повторить заход"},
+    {"key":"landing.retry.keys","zh":"按 X 重试着陆","en":"Press X to retry the landing","ru":"X — повторить заход"},
+    {"key":"landing.view.vr","zh":"右手侧握键切换舱内和舱外视角","en":"Right grip switches cockpit and exterior views","ru":"Правая боковая — вид из кабины или снаружи"},
+    {"key":"landing.view.keys","zh":"Tab 切换舱内和舱外视角","en":"Tab switches cockpit and exterior views","ru":"Tab — вид из кабины или снаружи"},
+    {
+      "key": "prologue.Boarding",
+      "zh": "乘员登船",
+      "en": "Crew boarding",
+      "ru": "Посадка экипажа"
+    },
+    {
+      "key": "prologue.Liftoff",
+      "zh": "起飞",
+      "en": "Liftoff",
+      "ru": "Старт"
+    },
+    {
+      "key": "prologue.BoosterSeparation",
+      "zh": "助推器分离",
+      "en": "Booster separation",
+      "ru": "Отделение ускорителей"
+    },
+    {
+      "key": "prologue.CoreSeparation",
+      "zh": "芯级分离",
+      "en": "Core stage separation",
+      "ru": "Отделение центральной ступени"
+    },
+    {
+      "key": "prologue.EarthOrbit",
+      "zh": "近地轨道",
+      "en": "Earth orbit",
+      "ru": "Орбита Земли"
+    },
+    {
+      "key": "prologue.LunarTransfer",
+      "zh": "飞向月球",
+      "en": "Coast to the Moon",
+      "ru": "Перелёт к Луне"
+    },
+    {
+      "key": "prologue.LunarOrbit",
+      "zh": "进入环月轨道",
+      "en": "Lunar orbit",
+      "ru": "Орбита Луны"
+    },
+    {
+      "key": "prologue.keys",
+      "zh": "空格切换视角    Esc 跳过片头",
+      "en": "Space changes view    Esc skips the film",
+      "ru": "Пробел — сменить вид    Esc — пропустить"
+    },
+    {
+      "key": "prologue.hands",
+      "zh": "按扳机切换视角    按住侧握键跳过",
+      "en": "Trigger changes view    Hold grip to skip",
+      "ru": "Курок — сменить вид    Удерживайте боковую кнопку для пропуска"
+    },
     {
       "key": "station.title",
       "zh": "月球科研站\n系统舱",

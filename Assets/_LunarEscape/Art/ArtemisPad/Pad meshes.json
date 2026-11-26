@@ -1,0 +1,115 @@
+{
+  "parts": [
+    {
+      "name": "Mobile Launcher 1",
+      "offset": [
+        0,
+        0,
+        0
+      ],
+      "surfaces": [
+        "Launcher",
+        "Railings"
+      ]
+    },
+    {
+      "name": "Cape Canaveral coastline",
+      "offset": [
+        0,
+        0,
+        0
+      ],
+      "surfaces": [
+        "Coast",
+        "Atlantic"
+      ]
+    },
+    {
+      "name": "Pad earthworks and approach",
+      "offset": [
+        0,
+        0,
+        0
+      ],
+      "surfaces": [
+        "Concrete",
+        "Firebrick",
+        "Turf",
+        "Joint",
+        "Safety rail",
+        "Steel",
+        "Scorched",
+        "Ballast",
+        "Asphalt",
+        "Road paint"
+      ]
+    },
+    {
+      "name": "Lightning protection masts",
+      "offset": [
+        0,
+        0,
+        0
+      ],
+      "surfaces": [
+        "Concrete",
+        "Pale steel",
+        "Steel",
+        "White enamel",
+        "Beacon",
+        "Wire"
+      ]
+    },
+    {
+      "name": "Pad water tower and support facilities",
+      "offset": [
+        0,
+        0,
+        0
+      ],
+      "surfaces": [
+        "Concrete",
+        "Pale steel",
+        "Steel",
+        "White enamel",
+        "Tank enamel",
+        "Light siding",
+        "Roof",
+        "Door",
+        "Siding seam",
+        "Lamp"
+      ]
+    },
+    {
+      "name": "Crew Access Arm Pivot",
+      "offset": [
+        16.75,
+        82.0,
+        0.0
+      ],
+      "surfaces": [
+        "Steel",
+        "Tread",
+        "Safety rail",
+        "Pale steel",
+        "Light siding",
+        "White enamel",
+        "Door",
+        "Lamp"
+      ]
+    },
+    {
+      "name": "Mobile launcher service decks",
+      "offset": [
+        0,
+        0,
+        0
+      ],
+      "surfaces": [
+        "Steel",
+        "Safety rail",
+        "Pale steel"
+      ]
+    }
+  ]
+}

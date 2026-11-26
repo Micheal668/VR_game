@@ -1,0 +1,14 @@
+Mobile Launcher 1
+Original model and textures by NASA / Samuel H. Neblett
+https://science.nasa.gov/3d-resources/mobile-launcher/
+The assembled model was rescaled for the cinematic. Its fixed access arm was replaced with a movable crew bridge.
+
+Kennedy coastline
+NASA Earth Observatory image by Robert Simmon using ALI data distributed by USGS.
+EO-1 acquired the image on June 9, 2002.
+https://science.nasa.gov/earth/earth-observatory/apollo-11-launch-pad-39376/
+
+The remaining meshes and surface finishes were authored for this project.
+Visual references for the mobile launcher, flame trench, lightning masts, water tower and support structures
+https://www.nasa.gov/reference/launch-complex-39b/
+https://www.nasa.gov/humans-in-space/exploration-ground-systems/mobile-launcher/

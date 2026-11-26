@@ -58,13 +58,14 @@ namespace LunarEscape.Editor
         [MenuItem("Lunar Escape/Day One: Finish All Tasks (Play Mode)", true)]
         private static bool CanFinish() => Application.isPlaying && UnityEngine.Object.FindAnyObjectByType<DayOneMission>() != null;
 
-        // 游戏从第一天开始：场景 12 排在最前，随后是场景 11。
+        // 保持片头、第一天和第二天的游戏顺序。
         private static void AddToBuildSettings()
         {
             var scenes = EditorBuildSettings.scenes.Where(s => s.path != ScenePath && s.path != BuildLifeSupportScene.ScenePath).ToList();
             scenes.Insert(0, new EditorBuildSettingsScene(BuildLifeSupportScene.ScenePath, true));
             scenes.Insert(0, new EditorBuildSettingsScene(ScenePath, true));
             EditorBuildSettings.scenes = scenes.ToArray();
+            BuildArtemisPrologue.PutPrologueFirst();
         }
 
         public static void Apply()

@@ -1,0 +1,16 @@
+SLS Block 1 exterior geometry — NASA 3D Resources
+https://science.nasa.gov/3d-resources/space-launch-system-sls-block-1/
+Downloaded file: Space Launch System (SLS) Block 1.stl
+SHA-256: d3af75412a54f1d15d644cce56e895fe6813452b49dc0558b4b2ddfb484844ac
+
+The project removes the printable stand, scales and simplifies the mesh for VR,
+assigns materials, groups the visible stages, and opens an access hatch and
+window. The interior, crew seating and cinematic staging are project artwork.
+The color and shape references include the NASA Space Launch System Program
+Office display model: https://science.nasa.gov/3d-resources/space-launch-system-block-1/
+
+NASA media usage guidelines for educational simulations:
+https://www.nasa.gov/nasa-brand-center/images-and-media/
+
+To reproduce Block1.slsmesh, use Blender 4.2 in background mode with
+Tools/prepare_artemis_model.py and the original STL as its argument.

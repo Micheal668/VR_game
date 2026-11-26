@@ -1,6 +1,8 @@
 # 键鼠与 VIVE 测试模式切换
 
-适用于本项目 Unity **6000.6.1f1**，当前主场景为 `Assets/_LunarEscape/Scenes/11_LunarStation_LifeSupport.unity`。键鼠模式用于编辑器内测试，VIVE 模式用于 Windows + SteamVR + VIVE Pro / Pro Eye 与圆盘手柄。
+适用于本项目 Unity **6000.6.1f1**。完整流程从 `Assets/_LunarEscape/Scenes/00_ArtemisPrologue.unity` 开始。要单独练习登月，可直接打开同目录下的 `00_ArtemisLunarLanding.unity` 播放。键鼠模式用于编辑器内测试，VIVE 模式用于 Windows + SteamVR + VIVE Pro / Pro Eye 与圆盘手柄。
+
+片头和登月场景直接读取头显、手柄或键盘。下表的场景模拟器开关适用于进入基地后的步行与抓取。[片头和登月操作表](README.md)
 
 **先停止 Play，再修改设置。** 场景开关改完按 `Ctrl + S` 保存；在 Play 中修改的场景状态通常会在停止运行后恢复。
 

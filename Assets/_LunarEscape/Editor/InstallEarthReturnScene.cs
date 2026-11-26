@@ -15,6 +15,8 @@ namespace LunarEscape.Editor
     {
         private const string Art = "Assets/_LunarEscape/Art/EarthReturn";
         private static Material white, dark, blue, glow, orange, trail;
+        internal static bool IsAscentExterior(string name) =>
+            name == "Ascentstructure" || name == "CabinPanels" || name == "Hardware";
         [MenuItem("Lunar Escape/Install Earth Return Sequence (Life Support Scene)")]
         public static void Install()
         {
@@ -53,7 +55,7 @@ namespace LunarEscape.Editor
             PrefabUtility.UnpackPrefabInstance(lander,PrefabUnpackMode.Completely,InteractionMode.AutomatedAction);
             lander.name="Separated Ascent Stage";lander.transform.SetParent(cabin,false);
             foreach(var part in lander.GetComponentsInChildren<MeshRenderer>().ToArray())
-                if(part.name!="Ascentstructure" && part.name!="CabinPanels" && part.name!="Hardware")Object.DestroyImmediate(part.gameObject);
+                if(!IsAscentExterior(part.name))Object.DestroyImmediate(part.gameObject);
             var globeImporter=(TextureImporter)AssetImporter.GetAtPath(Art+"/NASA Earth Equirectangular.jpg");
             globeImporter.maxTextureSize=4096;globeImporter.wrapModeU=TextureWrapMode.Repeat;globeImporter.wrapModeV=TextureWrapMode.Clamp;globeImporter.SaveAndReimport();
             var earthMat=Material("Rotating Earth",Color.white);earthMat.shader=Shader.Find("LunarEscape/Return Earth Globe");
