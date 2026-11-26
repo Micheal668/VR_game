@@ -51,21 +51,51 @@ namespace LunarEscape
         public bool WorkDone => suit != null && suit.HasWorn && PanelsClean == panels.Length && CoresStored >= sites.Length;
         public CharacterController Player => player;
         private bool NeedsSuit => !SuitWorn && (!suit.HasWorn || PanelsClean < panels.Length || CoresDrilled < sites.Length);
-        public string CurrentTask => NeedsSuit ? T("day1.task.suit")
-            : PanelsClean < panels.Length ? T("day1.task.panels", PanelsClean, panels.Length)
-            : CoresDrilled < sites.Length ? T("day1.task.cores", CoresDrilled, sites.Length)
-            : CoresStored < sites.Length ? T("day1.task.store", CoresStored, sites.Length)
-            : SuitWorn ? T("day1.task.return_suit") : T("day1.task.sleep");
-        public Transform TaskTarget
+        public string CurrentTask => T(Guidance().key);
+        public Transform TaskTarget => Guidance().target;
+
+        // Follow the tool the player actually chose. A dropped tool or core is a real destination.
+        public (string key, Transform target) Guidance()
         {
-            get
+            if (NeedsSuit) return ("guide.suit", suit.Handle.transform);
+            foreach (var site in sites)
             {
-                if (NeedsSuit) return suit.Handle.transform;
-                foreach (var panel in panels) if (!panel.IsClean) return panel.transform;
-                foreach (var site in sites) if (!site.Completed) return site.transform;
-                if (CoresStored < sites.Length) return rack.transform;
-                return SuitWorn ? suit.Handle.transform : bed.transform;
+                if (site.Completed && site.Core.gameObject.activeInHierarchy && !site.Core.Grab.isSelected)
+                    return ViaAirlock("guide.core.collect", site.Core.transform);
             }
+            if (!drill.IsHeld || CoresDrilled == sites.Length)
+                foreach (var panel in panels)
+                    if (!panel.IsClean)
+                        return blower.IsHeld ? ViaAirlock("guide.panel.clean", panel.transform) : ViaAirlock("guide.blower", blower.transform);
+            foreach (var site in sites)
+                if (!site.Completed)
+                    return drill.IsHeld ? ViaAirlock("guide.core.drill", site.transform) : ViaAirlock("guide.drill", drill.transform);
+            if (CoresStored < sites.Length) return ViaAirlock("guide.core.store", rack.transform);
+            return SuitWorn ? ViaAirlock("day1.task.return_suit", suit.Handle.transform) : ("day1.task.sleep", bed.transform);
+        }
+
+        private (string key, Transform target) ViaAirlock(string action, Transform destination)
+        {
+            var playerCenter = player.transform.TransformPoint(player.center);
+            var goal = destination.position;
+            goal.y = airlock.Chamber.center.y;
+            bool inChamber = airlock.Contains(playerCenter);
+            bool targetInChamber = airlock.Contains(goal);
+            bool outdoors = !InsideHabitat(goal);
+            if (!inChamber && (targetInChamber || PlayerOutside != outdoors))
+            {
+                bool fromOutside = PlayerOutside;
+                var entrance = airlock.Entrance(fromOutside ? DayOneAirlock.Side.Outside : DayOneAirlock.Side.Inside);
+                if (airlock.Cycling) return ("guide.airlock.wait", entrance);
+                if (fromOutside ? !airlock.OuterOpen : !airlock.InnerOpen) return ("guide.airlock.call", entrance);
+                if (!targetInChamber) return ("guide.airlock.enter", airlock.transform);
+            }
+            if (inChamber && !targetInChamber)
+            {
+                if (airlock.Cycling) return ("guide.airlock.wait", airlock.CycleControl);
+                if (outdoors ? !airlock.OuterOpen : !airlock.InnerOpen) return ("guide.airlock.cycle", airlock.CycleControl);
+            }
+            return (action, destination);
         }
         public bool PlayerOutside => player != null && !InsideHabitat(player.transform.TransformPoint(player.center));
         // 玩家所在处有空气：基地舱内，或者气闸室已复压。
@@ -147,6 +177,7 @@ namespace LunarEscape
         private void Update()
         {
             if (Current != Stage.Working && Current != Stage.Evening) return;
+            if (airlock != null && player != null) airlock.RecallFromLanding(player.transform.TransformPoint(player.center));
             bool outside = PlayerOutside;
             if (outside && !wasOutside) { Say("cmd_d1_outside", VoicePriority.Quip); }
             wasOutside = outside;

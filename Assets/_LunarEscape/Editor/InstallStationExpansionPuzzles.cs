@@ -23,8 +23,11 @@ namespace LunarEscape.Editor
                 string materialName = "EX_Circuit" + colorNames[i];
                 string path = Art + "/Materials/" + materialName + ".mat";
                 var material = AssetDatabase.LoadAssetAtPath<Material>(path);
-                if (material == null) { material = new Material(Shader.Find("Universal Render Pipeline/Lit")); AssetDatabase.CreateAsset(material,path); }
-                material.SetColor("_BaseColor",colors[i]);material.SetFloat("_Smoothness",.25f);EditorUtility.SetDirty(material);materials[materialName]=material;
+                var unlit = Shader.Find("Universal Render Pipeline/Unlit");
+                if (material == null) { material = new Material(unlit); AssetDatabase.CreateAsset(material,path); }
+                material.shader = unlit;
+                material.SetColor("_BaseColor", colors[i]);
+                EditorUtility.SetDirty(material);materials[materialName]=material;
             }
             for (int i = 0; i < 3; i++)
             {
@@ -40,7 +43,8 @@ namespace LunarEscape.Editor
                 var lampObject = Primitive(socketRoot,"Socket Lamp",PrimitiveType.Sphere,new Vector3(.12f,.08f,.035f),Vector3.one*.035f,"EX_Light");
                 var lamp=lampObject.AddComponent<CockpitLamp>();lamp.Configure(lampObject.GetComponent<Renderer>());
                 var port=socketRoot.gameObject.AddComponent<StationPatchSocket>();port.Configure(puzzle,id,lamp);ports[i]=port;
-                Label(mount,"Socket Identifier "+id,(id+1).ToString(),new Vector3(x,-.18f,.08f),new Vector2(.18f,.15f),.5f,new Vector3(0,180,0));
+                // Keep the key beside the sleeve and ahead of its rim, visible even with a plug inserted.
+                Label(mount,"Socket Identifier "+id,StationPatchPuzzle.Mark(id),new Vector3(x-.17f,-.025f,.205f),new Vector2(.13f,.15f),.5f,new Vector3(0,180,0));
 
                 var moduleRoot = Frame(mount,"Patch Module "+i,new Vector3(x,-.36f,.36f));
                 string moduleColor=circuit?"EX_Circuit"+colorNames[i]:"EX_Copper";
@@ -60,7 +64,7 @@ namespace LunarEscape.Editor
                     wire.numCapVertices=4;wire.numCornerVertices=4;
                 }
                 module.Configure(puzzle,i,cableAnchor,wire);modules[i]=module;
-                Label(moduleRoot,"Module Number",(i+1).ToString(),new Vector3(0,0,.071f),new Vector2(.10f,.10f),.42f,new Vector3(0,180,0));
+                Label(moduleRoot,"Module Mark",StationPatchPuzzle.Mark(i),new Vector3(0,0,.071f),new Vector2(.10f,.10f),.42f,new Vector3(0,180,0));
             }
             puzzle.Configure(life,requiredPower,ports,modules,readout,circuit);
             return puzzle;

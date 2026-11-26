@@ -196,10 +196,12 @@ namespace LunarEscape
         {
             rejection = CargoRejection.None;
             if (!CanChange()) rejection = CargoRejection.WrongPhase;
-            else if (!Owns(item) || !item.ReadyToTake || (item.State != CargoState.World && item.State != CargoState.Held))
-                rejection = CargoRejection.InvalidItem;
+            else if (!Owns(item) || !item.ReadyToTake) rejection = CargoRejection.InvalidItem;
+            else if (item.State == CargoState.Packed && item.Grab.firstInteractorSelecting is CargoRetrievalSocket pickup
+                && pickup.Accepts(item)) return true;
             // 另一只手接住同一件物品，或 XRI 每帧复查已有抓取，都不能重复占额度。
             else if (item.State == CargoState.Held) return true;
+            else if (item.State != CargoState.World) rejection = CargoRejection.InvalidItem;
             else if (GetCount(item.Kind) >= config.GetMaxQuantity(item.Kind)) rejection = CargoRejection.QuantityLimit;
             else if (GetCount(item.Kind) == 0 && TypeCount >= config.MaxTypes) rejection = CargoRejection.TypeLimit;
             else if (TotalWeight() + config.GetWeightKg(item.Kind) > config.MaxWeightKg)
@@ -288,6 +290,21 @@ namespace LunarEscape
             foreach (CargoItem item in loading) item.HideForStorage();
             // 空手撤离合法，零件物资也能完成这一步。
             return Accept();
+        }
+
+        public bool RetrievePacked(CargoKind kind, CargoRetrievalSocket output)
+        {
+            if (!CanChange()) return Reject(CargoRejection.WrongPhase);
+            if (output == null || !output.isActiveAndEnabled || output.hasSelection ||
+                packZone == null || !output.transform.IsChildOf(packZone.transform)) return Reject(CargoRejection.InvalidItem);
+            foreach (var item in items)
+                if (item != null && item.Kind == kind && item.State == CargoState.Packed)
+                {
+                    releasedNearPack.Remove(item);
+                    output.Present(item);
+                    return Accept();
+                }
+            return Reject(CargoRejection.NotStored);
         }
 
         public bool Discard(CargoKind kind)

@@ -23,11 +23,13 @@ namespace LunarEscape
         private Quaternion headRestRotation;
         private bool captured;
         private float contactSeconds;
+        private const float ContactMargin = .04f;
         [SerializeField] private bool assistedContact;
 
         // 带符号的累计转角；任一方向达到阈值即可（新手不知道“左松右紧”也能完成）。
         public float Turned { get; private set; }
         public bool Released { get; private set; }
+        public System.Collections.Generic.IReadOnlyList<RepairTool> Tools => tools;
         public bool Engaged => engagedTool != null;
         public bool Enabled { get; set; }
         public float ReleaseDegrees => releaseDegrees;
@@ -69,6 +71,7 @@ namespace LunarEscape
             {
                 engagedTool = tool;
                 contactSeconds = 0;
+                ShowState();
                 if (tool == null) return;
                 // 套上螺栓：一声金属轻碰，让玩家知道对准了。
                 lastToolAngle = angle;
@@ -110,11 +113,15 @@ namespace LunarEscape
 
         private RepairTool FindTool()
         {
-            float reachSquared = reach * reach;
             foreach (var tool in tools)
-                if (tool != null && tool.isActiveAndEnabled && tool.IsHeld &&
-                    (Touches(tool.Tip.position, reachSquared) || assistedContact && tool.SecondaryTip != null && Touches(tool.SecondaryTip.position, reachSquared)))
+            {
+                if (tool == null || !tool.isActiveAndEnabled || !tool.IsHeld) continue;
+                float radius = reach + (assistedContact ? ContactMargin : 0f);
+                if (assistedContact && tool == engagedTool) radius += ContactMargin;
+                if (Touches(tool.Tip.position, radius * radius) || assistedContact && tool.SecondaryTip != null
+                    && Touches(tool.SecondaryTip.position, radius * radius))
                     return tool;
+            }
             return null;
         }
 
@@ -125,7 +132,7 @@ namespace LunarEscape
             // solid hatch; reaching through the door or touching the shaft cannot engage it.
             Vector3 delta = point - ContactPoint;
             return Vector3.Dot(point - transform.position, transform.forward) >= -.015f
-                && delta.sqrMagnitude <= .12f * .12f;
+                && delta.sqrMagnitude <= radiusSquared;
         }
 
         // 扳手长轴（工具局部 Z）投影到螺栓端面后的方向角。
@@ -157,7 +164,9 @@ namespace LunarEscape
             if (ring == null) return;
             block ??= new MaterialPropertyBlock();
             ring.GetPropertyBlock(block);
-            block.SetColor(BaseColor, Released ? new Color(0.2f, 1f, 0.45f) : new Color(0.95f, 0.18f, 0.12f));
+            var color = Released ? new Color(0.2f, 1f, 0.45f) : Engaged ? new Color(1f, .72f, .12f) : new Color(0.95f, 0.18f, 0.12f);
+            block.SetColor(BaseColor, color);
+            block.SetColor("_EmissionColor", color);
             ring.SetPropertyBlock(block);
         }
     }

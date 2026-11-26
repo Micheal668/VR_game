@@ -251,6 +251,10 @@ namespace LunarEscape.Tests
             while(Mathf.Repeat(Time.unscaledTime,1.4f)>.08f)yield return null;
             yield return Capture("life-lander-night",new Vector3(36,3,-8),new Vector3(48,3.2f,1.7f));
             Don();RepairDoor();MoveBody(life.DoorControl.position+Vector3.left*.8f);life.OpenDoor();yield return null;
+            var blockade=Object.FindAnyObjectByType<BeamBlockade>();
+            Assert.That(session.GetComponent<StationExpansionMission>().GroundObjective().target, Is.SameAs(blockade.Cutter.transform));
+            blockade.ClearInstantly();
+            yield return null;
             Assert.That(session.GetComponent<SuitHudPresenter>().RouteLine.positionCount,Is.GreaterThan(2));
             Assert.That(session.GetComponent<SuitHudPresenter>().RouteLine.enabled,Is.False);
             Assert.That(session.GetComponent<SuitHudPresenter>().RouteGuide.ArrowCount,Is.GreaterThan(2));
@@ -286,13 +290,15 @@ namespace LunarEscape.Tests
                 Assert.That(text.fontSharedMaterial.shader.name,Is.EqualTo("TextMeshPro/Mobile/Distance Field Overlay"));
             var wristTransform=hud.WristControls.transform;var controller=wristTransform.parent;
             controller.position=eye.transform.position+new Vector3(.35f,-.5f,0);
-            eye.transform.rotation=Quaternion.LookRotation(wristTransform.position-eye.transform.position);
+            eye.transform.rotation=Quaternion.LookRotation(controller.position-eye.transform.position);
             for(int i=0;i<3;i++)yield return null;
             Assert.That(wrist.Visible,Is.True,"A deliberate downward look must expose the manual supply keys");
             Pack(CargoKind.Battery);float before=life.SuitPower;
             hud.WristControls.GetComponentsInChildren<Button>().Single(b=>b.name=="Wrist Battery").onClick.Invoke();
             Assert.That(life.SuitPower,Is.GreaterThan(before));
             eye.transform.rotation=Quaternion.LookRotation(Vector3.right);yield return null;
+            Assert.That(wrist.Visible, Is.False, "Looking ahead with a lowered hand must clear the route strip.");
+            Assert.That(hud.WristControls.GetComponent<Canvas>().enabled, Is.False);
             yield return Capture("life-revised-hud",eye.transform.position,eye.transform.position+Vector3.right*10,65);
         }
         [UnityTest] public IEnumerator ChevronNavigationFollowsTurnsAndTurnsOffWithSuitPower()

@@ -27,3 +27,10 @@
 
 # Unity crash reports
 mono_crash.*
+
+# Generated local validation output
+/Docs/Previews/
+/Assets/InitTestScene*.unity
+/Assets/InitTestScene*.unity.meta
+/ProjectSettings/BurstAotSettings_*.json
+/ProjectSettings/CommonBurstAotSettings.json

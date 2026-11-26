@@ -25,35 +25,67 @@ function Voice($name) {
 }
 # 说话人：语音、语速、音高。飞控中心语速稍快、干脆；指挥官声音略低、带点慵懒。
 $speakers = @{
-    cup = @{ Voice = (Voice 'Irina'); Rate = '+6%'; Pitch = '+0%' }
-    cmd = @{ Voice = (Voice 'Pavel'); Rate = '+4%'; Pitch = '-8%' }
+    cup = @{ Voice = (Voice 'Irina'); Rate = '+0%'; Pitch = '+0%' }
+    cmd = @{ Voice = (Voice 'Pavel'); Rate = '-2%'; Pitch = '-3%' }
 }
 
-# 去掉首尾静音（各留 50 ms），峰值归一到 90%，写成标准 44 字节头的 16 位单声道 WAV。
-function Write-TrimmedWav([byte[]]$wav, [string]$path) {
-    $rate = [BitConverter]::ToUInt32($wav, 24)
-    $offset = 12
-    while ([Text.Encoding]::ASCII.GetString($wav, $offset, 4) -ne 'data') { $offset += 8 + [BitConverter]::ToUInt32($wav, $offset + 4) }
-    $length = [Math]::Min([BitConverter]::ToUInt32($wav, $offset + 4), $wav.Length - $offset - 8)
-    $count = [int]($length / 2)
-    $samples = New-Object int16[] $count
-    [Buffer]::BlockCopy($wav, $offset + 8, $samples, 0, $count * 2)
-    $first = 0; while ($first -lt $count -and [Math]::Abs([int]$samples[$first]) -lt 300) { $first++ }
-    $last = $count - 1; while ($last -gt $first -and [Math]::Abs([int]$samples[$last]) -lt 300) { $last-- }
-    $pad = [int]($rate * 0.05)
-    $first = [Math]::Max(0, $first - $pad); $last = [Math]::Min($count - 1, $last + $pad)
-    $peak = 1; for ($i = $first; $i -le $last; $i++) { $peak = [Math]::Max($peak, [Math]::Abs([int]$samples[$i])) }
-    $gain = 29490.0 / $peak
-    $n = $last - $first + 1
-    $out = New-Object IO.MemoryStream
-    $w = New-Object IO.BinaryWriter($out)
-    $w.Write([Text.Encoding]::ASCII.GetBytes('RIFF')); $w.Write([uint32](36 + $n * 2)); $w.Write([Text.Encoding]::ASCII.GetBytes('WAVEfmt '))
-    $w.Write([uint32]16); $w.Write([uint16]1); $w.Write([uint16]1); $w.Write([uint32]$rate); $w.Write([uint32]($rate * 2)); $w.Write([uint16]2); $w.Write([uint16]16)
-    $w.Write([Text.Encoding]::ASCII.GetBytes('data')); $w.Write([uint32]($n * 2))
-    for ($i = $first; $i -le $last; $i++) { $w.Write([int16][Math]::Max(-32768, [Math]::Min(32767, [Math]::Round($samples[$i] * $gain)))) }
-    $w.Flush()
-    [IO.File]::WriteAllBytes($path, $out.ToArray())
+# Keep a short breath at either end. Match the RMS of speech across takes and
+# cap the loudest sample to leave headroom for the radio effect in Unity.
+Add-Type -TypeDefinition @'
+using System;
+using System.IO;
+using System.Text;
+
+public static class DialogueMaster
+{
+    public static void Write(byte[] wave, string path)
+    {
+        int rate = BitConverter.ToInt32(wave, 24);
+        int offset = 12;
+        while (offset + 8 <= wave.Length && Encoding.ASCII.GetString(wave, offset, 4) != "data")
+        {
+            int size = BitConverter.ToInt32(wave, offset + 4);
+            offset += 8 + size + (size & 1);
+        }
+        if (offset + 8 > wave.Length || BitConverter.ToInt16(wave, 22) != 1 || BitConverter.ToInt16(wave, 34) != 16)
+            throw new InvalidDataException("Expected mono 16-bit PCM speech.");
+        int length = Math.Min(BitConverter.ToInt32(wave, offset + 4), wave.Length - offset - 8);
+        short[] samples = new short[length / 2];
+        Buffer.BlockCopy(wave, offset + 8, samples, 0, samples.Length * 2);
+        int first = 0, last = samples.Length - 1;
+        while (first <= last && Math.Abs((int)samples[first]) < 150) first++;
+        while (last >= first && Math.Abs((int)samples[last]) < 150) last--;
+        if (last <= first) throw new InvalidDataException("Empty speech take: " + path);
+        first = Math.Max(0, first - rate / 15);
+        last = Math.Min(samples.Length - 1, last + rate / 10);
+        int peak = 0, voiced = 0;
+        double energy = 0;
+        for (int i = first; i <= last; ++i)
+        {
+            int value = Math.Abs((int)samples[i]);
+            peak = Math.Max(peak, value);
+            if (value >= 350) { energy += (double)value * value; voiced++; }
+        }
+        if (voiced == 0) throw new InvalidDataException("Inaudible speech take: " + path);
+        double gain = Math.Min(28200.0 / peak, 5000.0 / Math.Sqrt(energy / voiced));
+        int bytes = (last - first + 1) * 2;
+        using (var writer = new BinaryWriter(File.Create(path)))
+        {
+            writer.Write(Encoding.ASCII.GetBytes("RIFF"));
+            writer.Write(36 + bytes);
+            writer.Write(Encoding.ASCII.GetBytes("WAVEfmt "));
+            writer.Write(16); writer.Write((short)1); writer.Write((short)1);
+            writer.Write(rate); writer.Write(rate * 2); writer.Write((short)2); writer.Write((short)16);
+            writer.Write(Encoding.ASCII.GetBytes("data")); writer.Write(bytes);
+            for (int i = first; i <= last; ++i)
+            {
+                double edge = Math.Min(1, Math.Min(i - first, last - i) / (rate * .006));
+                writer.Write((short)Math.Round(samples[i] * gain * edge));
+            }
+        }
+    }
 }
+'@
 
 $synth = New-Object Windows.Media.SpeechSynthesis.SpeechSynthesizer
 $count = 0
@@ -73,7 +105,7 @@ foreach ($line in Get-Content -Encoding UTF8 $table) {
     $bytes = New-Object byte[] $size
     $reader.ReadBytes($bytes)
     $reader.Dispose(); $stream.Dispose()
-    Write-TrimmedWav $bytes (Join-Path $output "$id.wav")
+    [DialogueMaster]::Write($bytes, (Join-Path $output "$id.wav"))
     $count++
 }
 Write-Output "VOICE_LINES_GENERATED $count -> $output"

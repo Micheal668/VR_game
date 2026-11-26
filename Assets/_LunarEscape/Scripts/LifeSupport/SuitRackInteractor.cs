@@ -9,9 +9,11 @@ namespace LunarEscape
     public sealed class SuitRackInteractor : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPointerExitHandler, ICancelHandler
     {
         [SerializeField] private SuitInteractionController controller;
+        [SerializeField] private SuitLocker dayLocker;
         [SerializeField] private XRSimpleInteractable physical;
         private bool pointerHeld, xrHeld, listening;
         public XRSimpleInteractable Physical => physical;
+        public void ConfigureDay(SuitLocker locker) => dayLocker = locker;
         public void Configure(SuitInteractionController source, XRSimpleInteractable interactable = null)
         { Unsubscribe(); controller = source; physical = interactable; if (isActiveAndEnabled) Subscribe(); }
         private void OnEnable() => Subscribe();
@@ -24,7 +26,7 @@ namespace LunarEscape
         private void Unsubscribe()
         {
             if (physical != null && listening) { physical.selectEntered.RemoveListener(Selected); physical.selectExited.RemoveListener(Released); }
-            pointerHeld = xrHeld = false; controller?.SetHeld(this, false); listening = false;
+            pointerHeld = xrHeld = false; Sync(); listening = false;
         }
         private void OnDisable() => Unsubscribe();
         private void Selected(SelectEnterEventArgs args) { xrHeld = true; Sync(); }
@@ -33,8 +35,13 @@ namespace LunarEscape
         public void OnPointerUp(PointerEventData data) { pointerHeld = false; Sync(); }
         public void OnPointerExit(PointerEventData data) { pointerHeld = false; Sync(); }
         public void OnCancel(BaseEventData data) { pointerHeld = xrHeld = false; Sync(); }
-        private void OnApplicationFocus(bool focused) { if (!focused) { pointerHeld = xrHeld = false; controller?.SetHeld(this, false); } }
+        private void OnApplicationFocus(bool focused) { if (!focused) { pointerHeld = xrHeld = false; Sync(); } }
         private void OnApplicationPause(bool paused) { if (paused) OnApplicationFocus(false); }
-        private void Sync() => controller?.SetHeld(this, pointerHeld || xrHeld);
+        private void Sync()
+        {
+            bool held = pointerHeld || xrHeld;
+            controller?.SetHeld(this, held);
+            dayLocker?.HoldConsole(held);
+        }
     }
 }

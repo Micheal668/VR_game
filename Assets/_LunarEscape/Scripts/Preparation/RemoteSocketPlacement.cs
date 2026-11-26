@@ -30,6 +30,7 @@ namespace LunarEscape
         private readonly List<IXRSelectFilter> filters = new();
         public XRSocketInteractor Target { get; private set; }
         public bool IsPlacing => placing;
+        internal Material GuideMaterial => guide != null ? guide.sharedMaterial : null;
         public bool HasSurfaceTarget => hasSurface;
         public bool canProcess => isActiveAndEnabled;
         public bool Process(IXRSelectInteractor interactor, IXRSelectInteractable item) => !placing || interactor == (IXRSelectInteractor)destination;
@@ -42,7 +43,7 @@ namespace LunarEscape
             || item.GetComponent<CoreSample>() != null || item.GetComponent<AirlockFuse>() != null || item.GetComponent<StationPatchModule>() != null);
         public bool Accepts(XRSocketInteractor socket, XRGrabInteractable item)
         {
-            if (!Portable(item) || socket == null || !socket.isActiveAndEnabled || !socket.socketActive || socket.hasSelection
+            if (!Portable(item) || socket == null || socket is CargoRetrievalSocket || !socket.isActiveAndEnabled || !socket.socketActive || socket.hasSelection
                 || (socket.interactionLayers.value & item.interactionLayers.value) == 0) return false;
             socket.selectFilters.GetAll(filters);
             foreach (var filter in filters) if (filter.canProcess && !filter.Process(socket, item)) return false;

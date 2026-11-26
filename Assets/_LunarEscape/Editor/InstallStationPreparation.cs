@@ -84,6 +84,7 @@ namespace LunarEscape.Editor
             owner.Configure(life, Object.FindAnyObjectByType<HabitatBreaker>(), groups, prepared.ToArray(), ports.ToArray(), research,
                 work.panels, work.sites, work.blower, work.drill, tools);
             random.ConfigurePreparation(owner);
+            CrewQuartersRecreation.Apply(ground);
             EditorUtility.SetDirty(inventory); EditorUtility.SetDirty(random);
             EditorSceneManager.MarkSceneDirty(scene); EditorSceneManager.SaveScene(scene); AssetDatabase.SaveAssets();
         }

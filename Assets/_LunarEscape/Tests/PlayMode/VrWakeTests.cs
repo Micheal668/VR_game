@@ -55,8 +55,15 @@ namespace LunarEscape.Tests
         private void ConfigureFloorTracking(Scene scene, LoadSceneMode mode)
         {
             var origin = Object.FindAnyObjectByType<XROrigin>();
-            // 无实体 XR 子系统的测试进程：模拟 Floor 模式由运行时归零的高度偏移。
-            if (origin != null) origin.CameraFloorOffsetObject.transform.localPosition = Vector3.zero;
+            if (origin == null) return;
+            // The synthetic HMD always emits floor-relative poses. A native loader can
+            // still report Device mode to XROrigin.Start after sceneLoaded, so its
+            // height fallback must also be zero on this test rig.
+            origin.CameraYOffset = 0f;
+            var offset = origin.CameraFloorOffsetObject.transform;
+            var position = offset.localPosition;
+            position.y = 0f;
+            offset.localPosition = position;
         }
 
         private void SetHeadPose(Vector3 position, bool tracked = true, Quaternion? rotation = null)
@@ -188,7 +195,7 @@ namespace LunarEscape.Tests
         }
 
         [UnityTest]
-        public IEnumerator RaisedHandsLeaveHelmetTasksVisibleWithoutAWristPanel()
+        public IEnumerator DayOneCompassGuidesBeforeDressingAndNeverShowsSuitClocks()
         {
             yield return SceneManager.LoadSceneAsync("12_LunarStation_DayOne");
             PreparationTestSteps.DisableSimulator(); headset = InputSystem.AddDevice<XRHMD>(); SetHeadPose(headPose);
@@ -207,9 +214,12 @@ namespace LunarEscape.Tests
             InputSystem.Update();
             var day = Object.FindAnyObjectByType<DayOneMission>(); var origin = Object.FindAnyObjectByType<XROrigin>();
             var hud = Object.FindAnyObjectByType<SuitHudPresenter>();
-            Assert.That(hud.Hud.activeSelf, Is.False); day.Suit.Don();
+            Assert.That(hud.Hud.activeSelf, Is.True);
+            Assert.That(day.TaskTarget, Is.EqualTo(day.Suit.Handle.transform));
+            Assert.That(hud.RouteGuide.ArrowCount, Is.GreaterThan(1));
+            day.Suit.Don();
             for (int i = 0; i < 20; i++) yield return null;
-            Assert.That(hud.Hud.activeSelf, Is.True, "第一天穿戴后也恢复氧气、电量与任务 HUD");
+            Assert.That(hud.Hud.activeSelf, Is.True);
             Assert.That(hud.WristControls, Is.Null, "第一天不再创建遮挡视线的手腕任务板");
             Assert.That(origin.GetComponentInChildren<ReadableWristDisplay>(true), Is.Null);
             var left = origin.GetComponentsInChildren<Transform>(true).Single(t => t.name == "Left Controller");
@@ -245,11 +255,11 @@ namespace LunarEscape.Tests
             for (int i = 0; i < 5; i++) yield return null;
             Assert.That(hud.Hud.activeSelf, Is.True, "放下手后头盔任务指引保持可见");
             yield return UsabilityTestSteps.Capture("usability-helmet-hud-Chinese", eye.position, eye.rotation, 90);
-            Assert.That(hud.Oxygen.DisplayedPercent, Is.EqualTo(day.Suit.Oxygen).Within(.02f));
-            Assert.That(hud.Power.DisplayedPercent, Is.EqualTo(day.Suit.Power).Within(.02f));
+            Assert.That(hud.Oxygen.gameObject.activeInHierarchy, Is.False);
+            Assert.That(hud.Power.gameObject.activeInHierarchy, Is.False);
             Assert.That(hud.Hud.GetComponentsInChildren<TMPro.TMP_Text>().Any(t => t.text.Contains(day.CurrentTask)), Is.True);
             UsabilityTestSteps.ReturnSuit(day); yield return null;
-            Assert.That(hud.Hud.activeSelf, Is.False);
+            Assert.That(hud.Hud.activeSelf, Is.True);
         }
 
         private void AssertHardwareOwnsTracking(XROrigin origin)

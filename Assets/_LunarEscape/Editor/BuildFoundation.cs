@@ -83,6 +83,8 @@ namespace LunarEscape.Editor
             var rig = InstantiatePrefab(Samples + "/Starter Assets/Prefabs/XR Origin (XR Rig).prefab");
             rig.transform.position = new Vector3(0f, 0f, -1.8f);
             ConfigureComfort(rig);
+            rig.GetComponentInChildren<UnityEngine.XR.Interaction.Toolkit.Locomotion.LocomotionMediator>(true)
+                .gameObject.AddComponent<RoomScaleMovement>();
             var camera = rig.GetComponentInChildren<Camera>();
             // 最近可见距离设为 5 厘米，避免拿近的工具太早被裁掉。
             camera.nearClipPlane = 0.05f;

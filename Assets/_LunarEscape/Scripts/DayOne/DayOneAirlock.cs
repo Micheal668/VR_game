@@ -22,6 +22,7 @@ namespace LunarEscape
         private Side target = Side.Inside;
         private float pumpProgress = 1f;
         private int stage; // 0 待命，1 关门，2 抽/充气，3 开门
+        private Transform cycleControl;
 
         // 气闸室内有气：门向基地一侧且复压完成。
         public bool Pressurized { get; private set; } = true;
@@ -30,6 +31,8 @@ namespace LunarEscape
         public bool InnerOpen => inner > 0.98f;
         public bool OuterOpen => outer > 0.98f;
         public Bounds Chamber => chamber;
+        public Transform CycleControl => cycleControl != null ? cycleControl : transform;
+        public Transform Entrance(Side side) => side == Side.Inside ? innerDoor : outerDoor;
         public Func<bool> SuitCheck { get; set; }
         public event Action<DayOneAirlock> Denied;
         public event Action<DayOneAirlock, Side> Opened;
@@ -40,6 +43,7 @@ namespace LunarEscape
         private void Awake()
         {
             innerClosed = innerDoor.position; outerClosed = outerDoor.position;
+            cycleControl = GameObject.Find("Airlock Panel Chamber Button")?.transform;
             pump = FeedbackSounds.CreateLoop(transform, "Airlock Pump", FeedbackSound.ThrusterLoop, 1f);
             oneShot = FeedbackSounds.CreateSource(transform, "Airlock Audio", 1f);
             pump.bypassListenerEffects = oneShot.bypassListenerEffects = true;
@@ -50,6 +54,21 @@ namespace LunarEscape
         private void OnEnable() { if (!pump.isPlaying) pump.Play(); }
 
         public bool Contains(Vector3 point) => chamber.Contains(point);
+
+        // A player can use the chamber button by ray before stepping in. Recall the
+        // empty chamber from either landing when the player approaches its closed door.
+        public void RecallFromLanding(Vector3 playerCenter)
+        {
+            if (Cycling || Contains(playerCenter)) return;
+            var side = InnerOpen ? Side.Outside : Side.Inside;
+            var threshold = side == Side.Outside ? outerClosed : innerClosed;
+            var outward = Vector3.ProjectOnPlane(threshold - chamber.center, Vector3.up).normalized;
+            var offset = Vector3.ProjectOnPlane(playerCenter - threshold, Vector3.up);
+            float depth = Vector3.Dot(offset, outward);
+            if (depth < 0 || depth > 1.4f || (offset - outward * depth).sqrMagnitude > .55f * .55f) return;
+            if (side == Side.Outside && SuitCheck != null && !SuitCheck()) return;
+            Request(side);
+        }
 
         // 面板按钮：请求打开某一侧的门（若该侧已开则忽略）。
         public void Request(Side side)

@@ -77,6 +77,51 @@ namespace LunarEscape.Tests
         private static IEnumerator Wake(StationMissionSession session)
         { session.enabled = false; yield return ExpansionTestSteps.Wake(session); }
 
+        [UnityTest] public IEnumerator ThreeRodsTravelInThePocketAndCanBeGrippedBack()
+        {
+            var pocket = Object.FindAnyObjectByType<SamplePocket>();
+            var slots = pocket.GetComponentsInChildren<XRSocketInteractor>();
+            var hand = new GameObject("Pocket test hand").AddComponent<PilotTestHand>();
+            hand.interactionLayers = -1;
+            var manager = Object.FindAnyObjectByType<XRInteractionManager>();
+            try
+            {
+                foreach (var site in prep.Sites) site.CompleteInstantly();
+                for (int i = 0; i < 25; i++) yield return null;
+                foreach (var core in prep.Research.Cores)
+                {
+                    hand.transform.position = core.transform.position;
+                    manager.SelectEnter((IXRSelectInteractor)hand, (IXRSelectInteractable)core.Grab);
+                    yield return null;
+                    hand.transform.position += pocket.transform.position - core.transform.position;
+                    for (int i = 0; i < 6; i++) yield return null;
+                    manager.SelectExit((IXRSelectInteractor)hand, (IXRSelectInteractable)core.Grab);
+                    for (int i = 0; i < 4; i++) yield return null;
+                    Assert.That(slots.Any(s => s.IsSelecting(core.Grab)), Is.True);
+                }
+                Assert.That(prep.Research.Rack.Stored, Is.Zero);
+                var day = Object.FindAnyObjectByType<DayOneMission>();
+                UsabilityTestSteps.Move(day.Player, prep.Research.Rack.transform.position + Vector3.forward);
+                for (int i = 0; i < 6; i++) yield return null;
+                foreach (var core in prep.Research.Cores)
+                    Assert.That(Vector3.Distance(pocket.transform.position, core.transform.position), Is.LessThan(.25f));
+                var first = prep.Research.Cores[0];
+                hand.transform.position = first.transform.position;
+                manager.SelectEnter((IXRSelectInteractor)hand, (IXRSelectInteractable)first.Grab);
+                Assert.That(hand.IsSelecting(first.Grab), Is.True);
+                hand.transform.position += Vector3.up * .5f;
+                for (int i = 0; i < 4; i++) yield return null;
+                PreparationTestSteps.Connect(prep.Research.Rack.Slots[0], first.Grab);
+                Assert.That(prep.Research.Rack.Stored, Is.EqualTo(1));
+                Assert.That(slots.Count(s => s.hasSelection), Is.EqualTo(2));
+                yield return NextDay();
+                pocket = Object.FindAnyObjectByType<SamplePocket>();
+                Assert.That(pocket.GetComponentsInChildren<XRSocketInteractor>().Count(s => s.hasSelection), Is.EqualTo(2));
+                Assert.That(prep.Research.Rack.Stored, Is.EqualTo(1));
+            }
+            finally { if (hand != null) Object.Destroy(hand.gameObject); }
+        }
+
         [UnityTest] public IEnumerator EmptySuppliesRequireTheCorrectPhysicalPortAndPauseWhenRemoved()
         {
             Assert.That(prep.Cargo.Length, Is.EqualTo(18)); Assert.That(prep.Docks.Length, Is.EqualTo(6));
@@ -96,6 +141,10 @@ namespace LunarEscape.Tests
                 yield return null; yield return null;
                 var grab = oxygen.Item.Grab;
                 Assert.That(hand.IsSelecting(grab), Is.True);
+                Assert.That(port.Highlighted, Is.True);
+                Assert.That(Port(CargoKind.Battery).Highlighted, Is.False);
+                Assert.That(port.GetComponentInChildren<LineRenderer>().positionCount, Is.EqualTo(32));
+                Assert.That(Port(CargoKind.Battery).GetComponentInChildren<LineRenderer>().positionCount, Is.EqualTo(4));
                 hand.transform.position += port.Socket.attachTransform.position - grab.GetAttachTransform(port.Socket).position;
                 for (int i = 0; i < 20; i++) yield return new WaitForFixedUpdate();
                 Assert.That(Vector3.Distance(grab.GetAttachTransform(port.Socket).position, port.Socket.attachTransform.position), Is.LessThan(.10f), "瓶子随手移到接口");

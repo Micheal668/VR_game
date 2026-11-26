@@ -56,11 +56,36 @@ namespace LunarEscape.Editor
                     part.GetComponent<MeshFilter>().sharedMesh = mesh;
                     part.GetComponent<MeshRenderer>().sharedMaterials = filter.GetComponent<MeshRenderer>().sharedMaterials.Select(m => materials[m.name]).ToArray();
                 }
+                AddPressureFrame(root.transform, "Inner", 4f, 1.9f, 1.66f, 2.44f, 2.73f, materials["EX_Trim"]);
+                AddPressureFrame(root.transform, "Outer", 8.02f, 2.14f, 1.84f, 3.17f, 3.46f, materials["EX_Trim"]);
                 PrefabUtility.SaveAsPrefabAsset(root, PrefabPath);
             }
             finally { UnityEngine.Object.DestroyImmediate(root); EditorSceneManager.ClosePreviewScene(staging); }
             AssetDatabase.SaveAssets();
             Debug.Log("STATION_EXPANSION_IMPORTED");
+        }
+
+        // Fixed jambs overlap the moving hatch gasket and the bevels on the
+        // adjacent walls. The low threshold closes the sill at deck level.
+        private static void AddPressureFrame(Transform root, string hatch, float x, float width,
+            float clearWidth, float clearHeight, float top, Material trim)
+        {
+            const float centerZ = 1.7f, bottom = -.015f, sill = .035f, depth = .30f;
+            void Bar(string name, float y, float z, float height, float span)
+            {
+                var bar = GameObject.CreatePrimitive(PrimitiveType.Cube);
+                bar.name = hatch + " hatch " + name;
+                bar.transform.SetParent(root, false);
+                bar.transform.localPosition = new Vector3(x, y, z);
+                bar.transform.localScale = new Vector3(depth, height, span);
+                bar.GetComponent<Renderer>().sharedMaterial = trim;
+            }
+            float jamb = (width - clearWidth) * .5f;
+            float side = (width - jamb) * .5f;
+            Bar("south jamb", (top + bottom) * .5f, centerZ - side, top - bottom, jamb);
+            Bar("north jamb", (top + bottom) * .5f, centerZ + side, top - bottom, jamb);
+            Bar("header", (top + clearHeight) * .5f, centerZ, top - clearHeight, clearWidth);
+            Bar("threshold", (sill + bottom) * .5f, centerZ, sill - bottom, clearWidth);
         }
     }
 }

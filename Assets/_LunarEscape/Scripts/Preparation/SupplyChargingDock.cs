@@ -19,6 +19,10 @@ namespace LunarEscape
         [SerializeField] private CockpitLamp lamp;
         private XRSocketInteractor socket;
         private LocalizationService language;
+        private LineRenderer outline;
+        private MaterialPropertyBlock tint;
+        private bool highlighted;
+        public bool Highlighted => highlighted;
         public string Id => persistentId;
         public CargoKind Kind => kind;
         public XRSocketInteractor Socket => socket != null ? socket : socket = GetComponent<XRSocketInteractor>();
@@ -29,6 +33,45 @@ namespace LunarEscape
         private void Awake() => language = FindAnyObjectByType<LocalizationService>();
         private void OnEnable() { Socket.selectFilters.Add(this); Socket.hoverFilters.Add(this); }
         private void OnDisable() { Socket.selectFilters.Remove(this); Socket.hoverFilters.Remove(this); }
+        internal void BuildOutline(Material material)
+        {
+            if (material == null || outline != null) return;
+            var root = new GameObject("Port outline");
+            root.transform.SetParent(transform, false);
+            // Place the mark on the mounting plate, where the container's base actually lands.
+            root.transform.position = new Vector3(transform.position.x, lamp.transform.position.y + .014f, transform.position.z);
+            outline = root.AddComponent<LineRenderer>();
+            outline.sharedMaterial = material;
+            outline.useWorldSpace = false;
+            outline.loop = true;
+            outline.numCornerVertices = 3;
+            if (kind == CargoKind.Oxygen)
+            {
+                outline.positionCount = 32;
+                for (int i = 0; i < outline.positionCount; i++)
+                {
+                    float a = 2 * Mathf.PI * i / outline.positionCount;
+                    outline.SetPosition(i, new Vector3(Mathf.Cos(a), 0, Mathf.Sin(a)) * .14f);
+                }
+            }
+            else
+            {
+                outline.positionCount = 4;
+                outline.SetPositions(new[] { new Vector3(-.16f, 0, -.10f), new Vector3(.16f, 0, -.10f),
+                    new Vector3(.16f, 0, .10f), new Vector3(-.16f, 0, .10f) });
+            }
+            tint = new MaterialPropertyBlock();
+            UpdateOutline(false);
+        }
+        private void UpdateOutline(bool matchingSupply)
+        {
+            highlighted = matchingSupply;
+            if (outline == null) return;
+            var color = kind == CargoKind.Oxygen ? new Color(.18f, .86f, 1f) : new Color(1f, .70f, .15f);
+            tint.SetColor("_BaseColor", color * (matchingSupply ? 1.8f : .65f));
+            outline.SetPropertyBlock(tint);
+            outline.widthMultiplier = matchingSupply ? .024f : .010f;
+        }
         public bool Accepts(CargoItem item) => item != null && item.Kind == kind && item.TryGetComponent<PreparedCargo>(out _)
             && (item.State == CargoState.World || item.State == CargoState.Held);
         public bool Process(IXRSelectInteractor interactor, IXRSelectInteractable interactable) => interactable is Component c && Accepts(c.GetComponent<CargoItem>());
@@ -47,7 +90,13 @@ namespace LunarEscape
         private void Refresh()
         {
             var connected = Connected;
-            string key = connected == null ? "prep.dock.empty" : connected.Fraction >= 1 ? "prep.dock.full"
+            bool matching = false;
+            if (connected == null && preparation != null)
+                foreach (var supply in preparation.Cargo)
+                    if (supply.Item.State == CargoState.Held && supply.Item.Kind == kind) { matching = true; break; }
+            if (matching != highlighted) UpdateOutline(matching);
+            if (outline != null) outline.enabled = connected == null;
+            string key = connected == null ? (kind == CargoKind.Oxygen ? "prep.dock.oxygen" : "prep.dock.battery") : connected.Fraction >= 1 ? "prep.dock.full"
                 : !preparation.IsFirstDay && !connected.PreparedOnDayOne ? "prep.dock.not_prepared"
                 : !preparation.HasPower ? "prep.dock.power"
                 : kind == CargoKind.Oxygen && !preparation.OxygenMachineWorks ? "prep.dock.repair"

@@ -26,6 +26,7 @@ namespace LunarEscape
         [SerializeField] private Transform[] looseTools = Array.Empty<Transform>();
         private Snapshot checkpoint;
         private bool initialized;
+        private SamplePocket samplePocket;
         private static Snapshot pending;
         private float boardTime;
 
@@ -43,6 +44,7 @@ namespace LunarEscape
             public Quaternion rotation;
             public bool active;
             public int slot;
+            public int pocketSlot = -1;
             public float progress;
         }
         [Serializable] private sealed class PropSave { public Vector3 position; public Quaternion rotation; }
@@ -94,6 +96,10 @@ namespace LunarEscape
         }
         private void Start()
         {
+            samplePocket = SamplePocket.Install(this);
+            var placement = FindAnyObjectByType<RemoteSocketPlacement>(FindObjectsInactive.Include);
+            if (placement != null)
+                foreach (var dock in docks) dock.BuildOutline(placement.GuideMaterial);
             if (firstDay)
             {
                 pending = null;
@@ -178,7 +184,8 @@ namespace LunarEscape
             {
                 var core = research.Cores[i];
                 state.cores[i] = new CoreSave { position = core.transform.position, rotation = core.transform.rotation,
-                    active = core.gameObject.activeSelf, slot = research.SlotFor(i), progress = research.GetProgress(i) };
+                    active = core.gameObject.activeSelf, slot = research.SlotFor(i),
+                    pocketSlot = samplePocket != null ? samplePocket.SlotFor(core) : -1, progress = research.GetProgress(i) };
             }
             for (int i = 0; i < looseTools.Length; i++) state.tools[i] = new PropSave { position = looseTools[i].position, rotation = looseTools[i].rotation };
             for (int i = 0; i < panels.Length; i++) state.cleanPanels[i] = panels[i].IsClean;
@@ -186,6 +193,7 @@ namespace LunarEscape
         }
         private void Restore(Snapshot state)
         {
+            if (samplePocket != null) samplePocket.ClearPending();
             if (life != null) life.RestorePreparedSuit(state.suitOxygen, state.suitPower);
             var saved = new Dictionary<string, CargoSave>();
             foreach (var entry in state.cargo) saved.Add(entry.id, entry);
@@ -225,7 +233,11 @@ namespace LunarEscape
                 foreach (var port in docks) if (port.Id == entry.dock) Select(port.Socket, item.Item.Grab);
             }
             for (int i = 0; i < research.Cores.Length; i++)
-                if (state.cores[i].active && state.cores[i].slot >= 0) Select(research.Rack.Slots[state.cores[i].slot], research.Cores[i].Grab);
+            {
+                if (!state.cores[i].active) continue;
+                if (state.cores[i].slot >= 0) Select(research.Rack.Slots[state.cores[i].slot], research.Cores[i].Grab);
+                else if (samplePocket != null) samplePocket.RestoreSlot(state.cores[i].pocketSlot, research.Cores[i]);
+            }
         }
         private static void Select(XRSocketInteractor socket, XRGrabInteractable grab)
         {

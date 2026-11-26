@@ -76,10 +76,10 @@ namespace LunarEscape
         {
             radio = FeedbackSounds.CreateSource(head != null ? head : transform, "Mission Control Radio", 0f);
             radio.volume = radioVolume;
-            // 无线电音色：只保留 450–3400 Hz 的话音频段，再加一点削波的毛刺感。
-            radio.gameObject.AddComponent<AudioHighPassFilter>().cutoffFrequency = 450f;
-            radio.gameObject.AddComponent<AudioLowPassFilter>().cutoffFrequency = 3400f;
-            radio.gameObject.AddComponent<AudioDistortionFilter>().distortionLevel = 0.35f;
+            // 无线电音色：只保留 260–4400 Hz 的话音频段，再加一点削波的毛刺感。
+            radio.gameObject.AddComponent<AudioHighPassFilter>().cutoffFrequency = 260f;
+            radio.gameObject.AddComponent<AudioLowPassFilter>().cutoffFrequency = 4400f;
+            radio.gameObject.AddComponent<AudioDistortionFilter>().distortionLevel = 0.08f;
             // 声源运行时才挂到指挥官身上，场景里的人物层级保持不变。
             if (commanderBody != null)
             {

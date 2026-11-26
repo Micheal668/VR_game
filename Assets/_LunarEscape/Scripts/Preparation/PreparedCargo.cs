@@ -40,7 +40,7 @@ namespace LunarEscape
             string name = language != null ? language.Format("cargo.kind." + Item.Kind) : Item.Kind.ToString();
             string state = NeedsCharging ? Mathf.RoundToInt(Fraction * 100) + "%"
                 : language != null ? language.Format(ResearchReady ? "prep.recovered" : "prep.stored") : "";
-            readout.text = NeedsCharging ? (Item.Kind == CargoKind.Oxygen ? "O2  " : "") + state : name + "\n" + state;
+            readout.text = NeedsCharging ? (Item.Kind == CargoKind.Oxygen ? "O2  " : "+/-  ") + state : name + "\n" + state;
             readout.color = NeedsCharging && Fraction <= 0 ? new Color(1, .65f, .22f) : new Color(.55f, 1, .82f);
         }
     }

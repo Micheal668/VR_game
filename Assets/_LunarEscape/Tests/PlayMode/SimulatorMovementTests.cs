@@ -103,6 +103,35 @@ namespace LunarEscape.Tests
         }
 
         [UnityTest]
+        public IEnumerator PhysicalHeadStepsStopAtWallAndCanSlideOrBackAway()
+        {
+            yield return LoadRoom("05_LunarStation_Repair");
+            Assert.That(origin.GetComponentInChildren<RoomScaleMovement>().isActiveAndEnabled, Is.True);
+            // Inject tracked local poses directly. The simulator walk inputs stay at zero.
+            head.GetComponent<TrackedPoseDriver>().enabled = false;
+            var wall = GameObject.Find("Wall Right").GetComponent<BoxCollider>();
+            var start = new Vector3(wall.bounds.min.x - .8f, head.position.y, -1.8f);
+            origin.MoveCameraToWorldLocation(start);
+            Physics.SyncTransforms();
+            yield return null;
+
+            var step = head.parent.InverseTransformVector(Vector3.right * 1.8f);
+            var trackedPose = head.localPosition + step;
+            head.localPosition = trackedPose;
+            yield return Frames(2);
+            var stopped = head.position;
+            Assert.That(stopped.x, Is.InRange(start.x + .2f, wall.bounds.min.x));
+            Assert.That(Vector3.Distance(head.localPosition, trackedPose), Is.LessThan(.0001f));
+
+            head.localPosition += head.parent.InverseTransformVector(Vector3.forward * .3f);
+            yield return Frames(2);
+            Assert.That(head.position.z - stopped.z, Is.EqualTo(.3f).Within(.05f));
+            head.localPosition += head.parent.InverseTransformVector(Vector3.left * .5f);
+            yield return Frames(2);
+            Assert.That(stopped.x - head.position.x, Is.EqualTo(.5f).Within(.05f));
+        }
+
+        [UnityTest]
         public IEnumerator FpsWalkingCannotPassThroughWorkbench()
         {
             yield return LoadRoom("05_LunarStation_Repair");

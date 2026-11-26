@@ -59,6 +59,30 @@ namespace LunarEscape.Tests
 
         [TearDown] public void Restore() { Time.captureDeltaTime = previousDelta; hand?.Dispose(); }
 
+        [UnityTest] public IEnumerator SuitConsoleRequiresTheSameNearbyHoldAsTheEmergencyShift()
+        {
+            var console = Object.FindAnyObjectByType<SuitRackInteractor>();
+            var pointer = new UnityEngine.EventSystems.PointerEventData(UnityEngine.EventSystems.EventSystem.current);
+            console.GetComponent<UnityEngine.UI.Button>().onClick.Invoke();
+            Assert.That(day.Suit.SuitWorn, Is.False, "A click cannot skip the rack hold.");
+            console.OnPointerDown(pointer);
+            for (int frame = 0; frame < 12; frame++) yield return null;
+            console.OnPointerUp(pointer);
+            Assert.That(day.Suit.Progress, Is.Zero, "The player must stand beside the rack.");
+            Move(day.Suit.Handle.transform.position + Vector3.left * .6f);
+            console.OnPointerDown(pointer);
+            for (int frame = 0; frame < 60; frame++) yield return null;
+            console.OnPointerUp(pointer);
+            Assert.That(day.Suit.Progress, Is.EqualTo(.5f).Within(.03f));
+            float paused = day.Suit.Progress;
+            for (int frame = 0; frame < 12; frame++) yield return null;
+            Assert.That(day.Suit.Progress, Is.EqualTo(paused));
+            console.OnPointerDown(pointer);
+            for (int frame = 0; frame < 64; frame++) yield return null;
+            Assert.That(day.Suit.SuitWorn, Is.True);
+            console.OnPointerUp(pointer);
+        }
+
         [UnityTest] public IEnumerator SceneIsAnOrdinaryShiftWithoutTheIncident()
         {
             Assert.That(Object.FindAnyObjectByType<StationMission>(), Is.Null, "第一天没有倒计时任务");
@@ -111,6 +135,43 @@ namespace LunarEscape.Tests
             for (float t = 0; t < 8f && airlock.Cycling; t += Time.deltaTime) yield return null;
             Assert.That(airlock.Pressurized && airlock.InnerOpen && !airlock.OuterOpen);
             Assert.That(day.PlayerHasAir, "复压后气闸室有空气");
+            // A ray can cycle the chamber before its user steps in.
+            var outsideLanding = airlock.Entrance(DayOneAirlock.Side.Outside).position + Vector3.right * .8f;
+            var insideLanding = airlock.Entrance(DayOneAirlock.Side.Inside).position + Vector3.left * .8f;
+            airlock.RecallFromLanding(outsideLanding);
+            Assert.That(airlock.Cycling, Is.True);
+            airlock.FinishCycle();
+            Assert.That(airlock.OuterOpen && !airlock.InnerOpen, Is.True);
+            airlock.RecallFromLanding(insideLanding);
+            Assert.That(airlock.Cycling, Is.True);
+            airlock.FinishCycle();
+            Assert.That(airlock.InnerOpen && !airlock.OuterOpen, Is.True);
+        }
+
+        [Test] public void AirlockFramesFillTheEdgesAndLeaveTheOpenDoorwayClear()
+        {
+            var airlock = day.Airlock;
+            void Check(string prefix, float x, float jambZ, float headerY, bool closed)
+            {
+                Physics.SyncTransforms();
+                bool Blocked(float y, float z) => Physics.Raycast(new Vector3(x - .3f, y, z), Vector3.right,
+                    .6f, Physics.DefaultRaycastLayers, QueryTriggerInteraction.Ignore);
+                foreach (var part in new[] { "south jamb", "north jamb", "header", "threshold" })
+                {
+                    var frame = GameObject.Find(prefix + " hatch " + part);
+                    Assert.That(frame.GetComponent<Renderer>().enabled);
+                    Assert.That(frame.GetComponent<BoxCollider>().enabled);
+                }
+                Assert.That(Blocked(1.6f, jambZ) && Blocked(headerY, 1.7f) && Blocked(.02f, 1.7f));
+                Assert.That(Blocked(1.6f, 1.7f), Is.EqualTo(closed));
+            }
+            Check("Inner", 4f, .82f, 2.58f, false);
+            Check("Outer", 8.02f, .73f, 3.25f, true);
+            day.Suit.Don();
+            airlock.RequestOutside();
+            airlock.FinishCycle();
+            Check("Inner", 4f, .82f, 2.58f, true);
+            Check("Outer", 8.02f, .73f, 3.25f, false);
         }
 
         [UnityTest] public IEnumerator TriggerDrivesTheNitrogenJetThatCleansAPanel()

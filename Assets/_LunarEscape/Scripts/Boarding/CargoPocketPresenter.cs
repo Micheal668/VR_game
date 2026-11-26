@@ -13,6 +13,20 @@ namespace LunarEscape
         [SerializeField] private LocalizedText[] rows;
         [SerializeField] private Button[] buttons;
         private CargoKind[] kinds = System.Array.Empty<CargoKind>();
+        private CargoRetrievalSocket output;
+        private void Start()
+        {
+            var outlet = new GameObject("Pocket pickup");
+            outlet.transform.SetParent(transform.parent, false);
+            outlet.transform.localPosition = new Vector3(.18f, .40f, -.22f);
+            output = outlet.AddComponent<CargoRetrievalSocket>();
+            output.attachTransform = outlet.transform;
+            output.showInteractableHoverMeshes = false;
+            output.keepSelectedTargetValid = true;
+            output.selectExited.AddListener(_ => Refresh());
+            foreach (var button in buttons) button.GetComponentInChildren<LocalizedText>(true).SetKey("prep.pocket.take");
+            Refresh();
+        }
         public void Configure(CargoInventory cargo, LocalizationService service, LocalizedText header,
             LocalizedText[] labels, Button[] discard)
         {
@@ -21,7 +35,7 @@ namespace LunarEscape
         }
         public void DiscardSlot(int index)
         {
-            if (index >= 0 && index < kinds.Length) inventory.Discard(kinds[index]);
+            if (index >= 0 && index < kinds.Length) inventory.RetrievePacked(kinds[index], output);
         }
         private void OnEnable() { Subscribe(); Refresh(); }
         private void OnDisable() => Unsubscribe();
@@ -39,7 +53,7 @@ namespace LunarEscape
         private void Refresh()
         {
             if (inventory == null || rows == null) return;
-            kinds = inventory.Items.Where(i => i.IsCarried).Select(i => i.Kind).Distinct().OrderBy(k => k).ToArray();
+            kinds = inventory.Items.Where(i => i.State == CargoState.Packed).Select(i => i.Kind).Distinct().OrderBy(k => k).ToArray();
             capacity.SetKey("cargo.capacity", inventory.TypeCount, inventory.Config.MaxTypes, inventory.TotalWeightKg, inventory.Config.MaxWeightKg);
             for (int i = 0; i < rows.Length; i++)
             {
@@ -48,9 +62,9 @@ namespace LunarEscape
                 buttons[i].gameObject.SetActive(hasItem);
                 if (!hasItem) continue;
                 var kind = kinds[i];
-                rows[i].SetKey("cargo.row", localization.Format("cargo.kind." + kind), inventory.GetCount(kind));
-                buttons[i].interactable = (inventory.Mission.Phase == StationMissionPhase.Evacuation || inventory.Mission.LifeSupport != null && inventory.Mission.LifeSupport.IsGroundActive)
-                    && inventory.Items.Any(item => item.Kind == kind && (item.State == CargoState.Packed || item.State == CargoState.Loaded));
+                rows[i].SetKey("cargo.row", localization.Format("cargo.kind." + kind), inventory.Items.Count(item => item.Kind == kind && item.State == CargoState.Packed));
+                buttons[i].interactable = output != null && !output.hasSelection && (inventory.Mission.Phase == StationMissionPhase.Evacuation ||
+                    inventory.Mission.LifeSupport != null && inventory.Mission.LifeSupport.IsGroundActive);
             }
         }
     }

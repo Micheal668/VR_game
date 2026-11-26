@@ -8,7 +8,7 @@ using UnityEngine.XR.Interaction.Toolkit.Interactors;
 namespace LunarEscape
 {
     // Both puzzles use real grab objects and XR sockets. The circuit panel has colored
-    // cable ends; the laboratory uses numbered data modules with different silhouettes.
+    // cable ends; laboratory modules have different silhouettes and the same connector marks.
     public sealed class StationPatchPuzzle : MonoBehaviour
     {
         [SerializeField] private LifeSupportMission life;
@@ -35,6 +35,7 @@ namespace LunarEscape
         }
         public StationPatchSocket[] Sockets => sockets;
         public StationPatchModule[] Modules => modules;
+        public static string Mark(int identity) => identity switch { 0 => "+", 1 => "=", 2 => "X", _ => "?" };
         public void Configure(LifeSupportMission source, HabitatBreaker power, StationPatchSocket[] ports,
             StationPatchModule[] plugs, TMP_Text readout, bool penalties)
         { life = source; requiredPower = power; sockets = ports; modules = plugs; status = readout; penalizeErrors = penalties; }
@@ -56,7 +57,7 @@ namespace LunarEscape
             foreach (var socket in sockets) if (socket.Correct) ++connected;
             status.text = requiredPower != null && !requiredPower.IsOn ? Text("先恢复备用电源", "RESTORE BACKUP POWER", "ВОССТАНОВИТЕ ПИТАНИЕ")
                 : IsSolved ? "3 / 3  OK\n" + (penalizeErrors ? Text("拉下总闸", "PULL BREAKER", "ВКЛЮЧИТЕ РУБИЛЬНИК") : Text("前往中控解锁", "CONFIRM AT CONTROL", "ПОДТВЕРДИТЕ НА ПУЛЬТЕ"))
-                : connected + " / " + sockets.Length + "\n" + (penalizeErrors ? Text("按颜色与编号接线", "MATCH COLOR + NUMBER", "СОЕДИНИТЕ ЦВЕТ И НОМЕР") : Text("按形状与编号插入模块", "MATCH SHAPE + NUMBER", "СОПОСТАВЬТЕ ФОРМУ И НОМЕР"));
+                : connected + " / " + sockets.Length + "\n" + (penalizeErrors ? Text("按相同标记接线", "MATCH THE CABLE MARKS", "СОВМЕСТИТЕ МЕТКИ КАБЕЛЕЙ") : Text("按形状插入模块", "MATCH THE MODULE SHAPES", "СОВМЕСТИТЕ ФОРМЫ МОДУЛЕЙ"));
             status.color = IsSolved ? new Color(.35f, 1, .7f) : Color.white;
         }
 

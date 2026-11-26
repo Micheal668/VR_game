@@ -54,7 +54,7 @@ namespace LunarEscape.Tests
             for(int i=0;i<2;i++)
             {
                 var bolt=bolts[i];var end=i==0?tool.Tip:tool.SecondaryTip;
-                yield return MoveTip(end,bolt.ContactPoint+bolt.transform.forward*.02f);
+                yield return MoveTip(end,bolt.ContactPoint+bolt.transform.forward*.17f);
                 foreach(var collider in tool.Grab.colliders)
                 {
                     bool overlaps=Physics.ComputePenetration(collider,collider.transform.position,collider.transform.rotation,
@@ -87,6 +87,18 @@ namespace LunarEscape.Tests
             yield return Capture("usability-pack-ready",session.Player.Camera.transform.position,pack.transform.position+Vector3.up*.12f);
             manager.SelectExit((IXRSelectInteractor)hand,(IXRSelectInteractable)bottle.Grab);yield return null;
             Assert.That(bottle.State,Is.EqualTo(CargoState.Packed));Assert.That(bottle.gameObject.activeSelf,Is.False);
+            var pocket = pack.GetComponentInChildren<CargoPocketPresenter>();
+            pocket.DiscardSlot(0);
+            yield return null;
+            var pickup = pack.GetComponentInChildren<CargoRetrievalSocket>();
+            Assert.That(pickup.IsSelecting(bottle.Grab), Is.True, "The pocket holds the actual bottle out for pickup.");
+            Assert.That(bottle.State, Is.EqualTo(CargoState.Packed), "An item presented at the hip still occupies inventory capacity.");
+            yield return Grab(bottle.Grab, Quaternion.identity);
+            Assert.That(bottle.State, Is.EqualTo(CargoState.Held));
+            Assert.That(pickup.hasSelection, Is.False);
+            yield return MoveTip(bottle.transform, pack.transform.position + Vector3.forward);
+            manager.SelectExit((IXRSelectInteractor)hand,(IXRSelectInteractable)bottle.Grab);
+            yield return null;
             var battery=cargo.Items.First(i=>i.Kind==CargoKind.Battery);
             yield return Grab(battery.Grab,Quaternion.identity);yield return MoveTip(battery.transform,pack.transform.position+Vector3.right*1.3f);
             Assert.That(pack.CanStow(battery),Is.False);manager.SelectExit((IXRSelectInteractor)hand,(IXRSelectInteractable)battery.Grab);

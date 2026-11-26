@@ -83,7 +83,7 @@ namespace LunarEscape
         public bool Process(IXRSelectInteractor interactor, IXRSelectInteractable interactable)
         {
             if (interactable != (IXRSelectInteractable)Grab || !ReadyToTake) return false;
-            if (IsChargingSocket(interactor)) return true;
+            if (IsStorageSocket(interactor)) return true;
             if (preparationOnly) return true;
             if (inventory == null || interactable != (IXRSelectInteractable)Grab) return false;
             bool allowed = inventory.CanAcquire(this, out CargoRejection reason);
@@ -97,7 +97,8 @@ namespace LunarEscape
         {
             if (changingPhysicalState) return;
             if (!ReadyToTake) { CancelSelection(); return; }
-            if (IsChargingSocket(args.interactorObject)) { State = CargoState.World; return; }
+            if (args.interactorObject is CargoRetrievalSocket output && output.Accepts(this)) return;
+            if (IsStorageSocket(args.interactorObject)) { State = CargoState.World; return; }
             if (preparationOnly) { State = CargoState.Held; return; }
             // 显式 SelectEnter 可以绕过过滤器，因此真实事件必须再次通过额度检查。
             if (inventory == null || !inventory.TryHold(this)) CancelSelection();
@@ -105,13 +106,18 @@ namespace LunarEscape
 
         private void OnReleased(SelectExitEventArgs args)
         {
+            if (!changingPhysicalState && args.interactorObject is CargoRetrievalSocket && State == CargoState.Packed)
+            {
+                State = CargoState.World;
+                return;
+            }
             if (!changingPhysicalState && preparationOnly && !grab.isSelected) { State = CargoState.World; return; }
             if (changingPhysicalState || grab.isSelected || inventory == null) return;
             inventory.Released(this, args.isCanceled);
         }
 
-        private bool IsChargingSocket(IXRSelectInteractor interactor) => interactor is XRSocketInteractor socket
-            && socket.TryGetComponent<SupplyChargingDock>(out var dock) && dock.Accepts(this);
+        private bool IsStorageSocket(IXRSelectInteractor interactor) => interactor is CargoRetrievalSocket output && output.Accepts(this)
+            || interactor is XRSocketInteractor socket && socket.TryGetComponent<SupplyChargingDock>(out var dock) && dock.Accepts(this);
 
         internal void SetState(CargoState state) => State = state;
 

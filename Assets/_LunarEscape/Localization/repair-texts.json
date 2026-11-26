@@ -386,9 +386,9 @@
     },
     {
       "key": "cargo.pack",
-      "zh": "物资包\n放入后松手",
-      "en": "POUCH\nRelease inside",
-      "ru": "СУМКА\nОтпустите внутри"
+      "zh": "物资包\n松手放入\n低头取出",
+      "en": "POCKET\nRelease here to store\nLook down to retrieve",
+      "ru": "КАРМАН\nОтпустите здесь\nЧтобы достать, смотрите вниз"
     },
     {
       "key": "cargo.route",
@@ -2275,6 +2275,186 @@
       "ru": "03:00 · ТРЕВОГА"
     },
     {
+      "key": "guide.wrench",
+      "zh": "拿起扳手，准备松开气闸锁销",
+      "en": "Pick up a wrench for the hatch bolts",
+      "ru": "Возьмите ключ для болтов шлюза"
+    },
+    {
+      "key": "guide.airlock.call",
+      "zh": "靠近关闭的门，等待气闸开启",
+      "en": "Approach the closed door to call the airlock",
+      "ru": "Подойдите к закрытой двери для вызова шлюза"
+    },
+    {
+      "key": "guide.distance",
+      "zh": "{0} m",
+      "en": "{0} m",
+      "ru": "{0} м"
+    },
+    {
+      "key": "guide.suit",
+      "zh": "大厅：握住黄色把手穿上航天服",
+      "en": "Lobby · Hold the yellow grip to suit up",
+      "ru": "Зал · Удерживайте жёлтую ручку стойки"
+    },
+    {
+      "key": "guide.blower",
+      "zh": "拿起氮气枪",
+      "en": "Pick up the nitrogen blower",
+      "ru": "Возьмите азотный пистолет"
+    },
+    {
+      "key": "guide.drill",
+      "zh": "拿起取芯钻",
+      "en": "Pick up the core drill",
+      "ru": "Возьмите бур"
+    },
+    {
+      "key": "guide.panel.clean",
+      "zh": "对准有灰尘的板扣动扳机",
+      "en": "Aim at the dusty panel and squeeze the trigger",
+      "ru": "Направьте струю на пыль и нажмите курок"
+    },
+    {
+      "key": "guide.core.drill",
+      "zh": "将钻头放入定位环，轻扣扳机",
+      "en": "Lower the drill into the ring and squeeze gently",
+      "ru": "Опустите бур в кольцо и плавно нажмите курок"
+    },
+    {
+      "key": "guide.core.collect",
+      "zh": "拿起岩芯，放入左侧口袋",
+      "en": "Pick up the core and place it in your left pocket",
+      "ru": "Положите керн в карман у левого бедра"
+    },
+    {
+      "key": "guide.core.store",
+      "zh": "实验室：取出岩芯，放入分析仪",
+      "en": "Lab · Take the cores out and load the analyzer",
+      "ru": "Лаборатория · Вставьте керны в анализатор"
+    },
+    {
+      "key": "guide.airlock.enter",
+      "zh": "走进气闸室",
+      "en": "Step into the airlock chamber",
+      "ru": "Войдите в камеру шлюза"
+    },
+    {
+      "key": "guide.airlock.cycle",
+      "zh": "按气闸面板，等待另一侧开门",
+      "en": "Press the airlock panel to open the other side",
+      "ru": "Нажмите кнопку в шлюзе и дождитесь открытия"
+    },
+    {
+      "key": "guide.airlock.wait",
+      "zh": "等待气闸门开启",
+      "en": "Wait for the airlock door to open",
+      "ru": "Дождитесь открытия шлюза"
+    },
+    {
+      "key": "guide.quarters",
+      "zh": "离开卧室，走入通道",
+      "en": "Leave crew quarters and enter the corridor",
+      "ru": "Выйдите из спальни в коридор"
+    },
+    {
+      "key": "guide.wires",
+      "zh": "设备间：按相同标记接线",
+      "en": "Engineering · Match each cable to its marked port",
+      "ru": "Техотсек · Соедините кабели по меткам"
+    },
+    {
+      "key": "guide.breaker",
+      "zh": "拉下接线板旁的总闸",
+      "en": "Pull the breaker beside the cable panel",
+      "ru": "Потяните рубильник рядом с кабелями"
+    },
+    {
+      "key": "guide.modules",
+      "zh": "实验室：按形状插入模块",
+      "en": "Lab · Fit each module into its matching socket",
+      "ru": "Лаборатория · Вставьте модули в гнёзда по форме"
+    },
+    {
+      "key": "guide.unlock",
+      "zh": "通道：在中控面板解锁卧室",
+      "en": "Corridor · Unlock crew quarters at the console",
+      "ru": "Коридор · Откройте спальню с пульта"
+    },
+    {
+      "key": "guide.cover",
+      "zh": "打开气闸供电面板的盖子",
+      "en": "Open the fuse cover beside the airlock",
+      "ru": "Откройте крышку блока питания шлюза"
+    },
+    {
+      "key": "guide.burnt",
+      "zh": "拔出烧坏的保险丝",
+      "en": "Pull the burnt fuse from its socket",
+      "ru": "Выньте сгоревший предохранитель"
+    },
+    {
+      "key": "guide.spare",
+      "zh": "拿起备用保险丝",
+      "en": "Pick up the spare fuse",
+      "ru": "Возьмите запасной предохранитель"
+    },
+    {
+      "key": "guide.insert",
+      "zh": "把备用保险丝装入空接口",
+      "en": "Fit the spare fuse into the empty socket",
+      "ru": "Вставьте предохранитель в пустое гнездо"
+    },
+    {
+      "key": "guide.valve",
+      "zh": "转动阀门，直到指针进入绿色区域",
+      "en": "Turn the valve until the needle reaches green",
+      "ru": "Поверните вентиль до зелёной зоны"
+    },
+    {
+      "key": "guide.bolts",
+      "zh": "用扳手松开气闸上的锁销",
+      "en": "Use the wrench to loosen the marked hatch bolts",
+      "ru": "Ослабьте ключом отмеченные болты шлюза"
+    },
+    {
+      "key": "guide.lever",
+      "zh": "拉下气闸拉杆并保持",
+      "en": "Pull and hold the airlock release lever",
+      "ru": "Потяните и удерживайте рычаг шлюза"
+    },
+    {
+      "key": "guide.crew",
+      "zh": "等队友穿上航天服再出舱",
+      "en": "Wait for your crewmate to finish suiting up",
+      "ru": "Дождитесь, пока напарник наденет скафандр"
+    },
+    {
+      "key": "guide.hatch",
+      "zh": "按气闸控制面板上的开门键",
+      "en": "Open the hatch at the airlock console",
+      "ru": "Откройте люк с пульта шлюза"
+    },
+    {
+      "key": "guide.cutter",
+      "zh": "拿起激光切割器",
+      "en": "Pick up the laser cutter",
+      "ru": "Возьмите лазерный резак"
+    },
+    {
+      "key": "guide.beams",
+      "zh": "用激光沿钢梁上的线切割",
+      "en": "Cut along the marked lines on the beams",
+      "ru": "Разрежьте балки по отмеченным линиям"
+    },
+    {
+      "key": "guide.ship",
+      "zh": "沿路线前往飞船，在梯子下登舱",
+      "en": "Follow the route to the lander and board at the ladder",
+      "ru": "Идите к кораблю и поднимитесь на борт у трапа"
+    },
+    {
       "key": "day1.board.title",
       "zh": "第一天 · 班次任务",
       "en": "DAY 1 · SHIFT TASKS",
@@ -2965,6 +3145,30 @@
       "ru": "Вставьте вручную или наведите на разъём и нажмите курок."
     },
     {
+      "key": "prep.pocket.cores",
+      "zh": "岩芯包\n松手放入\n握住取出",
+      "en": "CORE POCKET\nRelease to store\nGrip to take",
+      "ru": "КАРМАН ДЛЯ КЕРНОВ\nУбрать — отпустите\nВзять — сожмите"
+    },
+    {
+      "key": "prep.pocket.take",
+      "zh": "取出",
+      "en": "Take out",
+      "ru": "Достать"
+    },
+    {
+      "key": "prep.dock.oxygen",
+      "zh": "O2 圆环\n放入氧气瓶",
+      "en": "O2 RING\nInsert bottle",
+      "ru": "КОЛЬЦО O2\nВставьте баллон"
+    },
+    {
+      "key": "prep.dock.battery",
+      "zh": "+/- 方形接口\n放入电池",
+      "en": "+/- FRAME\nInsert battery",
+      "ru": "РАМКА +/-\nВставьте батарею"
+    },
+    {
       "key": "prep.dock.empty",
       "zh": "放入物资",
       "en": "Insert supply",
@@ -3068,9 +3272,9 @@
     },
     {
       "key": "day1.suit.toggle",
-      "zh": "穿戴 / 归还宇航服",
-      "en": "PUT ON / RETURN SUIT",
-      "ru": "НАДЕТЬ / ВЕРНУТЬ СКАФАНДР"
+      "zh": "按住穿戴 / 归还",
+      "en": "HOLD TO SUIT UP / RETURN",
+      "ru": "УДЕРЖИВАЙТЕ · НАДЕТЬ / ВЕРНУТЬ"
     },
     {
       "key": "day1.wrist.resources",

@@ -188,8 +188,8 @@ namespace LunarEscape.Editor
         // 场景里剩下的本项目脚本若属于事故流程（引用已删除的任务组件），一律移除；只保留与第一天兼容的通用组件。
         private static readonly HashSet<Type> Keep = new()
         {
-            typeof(LocalizationService), typeof(LocalizedText), typeof(CockpitLamp), typeof(CrewSuitRig), typeof(TrackedCrewSuit), typeof(CrewWalkMotion),
-            typeof(EarthSkyView), typeof(LanderNavigationBeacon), typeof(CollisionAwareSimulator), typeof(MissionTeleportationProvider),
+            typeof(LocalizationService), typeof(LocalizedText), typeof(CockpitLamp), typeof(CrewSuitRig), typeof(TrackedCrewSuit), typeof(CrewWalkMotion), typeof(CrewHoop),
+            typeof(EarthSkyView), typeof(LanderNavigationBeacon), typeof(CollisionAwareSimulator), typeof(MissionTeleportationProvider), typeof(RoomScaleMovement),
             typeof(ButtonPressFeedback), typeof(GrabFeedback), typeof(ReturnFallenTool), typeof(SpaceAudio), typeof(ScreenFade), typeof(DesktopTriggerLevel),
             typeof(StationPreparation), typeof(PreparedCargo), typeof(SupplyChargingDock), typeof(LunarResearchStation), typeof(CargoItem),
             typeof(SuitHudPresenter), typeof(HelmetHudOverlay), typeof(ResourceReadout), typeof(RouteChevronGuide), typeof(ReadableWristDisplay),
@@ -290,9 +290,10 @@ namespace LunarEscape.Editor
             locker.Configure(grip, hanging, playerSuit.GetComponentsInChildren<Renderer>(true).Where(r => !r.transform.IsChildOf(lamps)).ToArray(),
                 playerUniform.GetComponentsInChildren<Renderer>(true), lamps != null ? lamps.gameObject : null, readout);
             foreach (var light in lamps != null ? lamps.GetComponentsInChildren<Light>(true) : new Light[0]) light.enabled = true;
-            // 握把要按住侧键约 2.5 秒；旁边再放一块屏幕按钮，射线或鼠标点一下即可穿上。
+            locker.ConfigureTiming(AssetDatabase.LoadAssetAtPath<LifeSupportConfig>("Assets/_LunarEscape/Settings/Life Support Config.asset"));
             var gripPoint = locker.Handle.transform.position;
-            Panel(flow, "Suit Don Button", new Vector3(3.55f, gripPoint.y + 0.42f, gripPoint.z), Quaternion.Euler(0f, 90f, 0f), "day1.suit.toggle", locker.Toggle, new Vector2(520, 150));
+            var button = Panel(flow, "Suit Don Button", new Vector3(3.55f, gripPoint.y + 0.42f, gripPoint.z), Quaternion.Euler(0f, 90f, 0f), "day1.suit.toggle", null, new Vector2(520, 150));
+            button.gameObject.AddComponent<SuitRackInteractor>().ConfigureDay(locker);
             return locker;
         }
 
@@ -351,13 +352,14 @@ namespace LunarEscape.Editor
             return light;
         }
 
-        private static void Panel(Transform parent, string name, Vector3 position, Quaternion rotation, string key, UnityEngine.Events.UnityAction action, Vector2? size = null)
+        private static Button Panel(Transform parent, string name, Vector3 position, Quaternion rotation, string key, UnityEngine.Events.UnityAction action, Vector2? size = null)
         {
             var panel = ui.Panel(name, position, size ?? new Vector2(520, 170), 0.0007f, rotation);
             panel.SetParent(parent, true);
             var button = ui.Button(panel, name + " Button", key, Vector2.zero, new Vector2(480, 130), 44);
-            UnityEventTools.AddPersistentListener(button.onClick, action);
+            if (action != null) UnityEventTools.AddPersistentListener(button.onClick, action);
             button.gameObject.AddComponent<ButtonPressFeedback>();
+            return button;
         }
 
         // —— 气闸室北墙的工具架：氮气枪横放在搁板上，取芯钻竖挂 ——

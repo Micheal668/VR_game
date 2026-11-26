@@ -31,6 +31,7 @@ namespace LunarEscape
         private Vector3 doorClosed, doorOpen;
         private Vector3 standingOrigin, seatedOrigin;
         private LocalizationService language;
+        private BeamBlockade blockade;
         public bool IntroComplete { get; private set; }
         public bool BedroomLocked { get; private set; }
         public bool DoorUnlocked { get; private set; }
@@ -39,6 +40,61 @@ namespace LunarEscape
         public StationPatchPuzzle Laboratory => laboratory;
         public BoxCollider Bedroom => bedroom;
         public Transform ControlPoint => controlPoint;
+
+        public (string key, Transform target) GroundObjective()
+        {
+            if (life.DoorOpen)
+            {
+                if (blockade != null && !blockade.Cleared && life.Player.transform.position.x < 8.5f)
+                {
+                    if (!blockade.Cutter.IsHeld) return ("guide.cutter", blockade.Cutter.transform);
+                    foreach (var beam in blockade.Beams)
+                        if (!beam.Dropped) return ("guide.beams", beam.transform);
+                }
+                return ("guide.ship", null);
+            }
+            if (!BedroomLocked) return ("guide.quarters", bedroomDoor);
+            if (!breaker.IsOn && !circuit.IsSolved) return ("guide.wires", circuit.transform);
+            if (!breaker.IsOn) return ("guide.breaker", breaker.Lever.transform);
+            if (!laboratory.IsSolved) return ("guide.modules", laboratory.transform);
+            if (!DoorUnlocked) return ("guide.unlock", controlPoint);
+            if (!life.SuitWorn) return ("guide.suit", life.SuitRack);
+            var repair = life.AirlockRepair;
+            if (repair != null && !repair.IsReleased)
+            {
+                foreach (var fault in repair.Faults)
+                {
+                    if (fault.IsFixed) continue;
+                    if (fault is FuseFault fuse)
+                    {
+                        if (!fuse.CoverOpen) return ("guide.cover", fuse.Cover.transform);
+                        if (fuse.IsSeated(fuse.Burnt)) return ("guide.burnt", fuse.Burnt.transform);
+                        return fuse.Spare.Grab.isSelected ? ("guide.insert", fuse.Socket.transform) : ("guide.spare", fuse.Spare.transform);
+                    }
+                    if (fault is ValveFault valve) return ("guide.valve", valve.Valve.transform);
+                    if (fault is LatchFault latch)
+                        foreach (var bolt in latch.Bolts)
+                            if (!bolt.Released) return BoltObjective(bolt);
+                }
+                return ("guide.lever", repair.Lever.transform);
+            }
+            return !CommanderSuited && crew.CommanderHealth > 0 ? ("guide.crew", life.SuitRack) : ("guide.hatch", life.DoorControl);
+        }
+
+        private (string key, Transform target) BoltObjective(LatchBolt bolt)
+        {
+            RepairTool nearest = null;
+            float bestDistance = float.PositiveInfinity;
+            foreach (var tool in bolt.Tools)
+            {
+                if (tool == null || !tool.isActiveAndEnabled) continue;
+                if (tool.IsHeld && tool.Grab.firstInteractorSelecting is not UnityEngine.XR.Interaction.Toolkit.Interactors.XRSocketInteractor)
+                    return ("guide.bolts", bolt.transform);
+                float distance = (tool.transform.position - life.Player.transform.position).sqrMagnitude;
+                if (distance < bestDistance) { nearest = tool; bestDistance = distance; }
+            }
+            return nearest != null ? ("guide.wrench", nearest.transform) : ("guide.bolts", bolt.transform);
+        }
 
         public void Configure(StationMissionSession source, CrewMission team, GroundCrewController walking,
             HabitatBreaker power, StationPatchPuzzle wires, StationPatchPuzzle modules, BoxCollider room,
@@ -53,6 +109,7 @@ namespace LunarEscape
         private void Awake()
         {
             language = FindAnyObjectByType<LocalizationService>();
+            blockade = FindAnyObjectByType<BeamBlockade>(FindObjectsInactive.Include);
             audioSource = FeedbackSounds.CreateSource(transform, "Bedroom Incident Audio", 0);
             doorClosed = bedroomDoor.localPosition; doorOpen = doorClosed + Vector3.up * 2.65f;
             emergencyIntensity = new float[emergencyLights.Length];

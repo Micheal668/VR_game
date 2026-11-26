@@ -41,7 +41,8 @@ namespace LunarEscape
                     !string.Equals(tool.ToolType, requiredToolType, StringComparison.Ordinal)) continue;
 
                 // 比较距离平方可省去开平方运算；范围单位仍是 Unity 米。
-                if ((tool.Tip.position - repairPoint.position).sqrMagnitude <= radiusSquared)
+                if ((tool.Tip.position - repairPoint.position).sqrMagnitude <= radiusSquared ||
+                    tool.SecondaryTip != null && (tool.SecondaryTip.position - repairPoint.position).sqrMagnitude <= radiusSquared)
                     return tool;
             }
             return null;

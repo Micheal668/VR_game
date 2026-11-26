@@ -52,7 +52,19 @@ namespace LunarEscape.Tests
             Assert.That(session.GetComponent<CrewMission>().CommanderState,Is.EqualTo(CrewState.Trapped));
             Assert.That(story.TryUnlockBedroom(),Is.False);
             var circuit=story.Circuit;
+            Assert.That(story.GroundObjective().target, Is.SameAs(circuit.transform));
+            foreach (var module in circuit.Modules)
+            {
+                var symbol = StationPatchPuzzle.Mark(module.Identity);
+                Assert.That(module.GetComponentInChildren<TMP_Text>().text, Is.EqualTo(symbol));
+                var marker = circuit.transform.Find("Socket Identifier " + module.Identity).GetComponent<TMP_Text>();
+                Assert.That(marker.text, Is.EqualTo(symbol));
+                var material = module.transform.Find("Module Body").GetComponent<Renderer>().sharedMaterial;
+                Assert.That(material.shader.name, Is.EqualTo("Universal Render Pipeline/Unlit"));
+                Assert.That(material.GetColor("_BaseColor").maxColorComponent, Is.GreaterThan(.3f));
+            }
             var wrong=circuit.Sockets.First(s=>s.Identity!=0);
+            yield return Capture("expansion-blackout-connectors", new Vector3(-13.55f, 1.58f, 3.12f), circuit.transform.position);
             float power=life.BasePower,time=session.Mission.RemainingSeconds,air=life.BaseOxygen;
             yield return Insert(circuit.Modules[0],wrong);
             Assert.That(wrong.Socket.hasSelection,Is.True);Assert.That(wrong.Correct,Is.False);
@@ -62,6 +74,7 @@ namespace LunarEscape.Tests
             yield return Insert(circuit.Modules[0],circuit.Sockets.Single(s=>s.Identity==0));
             foreach(var module in circuit.Modules.Where(m=>m.Identity!=0))yield return Insert(module,circuit.Sockets.Single(s=>s.Identity==module.Identity));
             Assert.That(circuit.IsSolved,Is.True);
+            Assert.That(story.GroundObjective().target, Is.SameAs(breaker.Lever.transform));
             yield return PullBreaker(breaker);
             Assert.That(breaker.IsOn,Is.True);
             session.RetryMission();yield return null;

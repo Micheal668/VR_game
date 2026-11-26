@@ -4,7 +4,7 @@ using UnityEngine.XR.Interaction.Toolkit.Interactables;
 
 namespace LunarEscape
 {
-    // 第一天的航天服柜：握住挂着的航天服把手约 2.5 秒即穿好（松开暂停）。
+    // The rack grip and console both pause on release, as they do in the emergency shift.
     // 穿好后：挂着的那套消失，玩家身体换成航天服、肩灯可用。
     public sealed class SuitLocker : MonoBehaviour
     {
@@ -14,7 +14,10 @@ namespace LunarEscape
         [SerializeField] private Renderer[] playerUniform = new Renderer[0];
         [SerializeField] private GameObject shoulderLamps;
         [SerializeField] private TMPro.TMP_Text progressText;
-        [SerializeField, Min(0.1f)] private float donSeconds = 2.5f;
+        [SerializeField] private LifeSupportConfig configuration;
+        private bool consoleHeld;
+        public void ConfigureTiming(LifeSupportConfig settings) => configuration = settings;
+        public void HoldConsole(bool held) => consoleHeld = held;
         private readonly HapticRumble rumble = new();
         private AudioSource source;
         [SerializeField] private DayOneMission day;
@@ -48,10 +51,12 @@ namespace LunarEscape
         {
             if (day != null && (day.Current == DayOneMission.Stage.Working || day.Current == DayOneMission.Stage.Evening))
                 Advance(Time.deltaTime, !day.PlayerHasAir);
-            bool holding = handle != null && handle.isSelected;
+            bool holding = consoleHeld || handle != null && handle.isSelected;
             if (waitForRelease) { if (!holding) waitForRelease = false; else return; }
             if (SuitWorn && !CanReturn) { Progress = 0; return; }
-            Progress = holding ? Mathf.Min(1f, Progress + Time.deltaTime / donSeconds) : Progress;
+            if (day == null || handle == null || Vector3.Distance(day.Player.transform.TransformPoint(day.Player.center), handle.transform.position) > 1.7f) return;
+            float seconds = configuration != null ? configuration.DonSeconds : 4f;
+            Progress = holding ? Mathf.Min(1f, Progress + Time.deltaTime / seconds) : Progress;
             if (holding)
             {
                 rumble.Drive(HandHaptics.FromInteractor(handle.firstInteractorSelecting), 0.15f + 0.3f * Progress);
